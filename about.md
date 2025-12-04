@@ -86,7 +86,7 @@ title: About Me
       font-size:1.05rem;
       line-height:1.6;
     ">
-      I co-founded ByteTree, a student-run learning platform focused on building solid foundations in programming and AI. 
+      I serve as a Python with AI Tutor at ByteTree.in, a student-run learning platform focused on building solid foundations in programming and AI. 
       Along the way, I explored machine learning models, web engineering, app development, and data science through internships and personal projects.
       Every project I build is an attempt to understand a concept more deeply and create something meaningful out of it.
     </p>
