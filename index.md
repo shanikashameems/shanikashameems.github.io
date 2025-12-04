@@ -5,7 +5,7 @@ title: Home
 
 <!-- INTRO / HERO -->
 <section style="
-  margin-top:14px; /* ADDED SPACING BELOW NAVBAR */
+  margin-top:12px; /* GAP BETWEEN NAVBAR AND NOTEBOOK LABEL */
   border:1px solid rgba(255,255,255,0.05);
   padding:38px;
   border-radius:14px;
@@ -16,7 +16,7 @@ title: Home
     font-size:.8rem;
     text-transform:uppercase;
     letter-spacing:2px;
-    margin:16px 0 12px 0;
+    margin:0 0 12px 0;
     background:linear-gradient(90deg,#3b82f6,#7c3aed);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
@@ -34,7 +34,7 @@ title: Home
     I build software, explore machine intelligence, and document my journey in public.
   </h1>
 
-  <!-- DESCRIPTION with animation #1 -->
+  <!-- DESCRIPTION ANIMATION -->
   <p style="
     color:#9ca3af;
     max-width:680px;
@@ -49,7 +49,7 @@ title: Home
 </section>
 
 
-<!-- SMALLER GAP BEFORE POSTS -->
+<!-- LESS SPACE ABOVE POSTS -->
 <div style="height:24px;"></div>
 
 
@@ -75,7 +75,7 @@ title: Home
 <div style="height:18px;"></div>
 
 
-<!-- POSTS GRID with animation #2 -->
+<!-- POSTS GRID WITH ANIMATION -->
 <div style="
   display:grid;
   grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
@@ -86,7 +86,6 @@ title: Home
 ">
   {% for post in site.posts %}
   <a href="{{ post.url | relative_url }}" style="text-decoration:none; color:inherit;">
-
     <div style="
       border:1px solid rgba(255,255,255,0.06);
       border-radius:12px;
@@ -99,7 +98,6 @@ title: Home
       onmouseover="this.style.transform='translateY(-6px) scale(1.02)'; this.style.boxShadow='0 0 28px rgba(60,115,246,0.22)';"
       onmouseout="this.style.transform='none'; this.style.boxShadow='none';"
     >
-
       <div style="font-size:.78rem; color:#9ca3af; margin-bottom:6px;">
         {{ post.date | date: "%d %b %Y" }}
       </div>
@@ -134,6 +132,7 @@ title: Home
 
 <!-- ANIMATIONS -->
 <style>
+
 /* Description animation */
 @keyframes descAnim {
   0% {
