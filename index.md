@@ -5,7 +5,7 @@ title: Home
 
 <!-- DESCRIPTION CONTAINER -->
 <section style="
-  margin-top:24px; /* CLEAR VISIBLE GAP BETWEEN NAVBAR & DESC */
+  margin-top:14px; /* CLEAR VISIBLE GAP BETWEEN NAVBAR & DESC */
   border:1px solid rgba(255,255,255,0.05);
   padding:38px;
   border-radius:14px;
@@ -16,7 +16,7 @@ title: Home
   animation:descContainerAnim 1s ease forwards;
 ">
   <div style="
-    font-size:1.5rem; /* INCREASED SIZE */
+    font-size:1.0rem; /* INCREASED SIZE */
     text-transform:uppercase;
     letter-spacing:2px;
     margin:0 0 14px 0;
