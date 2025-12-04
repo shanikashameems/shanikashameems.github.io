@@ -20,7 +20,7 @@ title: Home
     font-size:.8rem;
     text-transform:uppercase;
     letter-spacing:2px;
-    margin:0 0 5px 0;
+    margin-top:30px;
     background:linear-gradient(90deg,#3b82f6,#7c3aed);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
