@@ -15,13 +15,13 @@ title: Home
     font-size:.8rem;
     text-transform:uppercase;
     letter-spacing:2px;
-    margin:12px 0 12px 0; /* moved down slightly */
+    margin:16px 0 12px 0; /* moved slightly down */
     background:linear-gradient(90deg,#3b82f6,#7c3aed);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     font-weight:600;
   ">
-    Shanika S · Engineering Notebook
+    Shanika's Engineering Notebook
   </div>
 
   <h1 style="
@@ -33,14 +33,14 @@ title: Home
     I build software, explore machine intelligence, and document my journey in public.
   </h1>
 
+  <!-- DESCRIPTION with animation #1 -->
   <p style="
     color:#9ca3af;
     max-width:680px;
     font-size:1.05rem;
-    margin:20px 0 0 0;
+    margin:22px 0 0 0;
     opacity:0;
-    animation:descReveal 0.95s ease forwards;
-    animation-delay:0.25s;
+    animation:descAnim 1s ease forwards;
   ">
     I’m a Computer Science student focused on AI and full-stack engineering.
     This space captures the systems I build, the concepts I study, and the ideas that shape my work.
@@ -48,17 +48,17 @@ title: Home
 </section>
 
 
-<!-- LESS SPACE ABOVE POSTS -->
-<div style="height:26px;"></div>
+<!-- SMALLER GAP BEFORE POSTS -->
+<div style="height:24px;"></div>
 
 
-<!-- POSTS HEADER -->
+<!-- POSTS HEADER (always visible, no animation) -->
 <div style="
   display:flex;
   align-items:center;
   justify-content:space-between;
 ">
-  <h2 style="margin:0; font-size:1.32rem; font-weight:600; opacity:0; animation:headerFade 0.9s ease forwards; animation-delay:0.45s;">
+  <h2 style="margin:0; font-size:1.32rem; font-weight:600;">
     Latest Posts
   </h2>
 
@@ -67,9 +67,6 @@ title: Home
     flex:1;
     margin-left:16px;
     background:linear-gradient(90deg, rgba(59,130,246,0.45), rgba(124,58,237,0.35), transparent);
-    opacity:0;
-    animation:headerFade 0.9s ease forwards;
-    animation-delay:0.45s;
   "></div>
 </div>
 
@@ -77,11 +74,14 @@ title: Home
 <div style="height:18px;"></div>
 
 
-<!-- POSTS GRID -->
+<!-- POSTS GRID with animation #2 -->
 <div style="
   display:grid;
   grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
   gap:20px;
+  opacity:0;
+  animation:postContainer 1.1s ease forwards;
+  animation-delay:0.15s;
 ">
   {% for post in site.posts %}
   <a href="{{ post.url | relative_url }}" style="text-decoration:none; color:inherit;">
@@ -92,11 +92,7 @@ title: Home
       padding:20px;
       background:linear-gradient(180deg, rgba(14,18,28,0.55), rgba(8,10,18,0.3));
       backdrop-filter:blur(10px);
-      transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s ease;
-      opacity:0;
-      transform-origin:center;
-      animation:postPop 0.7s cubic-bezier(.2,.9,.3,1) forwards;
-      animation-delay:{{ forloop.index | times: 0.09 }}s;
+      transition:transform .28s ease, box-shadow .28s ease;
       position:relative;
     "
       onmouseover="this.style.transform='translateY(-6px) scale(1.02)'; this.style.boxShadow='0 0 28px rgba(60,115,246,0.22)';"
@@ -137,60 +133,36 @@ title: Home
 
 <!-- ANIMATIONS -->
 <style>
-/* Description: gentle fade + rise (distinct) */
-@keyframes descReveal {
+/* Animation #1 — description */
+@keyframes descAnim {
   0% {
     opacity:0;
-    transform:translateY(14px);
-    filter:blur(8px);
+    transform:translateY(20px);
+    filter:blur(12px);
   }
   70% {
     opacity:1;
-    transform:translateY(0px);
+    transform:translateY(0);
     filter:blur(0);
   }
   100% { opacity:1; }
 }
 
-/* Header fade (subtle) */
-@keyframes headerFade {
-  0% { opacity:0; transform:translateY(8px); filter:blur(8px); }
-  100% { opacity:1; transform:none; filter:blur(0); }
-}
-
-/* Posts: pop + slight rotate (distinct from description) */
-@keyframes postPop {
+/* Animation #2 — posts grid container */
+@keyframes postContainer {
   0% {
     opacity:0;
-    transform: scale(0.94) rotate(-1.6deg) translateY(18px);
-    filter:blur(8px);
+    transform:translateY(26px) scale(0.96);
+    filter:blur(14px);
   }
   60% {
     opacity:1;
-    transform: scale(1.02) rotate(0.6deg) translateY(-4px);
+    transform:translateY(0) scale(1.02);
     filter:blur(0);
   }
   100% {
     opacity:1;
-    transform: scale(1) rotate(0deg) translateY(0);
+    transform:scale(1);
   }
-}
-
-/* Full page reveal (keeps overall feel) */
-main {
-  animation:pageReveal 0.9s ease-out;
-}
-@keyframes pageReveal {
-  0% {
-    opacity:0;
-    filter:blur(18px);
-    transform:translateY(20px);
-  }
-  70% {
-    opacity:1;
-    filter:blur(0);
-    transform:translateY(0);
-  }
-  100% { opacity:1; }
 }
 </style>
