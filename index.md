@@ -5,18 +5,19 @@ title: Home
 
 <!-- DESCRIPTION CONTAINER -->
 <section style="
-  margin-top:5px; /* CLEAR VISIBLE GAP BETWEEN NAVBAR & DESC */
+  margin-top:16px; /* REDUCED GAP BETWEEN NAVBAR & DESCRIPTION */
   border:1px solid rgba(255,255,255,0.05);
   padding:38px;
   border-radius:14px;
   background:linear-gradient(180deg, rgba(13,17,28,0.55), rgba(6,8,14,0.32));
   backdrop-filter:blur(12px);
 
+  /* ANIMATION FOR WHOLE DESCRIPTION CONTAINER */
   opacity:0;
   animation:descContainerAnim 1s ease forwards;
 ">
   <div style="
-    font-size:1.0rem; /* INCREASED SIZE */
+    font-size:1.5rem; /* Increased as requested earlier */
     text-transform:uppercase;
     letter-spacing:2px;
     margin:0 0 14px 0;
@@ -98,7 +99,6 @@ title: Home
       onmouseover="this.style.transform='translateY(-6px) scale(1.02)'; this.style.boxShadow='0 0 28px rgba(60,115,246,0.22)';"
       onmouseout="this.style.transform='none'; this.style.boxShadow='none';"
     >
-
       <div style="font-size:.78rem; color:#9ca3af; margin-bottom:6px;">
         {{ post.date | date: "%d %b %Y" }}
       </div>
@@ -124,7 +124,6 @@ title: Home
         background:linear-gradient(90deg,#3b82f6,#7c3aed);
         opacity:.35;
       "></div>
-
     </div>
   </a>
   {% endfor %}
@@ -134,7 +133,6 @@ title: Home
 <!-- ANIMATIONS -->
 <style>
 
-/* DESCRIPTION CONTAINER ANIMATION */
 @keyframes descContainerAnim {
   0% {
     opacity:0;
@@ -149,7 +147,6 @@ title: Home
   100% { opacity:1; }
 }
 
-/* POSTS CONTAINER ANIMATION */
 @keyframes postContainer {
   0% {
     opacity:0;
