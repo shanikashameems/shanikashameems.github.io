@@ -5,26 +5,25 @@ title: Home
 
 <!-- DESCRIPTION CONTAINER -->
 <section style="
-  margin-top:12px; /* GAP BETWEEN NAVBAR AND DESCRIPTION */
+  margin-top:24px; /* CLEAR VISIBLE GAP BETWEEN NAVBAR & DESC */
   border:1px solid rgba(255,255,255,0.05);
-  padding:28px;
+  padding:38px;
   border-radius:14px;
   background:linear-gradient(180deg, rgba(13,17,28,0.55), rgba(6,8,14,0.32));
   backdrop-filter:blur(12px);
 
-  /* ANIMATION APPLIED TO WHOLE DESCRIPTION CONTAINER */
   opacity:0;
   animation:descContainerAnim 1s ease forwards;
 ">
   <div style="
-    font-size:5rem;
+    font-size:1.5rem; /* INCREASED SIZE */
     text-transform:uppercase;
     letter-spacing:2px;
-    margin-top:15px;
+    margin:0 0 14px 0;
     background:linear-gradient(90deg,#3b82f6,#7c3aed);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
-    font-weight:600;
+    font-weight:700;
   ">
     Shanika S · Engineering Notebook
   </div>
@@ -54,7 +53,7 @@ title: Home
 <div style="height:24px;"></div>
 
 
-<!-- POSTS HEADER (unchanged) -->
+<!-- POSTS HEADER -->
 <div style="
   display:flex;
   align-items:center;
@@ -76,7 +75,7 @@ title: Home
 <div style="height:18px;"></div>
 
 
-<!-- POSTS GRID (unchanged) -->
+<!-- POSTS GRID -->
 <div style="
   display:grid;
   grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
@@ -99,6 +98,7 @@ title: Home
       onmouseover="this.style.transform='translateY(-6px) scale(1.02)'; this.style.boxShadow='0 0 28px rgba(60,115,246,0.22)';"
       onmouseout="this.style.transform='none'; this.style.boxShadow='none';"
     >
+
       <div style="font-size:.78rem; color:#9ca3af; margin-bottom:6px;">
         {{ post.date | date: "%d %b %Y" }}
       </div>
@@ -134,7 +134,7 @@ title: Home
 <!-- ANIMATIONS -->
 <style>
 
-/* DESCRIPTION CONTAINER ANIMATION (smooth fade + rise) */
+/* DESCRIPTION CONTAINER ANIMATION */
 @keyframes descContainerAnim {
   0% {
     opacity:0;
@@ -149,7 +149,7 @@ title: Home
   100% { opacity:1; }
 }
 
-/* Posts container animation (unchanged) */
+/* POSTS CONTAINER ANIMATION */
 @keyframes postContainer {
   0% {
     opacity:0;
