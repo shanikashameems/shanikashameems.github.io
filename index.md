@@ -5,6 +5,7 @@ title: Home
 
 <!-- INTRO / HERO -->
 <section style="
+  margin-top:14px; /* ADDED SPACING BELOW NAVBAR */
   border:1px solid rgba(255,255,255,0.05);
   padding:38px;
   border-radius:14px;
@@ -15,7 +16,7 @@ title: Home
     font-size:.8rem;
     text-transform:uppercase;
     letter-spacing:2px;
-    margin:16px 0 12px 0; /* moved slightly down */
+    margin:16px 0 12px 0;
     background:linear-gradient(90deg,#3b82f6,#7c3aed);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
@@ -52,7 +53,7 @@ title: Home
 <div style="height:24px;"></div>
 
 
-<!-- POSTS HEADER (always visible, no animation) -->
+<!-- POSTS HEADER (always visible) -->
 <div style="
   display:flex;
   align-items:center;
@@ -133,7 +134,7 @@ title: Home
 
 <!-- ANIMATIONS -->
 <style>
-/* Animation #1 — description */
+/* Description animation */
 @keyframes descAnim {
   0% {
     opacity:0;
@@ -148,7 +149,7 @@ title: Home
   100% { opacity:1; }
 }
 
-/* Animation #2 — posts grid container */
+/* Posts container animation */
 @keyframes postContainer {
   0% {
     opacity:0;
