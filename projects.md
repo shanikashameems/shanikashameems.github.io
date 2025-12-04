@@ -79,8 +79,7 @@ title: Projects
     <h2 style="font-size:1.25rem; margin-bottom:10px; font-weight:600;">Web & Mobile</h2>
 
     <div style="color:#9ca3af; line-height:1.6; font-size:1.03rem; max-width:820px;">
-      <strong>ByteTree — Learning Platform</strong><br>
-      Co-founded a student-first education platform focusing on hands-on programming and approachable AI content. Responsibilities included curriculum design, session delivery, and building course infrastructure.
+     
 
       <div style="height:10px;"></div>
 
