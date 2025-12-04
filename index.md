@@ -23,7 +23,7 @@ title: Home
     -webkit-text-fill-color:transparent;
     font-weight:600;
   ">
-    Shanika S · Engineering Notebook
+    Shanika's Engineering Notebook
   </div>
 
   <h1 style="
