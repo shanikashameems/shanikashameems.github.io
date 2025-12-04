@@ -10,7 +10,7 @@ title: Home
   border-radius:14px;
   background:linear-gradient(180deg, rgba(13,17,28,0.55), rgba(6,8,14,0.35));
   backdrop-filter:blur(12px);
-  animation:fadeIn 0.9s ease forwards;
+  animation:fadeIn 1s ease forwards;
   opacity:0;
 ">
   <div style="
@@ -44,7 +44,7 @@ title: Home
     margin:0;
   ">
     I’m a Computer Science student focused on AI, full-stack engineering, and building tools
-    that help people learn, create, and solve problems.  
+    that help people learn, create, and solve problems.
     This space captures what I learn, what I build, and what I discover along the way.
   </p>
 </section>
@@ -59,7 +59,7 @@ title: Home
   display:flex;
   align-items:center;
   justify-content:space-between;
-  animation:fadeIn 1s ease forwards;
+  animation:fadeIn 1.2s ease forwards;
   opacity:0;
 ">
   <h2 style="
@@ -103,6 +103,7 @@ title: Home
       opacity:0;
       animation:fadeUp 0.7s ease forwards;
       animation-delay:{{ forloop.index | times: 0.08 }}s;
+      position:relative;
     "
     onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 0 32px rgba(60,115,246,0.22)';"
     onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
@@ -139,15 +140,36 @@ title: Home
 </div>
 
 
-<!-- ANIMATIONS -->
+<!-- GLOBAL ANIMATIONS -->
 <style>
 @keyframes fadeIn {
-  from { opacity:0; transform:translateY(6px); }
-  to   { opacity:1; transform:none; }
+  from { opacity:0; transform:translateY(6px); filter:blur(12px); }
+  to   { opacity:1; transform:none; filter:blur(0); }
 }
 
 @keyframes fadeUp {
-  from { opacity:0; transform:translateY(18px); }
-  to   { opacity:1; transform:none; }
+  from { opacity:0; transform:translateY(22px); filter:blur(8px); }
+  to   { opacity:1; transform:none; filter:blur(0); }
+}
+
+/* Full page reveal */
+main {
+  animation: pageReveal 1s ease-out;
+}
+@keyframes pageReveal {
+  0% {
+    opacity:0;
+    filter:blur(18px);
+    transform:translateY(28px);
+  }
+  60% {
+    opacity:1;
+    filter:blur(0px);
+    transform:translateY(0px);
+  }
+  100% {
+    opacity:1;
+  }
 }
 </style>
+
