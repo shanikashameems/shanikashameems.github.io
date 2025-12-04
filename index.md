@@ -3,30 +3,35 @@ layout: default
 title: Home
 ---
 
-<!-- INTRO / HERO -->
+<!-- DESCRIPTION CONTAINER (NEW WRAPPER) -->
 <section style="
-  margin-top:12px; /* GAP BETWEEN NAVBAR AND NOTEBOOK LABEL */
+  margin-top:14px; /* space between navbar and description container */
   border:1px solid rgba(255,255,255,0.05);
   padding:38px;
   border-radius:14px;
   background:linear-gradient(180deg, rgba(13,17,28,0.55), rgba(6,8,14,0.32));
   backdrop-filter:blur(12px);
+
+  /* Animate the WHOLE description container */
+  opacity:0;
+  animation:descContainerAnim 1s ease forwards;
 ">
+
   <div style="
     font-size:.8rem;
     text-transform:uppercase;
     letter-spacing:2px;
-    margin:0 0 12px 0;
+    margin:0 0 14px 0;
     background:linear-gradient(90deg,#3b82f6,#7c3aed);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     font-weight:600;
   ">
-    Shanika's Engineering Notebook
+    Shanika S · Engineering Notebook
   </div>
 
   <h1 style="
-    margin:0 0 10px 0;
+    margin:0 0 14px 0;
     font-size:1.95rem;
     font-weight:700;
     letter-spacing:-0.02em;
@@ -34,22 +39,20 @@ title: Home
     I build software, explore machine intelligence, and document my journey in public.
   </h1>
 
-  <!-- DESCRIPTION ANIMATION -->
   <p style="
     color:#9ca3af;
     max-width:680px;
     font-size:1.05rem;
-    margin:22px 0 0 0;
-    opacity:0;
-    animation:descAnim 1s ease forwards;
+    margin:0;
   ">
     I’m a Computer Science student focused on AI and full-stack engineering.
     This space captures the systems I build, the concepts I study, and the ideas that shape my work.
   </p>
+
 </section>
 
 
-<!-- LESS SPACE ABOVE POSTS -->
+<!-- SPACE BEFORE POSTS -->
 <div style="height:24px;"></div>
 
 
@@ -75,7 +78,7 @@ title: Home
 <div style="height:18px;"></div>
 
 
-<!-- POSTS GRID WITH ANIMATION -->
+<!-- POSTS GRID -->
 <div style="
   display:grid;
   grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
@@ -86,6 +89,7 @@ title: Home
 ">
   {% for post in site.posts %}
   <a href="{{ post.url | relative_url }}" style="text-decoration:none; color:inherit;">
+
     <div style="
       border:1px solid rgba(255,255,255,0.06);
       border-radius:12px;
@@ -98,6 +102,7 @@ title: Home
       onmouseover="this.style.transform='translateY(-6px) scale(1.02)'; this.style.boxShadow='0 0 28px rgba(60,115,246,0.22)';"
       onmouseout="this.style.transform='none'; this.style.boxShadow='none';"
     >
+
       <div style="font-size:.78rem; color:#9ca3af; margin-bottom:6px;">
         {{ post.date | date: "%d %b %Y" }}
       </div>
@@ -133,12 +138,12 @@ title: Home
 <!-- ANIMATIONS -->
 <style>
 
-/* Description animation */
-@keyframes descAnim {
+/* Animation for the whole description container */
+@keyframes descContainerAnim {
   0% {
     opacity:0;
     transform:translateY(20px);
-    filter:blur(12px);
+    filter:blur(14px);
   }
   70% {
     opacity:1;
@@ -165,4 +170,5 @@ title: Home
     transform:scale(1);
   }
 }
+
 </style>
