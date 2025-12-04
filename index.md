@@ -10,7 +10,7 @@ title: Home
   border-radius:14px;
   background:linear-gradient(180deg, rgba(13,17,28,0.55), rgba(6,8,14,0.32));
   backdrop-filter:blur(12px);
-  animation:fadeIn 1s ease forwards;
+  animation:slideReveal 1s ease forwards;
   opacity:0;
 ">
   <div style="
@@ -23,7 +23,7 @@ title: Home
     -webkit-text-fill-color:transparent;
     font-weight:600;
   ">
-    Shanika's Engineering Notebook
+    Shanika S · Engineering Notebook
   </div>
 
   <h1 style="
@@ -39,7 +39,7 @@ title: Home
     color:#9ca3af;
     max-width:680px;
     font-size:1.05rem;
-    margin:0;
+    margin:18px 0 0 0;
   ">
     I’m a Computer Science student focused on AI and full-stack engineering.
     This space captures the systems I build, the concepts I study, and the ideas that shape my work.
@@ -47,8 +47,8 @@ title: Home
 </section>
 
 
-<!-- LESS SPACE ABOVE POSTS: MOVED UP -->
-<div style="height:24px;"></div>
+<!-- LESS SPACE ABOVE POSTS -->
+<div style="height:28px;"></div>
 
 
 <!-- POSTS HEADER -->
@@ -56,10 +56,14 @@ title: Home
   display:flex;
   align-items:center;
   justify-content:space-between;
-  animation:fadeIn 1.2s ease forwards;
+  animation:softDrop 1.1s ease forwards;
   opacity:0;
 ">
-  <h2 style="margin:0; font-size:1.32rem; font-weight:600;">
+  <h2 style="
+    margin:0;
+    font-size:1.32rem;
+    font-weight:600;
+  ">
     Latest Posts
   </h2>
 
@@ -92,8 +96,8 @@ title: Home
       backdrop-filter:blur(10px);
       transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s ease;
       opacity:0;
-      animation:fadeUp 0.7s ease forwards;
-      animation-delay:{{ forloop.index | times: 0.08 }}s;
+      animation:scaleFade 0.7s ease forwards;
+      animation-delay:{{ forloop.index | times: 0.09 }}s;
       position:relative;
     "
       onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 0 28px rgba(60,115,246,0.22)';"
@@ -134,22 +138,64 @@ title: Home
 
 <!-- ANIMATIONS -->
 <style>
-@keyframes fadeIn {
-  from { opacity:0; transform:translateY(8px); filter:blur(15px); }
-  to   { opacity:1; transform:none; filter:blur(0); }
+/* Hero animation: slide in + blur */
+@keyframes slideReveal {
+  0% {
+    opacity:0;
+    transform:translateX(-32px);
+    filter:blur(14px);
+  }
+  60% {
+    opacity:1;
+    transform:translateX(0);
+    filter:blur(0);
+  }
+  100% { opacity:1; }
 }
 
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(22px); filter:blur(10px); }
-  to   { opacity:1; transform:none; filter:blur(0); }
+/* Latest Posts Header: soft drop */
+@keyframes softDrop {
+  0% {
+    opacity:0;
+    transform:translateY(-18px);
+    filter:blur(10px);
+  }
+  70% {
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0);
+  }
 }
 
+/* Post Cards: scale + fade */
+@keyframes scaleFade {
+  0% {
+    opacity:0;
+    transform:scale(0.92) translateY(18px);
+    filter:blur(8px);
+  }
+  100% {
+    opacity:1;
+    transform:scale(1) translateY(0);
+    filter:blur(0);
+  }
+}
+
+/* Full page reveal */
 main {
   animation:pageReveal 0.9s ease-out;
 }
 @keyframes pageReveal {
-  0%   { opacity:0; filter:blur(20px); transform:translateY(28px); }
-  70%  { opacity:1; filter:blur(0); transform:translateY(0); }
+  0% {
+    opacity:0;
+    filter:blur(20px);
+    transform:translateY(28px);
+  }
+  70% {
+    opacity:1;
+    filter:blur(0);
+    transform:translateY(0);
+  }
   100% { opacity:1; }
 }
 </style>
