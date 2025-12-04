@@ -3,58 +3,121 @@ layout: default
 title: Home
 ---
 
-<div class="hero">
-  <div class="left">
-    <div class="tech-badge">
-      <div class="tech-dot" aria-hidden="true"></div>
-      <div style="font-weight:600;">Student • Developer</div>
-    </div>
+<!-- TECH HEADER -->
+<div style="
+  border:1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(180deg, rgba(13,17,28,0.55), rgba(6,8,14,0.35));
+  padding:32px;
+  border-radius:12px;
+  backdrop-filter: blur(10px);
+  margin-bottom:32px;
+">
+  <div style="
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:16px;
+  ">
+    <div style="
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:linear-gradient(90deg,#3b82f6,#7c3aed);
+      box-shadow:0 0 12px rgba(60,115,246,0.8);
+    "></div>
 
-    <h1>Hi — I'm Shanika. I document what I learn about AI, web development and software engineering.</h1>
-    <p>Short technical notes, project updates and practical code experiments. Content focused on learning, building and sharing practical solutions.</p>
+    <span style="
+      font-size:.85rem;
+      letter-spacing:1px;
+      color:#9ca3af;
+      text-transform:uppercase;
+    ">
+      Developer Journal
+    </span>
   </div>
 
-  <div class="visual" aria-hidden="true">
-    <!-- decorative grid dots -->
-    <div class="grid-dot" style="left:12%; top:18%;"></div>
-    <div class="grid-dot" style="left:30%; top:40%;"></div>
-    <div class="grid-dot" style="left:64%; top:22%;"></div>
-    <div class="grid-dot" style="left:78%; top:68%;"></div>
-  </div>
+  <h1 style="
+    margin:0;
+    font-size:1.9rem;
+    line-height:1.2;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  ">
+    I build projects, explore AI, and document my engineering journey.
+  </h1>
+
+  <p style="
+    margin-top:10px;
+    color:#9ca3af;
+    max-width:650px;
+    font-size:1rem;
+  ">
+    Short technical notes, engineering experiments, and project breakdowns —
+    written with clarity, precision, and a focus on learning in public.
+  </p>
 </div>
 
-<section style="margin-top:6px;">
-  <div class="page-header">
-    <h2>Latest posts</h2>
-    <div class="muted">Recent technical notes and project write-ups</div>
-  </div>
 
-  <div style="height:12px"></div>
+<!-- SECTION TITLE -->
+<div style="
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:14px;
+">
+  <h2 style="margin:0; font-size:1.2rem;">Recent Posts</h2>
+  <div style="height:1px; flex:1; margin-left:14px; background:rgba(255,255,255,0.08);"></div>
+</div>
 
-  {% assign posts_list = site.posts %}
-  {% if posts_list and posts_list != empty %}
-  <div class="posts-grid">
-    {% for post in posts_list %}
-    <a class="post-card" href="{{ post.url | relative_url }}">
-      <div class="post-visual">
-        {% if post.image %}
-          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
-        {% else %}
-          <!-- no image: use a CSS background gradient; leave the element empty so CSS gradient shows -->
-        {% endif %}
-        <div class="post-overlay">
-          <h3 class="post-title">{{ post.title }}</h3>
-          <div class="post-meta">{{ post.date | date: "%d %b %Y" }}</div>
-        </div>
+
+<!-- POSTS GRID (TECH STYLE) -->
+<div style="
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+  gap:20px;
+">
+  {% for post in site.posts %}
+  <a href="{{ post.url | relative_url }}" style="
+    text-decoration:none;
+    color:inherit;
+  ">
+    <div style="
+      border:1px solid rgba(255,255,255,0.05);
+      padding:20px;
+      border-radius:10px;
+      background:linear-gradient(180deg, rgba(14,18,28,0.6), rgba(10,13,22,0.35));
+      backdrop-filter: blur(6px);
+      transition:0.25s ease;
+      position:relative;
+      overflow:hidden;
+    "
+    onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 0 32px rgba(60,115,246,0.22)';"
+    onmouseout="this.style.transform='none'; this.style.boxShadow='none';"
+    >
+      <div style="font-size:.78rem; color:#9ca3af; margin-bottom:6px;">
+        {{ post.date | date: "%d %b %Y" }}
       </div>
 
-      <div class="post-body">
+      <h3 style="margin:0 0 8px 0; font-size:1.05rem; font-weight:600;">
+        {{ post.title }}
+      </h3>
+
+      <p style="margin:0; color:#9ca3af; font-size:.9rem;">
         {{ post.excerpt | strip_html | truncate: 120 }}
-      </div>
-    </a>
-    {% endfor %}
-  </div>
-  {% else %}
-  <p class="muted">No posts yet. Add a post under <code>_posts/</code> and it will appear here.</p>
-  {% endif %}
-</section>
+      </p>
+
+      <!-- glowing bottom border -->
+      <div style="
+        position:absolute;
+        bottom:0;
+        left:0;
+        width:100%;
+        height:2px;
+        background:linear-gradient(90deg,#3b82f6,#7c3aed);
+        opacity:.45;
+      "></div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+
