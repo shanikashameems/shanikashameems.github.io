@@ -5,7 +5,7 @@ title: Home
 
 <!-- DESCRIPTION CONTAINER -->
 <section style="
-  margin-top:14px; /* CLEAR VISIBLE GAP BETWEEN NAVBAR & DESC */
+  margin-top:5px; /* CLEAR VISIBLE GAP BETWEEN NAVBAR & DESC */
   border:1px solid rgba(255,255,255,0.05);
   padding:38px;
   border-radius:14px;
