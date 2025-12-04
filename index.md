@@ -7,7 +7,7 @@ title: Home
 <section style="
   margin-top:12px; /* GAP BETWEEN NAVBAR AND DESCRIPTION */
   border:1px solid rgba(255,255,255,0.05);
-  padding:48px;
+  padding:28px;
   border-radius:14px;
   background:linear-gradient(180deg, rgba(13,17,28,0.55), rgba(6,8,14,0.32));
   backdrop-filter:blur(12px);
@@ -17,7 +17,7 @@ title: Home
   animation:descContainerAnim 1s ease forwards;
 ">
   <div style="
-    font-size:2rem;
+    font-size:5rem;
     text-transform:uppercase;
     letter-spacing:2px;
     margin-top:15px;
