@@ -3,20 +3,19 @@ layout: default
 title: Home
 ---
 
-<!-- DESCRIPTION CONTAINER (NEW WRAPPER) -->
+<!-- DESCRIPTION CONTAINER -->
 <section style="
-  margin-top:14px; /* space between navbar and description container */
+  margin-top:12px; /* GAP BETWEEN NAVBAR AND DESCRIPTION */
   border:1px solid rgba(255,255,255,0.05);
   padding:38px;
   border-radius:14px;
   background:linear-gradient(180deg, rgba(13,17,28,0.55), rgba(6,8,14,0.32));
   backdrop-filter:blur(12px);
 
-  /* Animate the WHOLE description container */
+  /* ANIMATION APPLIED TO WHOLE DESCRIPTION CONTAINER */
   opacity:0;
   animation:descContainerAnim 1s ease forwards;
 ">
-
   <div style="
     font-size:.8rem;
     text-transform:uppercase;
@@ -48,7 +47,6 @@ title: Home
     I’m a Computer Science student focused on AI and full-stack engineering.
     This space captures the systems I build, the concepts I study, and the ideas that shape my work.
   </p>
-
 </section>
 
 
@@ -56,7 +54,7 @@ title: Home
 <div style="height:24px;"></div>
 
 
-<!-- POSTS HEADER (always visible) -->
+<!-- POSTS HEADER (unchanged) -->
 <div style="
   display:flex;
   align-items:center;
@@ -78,7 +76,7 @@ title: Home
 <div style="height:18px;"></div>
 
 
-<!-- POSTS GRID -->
+<!-- POSTS GRID (unchanged) -->
 <div style="
   display:grid;
   grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
@@ -89,7 +87,6 @@ title: Home
 ">
   {% for post in site.posts %}
   <a href="{{ post.url | relative_url }}" style="text-decoration:none; color:inherit;">
-
     <div style="
       border:1px solid rgba(255,255,255,0.06);
       border-radius:12px;
@@ -102,7 +99,6 @@ title: Home
       onmouseover="this.style.transform='translateY(-6px) scale(1.02)'; this.style.boxShadow='0 0 28px rgba(60,115,246,0.22)';"
       onmouseout="this.style.transform='none'; this.style.boxShadow='none';"
     >
-
       <div style="font-size:.78rem; color:#9ca3af; margin-bottom:6px;">
         {{ post.date | date: "%d %b %Y" }}
       </div>
@@ -138,7 +134,7 @@ title: Home
 <!-- ANIMATIONS -->
 <style>
 
-/* Animation for the whole description container */
+/* DESCRIPTION CONTAINER ANIMATION (smooth fade + rise) */
 @keyframes descContainerAnim {
   0% {
     opacity:0;
@@ -153,7 +149,7 @@ title: Home
   100% { opacity:1; }
 }
 
-/* Posts container animation */
+/* Posts container animation (unchanged) */
 @keyframes postContainer {
   0% {
     opacity:0;
@@ -170,5 +166,4 @@ title: Home
     transform:scale(1);
   }
 }
-
 </style>
