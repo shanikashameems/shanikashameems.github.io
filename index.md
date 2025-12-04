@@ -7,7 +7,7 @@ title: Home
 <section style="
   margin-top:12px; /* GAP BETWEEN NAVBAR AND DESCRIPTION */
   border:1px solid rgba(255,255,255,0.05);
-  padding:38px;
+  padding:48px;
   border-radius:14px;
   background:linear-gradient(180deg, rgba(13,17,28,0.55), rgba(6,8,14,0.32));
   backdrop-filter:blur(12px);
