@@ -17,10 +17,10 @@ title: Home
   animation:descContainerAnim 1s ease forwards;
 ">
   <div style="
-    font-size:1.5rem;
+    font-size:2rem;
     text-transform:uppercase;
     letter-spacing:2px;
-    margin-top:25px;
+    margin-top:15px;
     background:linear-gradient(90deg,#3b82f6,#7c3aed);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
