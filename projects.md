@@ -3,49 +3,115 @@ layout: default
 title: Projects
 ---
 
-# My Projects & Experience
+<section style="
+  margin-top:0;
+  border:1px solid rgba(255,255,255,0.05);
+  padding:38px;
+  border-radius:14px;
+  background:linear-gradient(180deg, rgba(13,17,28,0.55), rgba(6,8,14,0.35));
+  backdrop-filter:blur(12px);
+  opacity:0;
+  animation:projectsReveal 1s ease forwards;
+">
 
-Here are some of the cool things I’ve built and worked on!  
-I'm constantly exploring new tech and improving my skills 👩‍💻✨
+  <h1 style="
+    margin:0 0 16px 0;
+    font-size:2rem;
+    font-weight:700;
+    letter-spacing:-0.02em;
+    background:linear-gradient(90deg,#3b82f6,#7c3aed);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  ">
+    Projects & Work
+  </h1>
 
----
+  <p style="
+    color:#9ca3af;
+    font-size:1.05rem;
+    max-width:760px;
+    line-height:1.6;
+    margin:0 0 28px 0;
+  ">
+    Selected projects and prototypes that reflect a focus on dependable engineering, clear problem-solving, and practical experimentation. Each entry is a concise snapshot — the problem, the approach, and the outcome.
+  </p>
 
-##  AI & Machine Learning – Projects
 
-###  Diabetes Prediction System
-Predicting diabetes using ML models to help improve academic outcomes.
+  <!-- AI & ML -->
+  <div style="opacity:0; animation:fadeSlide 1.05s ease forwards; animation-delay:0.18s;">
+    <h2 style="font-size:1.25rem; margin-bottom:10px; font-weight:600;">AI & Machine Learning</h2>
 
-### Recommendation System Using ML
-**A recommendation system for grocery shopping
-**---
+    <div style="color:#9ca3af; line-height:1.6; font-size:1.03rem; max-width:820px;">
+      <strong>Diabetes Prediction System</strong><br>
+      ML pipeline built to predict diabetes risk from clinical features. Built multiple baseline models, iterated on feature engineering, and evaluated through explainability metrics to improve trust and clarity.
 
-##  Python Tools & Utilities
+      <div style="height:10px;"></div>
 
-###  File Morpher (Python)
-A file conversion tool to change formats easily using Python scripts.
+      <strong>Recommendation Prototype</strong><br>
+      A lightweight recommendation engine for grocery suggestions that combines collaborative filtering with content signals. Focused on practical evaluation and simple deployment patterns.
+    </div>
+  </div>
 
-###  Background Remover (Python)
-Removes background from images automatically — built using Python image processing.
 
-###  QR Code Generator (Python)
-Generates QR codes instantly from user input — simple, fast, and functional.
+  <!-- Python Tools -->
+  <div style="margin-top:28px; opacity:0; animation:fadeSlide 1.05s ease forwards; animation-delay:0.32s;">
+    <h2 style="font-size:1.25rem; margin-bottom:10px; font-weight:600;">Python Tools & Utilities</h2>
 
----
+    <div style="color:#9ca3af; line-height:1.6; font-size:1.03rem; max-width:820px;">
+      <strong>File Morpher</strong><br>
+      Small CLI utilities for converting between common file formats and automating routine file workflows.
 
-##  Web Development & Apps
+      <div style="height:10px;"></div>
 
-###  ByteTree – Tech Learning Platform (Co-Founder)
-A student-run platform for learning Python + AI.  
-- Conducted live sessions  
-- Built course structure and beginner-friendly content  
+      <strong>Background Remover</strong><br>
+      An image-processing utility that isolates foregrounds for downstream editing and prototyping pipelines.
 
-###  Expo Micro-Journal App (Mobile App)
-A minimal journaling app using React Native Expo:
-- Daily notes
-- Smooth UI
-- Local storage for privacy
+      <div style="height:10px;"></div>
 
----
+      <strong>QR Generator</strong><br>
+      A compact, dependency-light tool for generating QR codes programmatically, designed for fast integration into scripts and web tools.
+    </div>
+  </div>
 
-✨ And more coming…  
-I love building tools that make life easier and learning more fun 💙
+
+  <!-- Web & Mobile -->
+  <div style="margin-top:28px; opacity:0; animation:fadeSlide 1.05s ease forwards; animation-delay:0.46s;">
+    <h2 style="font-size:1.25rem; margin-bottom:10px; font-weight:600;">Web & Mobile</h2>
+
+    <div style="color:#9ca3af; line-height:1.6; font-size:1.03rem; max-width:820px;">
+      <strong>ByteTree — Learning Platform</strong><br>
+      Co-founded a student-first education platform focusing on hands-on programming and approachable AI content. Responsibilities included curriculum design, session delivery, and building course infrastructure.
+
+      <div style="height:10px;"></div>
+
+      <strong>Expo Micro-Journal</strong><br>
+      Minimal journaling app built with React Native (Expo). Prioritised a clean UX, local-first data storage and a tiny surface area for fast prototyping.
+    </div>
+  </div>
+
+
+  <!-- Future work / CTA -->
+  <div style="margin-top:28px; opacity:0; animation:fadeSlide 1.05s ease forwards; animation-delay:0.6s;">
+    <h2 style="font-size:1.25rem; margin-bottom:10px; font-weight:600;">Next steps</h2>
+
+    <p style="color:#9ca3af; max-width:760px; font-size:1.03rem; line-height:1.6;">
+      I’ll publish deeper write-ups and reproducible notebooks for selected projects. If you’re interested in collaboration or want access to a project repo, reach out via my GitHub profile.
+    </p>
+  </div>
+
+</section>
+
+<!-- ANIMATIONS -->
+<style>
+@keyframes projectsReveal {
+  0% { opacity:0; transform:translateY(18px); filter:blur(12px); }
+  70% { opacity:1; transform:translateY(0); filter:blur(0); }
+  100% { opacity:1; }
+}
+
+@keyframes fadeSlide {
+  0% { opacity:0; transform:translateY(14px); filter:blur(10px); }
+  70% { opacity:1; transform:translateY(0); filter:blur(0); }
+  100% { opacity:1; }
+}
+</style>
