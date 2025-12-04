@@ -5,7 +5,7 @@ title: Home
 
 <!-- DESCRIPTION CONTAINER -->
 <section style="
-  margin-top:16px; /* REDUCED GAP BETWEEN NAVBAR & DESCRIPTION */
+  margin-top:0; /* NO SPACE BETWEEN NAVBAR & DESCRIPTION */
   border:1px solid rgba(255,255,255,0.05);
   padding:38px;
   border-radius:14px;
@@ -17,7 +17,7 @@ title: Home
   animation:descContainerAnim 1s ease forwards;
 ">
   <div style="
-    font-size:1.5rem; /* Increased as requested earlier */
+    font-size:1.0rem; /* BIGGER NOTEBOOK LABEL */
     text-transform:uppercase;
     letter-spacing:2px;
     margin:0 0 14px 0;
@@ -26,7 +26,7 @@ title: Home
     -webkit-text-fill-color:transparent;
     font-weight:700;
   ">
-    Shanika S · Engineering Notebook
+    Shanika's Engineering Notebook
   </div>
 
   <h1 style="
@@ -99,6 +99,7 @@ title: Home
       onmouseover="this.style.transform='translateY(-6px) scale(1.02)'; this.style.boxShadow='0 0 28px rgba(60,115,246,0.22)';"
       onmouseout="this.style.transform='none'; this.style.boxShadow='none';"
     >
+
       <div style="font-size:.78rem; color:#9ca3af; margin-bottom:6px;">
         {{ post.date | date: "%d %b %Y" }}
       </div>
@@ -124,6 +125,7 @@ title: Home
         background:linear-gradient(90deg,#3b82f6,#7c3aed);
         opacity:.35;
       "></div>
+
     </div>
   </a>
   {% endfor %}
@@ -133,6 +135,7 @@ title: Home
 <!-- ANIMATIONS -->
 <style>
 
+/* DESCRIPTION CONTAINER ANIMATION */
 @keyframes descContainerAnim {
   0% {
     opacity:0;
@@ -147,6 +150,7 @@ title: Home
   100% { opacity:1; }
 }
 
+/* POSTS CONTAINER ANIMATION */
 @keyframes postContainer {
   0% {
     opacity:0;
