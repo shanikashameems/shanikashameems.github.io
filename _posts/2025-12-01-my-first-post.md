@@ -3,14 +3,15 @@ layout: default
 title: My First Blog Post
 ---
 
-Today I created my own personal blog using GitHub Pages and Jekyll 🎉
+So this is me Shanika and this is my first ever blog
+I've seen people having blogs and sharing stuffs which i didn't know much about
 
-I’m Shanika, a CSE student who loves AI, web development and building cool things like ByteTree.
+So I decided maybe i should start one now! and there you go my first ever blog post
 
-From now on, I’ll try to write small posts every day about:
+And I've got 2 things in my checklist right now to complete
+- Unheard
+- DeCaffine
 
-- What I learned in tech (AI, ML, web, etc.)
-- Projects and internships I’m working on
-- College experiences and random thoughts
-
-This blog is not about perfection. It’s about **showing my journey** and growing in public 💙
+You'll get to know about this in time!
+Thanks for reading all through!!
+  
