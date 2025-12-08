@@ -1,6 +1,6 @@
 ---
 layout: default
-title: My First Blog Post
+title: My first glance on chatbots
 ---
 
 ## today i started working on building my own chatbot
