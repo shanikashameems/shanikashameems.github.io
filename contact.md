@@ -17,7 +17,7 @@ title: Contact
   animation:contactReveal 0.95s ease forwards;
 ">
 
-  <!-- Soft background glow behind title -->
+  <!-- Soft glow behind title -->
   <div aria-hidden="true" style="
     position:absolute;
     left:48px;
@@ -27,7 +27,6 @@ title: Contact
     pointer-events:none;
     background: radial-gradient(closest-side, rgba(59,130,246,0.07), rgba(124,58,237,0.05), transparent 60%);
     filter: blur(28px);
-    transform: translateZ(0);
     border-radius: 50%;
     z-index:0;
   "></div>
@@ -37,16 +36,12 @@ title: Contact
       margin:0 0 6px 0;
       font-size:2rem;
       font-weight:700;
-      letter-spacing:-0.02em;
-      display:inline-block;
       background:linear-gradient(90deg,#3b82f6,#7c3aed);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
-    ">
-      Get in Touch
-    </h1>
+    ">Get in Touch</h1>
 
-    <!-- Glowing underline -->
+    <!-- underline -->
     <div style="
       height:6px;
       width:220px;
@@ -54,8 +49,6 @@ title: Contact
       border-radius:999px;
       background:linear-gradient(90deg, rgba(59,130,246,0.95), rgba(124,58,237,0.95));
       box-shadow: 0 8px 30px rgba(59,130,246,0.12), 0 0 36px rgba(124,58,237,0.08);
-      opacity:0.95;
-      transform-origin:left center;
       animation:underlineIn .9s ease forwards;
     "></div>
 
@@ -71,85 +64,89 @@ title: Contact
     </p>
   </div>
 
-
   <!-- GRID -->
-  <div class="contact-grid" style="display:grid; grid-template-columns: 1fr minmax(300px,380px); gap:28px; position:relative; z-index:2; max-width:1100px; margin:0 auto;">
+  <div class="contact-grid" style="display:grid; grid-template-columns: 1fr minmax(300px,380px); gap:28px; max-width:1100px; margin:0 auto;">
 
     <!-- FORM CARD -->
     <div class="card form-card" style="opacity:0; animation:fadeSlide .95s ease forwards; animation-delay:.12s; overflow:hidden;">
-      <form id="contactForm" action="https://formspree.io/f/mpwvklre" method="POST" novalidate>
+      <form id="contactForm" action="https://formspree.io/f/mpwvklre" method="POST">
 
-        <!-- NAME -->
         <div class="field">
           <label for="name">Your name</label>
-          <input id="name" name="name" type="text" placeholder=" " required autocomplete="name" />
+          <input id="name" name="name" type="text" placeholder=" " required />
         </div>
 
-        <!-- EMAIL -->
         <div class="field">
           <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder=" " required autocomplete="email" />
+          <input id="email" name="email" type="email" placeholder=" " required />
         </div>
 
-        <!-- MESSAGE -->
         <div class="field">
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="6" placeholder=" " required></textarea>
         </div>
 
-        <!-- BUTTON -->
-        <div style="display:flex; justify-content:center; align-items:center; gap:12px; margin-top:6px;">
-          <button id="submitBtn" type="submit" class="primary-btn" aria-live="polite">
-            <span class="btn-text">Send message</span>
+        <div style="display:flex; justify-content:center; margin-top:10px;">
+          <button id="submitBtn" type="submit" class="primary-btn">
+            <span>Send message</span>
           </button>
-
-          <div id="formStatus" aria-live="polite" style="color:#9ca3af; font-size:.95rem; min-width:200px; text-align:center;"></div>
         </div>
+
+        <div id="formStatus" style="text-align:center; margin-top:10px; font-size:.95rem; color:#9ca3af;"></div>
 
       </form>
     </div>
 
-    <!-- INFO CARD (spacious, accent bar) -->
-    <aside class="card info-card" style="opacity:0; animation:fadeSlide .95s ease forwards; animation-delay:.28s; position:relative; overflow:visible; padding:28px 26px;">
+    <!-- CONTACT DETAILS -->
+    <aside class="card info-card" style="
+      opacity:0;
+      animation:fadeSlide .95s ease forwards;
+      animation-delay:.28s;
+      padding:28px 26px;
+      position:relative;
+      overflow:hidden;
+      transition: box-shadow .25s ease, transform .25s ease;
+    ">
 
-      <!-- left accent bar -->
+      <!-- left gradient accent -->
       <div aria-hidden="true" style="
         position:absolute;
         left:0;
         top:0;
         bottom:0;
         width:6px;
+        background: linear-gradient(180deg, #3b82f6, #7c3aed);
         border-top-left-radius:12px;
         border-bottom-left-radius:12px;
-        background: linear-gradient(180deg, rgba(59,130,246,0.95), rgba(124,58,237,0.9));
-        box-shadow: 0 10px 30px rgba(59,130,246,0.06);
       "></div>
 
-      <div style="margin-left:16px;"> <!-- shift content right away from accent -->
-        <div style="color:#e5e7eb; font-weight:800; font-size:1.08rem; margin-bottom:10px; letter-spacing:0.01em;">
+      <div style="margin-left:16px;">
+        <div style="color:#d6d9e0; font-weight:800; font-size:1.1rem; margin-bottom:14px;">
           Contact Details
         </div>
 
-        <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; flex-direction:column; gap:18px;">
 
-          <div class="info-item">
-            <div style="font-size:.86rem; color:#9ca3af; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">Email</div>
-            <div style="color:#e5e7eb; font-weight:700; font-size:.98rem; line-height:1.4;">shanikashameem7@gmail.com</div>
+          <div>
+            <div style="font-size:.82rem; color:#8c92a0; letter-spacing:.05em; font-weight:600; margin-bottom:4px;">Email</div>
+            <a class="contact-link" href="mailto:shanikashameem7@gmail.com">shanikashameem7@gmail.com</a>
           </div>
 
-          <div class="info-item">
-            <div style="font-size:.86rem; color:#9ca3af; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">LinkedIn</div>
-            <div><a href="https://www.linkedin.com/in/shanikashameems" target="_blank" style="color:#e5e7eb; font-weight:700; text-decoration:none; font-size:.98rem; line-height:1.4;">linkedin.com/in/shanikashameems</a></div>
+          <div>
+            <div style="font-size:.82rem; color:#8c92a0; letter-spacing:.05em; font-weight:600; margin-bottom:4px;">LinkedIn</div>
+            <a class="contact-link" href="https://www.linkedin.com/in/shanikashameems" target="_blank">
+              linkedin.com/in/shanikashameems
+            </a>
           </div>
 
-          <div class="info-item">
-            <div style="font-size:.86rem; color:#9ca3af; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">GitHub</div>
-            <div><a href="https://github.com/shanikashameems" target="_blank" style="color:#e5e7eb; font-weight:700; text-decoration:none; font-size:.98rem; line-height:1.4;">github.com/shanikashameems</a></div>
+          <div>
+            <div style="font-size:.82rem; color:#8c92a0; letter-spacing:.05em; font-weight:600; margin-bottom:4px;">GitHub</div>
+            <a class="contact-link" href="https://github.com/shanikashameems" target="_blank">
+              github.com/shanikashameems
+            </a>
           </div>
 
-          <div style="height:6px;"></div>
-
-          <div style="color:#9ca3af; font-size:.95rem; line-height:1.55;">
+          <div style="color:#8c92a0; font-size:.92rem; line-height:1.55; margin-top:6px;">
             I reply to well-structured collaboration requests and scoped project ideas.
           </div>
 
@@ -159,258 +156,206 @@ title: Contact
 
   </div>
 
-
-  <!-- FOOTER TEXT -->
-  <div style="
-    max-width:1100px; margin:0 auto;
-    margin-top:26px;
-    border-top:1px solid rgba(255,255,255,0.05);
-    padding-top:18px;
-    color:#9ca3af;
-    font-size:.95rem;
-    opacity:0;
-    animation:fadeSlide .95s ease forwards;
-    animation-delay:.5s;
-    position:relative;
-    z-index:2;
-  ">
-    Thanks for taking the time to reach out — if your message needs a reply, I’ll get back to you soon.
-  </div>
-
 </section>
 
 <!-- SUCCESS MODAL -->
-<div id="sentModal" role="dialog" aria-hidden="true" style="
+<div id="sentModal" style="
   position:fixed;
   left:50%;
-  top:18%;
-  transform:translate(-50%,-20%);
+  top:20%;
+  transform:translate(-50%,-25%);
   min-width:280px;
   max-width:90%;
   background:linear-gradient(180deg, rgba(17,21,30,0.98), rgba(12,14,18,0.98));
-  border:1px solid rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
   padding:18px 20px;
   border-radius:12px;
-  box-shadow: 0 30px 60px rgba(2,6,23,0.7);
+  box-shadow:0 30px 60px rgba(0,0,0,0.6);
   display:flex;
   gap:12px;
   align-items:center;
-  z-index:9999;
   opacity:0;
   pointer-events:none;
+  z-index:9999;
 ">
-  <div style="flex:0 0 46px; height:46px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(90deg,#3b82f6,#7c3aed); box-shadow:0 8px 30px rgba(59,130,246,0.18);">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div style="flex:0 0 46px; height:46px; border-radius:10px; background:linear-gradient(90deg,#3b82f6,#7c3aed); display:grid; place-items:center;">
+    <svg width="22" height="22" fill="none"><path d="M5 13l4 4L19 7" stroke="white" stroke-width="2.2" stroke-linecap="round"/></svg>
   </div>
 
   <div style="flex:1;">
-    <div style="font-weight:700; color:#e5e7eb;">Message sent</div>
-    <div style="color:#b9bec8; font-size:.95rem; margin-top:6px;">Form submitted successfully</div>
+    <div style="font-weight:700; color:white;">Message sent</div>
+    <div style="color:#cbd0d6; margin-top:4px;">Form submitted successfully</div>
   </div>
-
-  <button id="modalClose" aria-label="Close" style="
-    background:transparent; border:none; color:#9ca3af; font-weight:700; cursor:pointer;
-  ">Close</button>
 </div>
 
 <style>
-* { box-sizing: border-box; }
+/* GLOBAL */
+* { box-sizing:border-box; }
 
-:root{
-  --accent-1: #3b82f6;
-  --accent-2: #7c3aed;
-  --muted: #9ca3af;
-  --bg-input: rgba(0,0,0,0.26);
-  --text: #e5e7eb;
-}
-
-/* FORM CARD */
-.card{
-  border:1px solid rgba(255,255,255,0.08);
-  padding:20px;
-  border-radius:12px;
-  background:linear-gradient(180deg, rgba(14,18,28,0.55), rgba(10,12,18,0.22));
-  backdrop-filter:blur(8px);
-}
-
-/* FIELDS */
-.field{
-  margin-bottom:14px;
-  display:flex;
-  flex-direction:column;
-}
-
+/* Brightened form labels */
 .field label{
   font-size:.95rem;
-  color:var(--muted);
+  color:#cfd3dd;
   font-weight:600;
   margin-bottom:8px;
-  transition: transform .22s, color .18s, opacity .18s;
 }
 
+/* Brighter input text */
 .field input,
 .field textarea{
   width:100%;
   padding:12px;
   border-radius:10px;
   border:1px solid rgba(255,255,255,0.12);
-  background:var(--bg-input);
-  color:var(--text);
+  background:rgba(0,0,0,0.26);
+  color:#eef1f6;
   font-size:.98rem;
-  line-height:1.4;
 }
 
+/* Accent uplift on focus */
 .field input:focus,
 .field textarea:focus{
-  transform: translateY(-1px);
-  border-color: rgba(255,255,255,0.18);
-  box-shadow:
-    0 14px 40px rgba(59,130,246,0.08),
-    0 0 48px rgba(124,58,237,0.05);
+  transform:translateY(-1px);
+  border-color:rgba(255,255,255,0.2);
+  box-shadow:0 12px 32px rgba(59,130,246,0.08);
 }
 
-.field:focus-within label,
-.field.filled label{
-  transform: translateY(-6px) scale(.99);
-  color: var(--accent-1);
+.field.filled label,
+.field:focus-within label{
+  transform:translateY(-6px);
+  color:#3b82f6;
 }
 
-/* SMALLER BUTTON (Option A) */
-.primary-btn, .primary-btn .btn-text {
-  padding: 8px 16px;
-  border-radius: 8px;
-  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+/* BUTTON (Option A size) */
+.primary-btn{
+  padding:8px 16px;
+  border-radius:8px;
+  background:linear-gradient(90deg,#3b82f6,#7c3aed);
   border:none;
   color:white;
   font-weight:700;
   cursor:pointer;
-  transition: transform .14s, box-shadow .18s;
-  box-shadow: 0 6px 20px rgba(59,130,246,0.08);
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
+  transition:transform .15s, box-shadow .2s;
+  box-shadow:0 6px 20px rgba(59,130,246,0.12);
 }
 .primary-btn:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 16px 26px rgba(59,130,246,0.12);
+  transform:translateY(-3px);
+  box-shadow:0 16px 30px rgba(59,130,246,0.18);
 }
 
-/* info card tweaks */
-.info-card { padding-left:26px; }
-.info-card .info-item { margin-bottom:14px; }
+/* CONTACT LINKS — hover effects */
+.contact-link{
+  color:#d3d7e0;
+  font-weight:700;
+  text-decoration:none;
+  font-size:.98rem;
+  position:relative;
+  transition:color .2s ease;
+}
 
-/* accent bar safe area */
-.info-card > div { position:relative; z-index:1; }
+.contact-link:hover{
+  color:#a9c6ff;
+}
+
+.contact-link::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-2px;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg,#3b82f6,#7c3aed);
+  transition:width .28s ease;
+  border-radius:10px;
+}
+
+.contact-link:hover::after{
+  width:100%;
+}
+
+/* Contact card hover glow */
+.info-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 38px rgba(0,0,0,0.35);
+}
 
 /* MODAL */
 #sentModal.show{
-  animation: modalIn .42s ease forwards;
+  animation:modalIn .4s ease forwards;
   opacity:1;
   pointer-events:auto;
-  transform:translate(-50%,0);
-  top:22%;
 }
-@keyframes modalIn {
-  0% { opacity:0; transform:translate(-50%,-18%) scale(.96); }
-  60% { opacity:1; transform:translate(-50%,2%) scale(1.02); }
-  100% { transform:translate(-50%,0) scale(1); }
+
+@keyframes modalIn{
+  0% { opacity:0; transform:translate(-50%,-35%) scale(.9); }
+  100% { opacity:1; transform:translate(-50%,0) scale(1); }
 }
 
 /* PAGE ANIMATIONS */
-@keyframes underlineIn {
-  0% { transform: scaleX(0); opacity:0; }
-  100% { transform: scaleX(1); opacity:1; }
-}
-@keyframes contactReveal {
-  0% { opacity:0; transform:translateY(18px) scale(.97); }
-  100% { opacity:1; transform:translateY(0) scale(1); }
-}
-@keyframes fadeSlide {
-  0% { opacity:0; transform:translateY(12px); }
-  100% { opacity:1; transform:translateY(0); }
+@keyframes underlineIn{
+  from{transform:scaleX(0);}
+  to{transform:scaleX(1);}
 }
 
-/* responsive */
-@media (max-width:900px){
-  .contact-grid { grid-template-columns: 1fr !important; padding:0 12px; }
-  .card { padding:16px; }
-  .field label { margin-bottom:6px; }
-  .info-card { padding-left:18px; }
+@keyframes contactReveal{
+  from{opacity:0; transform:translateY(18px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeSlide{
+  from{opacity:0; transform:translateY(14px);}
+  to{opacity:1; transform:translateY(0);}
 }
 </style>
 
 <script>
-(function () {
+(function(){
 
-  /* FLOATING LABEL HELPER */
-  const fields = document.querySelectorAll('.field');
-  fields.forEach(field => {
-    const input = field.querySelector('input, textarea');
-    if (!input) return;
-
+  /* Floating label logic */
+  document.querySelectorAll('.field').forEach(f => {
+    const input = f.querySelector('input, textarea');
+    if(!input) return;
     const update = () => {
-      if (input.value.trim() !== "") field.classList.add("filled");
-      else field.classList.remove("filled");
+      if(input.value.trim() !== "") f.classList.add("filled");
+      else f.classList.remove("filled");
     };
-
-    update();
     input.addEventListener("input", update);
-    input.addEventListener("blur", update);
+    update();
   });
 
-
-  /* FORM HANDLER */
+  /* Form submission */
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
-  const submitBtn = document.getElementById('submitBtn');
   const modal = document.getElementById('sentModal');
-  const closeBtn = document.getElementById('modalClose');
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', async (e)=>{
     e.preventDefault();
-    submitBtn.disabled = true;
-
     const data = new FormData(form);
-    const action = form.getAttribute('action');
 
-    try {
-      const res = await fetch(action, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: data
+    try{
+      const res = await fetch(form.action,{
+        method:'POST',
+        body:data,
+        headers:{'Accept':'application/json'}
       });
 
-      if (res.ok) {
+      if(res.ok){
         form.reset();
-        status.style.color = '#7ee787';
-        status.textContent = 'Form submitted successfully';
+        status.style.color="#7ee787";
+        status.textContent="Form submitted successfully";
 
-        modal.classList.add('show');
+        modal.classList.add("show");
 
-        // auto-close modal after 2 seconds
-        setTimeout(() => {
-          modal.classList.remove('show');
-          status.textContent = ''; // clear at same time
-        }, 2000);
-
-      } else {
-        status.style.color = '#ff9b9b';
-        status.textContent = 'Could not send message';
-        setTimeout(() => { status.textContent = '' }, 2000);
+        setTimeout(()=>{
+          modal.classList.remove("show");
+          status.textContent="";
+        },2000);
       }
-
-    } catch (err) {
-      status.style.color = '#ff9b9b';
-      status.textContent = 'Could not send message';
-      setTimeout(() => { status.textContent = '' }, 2000);
+    }catch(err){
+      status.style.color="#ff9b9b";
+      status.textContent="Could not send message";
+      setTimeout(()=>status.textContent="",2000);
     }
-
-    submitBtn.disabled = false;
-  });
-
-  /* CLOSE MODAL */
-  closeBtn.addEventListener('click', () => {
-    modal.classList.remove('show');
   });
 
 })();
