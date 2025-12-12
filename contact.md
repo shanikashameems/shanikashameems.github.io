@@ -4,6 +4,7 @@ title: Contact
 ---
 
 <section style="
+  box-sizing:border-box;
   margin-top:0;
   border:1px solid rgba(255,255,255,0.06);
   padding:40px;
@@ -16,7 +17,7 @@ title: Contact
   animation:contactReveal 0.95s ease forwards;
 ">
 
-  <!-- Soft background glow behind title (B) -->
+  <!-- Soft background glow behind title -->
   <div aria-hidden="true" style="
     position:absolute;
     left:48px;
@@ -31,7 +32,7 @@ title: Contact
     z-index:0;
   "></div>
 
-  <div style="position:relative; z-index:2;">
+  <div style="position:relative; z-index:2; max-width:1100px; margin:0 auto;">
     <h1 style="
       margin:0 0 6px 0;
       font-size:2rem;
@@ -45,7 +46,7 @@ title: Contact
       Get in Touch
     </h1>
 
-    <!-- Glowing underline (A) -->
+    <!-- Glowing underline -->
     <div style="
       height:6px;
       width:220px;
@@ -63,7 +64,7 @@ title: Contact
       max-width:760px;
       font-size:1.05rem;
       line-height:1.6;
-      margin:16px 0 26px 0;
+      margin:16px 0 28px 0;
     ">
       If you'd like to collaborate, share an idea, or ask about something you're building, send a concise note here.  
       I read thoughtful messages and reply when it makes sense.
@@ -71,8 +72,8 @@ title: Contact
   </div>
 
 
-  <!-- GRID: form + info -->
-  <div class="contact-grid" style="display:grid; grid-template-columns:1fr 360px; gap:24px; position:relative; z-index:2;">
+  <!-- GRID: form + info (constrained to max-width to avoid overflow) -->
+  <div class="contact-grid" style="display:grid; grid-template-columns: 1fr minmax(280px,360px); gap:24px; position:relative; z-index:2; max-width:1100px; margin:0 auto;">
 
     <!-- FORM CARD -->
     <div class="card form-card" style="opacity:0; animation:fadeSlide .95s ease forwards; animation-delay:.12s;">
@@ -97,9 +98,9 @@ title: Contact
         </div>
 
         <div style="display:flex; align-items:center; gap:12px; margin-top:6px;">
-          <button id="submitBtn" type="submit" class="primary-btn">
+          <button id="submitBtn" type="submit" class="primary-btn" aria-live="polite" style="position:relative; overflow:visible;">
             <span class="btn-text">Send message</span>
-            <span class="btn-loader" aria-hidden="true"></span>
+            <!-- loader will be shown as absolute pseudo-element via JS while sending -->
           </button>
 
           <div id="formStatus" aria-live="polite" style="color:#9ca3af; font-size:.95rem;"></div>
@@ -142,6 +143,7 @@ title: Contact
 
   <!-- FOOTER TEXT -->
   <div style="
+    max-width:1100px; margin:0 auto;
     margin-top:26px;
     border-top:1px solid rgba(255,255,255,0.05);
     padding-top:18px;
@@ -192,16 +194,12 @@ title: Contact
   ">Close</button>
 </div>
 
-<!-- CONFETTI-LIKE SPARKS (CSS) -->
-<style>
-/* small entrance for underline */
-@keyframes underlineIn {
-  0% { transform: scaleX(0); opacity:0; }
-  60% { transform: scaleX(1.02); opacity:1; }
-  100% { transform: scaleX(1); opacity:1; }
-}
+<!-- small decorative sparks removed (kept simple) -->
 
-/* general card + field styles (improved visuals) */
+<style>
+/* ensure box-sizing site-wide inside this page */
+* { box-sizing: border-box; }
+
 :root{
   --accent-1: #3b82f6;
   --accent-2: #7c3aed;
@@ -274,7 +272,7 @@ title: Contact
   opacity:1;
 }
 
-/* primary button with micro-animation */
+/* primary button */
 .primary-btn, .primary-btn .btn-text {
   padding:11px 16px;
   border-radius:10px;
@@ -285,27 +283,21 @@ title: Contact
   cursor:pointer;
   transition: transform .14s ease, box-shadow .18s ease, opacity .12s ease;
   box-shadow: 0 8px 26px rgba(59,130,246,0.08);
+  position:relative;
 }
 .primary-btn:hover{ transform: translateY(-3px); box-shadow: 0 18px 40px rgba(59,130,246,0.12); }
 
-/* loader dot inside button */
-.primary-btn .btn-loader{
-  display:inline-block;
-  width:14px;
-  height:14px;
-  border-radius:999px;
-  margin-left:8px;
-  vertical-align:middle;
-  opacity:0;
-  transform:scale(.8);
-  transition: opacity .18s ease, transform .18s ease;
+/* transient loader (absolute) */
+.primary-btn .loader-dot {
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%) scale(.9);
+  width:10px; height:10px; border-radius:50%;
+  background: white; opacity:0; box-shadow: 0 6px 12px rgba(59,130,246,0.12);
+  transition: opacity .12s ease, transform .18s ease;
 }
-.primary-btn.loading .btn-loader{
-  opacity:1;
-  transform:scale(1);
-  background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.6));
-  box-shadow: 0 6px 18px rgba(59,130,246,0.08);
-}
+.primary-btn.loading .loader-dot { opacity:1; transform:translateY(-50%) scale(1); }
 
 /* modal show/hide */
 #sentModal.show{ animation: modalIn .42s cubic-bezier(.2,.9,.28,1) forwards; opacity:1; pointer-events:auto; transform:translate(-50%,0); top:22%; }
@@ -315,24 +307,16 @@ title: Contact
   100% { transform:translate(-50%,0); opacity:1; filter:blur(0); }
 }
 
-/* success sparkle lines (subtle) */
-.sent-spark {
-  position:absolute; width:6px; height:2px; background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
-  border-radius:2px; opacity:.95; transform-origin:center left;
-}
-.sent-spark.s1{ left:14px; top:-6px; transform: rotate(18deg) translateX(-6px); animation: sparkMove .9s cubic-bezier(.2,.9,.28,1) forwards; }
-.sent-spark.s2{ right:18px; top:-4px; transform: rotate(-28deg) translateX(6px); animation: sparkMove .95s cubic-bezier(.2,.9,.28,1) .06s forwards; }
-@keyframes sparkMove { from { opacity:0; transform:scale(.6) translateY(-6px); } to { opacity:1; transform:scale(1) translateY(0); } }
-
 /* basic animations */
+@keyframes underlineIn { 0% { transform: scaleX(0); opacity:0; } 60% { transform: scaleX(1.02); opacity:1; } 100% { transform: scaleX(1); opacity:1; } }
 @keyframes contactReveal { 0% { opacity:0; transform:translateY(18px); filter:blur(12px); } 70% { opacity:1; transform:translateY(0); filter:blur(0); } 100% { opacity:1; } }
 @keyframes fadeSlide { 0% { opacity:0; transform:translateY(12px); filter:blur(10px); } 70% { opacity:1; transform:translateY(0); filter:blur(0); } 100% { opacity:1; } }
 
 /* responsive */
 @media (max-width:900px){
-  .contact-grid { grid-template-columns: 1fr !important; }
+  .contact-grid { grid-template-columns: 1fr !important; padding:0 12px; }
   .card { padding:16px; }
-  :root { --accent-1: #3b82f6; --accent-2: #7c3aed; }
+  .field label { margin-bottom:6px; }
 }
 </style>
 
@@ -362,6 +346,11 @@ title: Contact
   const modal = document.getElementById('sentModal');
   const modalClose = document.getElementById('modalClose');
 
+  // create loader dot element inside button (so button text stays flush)
+  const loader = document.createElement('span');
+  loader.className = 'loader-dot';
+  submitBtn.appendChild(loader);
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     status.style.color = getComputedStyle(document.documentElement).getPropertyValue('--muted') || '#9ca3af';
@@ -385,18 +374,15 @@ title: Contact
         status.classList.add('status-success');
         status.textContent = 'Message sent successfully.';
 
-        // show modal with a small sparkle effect
+        // show modal
         modal.classList.add('show');
         modal.setAttribute('aria-hidden', 'false');
 
-        // add small decorative sparks inside modal (DOM)
-        ['s1','s2'].forEach(cls => {
-          const spark = document.createElement('div');
-          spark.className = 'sent-spark ' + cls;
-          modal.appendChild(spark);
-          // remove after animation
-          setTimeout(() => spark.remove(), 1200);
-        });
+        // auto-close modal after 2 seconds (2000ms)
+        setTimeout(() => {
+          modal.classList.remove('show');
+          modal.setAttribute('aria-hidden', 'true');
+        }, 2000);
 
       } else {
         let text = 'Message failed to send.';
@@ -412,6 +398,7 @@ title: Contact
     } finally {
       submitBtn.classList.remove('loading');
       submitBtn.disabled = false;
+      // clear status after short delay
       setTimeout(() => { status.textContent = ''; status.classList.remove('status-success'); }, 5000);
     }
   });
