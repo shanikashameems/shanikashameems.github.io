@@ -22,10 +22,10 @@ title: Contact
     position:absolute;
     left:48px;
     top:18px;
-    width:360px;
-    height:120px;
+    width:320px;
+    height:110px;
     pointer-events:none;
-    background: radial-gradient(closest-side, rgba(59,130,246,0.08), rgba(124,58,237,0.06), transparent 60%);
+    background: radial-gradient(closest-side, rgba(59,130,246,0.07), rgba(124,58,237,0.05), transparent 60%);
     filter: blur(28px);
     transform: translateZ(0);
     border-radius: 50%;
@@ -76,7 +76,7 @@ title: Contact
   <div class="contact-grid" style="display:grid; grid-template-columns: 1fr minmax(280px,360px); gap:24px; position:relative; z-index:2; max-width:1100px; margin:0 auto;">
 
     <!-- FORM CARD -->
-    <div class="card form-card" style="opacity:0; animation:fadeSlide .95s ease forwards; animation-delay:.12s;">
+    <div class="card form-card" style="opacity:0; animation:fadeSlide .95s ease forwards; animation-delay:.12s; overflow:hidden;">
       <form id="contactForm" action="https://formspree.io/f/mpwvklre" method="POST" novalidate>
 
         <!-- FIELD: Name -->
@@ -97,10 +97,10 @@ title: Contact
           <textarea id="message" name="message" rows="6" placeholder=" " required></textarea>
         </div>
 
-        <div style="display:flex; align-items:center; gap:12px; margin-top:6px;">
-          <button id="submitBtn" type="submit" class="primary-btn" aria-live="polite" style="position:relative; overflow:visible;">
+        <!-- CENTERED BUTTON -->
+        <div style="display:flex; justify-content:center; align-items:center; gap:12px; margin-top:6px;">
+          <button id="submitBtn" type="submit" class="primary-btn" aria-live="polite" style="position:relative; overflow:visible; display:inline-flex; align-items:center; justify-content:center;">
             <span class="btn-text">Send message</span>
-            <!-- loader will be shown as absolute pseudo-element via JS while sending -->
           </button>
 
           <div id="formStatus" aria-live="polite" style="color:#9ca3af; font-size:.95rem;"></div>
@@ -194,8 +194,6 @@ title: Contact
   ">Close</button>
 </div>
 
-<!-- small decorative sparks removed (kept simple) -->
-
 <style>
 /* ensure box-sizing site-wide inside this page */
 * { box-sizing: border-box; }
@@ -248,6 +246,7 @@ title: Contact
   outline:none;
   transition: box-shadow .18s ease, border-color .18s ease, transform .08s ease;
   -webkit-appearance:none;
+  resize:vertical;
 }
 
 /* subtle lift */
@@ -274,7 +273,7 @@ title: Contact
 
 /* primary button */
 .primary-btn, .primary-btn .btn-text {
-  padding:11px 16px;
+  padding:11px 22px;
   border-radius:10px;
   background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
   border:none;
@@ -284,20 +283,11 @@ title: Contact
   transition: transform .14s ease, box-shadow .18s ease, opacity .12s ease;
   box-shadow: 0 8px 26px rgba(59,130,246,0.08);
   position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
 }
 .primary-btn:hover{ transform: translateY(-3px); box-shadow: 0 18px 40px rgba(59,130,246,0.12); }
-
-/* transient loader (absolute) */
-.primary-btn .loader-dot {
-  position:absolute;
-  right:10px;
-  top:50%;
-  transform:translateY(-50%) scale(.9);
-  width:10px; height:10px; border-radius:50%;
-  background: white; opacity:0; box-shadow: 0 6px 12px rgba(59,130,246,0.12);
-  transition: opacity .12s ease, transform .18s ease;
-}
-.primary-btn.loading .loader-dot { opacity:1; transform:translateY(-50%) scale(1); }
 
 /* modal show/hide */
 #sentModal.show{ animation: modalIn .42s cubic-bezier(.2,.9,.28,1) forwards; opacity:1; pointer-events:auto; transform:translate(-50%,0); top:22%; }
@@ -346,17 +336,11 @@ title: Contact
   const modal = document.getElementById('sentModal');
   const modalClose = document.getElementById('modalClose');
 
-  // create loader dot element inside button (so button text stays flush)
-  const loader = document.createElement('span');
-  loader.className = 'loader-dot';
-  submitBtn.appendChild(loader);
-
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    status.style.color = getComputedStyle(document.documentElement).getPropertyValue('--muted') || '#9ca3af';
-    status.textContent = 'Sending...';
-    submitBtn.classList.add('loading');
+    // Do not show "Sending..." — per your request keep only final message
     submitBtn.disabled = true;
+    submitBtn.classList.add('loading');
 
     const action = form.getAttribute('action');
     const data = new FormData(form);
@@ -371,8 +355,9 @@ title: Contact
       if (res.ok) {
         form.reset();
         document.querySelectorAll('.field').forEach(f => f.classList.remove('filled'));
-        status.classList.add('status-success');
-        status.textContent = 'Message sent successfully.';
+        // EXACT success message (only this)
+        status.style.color = '#7ee787';
+        status.textContent = 'Form submitted successfully';
 
         // show modal
         modal.classList.add('show');
@@ -384,22 +369,24 @@ title: Contact
           modal.setAttribute('aria-hidden', 'true');
         }, 2000);
 
+        // clear the status after 2 seconds as well
+        setTimeout(() => {
+          status.textContent = '';
+        }, 2000);
+
       } else {
-        let text = 'Message failed to send.';
-        try { const json = await res.json(); if (json && json.error) text = json.error; } catch(e){}
-        status.classList.remove('status-success');
+        // simple, minimal error message
         status.style.color = '#ff9b9b';
-        status.textContent = text;
+        status.textContent = 'Could not send message';
+        setTimeout(() => { status.textContent = ''; }, 3000);
       }
     } catch (err) {
-      status.classList.remove('status-success');
       status.style.color = '#ff9b9b';
-      status.textContent = 'Network error — try again.';
+      status.textContent = 'Could not send message';
+      setTimeout(() => { status.textContent = ''; }, 3000);
     } finally {
       submitBtn.classList.remove('loading');
       submitBtn.disabled = false;
-      // clear status after short delay
-      setTimeout(() => { status.textContent = ''; status.classList.remove('status-success'); }, 5000);
     }
   });
 
