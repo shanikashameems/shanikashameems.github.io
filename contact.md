@@ -73,7 +73,7 @@ title: Contact
 
 
   <!-- GRID -->
-  <div class="contact-grid" style="display:grid; grid-template-columns: 1fr minmax(280px,360px); gap:24px; position:relative; z-index:2; max-width:1100px; margin:0 auto;">
+  <div class="contact-grid" style="display:grid; grid-template-columns: 1fr minmax(300px,380px); gap:28px; position:relative; z-index:2; max-width:1100px; margin:0 auto;">
 
     <!-- FORM CARD -->
     <div class="card form-card" style="opacity:0; animation:fadeSlide .95s ease forwards; animation-delay:.12s; overflow:hidden;">
@@ -99,43 +99,61 @@ title: Contact
 
         <!-- BUTTON -->
         <div style="display:flex; justify-content:center; align-items:center; gap:12px; margin-top:6px;">
-          <button id="submitBtn" type="submit" class="primary-btn">
+          <button id="submitBtn" type="submit" class="primary-btn" aria-live="polite">
             <span class="btn-text">Send message</span>
           </button>
 
-          <div id="formStatus" aria-live="polite" style="color:#9ca3af; font-size:.95rem;"></div>
+          <div id="formStatus" aria-live="polite" style="color:#9ca3af; font-size:.95rem; min-width:200px; text-align:center;"></div>
         </div>
 
       </form>
     </div>
 
-    <!-- INFO CARD -->
-    <aside class="card info-card" style="opacity:0; animation:fadeSlide .95s ease forwards; animation-delay:.28s;">
-      <div style="color:#e5e7eb; font-weight:700; font-size:1.03rem;">Contact Details</div>
+    <!-- INFO CARD (spacious, accent bar) -->
+    <aside class="card info-card" style="opacity:0; animation:fadeSlide .95s ease forwards; animation-delay:.28s; position:relative; overflow:visible; padding:28px 26px;">
 
-      <div style="height:10px;"></div>
+      <!-- left accent bar -->
+      <div aria-hidden="true" style="
+        position:absolute;
+        left:0;
+        top:0;
+        bottom:0;
+        width:6px;
+        border-top-left-radius:12px;
+        border-bottom-left-radius:12px;
+        background: linear-gradient(180deg, rgba(59,130,246,0.95), rgba(124,58,237,0.9));
+        box-shadow: 0 10px 30px rgba(59,130,246,0.06);
+      "></div>
 
-      <div style="color:#9ca3af; font-size:.95rem;">Email</div>
-      <div style="color:#e5e7eb; font-weight:600;">shanikashameem7@gmail.com</div>
+      <div style="margin-left:16px;"> <!-- shift content right away from accent -->
+        <div style="color:#e5e7eb; font-weight:800; font-size:1.08rem; margin-bottom:10px; letter-spacing:0.01em;">
+          Contact Details
+        </div>
 
-      <div style="height:10px;"></div>
+        <div style="display:flex; flex-direction:column; gap:16px;">
 
-      <div style="color:#9ca3af; font-size:.95rem;">LinkedIn</div>
-      <a href="https://www.linkedin.com/in/shanikashameems" target="_blank" style="color:#e5e7eb; font-weight:600; text-decoration:none;">
-        linkedin.com/in/shanikashameems
-      </a>
+          <div class="info-item">
+            <div style="font-size:.86rem; color:#9ca3af; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">Email</div>
+            <div style="color:#e5e7eb; font-weight:700; font-size:.98rem; line-height:1.4;">shanikashameem7@gmail.com</div>
+          </div>
 
-      <div style="height:10px;"></div>
+          <div class="info-item">
+            <div style="font-size:.86rem; color:#9ca3af; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">LinkedIn</div>
+            <div><a href="https://www.linkedin.com/in/shanikashameems" target="_blank" style="color:#e5e7eb; font-weight:700; text-decoration:none; font-size:.98rem; line-height:1.4;">linkedin.com/in/shanikashameems</a></div>
+          </div>
 
-      <div style="color:#9ca3af; font-size:.95rem;">GitHub</div>
-      <a href="https://github.com/shanikashameems" target="_blank" style="color:#e5e7eb; font-weight:600; text-decoration:none;">
-        github.com/shanikashameems
-      </a>
+          <div class="info-item">
+            <div style="font-size:.86rem; color:#9ca3af; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;">GitHub</div>
+            <div><a href="https://github.com/shanikashameems" target="_blank" style="color:#e5e7eb; font-weight:700; text-decoration:none; font-size:.98rem; line-height:1.4;">github.com/shanikashameems</a></div>
+          </div>
 
-      <div style="flex:1"></div>
+          <div style="height:6px;"></div>
 
-      <div style="font-size:.9rem; color:#9ca3af;">
-        I reply to well-structured collaboration requests and scoped project ideas.
+          <div style="color:#9ca3af; font-size:.95rem; line-height:1.55;">
+            I reply to well-structured collaboration requests and scoped project ideas.
+          </div>
+
+        </div>
       </div>
     </aside>
 
@@ -239,6 +257,7 @@ title: Contact
   background:var(--bg-input);
   color:var(--text);
   font-size:.98rem;
+  line-height:1.4;
 }
 
 .field input:focus,
@@ -258,8 +277,8 @@ title: Contact
 
 /* SMALLER BUTTON (Option A) */
 .primary-btn, .primary-btn .btn-text {
-  padding: 8px 16px;   /* <-- smaller size */
-  border-radius: 8px;  /* <-- slightly smaller pill */
+  padding: 8px 16px;
+  border-radius: 8px;
   background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
   border:none;
   color:white;
@@ -275,6 +294,13 @@ title: Contact
   transform: translateY(-3px);
   box-shadow: 0 16px 26px rgba(59,130,246,0.12);
 }
+
+/* info card tweaks */
+.info-card { padding-left:26px; }
+.info-card .info-item { margin-bottom:14px; }
+
+/* accent bar safe area */
+.info-card > div { position:relative; z-index:1; }
 
 /* MODAL */
 #sentModal.show{
@@ -303,12 +329,20 @@ title: Contact
   0% { opacity:0; transform:translateY(12px); }
   100% { opacity:1; transform:translateY(0); }
 }
+
+/* responsive */
+@media (max-width:900px){
+  .contact-grid { grid-template-columns: 1fr !important; padding:0 12px; }
+  .card { padding:16px; }
+  .field label { margin-bottom:6px; }
+  .info-card { padding-left:18px; }
+}
 </style>
 
 <script>
 (function () {
 
-  /* FLOATING LABEL FIXES */
+  /* FLOATING LABEL HELPER */
   const fields = document.querySelectorAll('.field');
   fields.forEach(field => {
     const input = field.querySelector('input, textarea');
@@ -353,12 +387,10 @@ title: Contact
 
         modal.classList.add('show');
 
+        // auto-close modal after 2 seconds
         setTimeout(() => {
           modal.classList.remove('show');
-        }, 2000);
-
-        setTimeout(() => {
-          status.textContent = '';
+          status.textContent = ''; // clear at same time
         }, 2000);
 
       } else {
