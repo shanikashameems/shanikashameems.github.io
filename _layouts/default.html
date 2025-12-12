@@ -90,6 +90,46 @@
       font-size:.85rem;
       border-top:1px solid rgba(255,255,255,0.05);
     }
+    /* form controls — global styles */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.18);
+  color: var(--text);
+  outline: none;
+  font-size: 0.95rem;
+  transition: box-shadow .18s ease, border-color .18s ease, transform .12s ease;
+}
+input:focus, textarea:focus {
+  border-color: rgba(59,130,246,0.7);
+  box-shadow: 0 8px 28px rgba(59,130,246,0.06);
+  transform: translateY(-1px);
+}
+
+/* form button */
+button[type="submit"] {
+  border: none;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #fff;
+  transition: transform .12s ease, box-shadow .18s ease;
+}
+button[type="submit"]:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(59,130,246,0.12); }
+
+/* small responsive tweak for contact grid */
+@media (max-width: 880px) {
+  main { padding-left: 14px; padding-right: 14px; }
+  .contact-grid { grid-template-columns: 1fr !important; }
+}
+
   </style>
 </head>
 
@@ -105,6 +145,8 @@
       <a href="{{ '/' | relative_url }}">Home</a>
       <a href="{{ '/about' | relative_url }}">About</a>
       <a href="{{ '/projects' | relative_url }}">Projects</a>
+      <a href="{{ '/contact' | relative_url }}">Contact</a>
+
     </nav>
   </div>
 </header>
