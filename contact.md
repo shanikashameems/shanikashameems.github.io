@@ -66,45 +66,46 @@ title: Contact
       line-height:1.6;
       margin:16px 0 28px 0;
     ">
-      If you'd like to collaborate, share an idea, or ask about something you're building, send a concise note here.  
+      If you'd like to collaborate, share an idea, or ask about something you're building, send a concise note here.
       I read thoughtful messages and reply when it makes sense.
     </p>
   </div>
 
 
-  <!-- GRID: form + info (constrained to max-width to avoid overflow) -->
+  <!-- GRID -->
   <div class="contact-grid" style="display:grid; grid-template-columns: 1fr minmax(280px,360px); gap:24px; position:relative; z-index:2; max-width:1100px; margin:0 auto;">
 
     <!-- FORM CARD -->
     <div class="card form-card" style="opacity:0; animation:fadeSlide .95s ease forwards; animation-delay:.12s; overflow:hidden;">
       <form id="contactForm" action="https://formspree.io/f/mpwvklre" method="POST" novalidate>
 
-        <!-- FIELD: Name -->
+        <!-- NAME -->
         <div class="field">
           <label for="name">Your name</label>
           <input id="name" name="name" type="text" placeholder=" " required autocomplete="name" />
         </div>
 
-        <!-- FIELD: Email -->
+        <!-- EMAIL -->
         <div class="field">
           <label for="email">Email</label>
           <input id="email" name="email" type="email" placeholder=" " required autocomplete="email" />
         </div>
 
-        <!-- FIELD: Message -->
+        <!-- MESSAGE -->
         <div class="field">
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="6" placeholder=" " required></textarea>
         </div>
 
-        <!-- CENTERED BUTTON -->
+        <!-- BUTTON -->
         <div style="display:flex; justify-content:center; align-items:center; gap:12px; margin-top:6px;">
-          <button id="submitBtn" type="submit" class="primary-btn" aria-live="polite" style="position:relative; overflow:visible; display:inline-flex; align-items:center; justify-content:center;">
+          <button id="submitBtn" type="submit" class="primary-btn">
             <span class="btn-text">Send message</span>
           </button>
 
           <div id="formStatus" aria-live="polite" style="color:#9ca3af; font-size:.95rem;"></div>
         </div>
+
       </form>
     </div>
 
@@ -134,11 +135,11 @@ title: Contact
       <div style="flex:1"></div>
 
       <div style="font-size:.9rem; color:#9ca3af;">
-        I reply to well-structured collaboration requests, technical discussions, and scoped project ideas.
+        I reply to well-structured collaboration requests and scoped project ideas.
       </div>
     </aside>
 
-  </div> <!-- /grid -->
+  </div>
 
 
   <!-- FOOTER TEXT -->
@@ -160,8 +161,8 @@ title: Contact
 
 </section>
 
-<!-- MESSAGE SENT MODAL -->
-<div id="sentModal" role="dialog" aria-modal="true" aria-hidden="true" style="
+<!-- SUCCESS MODAL -->
+<div id="sentModal" role="dialog" aria-hidden="true" style="
   position:fixed;
   left:50%;
   top:18%;
@@ -185,8 +186,8 @@ title: Contact
   </div>
 
   <div style="flex:1;">
-    <div id="modalTitle" style="font-weight:700; color:#e5e7eb;">Message sent</div>
-    <div id="modalText" style="color:#b9bec8; font-size:.95rem; margin-top:6px;">Thanks — I received your message and will reply when I can.</div>
+    <div style="font-weight:700; color:#e5e7eb;">Message sent</div>
+    <div style="color:#b9bec8; font-size:.95rem; margin-top:6px;">Form submitted successfully</div>
   </div>
 
   <button id="modalClose" aria-label="Close" style="
@@ -195,7 +196,6 @@ title: Contact
 </div>
 
 <style>
-/* ensure box-sizing site-wide inside this page */
 * { box-sizing: border-box; }
 
 :root{
@@ -206,7 +206,7 @@ title: Contact
   --text: #e5e7eb;
 }
 
-/* cards */
+/* FORM CARD */
 .card{
   border:1px solid rgba(255,255,255,0.08);
   padding:20px;
@@ -215,25 +215,21 @@ title: Contact
   backdrop-filter:blur(8px);
 }
 
-/* fields layout */
+/* FIELDS */
 .field{
   margin-bottom:14px;
-  position:relative;
   display:flex;
   flex-direction:column;
 }
 
-/* labels (above) */
 .field label{
   font-size:.95rem;
   color:var(--muted);
   font-weight:600;
   margin-bottom:8px;
-  transform-origin:left center;
-  transition: transform .22s cubic-bezier(.2,.9,.3,1), color .18s ease, opacity .18s ease;
+  transition: transform .22s, color .18s, opacity .18s;
 }
 
-/* inputs */
 .field input,
 .field textarea{
   width:100%;
@@ -243,107 +239,105 @@ title: Contact
   background:var(--bg-input);
   color:var(--text);
   font-size:.98rem;
-  outline:none;
-  transition: box-shadow .18s ease, border-color .18s ease, transform .08s ease;
-  -webkit-appearance:none;
-  resize:vertical;
 }
 
-/* subtle lift */
-.field input:focus,
-.field textarea:focus{ transform: translateY(-1px); }
-
-/* focus glow (gradient blended) */
 .field input:focus,
 .field textarea:focus{
+  transform: translateY(-1px);
   border-color: rgba(255,255,255,0.18);
   box-shadow:
     0 14px 40px rgba(59,130,246,0.08),
-    0 0 48px rgba(124,58,237,0.05),
-    inset 0 0 0 1px rgba(255,255,255,0.02);
+    0 0 48px rgba(124,58,237,0.05);
 }
 
-/* label uplift when focused / filled */
 .field:focus-within label,
 .field.filled label{
   transform: translateY(-6px) scale(.99);
   color: var(--accent-1);
-  opacity:1;
 }
 
-/* primary button */
+/* SMALLER BUTTON (Option A) */
 .primary-btn, .primary-btn .btn-text {
-  padding:11px 22px;
-  border-radius:10px;
+  padding: 8px 16px;   /* <-- smaller size */
+  border-radius: 8px;  /* <-- slightly smaller pill */
   background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
   border:none;
   color:white;
   font-weight:700;
   cursor:pointer;
-  transition: transform .14s ease, box-shadow .18s ease, opacity .12s ease;
-  box-shadow: 0 8px 26px rgba(59,130,246,0.08);
-  position:relative;
+  transition: transform .14s, box-shadow .18s;
+  box-shadow: 0 6px 20px rgba(59,130,246,0.08);
   display:inline-flex;
   align-items:center;
   justify-content:center;
 }
-.primary-btn:hover{ transform: translateY(-3px); box-shadow: 0 18px 40px rgba(59,130,246,0.12); }
-
-/* modal show/hide */
-#sentModal.show{ animation: modalIn .42s cubic-bezier(.2,.9,.28,1) forwards; opacity:1; pointer-events:auto; transform:translate(-50%,0); top:22%; }
-@keyframes modalIn {
-  0% { opacity:0; transform:translate(-50%,-18%); filter:blur(6px) scale(.98); }
-  60% { opacity:1; transform:translate(-50%,2%); filter:blur(0) scale(1.02); }
-  100% { transform:translate(-50%,0); opacity:1; filter:blur(0); }
+.primary-btn:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 16px 26px rgba(59,130,246,0.12);
 }
 
-/* basic animations */
-@keyframes underlineIn { 0% { transform: scaleX(0); opacity:0; } 60% { transform: scaleX(1.02); opacity:1; } 100% { transform: scaleX(1); opacity:1; } }
-@keyframes contactReveal { 0% { opacity:0; transform:translateY(18px); filter:blur(12px); } 70% { opacity:1; transform:translateY(0); filter:blur(0); } 100% { opacity:1; } }
-@keyframes fadeSlide { 0% { opacity:0; transform:translateY(12px); filter:blur(10px); } 70% { opacity:1; transform:translateY(0); filter:blur(0); } 100% { opacity:1; } }
+/* MODAL */
+#sentModal.show{
+  animation: modalIn .42s ease forwards;
+  opacity:1;
+  pointer-events:auto;
+  transform:translate(-50%,0);
+  top:22%;
+}
+@keyframes modalIn {
+  0% { opacity:0; transform:translate(-50%,-18%) scale(.96); }
+  60% { opacity:1; transform:translate(-50%,2%) scale(1.02); }
+  100% { transform:translate(-50%,0) scale(1); }
+}
 
-/* responsive */
-@media (max-width:900px){
-  .contact-grid { grid-template-columns: 1fr !important; padding:0 12px; }
-  .card { padding:16px; }
-  .field label { margin-bottom:6px; }
+/* PAGE ANIMATIONS */
+@keyframes underlineIn {
+  0% { transform: scaleX(0); opacity:0; }
+  100% { transform: scaleX(1); opacity:1; }
+}
+@keyframes contactReveal {
+  0% { opacity:0; transform:translateY(18px) scale(.97); }
+  100% { opacity:1; transform:translateY(0) scale(1); }
+}
+@keyframes fadeSlide {
+  0% { opacity:0; transform:translateY(12px); }
+  100% { opacity:1; transform:translateY(0); }
 }
 </style>
 
-<!-- INTERACTIVE JAVASCRIPT -->
 <script>
 (function () {
-  // floating label helper
+
+  /* FLOATING LABEL FIXES */
   const fields = document.querySelectorAll('.field');
   fields.forEach(field => {
     const input = field.querySelector('input, textarea');
     if (!input) return;
+
     const update = () => {
-      if (input.value && input.value.trim() !== '') field.classList.add('filled');
-      else field.classList.remove('filled');
+      if (input.value.trim() !== "") field.classList.add("filled");
+      else field.classList.remove("filled");
     };
+
     update();
-    input.addEventListener('input', update);
-    input.addEventListener('blur', update);
-    input.addEventListener('focus', () => field.classList.add('focused'));
-    input.addEventListener('blur', () => field.classList.remove('focused'));
+    input.addEventListener("input", update);
+    input.addEventListener("blur", update);
   });
 
-  // form submission & UI
+
+  /* FORM HANDLER */
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
   const submitBtn = document.getElementById('submitBtn');
   const modal = document.getElementById('sentModal');
-  const modalClose = document.getElementById('modalClose');
+  const closeBtn = document.getElementById('modalClose');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    // Do not show "Sending..." — per your request keep only final message
     submitBtn.disabled = true;
-    submitBtn.classList.add('loading');
 
-    const action = form.getAttribute('action');
     const data = new FormData(form);
+    const action = form.getAttribute('action');
 
     try {
       const res = await fetch(action, {
@@ -354,50 +348,38 @@ title: Contact
 
       if (res.ok) {
         form.reset();
-        document.querySelectorAll('.field').forEach(f => f.classList.remove('filled'));
-        // EXACT success message (only this)
         status.style.color = '#7ee787';
         status.textContent = 'Form submitted successfully';
 
-        // show modal
         modal.classList.add('show');
-        modal.setAttribute('aria-hidden', 'false');
 
-        // auto-close modal after 2 seconds (2000ms)
         setTimeout(() => {
           modal.classList.remove('show');
-          modal.setAttribute('aria-hidden', 'true');
         }, 2000);
 
-        // clear the status after 2 seconds as well
         setTimeout(() => {
           status.textContent = '';
         }, 2000);
 
       } else {
-        // simple, minimal error message
         status.style.color = '#ff9b9b';
         status.textContent = 'Could not send message';
-        setTimeout(() => { status.textContent = ''; }, 3000);
+        setTimeout(() => { status.textContent = '' }, 2000);
       }
+
     } catch (err) {
       status.style.color = '#ff9b9b';
       status.textContent = 'Could not send message';
-      setTimeout(() => { status.textContent = ''; }, 3000);
-    } finally {
-      submitBtn.classList.remove('loading');
-      submitBtn.disabled = false;
+      setTimeout(() => { status.textContent = '' }, 2000);
     }
+
+    submitBtn.disabled = false;
   });
 
-  // close modal
-  modalClose.addEventListener('click', () => {
+  /* CLOSE MODAL */
+  closeBtn.addEventListener('click', () => {
     modal.classList.remove('show');
-    modal.setAttribute('aria-hidden', 'true');
   });
-
-  // close with Esc
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); } });
 
 })();
 </script>
