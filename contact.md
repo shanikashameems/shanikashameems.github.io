@@ -59,8 +59,8 @@ title: Contact
       line-height:1.6;
       margin:16px 0 28px 0;
     ">
-      If you'd like to collaborate, share an idea, or ask about something you're building, send a concise note here.
-      I read thoughtful messages and reply when it makes sense.
+      If you'd like to collaborate, share an idea, or ask about something I'm building, send a note here.
+      I'll try to reply for your note as soon as possible!
     </p>
   </div>
 
@@ -176,7 +176,7 @@ title: Contact
 
   <!-- small closing line to fill gap before footer -->
   <div style="max-width:1200px; margin:28px auto 6px; text-align:center; color:#9ca3af; font-size:.95rem;">
-    Thanks for visiting — if this looks interesting, say hello. I read everything meaningful.
+Hey, thanks for making it all the way down here. I really appreciate anyone who takes a moment to reach out. Whether you’ve got a question, a thought, or just something cool to share, feel free to drop me a message anytime. I’m always happy to hear from others, and I’ll get back to you as soon as I can.    
   </div>
 
 </section>
