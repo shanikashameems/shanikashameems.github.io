@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scheduling My Vacations!
+title: Scheduling My Vacations
 ---
 
 Since my semester exams are over and i've got a good enough holidays for 3 whole weeks. So its important that i schedule it wisely as i have to move Chennai for my sister's place.
