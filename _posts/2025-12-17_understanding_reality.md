@@ -1,6 +1,6 @@
 ---
 layout: default
-title: My First Blog Post
+title: Understanding Reality
 ---
 
 So i just learnt a very good thing today that no matter how much you try if you still procrastinate you cannot really achieve what you actually want!
