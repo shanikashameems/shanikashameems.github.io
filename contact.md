@@ -153,14 +153,14 @@ title: Contact
           <div>
             <div style="font-size:.82rem; color:#8c92a0; letter-spacing:.05em; font-weight:600; margin-bottom:6px;">LinkedIn</div>
             <a class="contact-link" href="https://www.linkedin.com/in/shanikashameems" target="_blank">
-              linkedin.com/in/shanikashameems
+              @shanikashameems
             </a>
           </div>
 
           <div>
             <div style="font-size:.82rem; color:#8c92a0; letter-spacing:.05em; font-weight:600; margin-bottom:6px;">GitHub</div>
             <a class="contact-link" href="https://github.com/shanikashameems" target="_blank">
-              github.com/shanikashameems
+              @shanikashameems
             </a>
           </div>
 
