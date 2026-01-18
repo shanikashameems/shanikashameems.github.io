@@ -42,6 +42,12 @@ title: Projects
     <h2 style="font-size:1.25rem; margin-bottom:10px; font-weight:600;">AI & Machine Learning</h2>
 
     <div style="color:#9ca3af; line-height:1.6; font-size:1.03rem; max-width:820px;">
+
+    
+      <strong>LinkedIn Post Generator</strong><br>
+     An AI integrated Linkedin Post Generator using LangChain and Lang Graph and for API integration I used Groq AI for simpler complexity
+
+      
       <strong>Diabetes Prediction System</strong><br>
       ML pipeline built to predict diabetes risk from clinical features. Built multiple baseline models, iterated on feature engineering, and evaluated through explainability metrics to improve trust and clarity.
 
@@ -49,6 +55,7 @@ title: Projects
 
       <strong>Recommendation Prototype</strong><br>
       A lightweight recommendation engine for grocery suggestions that combines collaborative filtering with content signals. Focused on practical evaluation and simple deployment patterns.
+            
     </div>
   </div>
 
