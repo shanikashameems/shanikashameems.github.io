@@ -1,0 +1,121 @@
+1️⃣ Headings (MOST IMPORTANT)
+# Main Title (already comes from front matter usually)
+## Section heading
+### Sub-section
+#### Small point
+
+
+👉 Use ## and ### mostly.
+Don’t go beyond #### in blogs — looks messy.
+
+2️⃣ Bold, Italic, Bold+Italic
+**bold text**
+*italic text*
+***bold + italic***
+
+
+Use bold to highlight ideas, not entire paragraphs.
+
+3️⃣ Horizontal Divider (Very useful)
+---
+
+
+Creates a clean section break. Use it often.
+
+4️⃣ Bullet Points
+- point one
+- point two
+- point three
+
+
+Nested bullets:
+
+- main point
+  - sub point
+  - sub point
+
+5️⃣ Numbered Lists
+1. First step
+2. Second step
+3. Third step
+
+6️⃣ Quotes / Thoughts
+> This is a thought or reflection.
+
+
+Use this for opinions, realizations, lessons.
+
+7️⃣ Inline Code (Tech blogs NEED this)
+`print("Hello World")`
+
+
+Perfect for variables, functions, commands.
+
+8️⃣ Code Blocks
+```python
+for i in range(5):
+    print(i)
+
+
+Works for:
+- `python`
+- `js`
+- `html`
+- `css`
+- `bash`
+
+---
+
+## 9️⃣ Links
+
+```md
+[Link text](https://example.com)
+
+
+Example:
+
+[My GitHub](https://github.com/shanikashameems)
+
+🔟 Images
+![Alt text](/assets/image-name.png)
+
+
+Alt text is important. Keep it meaningful.
+
+1️⃣1️⃣ Emphasis Lines (Nice trick)
+**Key takeaway:** learning daily beats learning randomly.
+
+1️⃣2️⃣ Callout Style (Simple & Clean)
+> **Note:** This approach works only for small datasets.
+
+1️⃣3️⃣ Checklists (Daily learning posts love this)
+- [x] Understood the concept
+- [ ] Practice more
+- [ ] Write a project
+
+🔥 Recommended DAILY POST STRUCTURE
+
+Copy–paste this when writing posts:
+
+---
+layout: post
+title: Today I learned about ______
+---
+
+## What I worked on today
+Short paragraph.
+
+---
+
+## Key things I learned
+- point one
+- point two
+- point three
+
+---
+
+## Code snippet
+```python
+# example code
+
+
