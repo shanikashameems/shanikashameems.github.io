@@ -45,7 +45,7 @@ title: Projects
 
     
       <strong>LinkedIn Post Generator</strong><br>
-     An AI integrated Linkedin Post Generator using LangChain and Lang Graph and for API integration I used Groq AI for simpler complexity
+     An AI integrated Linkedin Post Generator using LangChain and Lang Graph and for API integration I used Groq AI for simpler complexity <br>
 
       
       <strong>Diabetes Prediction System</strong><br>
