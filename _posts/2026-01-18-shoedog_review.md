@@ -16,9 +16,9 @@ Its by *Phil Knight* the Co-Founder and Former CEO of NIKE.
   - [ ] He knew that *family* has to be prioritized
 
 This book is something that everybody tryna build something must read. It juts changed the idea of why and what.
-  > you are remembered for the rules you break
-  > Pay Nissho first
+> you are remembered for the rules you break
+> Pay Nissho first
 
 
 And with 386 pages to be eaxct, the way he handled his family, business, friendships, regrets, temptations, anger, humbleness, and most importantly the thought of quitting was all worth it
- > get one too!!
+>get one too!!
