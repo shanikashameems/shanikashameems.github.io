@@ -44,7 +44,6 @@
     header .nav .brand{
       font-weight:600;
       font-size:1.5rem !important;
-      line-height:1.1;
       letter-spacing:.015em;
     }
 
@@ -86,7 +85,7 @@
     }
 
     /* ============================= */
-    /* 💬 DE AMOS CHAT STYLING */
+    /* 💬 CHATBOT */
     /* ============================= */
 
     #chat-button{
@@ -104,6 +103,11 @@
       font-size:22px;
       box-shadow:0 10px 30px rgba(59,130,246,0.35);
       z-index:999;
+      transition:.25s ease;
+    }
+
+    #chat-button:hover{
+      transform:scale(1.05);
     }
 
     #chat-window{
@@ -111,13 +115,14 @@
       bottom:90px;
       right:22px;
       width:340px;
-      background:rgba(15,23,42,0.95);
+      height:420px;
+      background:rgba(15,23,42,0.98);
       border:1px solid rgba(255,255,255,0.08);
       border-radius:14px;
       display:flex;
       flex-direction:column;
       overflow:hidden;
-      box-shadow:0 20px 50px rgba(0,0,0,0.5);
+      box-shadow:0 20px 50px rgba(0,0,0,0.6);
       z-index:999;
     }
 
@@ -134,28 +139,53 @@
 
     #chat-messages{
       padding:14px;
-      height:280px;
+      flex:1;
       overflow-y:auto;
       font-size:14px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
     }
 
-    .chat-user{
-      margin-bottom:10px;
-      color:#93c5fd;
+    .bubble{
+      padding:8px 10px;
+      border-radius:10px;
+      max-width:80%;
+      font-size:13px;
     }
 
-    .chat-bot{
-      margin-bottom:14px;
-      color:#e5e7eb;
+    .user{
+      background:#1e293b;
+      align-self:flex-end;
+    }
+
+    .bot{
+      background:#0f172a;
+      border:1px solid rgba(255,255,255,0.06);
+      align-self:flex-start;
+    }
+
+    #chat-input-area{
+      display:flex;
+      border-top:1px solid rgba(255,255,255,0.05);
     }
 
     #chat-input{
+      flex:1;
       border:none;
       padding:12px;
       background:#1e293b;
       color:white;
       outline:none;
       font-size:14px;
+    }
+
+    #chat-send{
+      padding:12px 14px;
+      background:var(--accent);
+      border:none;
+      color:white;
+      cursor:pointer;
     }
 
   </style>
@@ -186,14 +216,18 @@
   © {{ site.title }} — Built with GitHub Pages
 </footer>
 
-<!-- 💬 Chat Button -->
+<!-- Chat Button -->
 <div id="chat-button">💬</div>
 
-<!-- 💬 Chat Window -->
+<!-- Chat Window -->
 <div id="chat-window" class="hidden">
   <div id="chat-header">De Amos</div>
   <div id="chat-messages"></div>
-  <input type="text" id="chat-input" placeholder="Ask De Amos something..." />
+
+  <div id="chat-input-area">
+    <input type="text" id="chat-input" placeholder="Ask something..." />
+    <button id="chat-send">Send</button>
+  </div>
 </div>
 
 <script>
@@ -201,36 +235,54 @@ const chatButton = document.getElementById("chat-button");
 const chatWindow = document.getElementById("chat-window");
 const chatInput = document.getElementById("chat-input");
 const chatMessages = document.getElementById("chat-messages");
+const chatSend = document.getElementById("chat-send");
+
+let conversation = [];
+let greeted = false;
 
 chatButton.onclick = () => {
   chatWindow.classList.toggle("hidden");
+
+  if(!greeted){
+    addBotMessage("Hey there, I’m De Amos — Shanika’s AI companion. Ask me anything about her or tech.");
+    greeted = true;
+  }
 };
 
-chatInput.addEventListener("keypress", async (e) => {
-  if (e.key === "Enter") {
-    const message = chatInput.value.trim();
-    if (!message) return;
-
-    chatMessages.innerHTML += `<div class="chat-user"><b>You:</b> ${message}</div>`;
-    chatInput.value = "";
-
-    try {
-      const response = await fetch("http://localhost:3000/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message })
-      });
-
-      const data = await response.json();
-      chatMessages.innerHTML += `<div class="chat-bot"><b>De Amos:</b> ${data.reply}</div>`;
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    } catch (err) {
-      chatMessages.innerHTML += `<div class="chat-bot"><b>Error:</b> Backend not reachable.</div>`;
-    }
-  }
+chatSend.onclick = sendMessage;
+chatInput.addEventListener("keypress", (e)=>{
+  if(e.key==="Enter") sendMessage();
 });
+
+function sendMessage(){
+  const text = chatInput.value.trim();
+  if(!text) return;
+
+  addUserMessage(text);
+  conversation.push({role:"user", content:text});
+  chatInput.value="";
+
+  // Mock reply (replace with Groq later)
+  setTimeout(()=>{
+    addBotMessage("I’ll soon be connected to Groq AI. For now, I’m still learning.");
+  },600);
+}
+
+function addUserMessage(text){
+  const div = document.createElement("div");
+  div.className="bubble user";
+  div.textContent=text;
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function addBotMessage(text){
+  const div = document.createElement("div");
+  div.className="bubble bot";
+  div.textContent=text;
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 </script>
 
 </body>
