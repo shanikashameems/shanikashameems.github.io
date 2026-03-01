@@ -84,74 +84,83 @@
       border-top:1px solid rgba(255,255,255,0.05);
     }
 
-    /* ============================= */
-    /* 💬 CHATBOT */
-    /* ============================= */
+    /* =============================== */
+    /* 💬 SOPHISTICATED CHATBOT */
+    /* =============================== */
 
     #chat-button{
       position:fixed;
-      bottom:22px;
-      right:22px;
-      background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      width:55px;
-      height:55px;
+      bottom:26px;
+      right:26px;
+      width:60px;
+      height:60px;
       border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
       display:flex;
       align-items:center;
       justify-content:center;
       cursor:pointer;
-      font-size:22px;
-      box-shadow:0 10px 30px rgba(59,130,246,0.35);
-      z-index:999;
-      transition:.25s ease;
+      font-size:24px;
+      box-shadow:0 15px 40px rgba(59,130,246,0.45);
+      z-index:1000;
+      transition:.3s ease;
     }
 
     #chat-button:hover{
-      transform:scale(1.05);
+      transform:scale(1.08);
+      box-shadow:0 20px 55px rgba(124,58,237,0.55);
     }
 
     #chat-window{
       position:fixed;
-      bottom:90px;
-      right:22px;
-      width:340px;
-      height:420px;
-      background:rgba(15,23,42,0.98);
+      bottom:100px;
+      right:26px;
+      width:360px;
+      height:460px;
+      background:rgba(15,23,42,0.96);
+      backdrop-filter:blur(20px);
       border:1px solid rgba(255,255,255,0.08);
-      border-radius:14px;
+      border-radius:16px;
+      box-shadow:0 30px 80px rgba(0,0,0,0.65);
       display:flex;
       flex-direction:column;
       overflow:hidden;
-      box-shadow:0 20px 50px rgba(0,0,0,0.6);
-      z-index:999;
+      z-index:1000;
+      opacity:0;
+      transform:translateY(20px) scale(.96);
+      pointer-events:none;
+      transition:.3s ease;
     }
 
-    .hidden{
-      display:none;
+    #chat-window.active{
+      opacity:1;
+      transform:translateY(0) scale(1);
+      pointer-events:auto;
     }
 
     #chat-header{
-      padding:14px;
+      padding:16px;
       font-weight:600;
+      font-size:15px;
       background:linear-gradient(90deg,var(--accent),var(--accent-2));
       color:white;
     }
 
     #chat-messages{
-      padding:14px;
       flex:1;
+      padding:16px;
       overflow-y:auto;
-      font-size:14px;
       display:flex;
       flex-direction:column;
-      gap:8px;
+      gap:10px;
+      font-size:13px;
     }
 
     .bubble{
-      padding:8px 10px;
-      border-radius:10px;
+      padding:10px 14px;
+      border-radius:14px;
       max-width:80%;
-      font-size:13px;
+      line-height:1.4;
     }
 
     .user{
@@ -160,8 +169,8 @@
     }
 
     .bot{
-      background:#0f172a;
-      border:1px solid rgba(255,255,255,0.06);
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
       align-self:flex-start;
     }
 
@@ -173,7 +182,7 @@
     #chat-input{
       flex:1;
       border:none;
-      padding:12px;
+      padding:14px;
       background:#1e293b;
       color:white;
       outline:none;
@@ -181,11 +190,17 @@
     }
 
     #chat-send{
-      padding:12px 14px;
+      padding:14px 16px;
       background:var(--accent);
       border:none;
       color:white;
       cursor:pointer;
+      font-weight:500;
+      transition:.2s;
+    }
+
+    #chat-send:hover{
+      background:var(--accent-2);
     }
 
   </style>
@@ -216,14 +231,11 @@
   © {{ site.title }} — Built with GitHub Pages
 </footer>
 
-<!-- Chat Button -->
 <div id="chat-button">💬</div>
 
-<!-- Chat Window -->
-<div id="chat-window" class="hidden">
+<div id="chat-window">
   <div id="chat-header">De Amos</div>
   <div id="chat-messages"></div>
-
   <div id="chat-input-area">
     <input type="text" id="chat-input" placeholder="Ask something..." />
     <button id="chat-send">Send</button>
@@ -237,20 +249,22 @@ const chatInput = document.getElementById("chat-input");
 const chatMessages = document.getElementById("chat-messages");
 const chatSend = document.getElementById("chat-send");
 
-let conversation = [];
 let greeted = false;
+let conversation = [];
 
-chatButton.onclick = () => {
-  chatWindow.classList.toggle("hidden");
+chatButton.addEventListener("click", () => {
+  chatWindow.classList.toggle("active");
 
   if(!greeted){
-    addBotMessage("Hey there, I’m De Amos — Shanika’s AI companion. Ask me anything about her or tech.");
+    setTimeout(()=>{
+      addBotMessage("Hey there, I’m De Amos — Shanika’s AI companion. I can tell you about her work, projects, or answer tech questions.");
+    },300);
     greeted = true;
   }
-};
+});
 
-chatSend.onclick = sendMessage;
-chatInput.addEventListener("keypress", (e)=>{
+chatSend.addEventListener("click", sendMessage);
+chatInput.addEventListener("keypress", e=>{
   if(e.key==="Enter") sendMessage();
 });
 
@@ -259,29 +273,28 @@ function sendMessage(){
   if(!text) return;
 
   addUserMessage(text);
-  conversation.push({role:"user", content:text});
+  conversation.push({role:"user",content:text});
   chatInput.value="";
 
-  // Mock reply (replace with Groq later)
   setTimeout(()=>{
-    addBotMessage("I’ll soon be connected to Groq AI. For now, I’m still learning.");
+    addBotMessage("I’ll soon be powered by Groq AI. For now, I'm in development mode.");
   },600);
 }
 
 function addUserMessage(text){
-  const div = document.createElement("div");
+  const div=document.createElement("div");
   div.className="bubble user";
   div.textContent=text;
   chatMessages.appendChild(div);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
+  chatMessages.scrollTop=chatMessages.scrollHeight;
 }
 
 function addBotMessage(text){
-  const div = document.createElement("div");
+  const div=document.createElement("div");
   div.className="bubble bot";
   div.textContent=text;
   chatMessages.appendChild(div);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
+  chatMessages.scrollTop=chatMessages.scrollHeight;
 }
 </script>
 
