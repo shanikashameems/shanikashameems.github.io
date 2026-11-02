@@ -3,4 +3,3 @@ description: "A personal archive of thoughts, experiments, things learned, and t
 baseurl: ""
 url: "https://shanikashameems.github.io"
 markdown: kramdown
-permalink: /:categories/:title/
