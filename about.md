@@ -1,12 +1,12 @@
 ---
 permalink: /about/
 layout: default
-title: About
+title: A note
 ---
 
 <article class="content-page reveal">
-  <div class="eyebrow">A note about the person behind the pages</div>
-  <h1>A little about me.</h1>
+  <div class="eyebrow">A tiny introduction</div>
+  <h1>A little note.</h1>
   <p>I'm Shanika, a Computer Science student who enjoys understanding how things work, building useful software, and turning complicated ideas into something people can actually use.</p>
 
   <h2>What keeps me curious</h2>

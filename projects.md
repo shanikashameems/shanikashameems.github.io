@@ -1,27 +1,20 @@
 ---
 permalink: /projects/
 layout: default
-title: Projects
+title: Books
 ---
 
 <article class="content-page reveal">
-  <div class="eyebrow">Things made with curiosity</div>
-  <h1>Projects & experiments.</h1>
-  <p>A growing collection of ideas, prototypes, and tools I've explored. Some are works in progress; others taught me something worth keeping.</p>
+  <div class="eyebrow">A little shelf of stories</div>
+  <h1>Books & little worlds.</h1>
+  <p>A small collection of books I read, loved, or hope to get to. I'm still arranging this shelf, so the titles and authors will find their proper places soon.</p>
 
-  <h2>AI & machine learning</h2>
-  <p><strong>LinkedIn Post Generator</strong><br>An AI-assisted tool for generating LinkedIn posts using LangChain, LangGraph, Streamlit, and Groq API integration.</p>
-  <p><strong>Diabetes Prediction System</strong><br>A machine-learning project exploring classification models and evaluation using clinical feature data.</p>
-  <p><strong>Grocery Recommendation Prototype</strong><br>A lightweight recommendation experiment combining collaborative filtering with content signals.</p>
-
-  <h2>Python tools</h2>
-  <p><strong>Background Remover</strong><br>An image-processing utility that separates a foreground subject from its background.</p>
-  <p><strong>QR Code Generator</strong><br>A small Python utility for generating QR codes programmatically.</p>
-  <p><strong>File Morpher</strong><br>Command-line experiments for converting files and automating routine file workflows.</p>
-
-  <h2>Web & mobile</h2>
-  <p><strong>Expo Micro-Journal</strong><br>A minimal React Native / Expo journaling app experiment focused on a clean writing experience and local-first storage.</p>
-
-  <h2>More soon</h2>
-  <p>I'll add deeper write-ups and links as I revisit and document each project properly. The notes matter as much as the finished thing.</p>
+  <div class="book-shelf-grid">
+    <div class="shelf-card"><div class="shelf-book" style="background:linear-gradient(145deg,#d98274,#a94f55)"><span>SHELF 01</span><strong>Book title<br>coming soon</strong><span>✳</span></div><div class="shelf-meta"><strong>First little read</strong><span>Title and author to be added</span></div></div>
+    <div class="shelf-card"><div class="shelf-book" style="background:linear-gradient(145deg,#8e9fbd,#5c6d91)"><span>SHELF 02</span><strong>Book title<br>coming soon</strong><span>✿</span></div><div class="shelf-meta"><strong>Another world</strong><span>Title and author to be added</span></div></div>
+    <div class="shelf-card"><div class="shelf-book" style="background:linear-gradient(145deg,#8eaa91,#55775f)"><span>SHELF 03</span><strong>Book title<br>coming soon</strong><span>❋</span></div><div class="shelf-meta"><strong>A new chapter</strong><span>Title and author to be added</span></div></div>
+    <div class="shelf-card"><div class="shelf-book" style="background:linear-gradient(145deg,#c5a4d4,#8d6b9e)"><span>SHELF 04</span><strong>Book title<br>coming soon</strong><span>♡</span></div><div class="shelf-meta"><strong>One to remember</strong><span>Title and author to be added</span></div></div>
+    <div class="shelf-card"><div class="shelf-book" style="background:linear-gradient(145deg,#d5b66f,#a77d3e)"><span>SHELF 05</span><strong>Book title<br>coming soon</strong><span>✧</span></div><div class="shelf-meta"><strong>On the reading list</strong><span>Title and author to be added</span></div></div>
+    <div class="shelf-card"><div class="shelf-book" style="background:linear-gradient(145deg,#78a9b6,#477b88)"><span>SHELF 06</span><strong>Book title<br>coming soon</strong><span>✳</span></div><div class="shelf-meta"><strong>Room for more</strong><span>Title and author to be added</span></div></div>
+  </div>
 </article>
