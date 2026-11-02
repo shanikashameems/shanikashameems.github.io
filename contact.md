@@ -36,17 +36,17 @@ title: Contact
 
 <style>
 .contact-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(220px,.8fr);gap:42px;margin-top:42px;align-items:start}
-.journal-form{padding:28px;background:rgba(255,253,247,.58);border:1px solid var(--line)}
-.journal-form label{display:block;margin:0 0 7px;font:500 .67rem var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-.journal-form input,.journal-form textarea{display:block;width:100%;margin:0 0 22px;padding:13px 14px;border:1px solid var(--line);border-radius:0;background:rgba(255,255,255,.5);color:var(--ink);font: .92rem var(--sans);outline:none;transition:border-color .2s,box-shadow .2s}
+.journal-form{padding:28px;background:#fffdf6;border:2px solid #e9dcca;border-radius:18px;box-shadow:5px 6px 0 rgba(185,217,197,.55)}
+.journal-form label{display:block;margin:0 0 7px;font:600 1.35rem var(--caveat);letter-spacing:0;text-transform:none;color:var(--muted)}
+.journal-form input,.journal-form textarea{display:block;width:100%;margin:0 0 22px;padding:13px 14px;border:2px solid #eadfce;border-radius:10px;background:#fffaf0;color:var(--ink);font:1.15rem var(--hand);outline:none;transition:border-color .2s,box-shadow .2s}
 .journal-form input:focus,.journal-form textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(155,87,62,.09)}
 .journal-form textarea{resize:vertical;min-height:150px}
-.journal-form button{border:0;background:var(--ink);color:var(--paper);padding:13px 18px;font:500 .7rem var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .2s}
+.journal-form button{border:0;background:var(--ink);color:var(--paper);padding:13px 18px;font:700 1.45rem var(--caveat);letter-spacing:0;text-transform:none;cursor:pointer;border-radius:12px;box-shadow:3px 4px 0 #d7c8b8;transition:background .2s,transform .2s}
 .journal-form button:hover{background:var(--accent);transform:translateY(-2px)}
 .journal-form button span{margin-left:22px}
 .contact-aside{padding:5px 0}
-.contact-aside h2{font-size:1.8rem;margin:12px 0 22px}
-.contact-aside>a{display:flex;justify-content:space-between;text-decoration:none;padding:13px 0;border-bottom:1px solid var(--line);font:500 1rem var(--serif)}
+.contact-aside h2{font:700 2.8rem/.95 var(--caveat);margin:12px 0 22px}
+.contact-aside>a{display:flex;justify-content:space-between;text-decoration:none;padding:13px 0;border-bottom:1px solid var(--line);font:700 1.8rem var(--caveat)}
 .contact-aside>a span{color:var(--accent)}
 .contact-aside p{font-size:.86rem;line-height:1.8;margin-top:26px}
 @media(max-width:760px){.contact-layout{grid-template-columns:1fr;gap:32px}.journal-form{padding:20px}}
