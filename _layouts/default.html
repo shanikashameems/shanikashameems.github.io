@@ -96,7 +96,7 @@
     .reading-progress{display:none}
     .back-top{position:fixed;right:58px;bottom:22px;z-index:35;width:46px;height:46px;border:2px solid #e8d7c2;border-radius:16px;background:#fffdf6;color:var(--coral-dark);font:700 1.8rem var(--caveat);box-shadow:3px 4px 0 #e7d9c8;opacity:0;pointer-events:none;transform:translateY(8px) rotate(-5deg);transition:opacity .25s,transform .25s;cursor:pointer}
     .back-top.show{opacity:1;pointer-events:auto;transform:none}
-    @keyframes book-float{0%,100%{transform:translateY(0) rotateY(-22deg) rotateZ(-4deg)}50%{transform:translateY(-12px) rotateY(-16deg) rotateZ(-2deg)}}
+    @keyframes book-float{0%,100%{translate:0 0}50%{translate:0 -12px}}
     @keyframes paper-wiggle{0%,100%{transform:translate(35px,15px) rotate(8deg)}50%{transform:translate(28px,5px) rotate(5deg)}}
     @keyframes glow-breathe{0%,100%{opacity:.65;transform:scale(.95)}50%{opacity:1;transform:scale(1.08)}}
     @keyframes shadow-breathe{0%,100%{transform:scaleX(1) rotate(-8deg);opacity:.8}50%{transform:scaleX(.82) rotate(-8deg);opacity:.45}}
