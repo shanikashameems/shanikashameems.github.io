@@ -1,4 +1,5 @@
-title: "Shanika's blog"
-description: "AI - my tech journey - random stuffs"
+title: "Shanika's Journal"
+description: "A personal archive of thoughts, experiments, things learned, and things built."
 baseurl: ""
 url: "https://shanikashameems.github.io"
+markdown: kramdown
