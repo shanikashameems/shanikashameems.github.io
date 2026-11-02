@@ -300,36 +300,66 @@
       .intro-cover-front{visibility:hidden}
     }
 
+
+    /* A quiet one-page opening. No giant book, no cinematic gymnastics. */
+    .simple-intro{background:radial-gradient(ellipse at 50% 45%,#fffdf7 0%,#fff7e9 72%,#f4e8d9 100%);padding:20px}
+    .simple-intro-inner{width:min(100%,430px);display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center;position:relative;z-index:2}
+    .simple-intro-whisper{margin:0;font:600 clamp(1.5rem,4vw,2rem)/1.15 var(--caveat);color:#89758f;animation:simple-fade-up .65s .12s both}
+    .simple-page-stack{width:min(66vw,245px);height:min(83vw,320px);max-height:43vh;min-height:205px;position:relative;perspective:1000px;filter:drop-shadow(9px 13px 12px rgba(64,59,80,.13))}
+    .simple-page-under{position:absolute;inset:5px -7px 0 9px;border-radius:3px 13px 13px 3px;background:repeating-linear-gradient(90deg,#fffdf7 0,#fffdf7 2px,#e8ddce 3px,#fffdf7 4px);border:1px solid #e9dfd1;transform:rotate(2deg)}
+    .simple-page{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:17% 9%;border:1px solid #eadfce;border-radius:4px 13px 13px 4px;background:linear-gradient(105deg,#f3ebdf,#fffdf7 14%,#fffaf0 88%,#eee3d5);transform-origin:left center;backface-visibility:hidden;animation:simple-single-page-turn 1.05s .65s cubic-bezier(.48,.04,.22,1) forwards;box-shadow:inset 5px 0 8px rgba(120,91,65,.05)}
+    .simple-page:before{content:"";position:absolute;inset:12px;border:1px dashed #e7d6c4;border-radius:5px;pointer-events:none}
+    .simple-page-kicker,.simple-page-sign{position:relative;font:600 clamp(.8rem,2.4vw,1rem) var(--caveat);color:#947f8d;letter-spacing:.05em}
+    .simple-page strong{position:relative;font:700 clamp(2.2rem,7vw,3rem)/.95 var(--caveat);color:#bd6559;max-width:190px}
+    .simple-intro-hint{font:600 1.1rem var(--caveat);color:#a294a2;animation:simple-fade-up .55s .3s both}
+    .simple-intro .intro-skip{opacity:1;animation:simple-fade-up .55s .35s both}
+    @keyframes simple-single-page-turn{0%{transform:rotateY(0) translateZ(4px)}45%{transform:rotateY(-88deg) translateZ(14px)}100%{transform:rotateY(-178deg) translateZ(0);opacity:0}}
+    @keyframes simple-fade-up{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+    /* More tactile depth, kept subtle so the page remains easy to read. */
+    .entry,.shelf-card,.content-page,.text-link,.navlinks a,.menu-toggle,.back-top{transform-style:preserve-3d}
+    .entry,.shelf-card{will-change:transform}
+    .entry:after,.shelf-card:after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.45),transparent 38%);opacity:0;transition:opacity .3s}
+    .entry:hover:after,.shelf-card:hover:after{opacity:1}
+    .text-link,.menu-toggle,.back-top{transition:transform .25s,box-shadow .25s,background .25s}
+    .text-link:hover{display:inline-block;transform:translateY(-3px) rotate(-2deg)}
+    .menu-toggle:hover,.back-top:hover{transform:translateY(-3px) rotate(-4deg);box-shadow:5px 7px 0 #e7d9c8}
+    .content-page{transition:box-shadow .35s,transform .35s}
+    .content-page:hover{box-shadow:11px 14px 0 rgba(201,183,232,.25);transform:translateY(-2px)}
+    /* A continuous vertical reading trail, with a marker that travels as the page scrolls. */
+    .scroll-buddy{right:17px;top:0;bottom:0;transform:none;justify-content:center;gap:8px}
+    .buddy-track{height:min(72vh,650px);min-height:240px;max-height:none;width:6px}
+    .buddy-marker{font-size:26px;filter:drop-shadow(0 2px 2px rgba(64,59,80,.15))}
+    .buddy-label,.buddy-caption{font-size:.98rem}
+    /* A small custom cursor on precise-pointer devices only. */
+    .cursor-dot,.cursor-ring{position:fixed;left:0;top:0;z-index:300;pointer-events:none;border-radius:50%;opacity:0;transform:translate(-50%,-50%);transition:opacity .2s}
+    .cursor-dot{width:7px;height:7px;background:#bd6559}
+    .cursor-ring{width:30px;height:30px;border:1.5px solid rgba(189,101,89,.65);transition:width .2s,height .2s,background .2s,opacity .2s}
+    body.has-custom-cursor,body.has-custom-cursor a,body.has-custom-cursor button{cursor:none}
+    body.has-custom-cursor .cursor-dot,body.has-custom-cursor .cursor-ring{opacity:1}
+    body.has-custom-cursor.cursor-hover .cursor-ring{width:44px;height:44px;background:rgba(239,142,120,.12)}
+    @media(hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none}body,body a,body button{cursor:auto}}
+    @media(max-width:760px){.scroll-buddy{right:5px}.buddy-track{height:60vh;min-height:170px;width:5px}.buddy-marker{font-size:21px}.buddy-label,.buddy-caption{display:none}}
+    @media(max-width:600px){.simple-intro-inner{gap:13px}.simple-page-stack{width:min(67vw,220px);height:min(82vw,280px);min-height:190px}.simple-page strong{font-size:clamp(2rem,9vw,2.6rem)}}
+    @media(prefers-reduced-motion:reduce){.simple-page{animation:none!important;opacity:0}.simple-intro-whisper,.simple-intro-hint,.simple-intro .intro-skip{animation:none!important;opacity:1;transform:none}}
+
   </style>
 </head>
 <body>
 
 {% if page.url == '/' %}
-<div class="diary-intro" id="diary-intro" aria-label="Opening Shanika's journal">
-  <div class="intro-inner">
-    <div class="intro-whisper">A little piece of my world...</div>
-    <div class="intro-book-scene">
-      <div class="intro-book-shadow"></div>
-      <div class="intro-book">
-        <div class="intro-book-back"></div>
-        <div class="intro-book-spine"></div>
-        <div class="intro-book-pages"></div>
-        <div class="intro-page page-a"><span class="page-front"></span><span class="page-back"></span></div>
-        <div class="intro-page page-b"><span class="page-front"></span><span class="page-back"></span></div>
-        <div class="intro-page page-c"><span class="page-front"></span><span class="page-back"></span></div>
-        <div class="intro-page page-d"><span class="page-front"></span><span class="page-back"></span></div>
-        <div class="intro-page page-e"><span class="page-front"></span><span class="page-back"></span></div>
-        <div class="intro-cover">
-          <div class="intro-cover-front">
-            <small>VOLUME 01 · PERSONAL JOURNAL</small>
-            <strong>Dear little life,</strong>
-            <span>Shanika's journal ✳</span>
-          </div>
-          <div class="intro-cover-back"></div>
-        </div>
+<div class="diary-intro simple-intro" id="diary-intro" aria-label="Opening Shanika's journal">
+  <div class="simple-intro-inner">
+    <p class="simple-intro-whisper">A little piece of my world...</p>
+    <div class="simple-page-stack" aria-hidden="true">
+      <div class="simple-page-under"></div>
+      <div class="simple-page">
+        <span class="simple-page-kicker">A PERSONAL JOURNAL</span>
+        <strong>Dear little life,</strong>
+        <span class="simple-page-sign">Shanika's journal ✳</span>
       </div>
     </div>
-    <button class="intro-skip" type="button" id="intro-skip">Skip the intro ↗</button>
+    <span class="simple-intro-hint">turning the page...</span>
+    <button class="intro-skip" type="button" id="intro-skip">Skip intro ↗</button>
   </div>
 </div>
 {% endif %}
@@ -369,7 +399,7 @@
     };
     const skip=document.getElementById('intro-skip');
     if(skip)skip.addEventListener('click',finishIntro);
-    const introDelay=window.matchMedia('(prefers-reduced-motion: reduce)').matches?1300:9350;
+    const introDelay=window.matchMedia('(prefers-reduced-motion: reduce)').matches?450:1850;
     window.setTimeout(finishIntro,introDelay);
   }
 
@@ -385,6 +415,22 @@
   window.addEventListener('resize',updateScroll);
   updateScroll();
   if(backTop)backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:reduced?'auto':'smooth'}));
+
+  // Lightweight cursor: a dot and a soft ring, disabled on touch screens.
+  if(window.matchMedia('(hover: hover) and (pointer: fine)').matches){
+    document.body.classList.add('has-custom-cursor');
+    const dot=document.createElement('span');dot.className='cursor-dot';
+    const ring=document.createElement('span');ring.className='cursor-ring';
+    document.body.append(dot,ring);
+    let mx=-30,my=-30,rx=-30,ry=-30;
+    window.addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+    const follow=()=>{rx+=(mx-rx)*.18;ry+=(my-ry)*.18;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(follow);};follow();
+    document.querySelectorAll('a,button,input,textarea').forEach(el=>{
+      el.addEventListener('pointerenter',()=>document.body.classList.add('cursor-hover'));
+      el.addEventListener('pointerleave',()=>document.body.classList.remove('cursor-hover'));
+    });
+  }
+
 </script>
 </body>
 </html>
