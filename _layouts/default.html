@@ -342,6 +342,83 @@
     @media(max-width:600px){.simple-intro-inner{gap:13px}.simple-page-stack{width:min(67vw,220px);height:min(82vw,280px);min-height:190px}.simple-page strong{font-size:clamp(2rem,9vw,2.6rem)}}
     @media(prefers-reduced-motion:reduce){.simple-page{animation:none!important;opacity:0}.simple-intro-whisper,.simple-intro-hint,.simple-intro .intro-skip{animation:none!important;opacity:1;transform:none}}
 
+
+    /* Immersive motion layer: gentle depth across the whole journal. */
+    :root{--motion-ease:cubic-bezier(.2,.8,.2,1)}
+    h1,h2,h3{ text-shadow:0 1px 0 rgba(255,255,255,.75),0 3px 0 rgba(201,183,232,.16); }
+    .topbar{transform-style:preserve-3d;box-shadow:0 5px 18px rgba(64,59,80,.035);transition:box-shadow .35s}
+    .topbar:hover{box-shadow:0 9px 24px rgba(64,59,80,.09)}
+    .brand{transition:transform .35s var(--motion-ease),text-shadow .35s}
+    .brand:hover{transform:perspective(500px) rotateY(-12deg) rotateX(5deg) translateY(-2px);text-shadow:3px 4px 0 rgba(201,183,232,.35)}
+    .navlinks a{transform-style:preserve-3d;transition:color .25s,transform .35s var(--motion-ease),text-shadow .35s}
+    .navlinks a:hover{transform:perspective(500px) rotateX(14deg) translateY(-4px) scale(1.06);text-shadow:0 5px 0 rgba(239,142,120,.2)}
+    .hero-copy h1{transform-style:preserve-3d;animation:heading-arrive .85s .12s both}
+    .hero-lede{animation:soft-arrive .8s .28s both}
+    .hero-meta{animation:soft-arrive .8s .4s both}
+    .book-stage{transform-style:preserve-3d;animation:stage-hover 8s ease-in-out infinite}
+    .book{filter:drop-shadow(0 14px 10px rgba(64,59,80,.08))}
+    .book-cover{transition:box-shadow .45s,filter .45s}
+    .book-stage:hover .book-cover{box-shadow:inset 8px 0 10px rgba(255,255,255,.3),inset -5px 0 10px rgba(100,40,40,.15),20px 28px 38px rgba(64,59,80,.25);filter:saturate(1.08)}
+    .floating-note,.handwritten-note,.paper-orbit{will-change:transform}
+    .floating-note{transition:box-shadow .35s,filter .35s}
+    .floating-note:hover{filter:brightness(1.04);box-shadow:9px 12px 0 rgba(201,183,232,.48)}
+    .section-head{transform-style:preserve-3d}
+    .section-head h2{transition:transform .4s var(--motion-ease),text-shadow .4s}
+    .section-head:hover h2{transform:perspective(700px) rotateX(7deg) translateZ(8px);text-shadow:0 5px 0 rgba(201,183,232,.25)}
+    .entry,.shelf-card{transition:transform .45s var(--motion-ease),box-shadow .45s,background .35s;backface-visibility:hidden}
+    .entry:hover,.shelf-card:hover{box-shadow:12px 17px 0 #e4d6c6,0 22px 30px rgba(64,59,80,.09)}
+    .entry h3,.shelf-meta strong{transition:transform .35s var(--motion-ease)}
+    .entry:hover h3,.shelf-card:hover .shelf-meta strong{transform:translateZ(16px) rotateX(-3deg)}
+    .entry-date{display:inline-block;transition:transform .35s}
+    .entry:hover .entry-date{transform:translateZ(10px) rotate(-2deg)}
+    .content-page{transform-style:preserve-3d;transition:box-shadow .4s,transform .4s var(--motion-ease)}
+    .content-page>h1{transform:translateZ(8px)}
+    .content-page p,.content-page li{transition:transform .35s}
+    .content-page a{display:inline-block;transition:transform .25s,color .25s}
+    .content-page a:hover{transform:translateY(-2px) translateZ(8px) rotate(-1deg)}
+    .content-page blockquote{transform:perspective(700px) rotateY(-1deg) translateZ(5px);box-shadow:4px 5px 0 rgba(245,215,126,.15);transition:transform .35s}
+    .content-page blockquote:hover{transform:perspective(700px) rotateY(1deg) translateY(-3px) translateZ(10px)}
+    .post-row{transform-style:preserve-3d;transition:transform .35s var(--motion-ease),color .25s,padding .25s}
+    .post-row:hover{transform:perspective(700px) rotateX(3deg) translateX(9px) translateZ(8px);padding-left:7px}
+    .shelf-book{transition:transform .5s var(--motion-ease),box-shadow .5s;transform-style:preserve-3d}
+    .shelf-card:hover .shelf-book{transform:perspective(650px) rotateY(-20deg) rotateX(7deg) translateY(-8px) translateZ(14px) scale(1.035);box-shadow:12px 16px 18px rgba(64,59,80,.2)}
+    .text-link{transform-style:preserve-3d;transition:transform .3s, text-shadow .3s}
+    .text-link:hover{transform:perspective(500px) rotateX(12deg) translateY(-4px) translateZ(8px)}
+    .menu-toggle,.back-top,.intro-skip{transform-style:preserve-3d;transition:transform .3s var(--motion-ease),box-shadow .3s,background .3s}
+    .menu-toggle:active,.back-top:active,.intro-skip:active{transform:translateY(2px) scale(.96)}
+    input,textarea{transition:transform .25s,box-shadow .25s,border-color .25s}
+    input:focus,textarea:focus{transform:translateY(-2px);box-shadow:0 7px 0 rgba(201,183,232,.22)}
+    footer{transform-style:preserve-3d}
+    footer .footer-mark{display:inline-block;animation:marker-wiggle 3s ease-in-out infinite;transform-origin:center}
+    footer span{transition:transform .35s}
+    footer:hover span{transform:translateZ(5px)}
+    .buddy-track{box-shadow:inset 0 0 0 1px rgba(64,59,80,.06),0 4px 12px rgba(64,59,80,.08)}
+    .buddy-marker{filter:drop-shadow(0 3px 3px rgba(64,59,80,.18));text-shadow:0 2px 0 #fff8e9,0 5px 10px rgba(189,101,89,.2)}
+    .back-top.show{animation:back-top-pop .45s var(--motion-ease) both}
+    /* Scroll entrance gives each section a little lift as it enters view. */
+    .motion-reveal{opacity:0;transform:perspective(1000px) translateY(28px) rotateX(5deg) scale(.985);transform-origin:50% 0;transition:opacity .75s ease,transform .85s var(--motion-ease)}
+    .motion-reveal.motion-visible{opacity:1;transform:perspective(1000px) translateY(0) rotateX(0) scale(1)}
+    .motion-tilting{transition:transform .12s ease-out,box-shadow .35s}
+    .entry.motion-tilting{transform:perspective(900px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translateY(-7px);box-shadow:12px 17px 0 #e4d6c6,0 22px 30px rgba(64,59,80,.1)}
+    .shelf-card.motion-tilting{transform:perspective(900px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translateY(-7px);box-shadow:12px 17px 0 #e4d6c6}
+    .content-page.motion-tilting{transform:perspective(1100px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translateY(-3px);box-shadow:13px 17px 0 rgba(201,183,232,.28)}
+    @keyframes heading-arrive{from{opacity:0;transform:translateY(20px) rotateX(12deg);transform-origin:bottom}to{opacity:1;transform:translateY(0) rotateX(0)}}
+    @keyframes soft-arrive{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes stage-hover{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -5px;rotate:.35deg}}
+    @keyframes back-top-pop{from{opacity:0;transform:translateY(12px) rotate(-10deg) scale(.8)}to{opacity:1;transform:translateY(0) rotate(0) scale(1)}}
+    @media(max-width:760px){
+      .motion-reveal{transform:translateY(18px) scale(.99)}
+      .motion-reveal.motion-visible{transform:translateY(0) scale(1)}
+      .book-stage{animation-duration:10s}
+      .entry:hover,.shelf-card:hover,.post-row:hover{transform:translateY(-3px)}
+      .content-page:hover{transform:none}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .motion-reveal,.motion-reveal.motion-visible{opacity:1;transform:none;transition:none}
+      .hero-copy h1,.hero-lede,.hero-meta{animation:none}
+      .book-stage{animation:none}
+    }
+
   </style>
 </head>
 <body>
@@ -415,6 +492,42 @@
   window.addEventListener('resize',updateScroll);
   updateScroll();
   if(backTop)backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:reduced?'auto':'smooth'}));
+
+
+  // Reveal major sections gently as they enter the viewport.
+  const revealTargets=document.querySelectorAll('main > *, .section-head, .entry, .shelf-card, .post-row, footer');
+  if(!reduced && 'IntersectionObserver' in window){
+    const revealObserver=new IntersectionObserver(items=>{
+      items.forEach(item=>{
+        if(item.isIntersecting){item.target.classList.add('motion-visible');revealObserver.unobserve(item.target);}
+      });
+    },{threshold:.12,rootMargin:'0px 0px -35px 0px'});
+    revealTargets.forEach((el,index)=>{
+      el.classList.add('motion-reveal');
+      el.style.transitionDelay=(Math.min(index%4,3)*65)+'ms';
+      revealObserver.observe(el);
+    });
+  }else{revealTargets.forEach(el=>el.classList.add('motion-visible'));}
+  // Pointer-based 3D tilt is deliberately subtle and only runs on desktop.
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches && !reduced){
+    document.querySelectorAll('.entry,.shelf-card,.content-page').forEach(card=>{
+      card.addEventListener('pointermove',event=>{
+        const r=card.getBoundingClientRect();
+        const px=(event.clientX-r.left)/r.width;
+        const py=(event.clientY-r.top)/r.height;
+        card.style.setProperty('--tilt-x',((.5-py)*7).toFixed(2)+'deg');
+        card.style.setProperty('--tilt-y',((px-.5)*8).toFixed(2)+'deg');
+        card.classList.add('motion-tilting');
+      });
+      const reset=()=>{
+        card.classList.remove('motion-tilting');
+        card.style.removeProperty('--tilt-x');
+        card.style.removeProperty('--tilt-y');
+      };
+      card.addEventListener('pointerleave',reset);
+      card.addEventListener('pointercancel',reset);
+    });
+  }
 
   // Lightweight cursor: a dot and a soft ring, disabled on touch screens.
   if(window.matchMedia('(hover: hover) and (pointer: fine)').matches){
