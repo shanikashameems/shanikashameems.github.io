@@ -126,17 +126,17 @@
     .intro-book-pages{position:absolute;inset:4px 0 0 7px;border-radius:4px 13px 13px 4px;background:repeating-linear-gradient(90deg,#fffdf7 0,#fffdf7 2px,#e8ddce 3px,#fffdf7 4px);box-shadow:8px 10px 20px rgba(64,59,80,.12);transform:translateZ(-5px)}
     .intro-page{position:absolute;inset:5px 2px 5px 8px;border-radius:4px 12px 12px 4px;background:#fffdf6;border:1px solid #eadfce;transform-origin:left center;transform-style:preserve-3d;box-shadow:2px 3px 7px rgba(64,59,80,.08)}
     .intro-page:after{content:"";position:absolute;inset:12% 12%;border-top:2px dashed #e8daca;opacity:.8}
-    .intro-page.page-a{animation:intro-page-turn 1.05s 1.8s cubic-bezier(.55,.05,.3,1) both}
-    .intro-page.page-b{animation:intro-page-turn 1.05s 2.25s cubic-bezier(.55,.05,.3,1) both}
-    .intro-page.page-c{animation:intro-page-turn 1.05s 2.7s cubic-bezier(.55,.05,.3,1) both}
-    .intro-cover{position:absolute;inset:0;border-radius:5px 14px 14px 5px;transform-origin:left center;transform-style:preserve-3d;background:linear-gradient(145deg,#f2a18a,#d97569 72%);box-shadow:inset 7px 0 10px rgba(255,255,255,.22),inset -5px 0 10px rgba(100,40,40,.1),12px 18px 28px rgba(64,59,80,.2);color:#fff9ed;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;padding:12% 10%;animation:intro-cover-open 1.35s 3.05s cubic-bezier(.65,.05,.25,1) forwards}
+    .intro-page.page-a{animation:intro-page-turn 1s 1.25s cubic-bezier(.55,.05,.3,1) both}
+    .intro-page.page-b{animation:intro-page-turn 1s 1.65s cubic-bezier(.55,.05,.3,1) both}
+    .intro-page.page-c{animation:intro-page-turn 1s 2.05s cubic-bezier(.55,.05,.3,1) both}
+    .intro-cover{position:absolute;inset:0;border-radius:5px 14px 14px 5px;transform-origin:left center;transform-style:preserve-3d;background:linear-gradient(145deg,#f2a18a,#d97569 72%);box-shadow:inset 7px 0 10px rgba(255,255,255,.22),inset -5px 0 10px rgba(100,40,40,.1),12px 18px 28px rgba(64,59,80,.2);color:#fff9ed;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;padding:12% 10%;animation:intro-cover-open 1.3s 2.4s cubic-bezier(.65,.05,.25,1) forwards}
     .intro-cover:before{content:"";position:absolute;inset:12px;border:2px dashed rgba(255,249,237,.58);border-radius:9px}
     .intro-cover:after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(90deg,rgba(90,40,40,.2),transparent 14%,transparent 80%,rgba(255,255,255,.14));backface-visibility:hidden}
     .intro-cover-back{position:absolute;inset:0;border-radius:5px 14px 14px 5px;background:#d7b9a5;transform:rotateY(180deg) translateZ(1px);backface-visibility:hidden}
     .intro-cover small{font:600 clamp(.85rem,2vw,1.05rem) var(--caveat);letter-spacing:.06em;position:relative}
     .intro-cover strong{font:700 clamp(2.5rem,7vw,3.8rem)/.88 var(--caveat);max-width:220px;position:relative}
     .intro-cover span{font:600 1.15rem var(--caveat);position:relative}
-    .intro-pages-note{position:absolute;z-index:4;bottom:10%;font:600 1.2rem var(--caveat);color:#9b8291;opacity:0;animation:intro-whisper-in .6s 3.2s forwards}
+    .intro-pages-note{position:absolute;z-index:4;bottom:10%;font:600 1.2rem var(--caveat);color:#9b8291;opacity:0;animation:intro-whisper-in .6s 2.6s forwards}
     .intro-skip{border:1.5px solid #e4d4c2;background:rgba(255,253,246,.78);border-radius:99px;padding:8px 18px;color:#80758d;font:600 1.2rem var(--caveat);cursor:pointer;opacity:0;animation:intro-whisper-in .6s 1s forwards;transition:background .2s,transform .2s}
     .intro-skip:hover{background:#fff;transform:translateY(-2px)}
     .diary-intro.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
@@ -215,7 +215,8 @@
     };
     const skip=document.getElementById('intro-skip');
     if(skip)skip.addEventListener('click',finishIntro);
-    window.setTimeout(finishIntro,4900);
+    const introDelay=window.matchMedia('(prefers-reduced-motion: reduce)').matches?1300:4100;
+    window.setTimeout(finishIntro,introDelay);
   }
 
   const menuButton=document.querySelector('.menu-toggle');
