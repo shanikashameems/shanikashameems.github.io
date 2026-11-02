@@ -7,11 +7,11 @@ title: Journal
   <div class="hero-copy">
     <div class="eyebrow">A personal archive · Since 2025</div>
     <h1>Somewhere between <em>thoughts</em> and things I build.</h1>
-    <p class="hero-lede">A little corner of the internet where I collect what I learn, what I make, and the moments I don't want to forget. Part engineering notebook, part personal journal. Always a work in progress.</p>
-    <div class="hero-meta">Notes from Shanika's world</div>
+    <p class="hero-lede">A little corner of the internet for things I learn, things I make, and moments I want to remember. Part engineering notebook, part personal journal. Always a work in progress.</p>
+    <div class="hero-meta">Notes from Shanika's world</div><div class="handwritten" style="margin-top:18px">written as I go...</div>
   </div>
   <div class="book-stage" aria-label="A three-dimensional journal cover">
-    <div class="book-shadow"></div>
+    <div class="paper-orbit one" aria-hidden="true"></div><div class="paper-orbit two" aria-hidden="true"></div><div class="book-shadow"></div>
     <div class="book">
       <div class="book-back"></div><div class="book-spine"></div><div class="book-pages"></div>
       <div class="book-cover">
@@ -20,7 +20,7 @@ title: Journal
         <div class="book-mark"><span>Shanika's journal</span><span>✳</span></div>
       </div>
     </div>
-    <div class="floating-note"><strong>Dear future me,</strong>keep noticing things.</div>
+    <div class="floating-note"><strong>Dear future me,</strong>keep noticing things.</div><div class="handwritten-note">little things matter ✳</div>
   </div>
 </section>
 
