@@ -8,9 +8,11 @@
   <title>{{ page.title | default: site.title }} · Shanika's journal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Schoolbell&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}">
+  <meta name="color-scheme" content="light">
   <style>
-    :root{--paper:#fff8e9;--paper2:#fff0d4;--ink:#403b50;--muted:#777187;--line:#e9dcca;--coral:#ef8e78;--coral-dark:#bd6559;--lilac:#c9b7e8;--mint:#b9d9c5;--sky:#b9d9e8;--yellow:#f5d77e;--hand:'Patrick Hand',cursive;--caveat:'Caveat',cursive}
+    :root{--paper:#fff8e9;--paper2:#fff0d4;--ink:#403b50;--muted:#777187;--line:#e9dcca;--coral:#ef8e78;--coral-dark:#bd6559;--lilac:#c9b7e8;--mint:#b9d9c5;--sky:#b9d9e8;--yellow:#f5d77e;--hand:'Patrick Hand',cursive;--caveat:'Caveat',cursive;--sketch:'Schoolbell',cursive}
     *{box-sizing:border-box}
     html{scroll-behavior:smooth;scroll-padding-top:90px}
     body{margin:0;background:var(--paper);color:var(--ink);font:20px/1.55 var(--hand);overflow-x:hidden;background-image:radial-gradient(#e7d9c8 0.7px,transparent .7px);background-size:18px 18px}
@@ -28,7 +30,7 @@
     .menu-toggle{display:none;background:#fffdf6;border:2px solid var(--line);border-radius:14px;width:42px;height:42px;color:var(--ink);font-size:1.3rem}
     main{max-width:1160px;margin:0 auto;padding:48px 28px 100px;min-height:72vh}
     .page-kicker,.eyebrow{font:600 1.25rem/1.2 var(--caveat);letter-spacing:.03em;color:var(--coral-dark)}
-    h1,h2,h3{font-family:var(--caveat);line-height:.98;font-weight:700;letter-spacing:0;color:var(--ink)}
+    h1,h2,h3{font-family:var(--sketch);line-height:.98;font-weight:400;letter-spacing:0;color:var(--ink)}
     h1{font-size:clamp(3.6rem,7vw,6.4rem)}
     h2{font-size:clamp(2.8rem,4vw,4rem)}
     p{color:#625d70}
@@ -330,14 +332,17 @@
     .buddy-track{height:min(72vh,650px);min-height:240px;max-height:none;width:6px}
     .buddy-marker{font-size:26px;filter:drop-shadow(0 2px 2px rgba(64,59,80,.15))}
     .buddy-label,.buddy-caption{font-size:.98rem}
-    /* A small custom cursor on precise-pointer devices only. */
-    .cursor-dot,.cursor-ring{position:fixed;left:0;top:0;z-index:300;pointer-events:none;border-radius:50%;opacity:0;transform:translate(-50%,-50%);transition:opacity .2s}
-    .cursor-dot{width:7px;height:7px;background:#bd6559}
-    .cursor-ring{width:30px;height:30px;border:1.5px solid rgba(189,101,89,.65);transition:width .2s,height .2s,background .2s,opacity .2s}
-    body.has-custom-cursor,body.has-custom-cursor a,body.has-custom-cursor button{cursor:none}
-    body.has-custom-cursor .cursor-dot,body.has-custom-cursor .cursor-ring{opacity:1}
-    body.has-custom-cursor.cursor-hover .cursor-ring{width:44px;height:44px;background:rgba(239,142,120,.12)}
-    @media(hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none}body,body a,body button{cursor:auto}}
+    /* A tiny animated pencil cursor, replacing the old dot-and-ring. */
+    .pencil-cursor{position:fixed;left:0;top:0;width:34px;height:34px;z-index:300;pointer-events:none;opacity:0;transform:translate(-5px,-4px) rotate(-32deg);transform-origin:35% 70%;transition:opacity .18s,filter .2s;filter:drop-shadow(2px 3px 1px rgba(64,59,80,.18))}
+    .pencil-cursor svg{display:block;width:100%;height:100%;overflow:visible}
+    .pencil-cursor .pencil-body{fill:#f5d77e;stroke:#403b50;stroke-width:1.8;stroke-linejoin:round}
+    .pencil-cursor .pencil-tip{fill:#ef8e78;stroke:#403b50;stroke-width:1.8;stroke-linejoin:round}
+    .pencil-cursor .pencil-line{stroke:#403b50;stroke-width:1.5;stroke-linecap:round}
+    body.has-custom-cursor,body.has-custom-cursor a,body.has-custom-cursor button,body.has-custom-cursor input,body.has-custom-cursor textarea{cursor:none}
+    body.has-custom-cursor .pencil-cursor{opacity:1}
+    body.has-custom-cursor.cursor-hover .pencil-cursor{filter:drop-shadow(3px 5px 2px rgba(189,101,89,.25));transform:translate(-5px,-4px) rotate(-18deg) scale(1.16)}
+    body.has-custom-cursor.cursor-press .pencil-cursor{transform:translate(-5px,-4px) rotate(-42deg) scale(.88)}
+    @media(hover:none),(pointer:coarse){.pencil-cursor{display:none}body,body a,body button{cursor:auto}}
     @media(max-width:760px){.scroll-buddy{right:5px}.buddy-track{height:60vh;min-height:170px;width:5px}.buddy-marker{font-size:21px}.buddy-label,.buddy-caption{display:none}}
     @media(max-width:600px){.simple-intro-inner{gap:13px}.simple-page-stack{width:min(67vw,220px);height:min(82vw,280px);min-height:190px}.simple-page strong{font-size:clamp(2rem,9vw,2.6rem)}}
     @media(prefers-reduced-motion:reduce){.simple-page{animation:none!important;opacity:0}.simple-intro-whisper,.simple-intro-hint,.simple-intro .intro-skip{animation:none!important;opacity:1;transform:none}}
@@ -464,6 +469,36 @@
       .ambient-doodle,.cursor-sparkle,.hero-copy .page-kicker,.hero-copy h1 em,.entry,.shelf-card,.footer-mark{animation:none!important}
     }
 
+
+    /* Hand-drawn notebook details and neat cartoon motion. */
+    .page-kicker,.eyebrow,.hero-meta,.entry-date,.post-row span:last-child{font-family:var(--sketch)}
+    .entry,.shelf-card,.content-page{border-style:solid;outline:1px solid rgba(255,255,255,.72);outline-offset:-6px}
+    .entry:after{content:"✳";position:absolute;right:14px;top:10px;color:var(--lilac);font:1.35rem var(--sketch);opacity:.8;transform:rotate(-12deg);transition:transform .35s,scale .35s}
+    .entry:hover:after{transform:rotate(35deg) scale(1.25)}
+    .book-cover{outline:1px dashed rgba(255,249,237,.55);outline-offset:-13px}
+    .floating-note{border-radius:5px 18px 7px 14px}
+    .section-head h2{ text-decoration:underline;text-decoration-style:wavy;text-decoration-color:rgba(239,142,120,.48);text-decoration-thickness:2px;text-underline-offset:7px}
+    .page-leaving main{opacity:0;transform:translateY(13px) rotateX(1.5deg);transition:opacity .18s ease,transform .18s ease}
+    .page-leaving .topbar,.page-leaving footer{opacity:0;transition:opacity .18s ease}
+    .page-leaving{pointer-events:none}
+    .journal-hero .hero-copy{animation:cartoon-pop-in .7s cubic-bezier(.2,.8,.2,1) both}
+    .journal-hero .book-stage{animation:stage-hover 8s ease-in-out infinite,cartoon-pop-in .8s .1s both}
+    .entry{animation:card-arrive .55s both;animation-delay:calc(var(--card-order,0)*70ms)}
+    .entry:nth-child(1){--card-order:1}.entry:nth-child(2){--card-order:2}.entry:nth-child(3){--card-order:3}
+    .menu-toggle:hover,.back-top:hover,.intro-skip:hover{transform:translateY(-3px) rotate(-3deg)}
+    .buddy-marker{transition:top .12s linear,rotate .25s}
+    @keyframes cartoon-pop-in{0%{opacity:0;transform:translateY(22px) scale(.94) rotate(-1.5deg)}70%{opacity:1;transform:translateY(-3px) scale(1.015) rotate(.4deg)}100%{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+    @keyframes card-arrive{from{opacity:0;transform:translateY(15px) rotate(-1deg) scale(.97)}to{opacity:1;transform:translateY(0) rotate(0) scale(1)}}
+    @media(max-width:760px){
+      .pencil-cursor{display:none}
+      .entry:after{font-size:1.1rem}
+      .section-head h2{text-underline-offset:5px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .page-leaving main,.page-leaving .topbar,.page-leaving footer{transition:none}
+      .journal-hero .hero-copy,.journal-hero .book-stage,.entry{animation:none}
+    }
+
   </style>
 </head>
 <body>
@@ -583,35 +618,33 @@
     });
   }
 
-  // Lightweight cursor: a dot and a soft ring, disabled on touch screens.
+  // A small pencil follows the pointer and reacts to clicks and interactive elements.
   if(window.matchMedia('(hover: hover) and (pointer: fine)').matches){
     document.body.classList.add('has-custom-cursor');
-    const dot=document.createElement('span');dot.className='cursor-dot';
-    const ring=document.createElement('span');ring.className='cursor-ring';
-    document.body.append(dot,ring);
-    let mx=-30,my=-30,rx=-30,ry=-30;
-    window.addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
-
-    let lastSparkle=0;
-    window.addEventListener('pointermove',e=>{
-      const now=performance.now();
-      if(now-lastSparkle<85)return;
-      lastSparkle=now;
-      const spark=document.createElement('span');
-      spark.className='cursor-sparkle';
-      spark.textContent=Math.random()>.5?'✧':'·';
-      spark.style.left=e.clientX+'px';
-      spark.style.top=e.clientY+'px';
-      document.body.appendChild(spark);
-      window.setTimeout(()=>spark.remove(),700);
-    },{passive:true});
-
-    const follow=()=>{rx+=(mx-rx)*.18;ry+=(my-ry)*.18;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(follow);};follow();
-    document.querySelectorAll('a,button,input,textarea').forEach(el=>{
+    const pencil=document.createElement('span');
+    pencil.className='pencil-cursor';
+    pencil.setAttribute('aria-hidden','true');
+    pencil.innerHTML='<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path class="pencil-body" d="M10 27 26 5q2-3 5 0l3 2q3 2 1 5L19 34l-9 2z"/><path class="pencil-tip" d="m10 27 9 7-9 2z"/><path class="pencil-line" d="m26 8 7 5M23 12l7 5M10 27l9 7"/></svg>';
+    document.body.appendChild(pencil);
+    window.addEventListener('pointermove',e=>{pencil.style.left=e.clientX+'px';pencil.style.top=e.clientY+'px';},{passive:true});
+    document.querySelectorAll('a,button,input,textarea,[role="button"]').forEach(el=>{
       el.addEventListener('pointerenter',()=>document.body.classList.add('cursor-hover'));
       el.addEventListener('pointerleave',()=>document.body.classList.remove('cursor-hover'));
     });
+    window.addEventListener('pointerdown',()=>document.body.classList.add('cursor-press'));
+    window.addEventListener('pointerup',()=>document.body.classList.remove('cursor-press'));
   }
+
+  // Short, soft page-turn transition for internal navigation.
+  document.addEventListener('click',event=>{
+    const link=event.target.closest('a[href]');
+    if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.target||link.hasAttribute('download'))return;
+    const next=new URL(link.href,window.location.href);
+    if(next.origin!==window.location.origin||next.pathname===window.location.pathname||next.hash&&next.pathname===window.location.pathname)return;
+    event.preventDefault();
+    document.body.classList.add('page-leaving');
+    window.setTimeout(()=>{window.location.href=next.href;},190);
+  });
 
 </script>
 </body>
