@@ -34,14 +34,17 @@ title: Books
       <div class="shelf-plank"><span></span></div>
     </div>
   </section>
-  <section class="book-note" id="book-note" aria-live="polite" aria-atomic="true">
-    <div class="book-note-label">A little note from the pages</div>
-    <h2 id="note-title">Choose a book from the shelf</h2>
-    <p class="note-author" id="note-author">The author’s name will appear here.</p>
-    <p id="note-description">Each book has a story of its own. Tap one to read a little about it.</p>
-    <div class="takeaway-wrap"><span>What I’m taking with me</span><p id="note-takeaway">A small thought to carry beyond the last page.</p></div>
-    <span class="note-heart" aria-hidden="true">♡</span>
-  </section>
+  <dialog class="book-dialog" id="book-dialog" aria-labelledby="note-title">
+    <button class="book-dialog-close" type="button" aria-label="Close book details">×</button>
+    <div class="book-note" aria-live="polite" aria-atomic="true">
+      <div class="book-note-label">A little note from the pages</div>
+      <h2 id="note-title">Book title</h2>
+      <p class="note-author" id="note-author"></p>
+      <p id="note-description"></p>
+      <div class="takeaway-wrap"><span>What I’m taking with me</span><p id="note-takeaway"></p></div>
+      <span class="note-heart" aria-hidden="true">♡</span>
+    </div>
+  </dialog>
   <p class="library-footnote">My shelf is still growing. There’s always room for one more story. <span>♡</span></p>
 </article>
 
@@ -81,16 +84,54 @@ title: Books
   @media(max-width:760px){.library-decor{top:4%;right:7%;gap:10px;font-size:1.5rem}.library-decor span:nth-child(3){font-size:2.8rem}.library-room{margin:26px -5px 18px;padding:18px 8px 8px}.library-shelf{padding:5px 3px 0}.shelf-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 8px;padding:8px 1px 0}.library-book{height:clamp(135px,33vw,165px);padding:10px 5px 9px}.library-book strong{font-size:clamp(1rem,3.7vw,1.35rem)}.library-book small{font-size:.86rem}.book-number{font-size:.85rem}.shelf-plank{height:13px;margin:0 -3px}.book-note{margin:28px 0 18px;padding:24px 24px 24px 35px}}
   @media(max-width:390px){.shelf-row{gap:9px 6px}.library-book{height:128px;padding:8px 3px}.library-book strong{font-size:.95rem}.library-book small{font-size:.75rem}.book-note{padding-right:18px}}
   @media(prefers-reduced-motion:reduce){.library-book,.book-note{transition:none;animation:none}}
+
+  /* Library-style shelves and a proper book-details popup. */
+  .library-room{padding:24px 22px 30px;background:linear-gradient(135deg,#f2e3d1,#fff8ed 48%,#ead7c3);border-color:#d8bea2;box-shadow:inset 0 0 30px rgba(100,65,42,.12),7px 9px 0 rgba(201,183,232,.2)}
+  .library-shelf{padding:0 10px;background:linear-gradient(90deg,rgba(100,65,42,.12),transparent 10%,transparent 90%,rgba(100,65,42,.12))}
+  .shelf-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:end;gap:12px;padding:20px 10px 0}
+  .library-book{height:clamp(150px,17vw,188px);border-radius:3px 7px 1px 1px;box-shadow:inset 5px 0 6px rgba(255,255,255,.2),inset -4px 0 5px rgba(35,25,20,.2),4px 5px 7px rgba(55,40,30,.22);transform:rotate(var(--spine-tilt,0deg));}
+  .library-book:nth-child(3n){height:clamp(164px,18vw,198px)}
+  .library-book:nth-child(4n){height:clamp(142px,16vw,178px)}
+  .library-book strong{font:700 clamp(1.05rem,1.55vw,1.45rem)/.98 var(--caveat);writing-mode:vertical-rl;transform:rotate(180deg);max-height:72%;display:flex;align-items:center;justify-content:center;overflow:hidden;overflow-wrap:normal}
+  .library-book small{font: .95rem/1 var(--hand);max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .book-number{font-size:.9rem}
+  .shelf-plank{height:17px;margin:0 -1px 4px;background:linear-gradient(180deg,#d9b28c 0%,#bf8d64 35%,#916044 100%);box-shadow:0 8px 10px rgba(80,52,35,.22),inset 0 2px 2px rgba(255,255,255,.45),inset 0 -3px 3px rgba(84,51,37,.2)}
+  .book-dialog{width:min(680px,calc(100% - 32px));max-width:680px;max-height:min(85vh,760px);padding:0;border:0;background:transparent;overflow:visible}
+  .book-dialog::backdrop{background:rgba(43,37,48,.48);backdrop-filter:blur(4px)}
+  .book-dialog[open]{animation:dialog-pop .25s ease both}
+  .book-dialog .book-note{margin:0;max-width:none;max-height:min(85vh,760px);overflow:auto;padding:38px 42px 32px;box-shadow:10px 12px 0 rgba(201,183,232,.35),0 20px 70px rgba(25,20,30,.22)}
+  .book-dialog-close{position:absolute;z-index:3;right:12px;top:10px;width:38px;height:38px;border:1px solid #e8d9c9;border-radius:50%;background:#fffaf0;color:#715c65;font:1.8rem/1 var(--hand);cursor:pointer;transition:transform .2s,background .2s}
+  .book-dialog-close:hover{transform:rotate(90deg);background:#f8e6dc}
+  @keyframes dialog-pop{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+  @media(max-width:760px){.library-room{padding:16px 8px 20px}.shelf-row{gap:10px 7px;padding:17px 4px 0}.library-book{height:clamp(132px,31vw,160px)}.library-book:nth-child(3n){height:clamp(143px,33vw,170px)}.library-book:nth-child(4n){height:clamp(124px,29vw,150px)}.library-book strong{font-size:clamp(.95rem,3.5vw,1.2rem)}.library-book small{font-size:.76rem}.shelf-plank{height:14px}.book-dialog .book-note{padding:34px 25px 25px 36px}.book-dialog-close{right:8px;top:7px}}
+  @media(max-width:390px){.shelf-row{gap:8px 5px}.library-book{padding:8px 3px}.library-book strong{font-size:.9rem}.library-book small{font-size:.68rem}}
+  @media(prefers-reduced-motion:reduce){.book-dialog[open]{animation:none}.book-dialog-close{transition:none}}
 </style>
 <script>
   (() => {
     const shelf=document.querySelector('.library-shelf');
-    const note=document.getElementById('book-note');
-    if(!shelf||!note)return;
+    const dialog=document.getElementById('book-dialog');
+    if(!shelf||!dialog)return;
+    const closeButton=dialog.querySelector('.book-dialog-close');
     const title=document.getElementById('note-title');
     const author=document.getElementById('note-author');
     const description=document.getElementById('note-description');
     const takeaway=document.getElementById('note-takeaway');
+
+    // Arrange the books in separate rows, each resting on its own wooden plank.
+    const books=[...shelf.querySelectorAll('.library-book')];
+    shelf.innerHTML='';
+    for(let i=0;i<books.length;i+=5){
+      const row=document.createElement('div');
+      row.className='shelf-row';
+      books.slice(i,i+5).forEach(book=>row.appendChild(book));
+      shelf.appendChild(row);
+      const plank=document.createElement('div');
+      plank.className='shelf-plank';
+      plank.setAttribute('aria-hidden','true');
+      shelf.appendChild(plank);
+    }
+
     shelf.addEventListener('click',event=>{
       const book=event.target.closest('.library-book');
       if(!book)return;
@@ -99,10 +140,15 @@ title: Books
       author.textContent='By '+book.dataset.author;
       description.textContent=book.dataset.description;
       takeaway.textContent=book.dataset.takeaway;
-      note.classList.remove('note-refresh');
-      void note.offsetWidth;
-      note.classList.add('note-refresh');
-      if(window.matchMedia('(max-width:760px)').matches)note.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+      if(!dialog.open)dialog.showModal();
+      closeButton.focus();
     });
+    const closeDialog=()=>{
+      dialog.close();
+      shelf.querySelectorAll('.library-book').forEach(item=>item.setAttribute('aria-expanded','false'));
+    };
+    closeButton.addEventListener('click',closeDialog);
+    dialog.addEventListener('click',event=>{if(event.target===dialog)closeDialog();});
+    dialog.addEventListener('close',()=>shelf.querySelectorAll('.library-book').forEach(item=>item.setAttribute('aria-expanded','false')));
   })();
 </script>
