@@ -94,7 +94,7 @@ title: Books
   .library-book:nth-child(4n){height:clamp(150px,16vw,180px)}
   .library-book:before{inset:7px 5px;border:0;border-top:1px solid rgba(255,249,237,.35);border-bottom:1px solid rgba(255,249,237,.35);border-radius:0}
   .library-book:after{left:7px;width:1px}
-  .library-book strong{font:700 clamp(1rem,1.35vw,1.25rem)/1.08 var(--caveat);writing-mode:vertical-rl;transform:rotate(180deg);height:calc(100% - 34px);max-height:none;display:flex;align-items:center;justify-content:center;overflow:visible;overflow-wrap:anywhere;white-space:normal;text-align:center}
+  .library-book strong{font:700 clamp(.92rem,1.2vw,1.08rem)/1.08 var(--hand);writing-mode:horizontal-tb;text-orientation:mixed;transform:none;width:100%;height:calc(100% - 34px);max-height:none;display:flex;align-items:center;justify-content:center;overflow:visible;overflow-wrap:anywhere;white-space:normal;text-align:center;word-break:normal;hyphens:auto}
   .library-book small{display:none}
   .book-number{font-size:.78rem;align-self:center}
   .library-book:hover,.library-book:focus-visible{transform:translateY(-9px) rotate(-1deg);box-shadow:inset 3px 0 4px rgba(255,255,255,.2),inset -3px 0 4px rgba(35,25,20,.2),8px 12px 14px rgba(55,40,30,.22);z-index:3}
@@ -108,8 +108,8 @@ title: Books
   .book-dialog-close{position:absolute;z-index:3;right:12px;top:10px;width:38px;height:38px;border:1px solid #e8d9c9;border-radius:50%;background:#fffaf0;color:#715c65;font:1.8rem/1 var(--hand);cursor:pointer;transition:transform .2s,background .2s}
   .book-dialog-close:hover{transform:rotate(90deg);background:#f8e6dc}
   @keyframes dialog-fade{from{opacity:0}to{opacity:1}}
-  @media(max-width:760px){.library-room{padding:16px 8px 20px}.shelf-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:16px 2px 0}.library-book{max-width:82px;height:clamp(138px,31vw,160px);padding:8px 4px}.library-book:nth-child(3n){height:clamp(146px,33vw,170px)}.library-book:nth-child(4n){height:clamp(130px,29vw,154px)}.library-book strong{font-size:clamp(.95rem,3.5vw,1.12rem)}.book-number{font-size:.68rem}.shelf-plank{height:14px}.book-dialog .book-note{padding:34px 25px 25px 36px}.book-dialog-close{right:8px;top:7px}}
-  @media(max-width:390px){.shelf-row{gap:6px}.library-book{padding:7px 3px}.library-book strong{font-size:.88rem}.book-dialog .book-note{padding-right:18px}}
+  @media(max-width:760px){.library-room{padding:16px 8px 20px}.shelf-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:16px 2px 0}.library-book{max-width:82px;height:clamp(138px,31vw,160px);padding:8px 4px}.library-book:nth-child(3n){height:clamp(146px,33vw,170px)}.library-book:nth-child(4n){height:clamp(130px,29vw,154px)}.library-book strong{font-size:clamp(.78rem,2.8vw,.9rem);line-height:1.05}.book-number{font-size:.68rem}.shelf-plank{height:14px}.book-dialog .book-note{padding:34px 25px 25px 36px}.book-dialog-close{right:8px;top:7px}}
+  @media(max-width:390px){.shelf-row{gap:6px}.library-book{padding:7px 3px}.library-book strong{font-size:.74rem;line-height:1.02}.book-dialog .book-note{padding-right:18px}}
   @media(prefers-reduced-motion:reduce){.book-dialog[open]{animation:none}.book-dialog-close{transition:none}}
 </style>
 <script>
