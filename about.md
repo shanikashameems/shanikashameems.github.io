@@ -13,7 +13,7 @@ title: A note
 
   <p>I’m not always sure what you’ll find on these pages. Maybe something meaningful, maybe something completely ridiculous, or maybe just a thought I didn’t want to keep running around in my head.</p>
 
-  <blockquote><span class="quote-text">Nothing here has to be perfect, and neither do I.</span></blockquote>
+  <div class="note-quote" role="note">Nothing here has to be perfect, and neither do I.</div>
 
   <p>So take a little walk through these pages, explore, and enjoy the tiny pieces of life I’ve left behind.</p>
 
@@ -28,8 +28,7 @@ title: A note
   .note-page .note-heart{display:inline-block;color:#d47d78;font: .7em var(--caveat);vertical-align:middle;transform:rotate(10deg)}
   .note-page .note-welcome{font:600 1.8rem var(--caveat);color:var(--coral-dark);margin:0 0 24px}
   .note-page p{font-size:1.25rem;line-height:1.75;max-width:680px}
-  .note-page blockquote{margin:28px 0;padding:16px 22px;border-left:4px solid var(--coral);background:#fffdf6;border-radius:4px 14px 14px 4px;font:600 1.65rem var(--caveat);color:#7d6ca9;overflow:visible;text-indent:0}
-  .note-page blockquote::first-letter{color:#7d6ca9;opacity:1;font:inherit}
-  .note-page .quote-text{display:inline;color:#7d6ca9;opacity:1;letter-spacing:normal;word-spacing:normal}
+  .note-page .note-quote{display:block;box-sizing:border-box;width:100%;margin:28px 0;padding:18px 22px;border-left:4px solid var(--coral);background:#fffdf6;border-radius:4px 14px 14px 4px;color:#65558f;font:700 1.35rem/1.45 var(--hand);letter-spacing:0;word-spacing:normal;white-space:normal;overflow-wrap:anywhere;opacity:1;visibility:visible;text-indent:0;transform:none;box-shadow:4px 5px 0 rgba(245,215,126,.15)}
+  .note-page .note-quote::first-letter{color:#65558f;font:inherit;opacity:1}
   .note-page .note-signoff{font:600 1.7rem/1.25 var(--caveat);color:var(--coral-dark);margin-top:30px}
 </style>
