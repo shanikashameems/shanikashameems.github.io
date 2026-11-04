@@ -7,7 +7,7 @@ title: Contact
 <section class="content-page reveal">
   <div class="eyebrow">A note is always welcome</div>
   <h1>Let's talk.</h1>
-  <p>Have a project in mind, want to exchange ideas, or just want to say hello? Leave a message below. I’d be happy to hear from you.</p>
+  <p>Have a project in mind, want to exchange ideas, or just want to say hello? Leave a little message below, or find me around the internet.</p>
 
   <div class="contact-layout">
     <form class="journal-form" action="https://formspree.io/f/mpwvklre" method="POST">
@@ -26,16 +26,17 @@ title: Contact
     <aside class="contact-aside">
       <div class="eyebrow">Elsewhere on the internet</div>
       <h2>Find me here.</h2>
-      <a href="mailto:shanikashameem7@gmail.com">Email <span>↗</span></a>
-      <a href="https://www.linkedin.com/in/shanikashameems" target="_blank" rel="noopener noreferrer">LinkedIn <span>↗</span></a>
-      <a href="https://github.com/shanikashameems" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
-      <p>I usually appreciate a little context in collaboration messages. It makes replying much easier for both of us.</p>
+      <a href="https://instagram.com/shanikashameem" target="_blank" rel="noopener noreferrer"><span>Instagram</span><small>@shanikashameem</small><b>↗</b></a>
+      <a href="mailto:shanikashameem7@gmail.com"><span>Email</span><small>shanikashameem7@gmail.com</small><b>↗</b></a>
+      <a href="https://www.linkedin.com/in/shanikashameem" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><small>/in/shanikashameem</small><b>↗</b></a>
+      <a href="https://github.com/shanikashameems" target="_blank" rel="noopener noreferrer"><span>GitHub</span><small>@shanikashameems</small><b>↗</b></a>
+      <p>Whether it’s a collaboration, an idea, or just a hello, I’d love to hear from you.</p>
     </aside>
   </div>
 </section>
 
 <style>
-.contact-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(220px,.8fr);gap:42px;margin-top:42px;align-items:start}
+.contact-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(240px,.9fr);gap:42px;margin-top:42px;align-items:start}
 .journal-form{padding:28px;background:#fffdf6;border:2px solid #e9dcca;border-radius:18px;box-shadow:5px 6px 0 rgba(185,217,197,.55)}
 .journal-form label{display:block;margin:0 0 7px;font:600 1.35rem var(--caveat);letter-spacing:0;text-transform:none;color:var(--muted)}
 .journal-form input,.journal-form textarea{display:block;width:100%;margin:0 0 22px;padding:13px 14px;border:2px solid #eadfce;border-radius:10px;background:#fffaf0;color:var(--ink);font:1.15rem var(--hand);outline:none;transition:border-color .2s,box-shadow .2s}
@@ -45,9 +46,11 @@ title: Contact
 .journal-form button:hover{background:var(--accent);transform:translateY(-2px)}
 .journal-form button span{margin-left:22px}
 .contact-aside{padding:5px 0}
-.contact-aside h2{font:700 2.8rem/.95 var(--caveat);margin:12px 0 22px}
-.contact-aside>a{display:flex;justify-content:space-between;text-decoration:none;padding:13px 0;border-bottom:1px solid var(--line);font:700 1.8rem var(--caveat)}
-.contact-aside>a span{color:var(--accent)}
-.contact-aside p{font-size:.86rem;line-height:1.8;margin-top:26px}
+.contact-aside h2{font:400 2.8rem/.95 var(--sketch);margin:12px 0 22px}
+.contact-aside>a{display:grid;grid-template-columns:1fr auto;gap:1px 12px;text-decoration:none;padding:13px 0;border-bottom:1px solid var(--line);font:700 1.55rem var(--caveat);transition:transform .2s,color .2s}
+.contact-aside>a:hover{transform:translateX(4px);color:var(--coral-dark)}
+.contact-aside>a small{grid-column:1;font:1rem var(--hand);color:var(--muted);overflow-wrap:anywhere}
+.contact-aside>a b{grid-column:2;grid-row:1/3;align-self:center;color:var(--accent);font-weight:400}
+.contact-aside p{font-size:.95rem;line-height:1.8;margin-top:26px}
 @media(max-width:760px){.contact-layout{grid-template-columns:1fr;gap:32px}.journal-form{padding:20px}}
 </style>

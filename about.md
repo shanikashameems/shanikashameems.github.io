@@ -4,18 +4,30 @@ layout: default
 title: A note
 ---
 
-<article class="content-page reveal">
-  <div class="eyebrow">A tiny introduction</div>
-  <h1>A little note.</h1>
-  <p>I'm Shanika, a Computer Science student who enjoys understanding how things work, building useful software, and turning complicated ideas into something people can actually use.</p>
+<article class="content-page reveal note-page">
+  <div class="eyebrow">A little hello from me</div>
+  <h1>Hey, you! <span class="note-heart">♡</span></h1>
+  <p class="note-welcome">Welcome to my little corner of the internet!</p>
 
-  <h2>What keeps me curious</h2>
-  <p>I'm drawn to AI and machine learning, backend engineering, thoughtful product design, and the small details that make a tool feel effortless. I also enjoy teaching. Through ByteTree, I've had the chance to help learners find their footing in Python and AI.</p>
+  <p>This is where you get to see a little more of my true side. The random thoughts, silly moments, little dreams, endless overthinking, things that make me happy, and all the little things that make me… well, me.</p>
 
-  <h2>What you'll find here</h2>
-  <p>This journal is not meant to be a perfectly polished highlight reel. It's a record of the process: experiments that worked, ideas that changed, lessons from building, things I'm studying, and occasional notes about life outside the editor.</p>
+  <p>I’m not always sure what you’ll find on these pages. Maybe something meaningful, maybe something completely ridiculous, or maybe just a thought I didn’t want to keep running around in my head.</p>
 
-  <blockquote>Not every page needs to be impressive. Some pages just need to be honest.</blockquote>
+  <blockquote>Nothing here has to be perfect, and neither do I.</blockquote>
 
-  <p>I'm keeping this space as a reminder that progress is usually made in small, ordinary steps.</p>
+  <p>So take a little walk through these pages, explore, and enjoy the tiny pieces of life I’ve left behind.</p>
+
+  <p>After all, life is made up of little moments, and I think some of them deserve a place to stay.</p>
+
+  <p class="note-signoff">With love,<br>Shasha ♡</p>
 </article>
+
+<style>
+  .note-page{max-width:790px;padding:clamp(25px,5vw,55px);position:relative}
+  .note-page h1{margin:16px 0 10px}
+  .note-page .note-heart{display:inline-block;color:#d47d78;font: .7em var(--caveat);vertical-align:middle;transform:rotate(10deg)}
+  .note-page .note-welcome{font:600 1.8rem var(--caveat);color:var(--coral-dark);margin:0 0 24px}
+  .note-page p{font-size:1.25rem;line-height:1.75;max-width:680px}
+  .note-page blockquote{margin:28px 0;padding:16px 22px;border-left:4px solid var(--coral);background:#fffdf6;border-radius:4px 14px 14px 4px;font:600 1.65rem var(--caveat);color:#7d6ca9}
+  .note-page .note-signoff{font:600 1.7rem/1.25 var(--caveat);color:var(--coral-dark);margin-top:30px}
+</style>

@@ -5,58 +5,104 @@ title: Books
 ---
 
 <article class="content-page reveal library-page">
-  <div class="eyebrow">A little shelf of stories</div>
-  <h1>My little library.</h1>
-  <p class="library-intro">A few stories, ideas and little worlds waiting on my shelves. This library is still growing, one book at a time.</p>
+  <div class="eyebrow">A shelf full of little worlds</div>
+  <h1>Books I’ve read.</h1>
+  <p class="library-intro">Every book leaves a little something behind. Here are some of the stories, ideas and lessons that have found a place on my shelf. Pick a book to open its page. ♡</p>
   <div class="library-decor" aria-hidden="true"><span>✳</span><span>✿</span><span>“</span></div>
-  <section class="library-room" aria-label="Book collection">
+  <section class="library-room" aria-label="My reading shelf">
     <div class="library-shelf">
-      <div class="shelf-row">
-        <div class="library-book book-coral"><span class="book-number">01</span><strong>Book title</strong><small>author soon</small></div>
-        <div class="library-book book-blue"><span class="book-number">02</span><strong>Another story</strong><small>author soon</small></div>
-        <div class="library-book book-sage"><span class="book-number">03</span><strong>A new chapter</strong><small>author soon</small></div>
-        <div class="library-book book-lilac"><span class="book-number">04</span><strong>Little worlds</strong><small>author soon</small></div>
-        <div class="library-book book-gold"><span class="book-number">05</span><strong>On my list</strong><small>author soon</small></div>
-        <div class="library-book book-teal"><span class="book-number">06</span><strong>More to read</strong><small>author soon</small></div>
-      </div>
-      <div class="shelf-plank"><span></span></div>
-      <div class="shelf-row second-row">
-        <div class="library-book book-lilac"><span class="book-number">07</span><strong>Next adventure</strong><small>author soon</small></div>
-        <div class="library-book book-gold"><span class="book-number">08</span><strong>Quiet pages</strong><small>author soon</small></div>
-        <div class="library-book book-teal"><span class="book-number">09</span><strong>Somewhere new</strong><small>author soon</small></div>
-        <div class="library-book book-coral"><span class="book-number">10</span><strong>To be read</strong><small>author soon</small></div>
-        <div class="library-book book-blue"><span class="book-number">11</span><strong>One more tale</strong><small>author soon</small></div>
-        <div class="library-book book-sage"><span class="book-number">12</span><strong>Coming soon</strong><small>author soon</small></div>
-      </div>
+      <div class="shelf-row"><button class="library-book book-coral" type="button" data-title="Shoe Dog" data-author="Phil Knight" data-description="A memoir about the messy early years of Nike, from a small shoe-import business to a global brand." data-takeaway="Big things often begin as uncertain experiments. Keep going, learn from the setbacks, and build with people who believe in the mission." aria-expanded="false"><span class="book-number">01</span><strong>Shoe Dog</strong><small>Phil Knight</small></button>
+<button class="library-book book-blue" type="button" data-title="Build, Don’t Talk" data-author="Raj Shamani" data-description="A practical guide to skills school may not teach, including communication, networking, negotiation, selling and personal finance." data-takeaway="Ideas matter, but action is what turns them into something real. Learn useful skills and practise them." aria-expanded="false"><span class="book-number">02</span><strong>Build, Don’t Talk</strong><small>Raj Shamani</small></button>
+<button class="library-book book-sage" type="button" data-title="The Diary of a CEO" data-author="Steven Bartlett" data-description="A collection of principles about people, business, psychology and personal growth, drawn from the author’s experiences and conversations." data-takeaway="Success is not just about working harder. Understand people, question your assumptions and build strong habits." aria-expanded="false"><span class="book-number">03</span><strong>The Diary of a CEO</strong><small>Steven Bartlett</small></button>
+<button class="library-book book-lilac" type="button" data-title="The Pursuit of Happyness" data-author="Chris Gardner with Quincy Troupe" data-description="Chris Gardner’s memoir follows his struggle through homelessness while he works towards a better future for himself and his son." data-takeaway="Your circumstances can be difficult without getting the final say in your future. Persistence matters, especially when progress is slow." aria-expanded="false"><span class="book-number">04</span><strong>The Pursuit of Happyness</strong><small>Chris Gardner with Quincy Troupe</small></button>
+<button class="library-book book-gold" type="button" data-title="The Alchemist" data-author="Paulo Coelho" data-description="A philosophical novel about Santiago, a young shepherd who travels in search of treasure and discovers what it means to follow a dream." data-takeaway="Pay attention to what matters to you, stay open to unexpected lessons, and have the courage to pursue a meaningful path." aria-expanded="false"><span class="book-number">05</span><strong>The Alchemist</strong><small>Paulo Coelho</small></button>
+<button class="library-book book-teal" type="button" data-title="Mindset" data-author="Carol S. Dweck" data-description="A look at how a fixed mindset and a growth mindset shape the way people approach learning, challenges and failure." data-takeaway="Ability grows with effort, feedback and practice. Being bad at something today does not mean you cannot improve." aria-expanded="false"><span class="book-number">06</span><strong>Mindset</strong><small>Carol S. Dweck</small></button>
+<button class="library-book book-coral" type="button" data-title="Diary of a Wimpy Kid (series)" data-author="Jeff Kinney" data-description="A funny illustrated series told through Greg Heffley’s diary. The shelf’s favourite is Rodrick Rules, with its wonderfully chaotic sibling dynamics." data-takeaway="Humour makes ordinary life memorable. You do not need a grand adventure to find a story worth telling." aria-expanded="false"><span class="book-number">07</span><strong>Diary of a Wimpy Kid (series)</strong><small>Jeff Kinney</small></button>
+<button class="library-book book-blue" type="button" data-title="Zero to One" data-author="Peter Thiel with Blake Masters" data-description="A book about building companies that create something genuinely new, rather than simply copying what already exists." data-takeaway="Look for problems worth solving and think independently. Progress comes from creating something different, not just doing more of the same." aria-expanded="false"><span class="book-number">08</span><strong>Zero to One</strong><small>Peter Thiel with Blake Masters</small></button>
+<button class="library-book book-sage" type="button" data-title="The Psychology of Money" data-author="Morgan Housel" data-description="Short stories and observations about how emotions, behaviour and personal experiences shape financial decisions." data-takeaway="Money is as much about behaviour as knowledge. Patience, humility and knowing what is enough can matter more than clever calculations." aria-expanded="false"><span class="book-number">09</span><strong>The Psychology of Money</strong><small>Morgan Housel</small></button>
+<button class="library-book book-lilac" type="button" data-title="The Art of Spending Money" data-author="Morgan Housel" data-description="A reflection on how to use money in ways that support a meaningful life, rather than treating spending as a scorecard." data-takeaway="The point of money is not to impress people. Spend in ways that genuinely improve your life and protect your peace." aria-expanded="false"><span class="book-number">10</span><strong>The Art of Spending Money</strong><small>Morgan Housel</small></button>
+<button class="library-book book-gold" type="button" data-title="As Long as the Lemon Trees Grow" data-author="Zoulfa Katouh" data-description="A young adult novel set during the Syrian revolution, following Salama as she faces fear, loss, duty and the question of whether to leave home." data-takeaway="It is a reminder to look beyond headlines and numbers, and to recognise the humanity, courage and hope of people living through conflict." aria-expanded="false"><span class="book-number">11</span><strong>As Long as the Lemon Trees Grow</strong><small>Zoulfa Katouh</small></button>
+<button class="library-book book-teal" type="button" data-title="Tuesdays with Morrie" data-author="Mitch Albom" data-description="A memoir about the conversations the author shares with his former professor Morrie Schwartz about love, work, family, ageing and death." data-takeaway="A meaningful life is built around people and values, not just achievements. Make time for the things that matter while you can." aria-expanded="false"><span class="book-number">12</span><strong>Tuesdays with Morrie</strong><small>Mitch Albom</small></button>
+<button class="library-book book-coral" type="button" data-title="The Kite Runner" data-author="Khaled Hosseini" data-description="A novel spanning friendship, betrayal, guilt and redemption, set against the changing history of Afghanistan." data-takeaway="Our choices can stay with us for years. Taking responsibility and trying to make things right are important parts of growing up." aria-expanded="false"><span class="book-number">13</span><strong>The Kite Runner</strong><small>Khaled Hosseini</small></button>
+<button class="library-book book-blue" type="button" data-title="Do Epic Shit" data-author="Ankur Warikoo" data-description="A collection of reflections and practical lessons on career, money, relationships, habits and self-awareness." data-takeaway="Be honest with yourself, take ownership of your choices and stop waiting for the perfect moment to begin." aria-expanded="false"><span class="book-number">14</span><strong>Do Epic Shit</strong><small>Ankur Warikoo</small></button>
+<button class="library-book book-sage" type="button" data-title="Get Epic Shit Done" data-author="Ankur Warikoo" data-description="A practical companion focused on turning intentions into action through better decisions, habits and everyday execution." data-takeaway="Break big goals into small actions. Consistency is less glamorous than motivation, but it gets the work done." aria-expanded="false"><span class="book-number">15</span><strong>Get Epic Shit Done</strong><small>Ankur Warikoo</small></button>
+<button class="library-book book-lilac" type="button" data-title="The 5 AM Club" data-author="Robin Sharma" data-description="A personal-development fable built around a morning routine and the idea of protecting time for movement, reflection and learning." data-takeaway="A deliberate start can shape the rest of the day. Build routines that support your goals instead of relying only on motivation." aria-expanded="false"><span class="book-number">16</span><strong>The 5 AM Club</strong><small>Robin Sharma</small></button>
+<button class="library-book book-gold" type="button" data-title="The Monk Who Sold His Ferrari" data-author="Robin Sharma" data-description="A fable about a successful lawyer who rethinks his life and explores purpose, balance, discipline and inner peace." data-takeaway="Success feels empty if you lose yourself along the way. Make room for health, purpose and relationships too." aria-expanded="false"><span class="book-number">17</span><strong>The Monk Who Sold His Ferrari</strong><small>Robin Sharma</small></button>
+<button class="library-book book-teal" type="button" data-title="11 Rules for Life" data-author="Chetan Bhagat" data-description="A practical self-help book offering advice and principles for navigating personal and professional life." data-takeaway="Take responsibility for your direction. Question advice, make thoughtful choices and keep improving instead of waiting for life to happen." aria-expanded="false"><span class="book-number">18</span><strong>11 Rules for Life</strong><small>Chetan Bhagat</small></button>
+<button class="library-book book-coral" type="button" data-title="8 Rules of Love" data-author="Jay Shetty" data-description="A guide to love and relationships that explores self-awareness, compatibility, healing and building meaningful connections." data-takeaway="Healthy love begins with understanding yourself. Communication, shared values and growth matter more than simply chasing a feeling." aria-expanded="false"><span class="book-number">19</span><strong>8 Rules of Love</strong><small>Jay Shetty</small></button>
+<button class="library-book book-blue" type="button" data-title="Think Like a Monk" data-author="Jay Shetty" data-description="A guide to applying lessons from monastic life to everyday challenges, with a focus on purpose, focus, service and managing the mind." data-takeaway="Protect your attention, be intentional about what you let shape you, and measure a good life by more than external success." aria-expanded="false"><span class="book-number">20</span><strong>Think Like a Monk</strong><small>Jay Shetty</small></button></div>
       <div class="shelf-plank"><span></span></div>
     </div>
   </section>
-  <p class="library-footnote">The titles are placeholders for now. The real collection will find its place here soon. <span>♡</span></p>
+  <section class="book-note" id="book-note" aria-live="polite" aria-atomic="true">
+    <div class="book-note-label">A little note from the pages</div>
+    <h2 id="note-title">Choose a book from the shelf</h2>
+    <p class="note-author" id="note-author">The author’s name will appear here.</p>
+    <p id="note-description">Each book has a story of its own. Tap one to read a little about it.</p>
+    <div class="takeaway-wrap"><span>What I’m taking with me</span><p id="note-takeaway">A small thought to carry beyond the last page.</p></div>
+    <span class="note-heart" aria-hidden="true">♡</span>
+  </section>
+  <p class="library-footnote">My shelf is still growing. There’s always room for one more story. <span>♡</span></p>
 </article>
 
 <style>
-  .library-page{max-width:980px;position:relative;overflow:hidden}
-  .library-intro{max-width:690px}
+  .library-page{max-width:1040px;position:relative;overflow:hidden}
+  .library-intro{max-width:740px}
   .library-decor{position:absolute;right:8%;top:7%;display:flex;gap:20px;color:#d49b83;font:2rem var(--caveat);transform:rotate(8deg)}
   .library-decor span:nth-child(2){color:#9b88b7;transform:translateY(20px) rotate(-15deg)}
   .library-decor span:nth-child(3){font-size:4rem;color:#d9b96e}
-  .library-room{margin:36px 0 22px;padding:28px 22px 10px;border:2px solid #eadcc9;border-radius:18px;background:linear-gradient(145deg,#f5e8d8,#fff8ed 48%,#f1e3d3);box-shadow:inset 0 0 35px rgba(137,103,77,.08),7px 9px 0 rgba(201,183,232,.22);perspective:1200px}
+  .library-room{margin:36px 0 24px;padding:28px 22px 10px;border:2px solid #eadcc9;border-radius:18px;background:linear-gradient(145deg,#f5e8d8,#fff8ed 48%,#f1e3d3);box-shadow:inset 0 0 35px rgba(137,103,77,.08),7px 9px 0 rgba(201,183,232,.22);perspective:1200px}
   .library-shelf{position:relative;padding:8px 13px 0;background:linear-gradient(90deg,rgba(132,91,69,.08),transparent 12%,transparent 88%,rgba(132,91,69,.08))}
-  .shelf-row{min-height:190px;display:flex;align-items:flex-end;justify-content:center;gap:clamp(5px,1.5vw,16px);padding:12px 4px 0;transform-style:preserve-3d}
-  .library-book{--book:#c87869;position:relative;isolation:isolate;flex:1 1 0;max-width:112px;min-width:0;height:clamp(125px,17vw,174px);padding:13px 8px 11px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;color:#fff9ed;border-radius:5px 9px 2px 2px;background:linear-gradient(90deg,rgba(50,35,35,.28),rgba(255,255,255,.14) 12%,transparent 28%,rgba(40,30,30,.12) 100%),var(--book);box-shadow:inset 4px 0 5px rgba(255,255,255,.18),inset -4px 0 5px rgba(55,35,30,.13),5px 7px 10px rgba(64,59,80,.17);transform:rotateY(-5deg) translateZ(0);transform-origin:bottom center;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s;cursor:default}
+  .shelf-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:end;gap:15px 13px;padding:12px 4px 0}
+  .library-book{--book:#c87869;position:relative;isolation:isolate;width:100%;min-width:0;height:clamp(155px,18vw,190px);padding:13px 8px 11px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;color:#fff9ed;border:0;border-radius:5px 9px 2px 2px;background:linear-gradient(90deg,rgba(50,35,35,.28),rgba(255,255,255,.14) 12%,transparent 28%,rgba(40,30,30,.12) 100%),var(--book);box-shadow:inset 4px 0 5px rgba(255,255,255,.18),inset -4px 0 5px rgba(55,35,30,.13),5px 7px 10px rgba(64,59,80,.17);transform:rotateY(-5deg);transform-origin:bottom center;transition:transform .35s ease,box-shadow .35s;cursor:pointer}
   .library-book:before{content:"";position:absolute;inset:7px 6px;border:1px solid rgba(255,249,237,.38);border-radius:3px;pointer-events:none}
   .library-book:after{content:"";position:absolute;left:8px;top:0;bottom:0;width:1px;background:rgba(255,255,255,.25);box-shadow:2px 0 3px rgba(40,20,20,.1)}
-  .library-book strong{font:700 clamp(1.05rem,2vw,1.45rem)/.92 var(--caveat);max-width:100%;overflow-wrap:anywhere;position:relative;z-index:1}
-  .library-book small{font:1rem/1 var(--hand);opacity:.88;position:relative;z-index:1}
+  .library-book strong{font:700 clamp(1.15rem,1.65vw,1.55rem)/.98 var(--caveat);max-width:100%;overflow-wrap:anywhere;position:relative;z-index:1}
+  .library-book small{font:1rem/1 var(--hand);opacity:.9;position:relative;z-index:1}
   .book-number{font:600 1rem var(--caveat);opacity:.85;align-self:flex-start;position:relative;z-index:1}
-  .library-book:hover{transform:translateY(-13px) rotateY(-14deg) rotateX(4deg) scale(1.035);box-shadow:inset 4px 0 5px rgba(255,255,255,.18),inset -4px 0 5px rgba(55,35,30,.13),12px 17px 17px rgba(64,59,80,.2);z-index:3}
-  .book-coral{--book:#c87569;height:clamp(133px,18vw,181px)}.book-blue{--book:#687f9f;height:clamp(145px,19vw,190px)}.book-sage{--book:#78947a;height:clamp(128px,16vw,166px)}.book-lilac{--book:#9b80ad;height:clamp(151px,20vw,198px)}.book-gold{--book:#b58d4d;height:clamp(137px,18vw,178px)}.book-teal{--book:#56858a;height:clamp(147px,19vw,190px)}
+  .library-book:hover,.library-book:focus-visible{transform:translateY(-10px) rotateY(-12deg) rotateX(3deg);box-shadow:inset 4px 0 5px rgba(255,255,255,.18),inset -4px 0 5px rgba(55,35,30,.13),10px 14px 16px rgba(64,59,80,.2);z-index:3;outline:3px solid #f5d77e;outline-offset:3px}
+  .library-book[aria-expanded="true"]{transform:translateY(-9px) rotateY(-10deg);outline:3px solid #f5d77e;outline-offset:3px}
+  .book-coral{--book:#c87569}.book-blue{--book:#687f9f}.book-sage{--book:#78947a}.book-lilac{--book:#9b80ad}.book-gold{--book:#b58d4d}.book-teal{--book:#56858a}
   .shelf-plank{height:17px;position:relative;margin:0 -7px;background:linear-gradient(180deg,#d4a982 0%,#bd8d68 35%,#9f7054 100%);border-radius:3px 3px 7px 7px;box-shadow:0 7px 9px rgba(92,63,47,.2),inset 0 2px 2px rgba(255,255,255,.42),inset 0 -3px 3px rgba(84,51,37,.18);z-index:4}
   .shelf-plank span{position:absolute;left:2%;right:2%;top:4px;height:1px;background:rgba(255,244,222,.4)}
-  .second-row{padding-top:15px}
+  .book-note{position:relative;margin:38px auto 22px;max-width:760px;padding:28px 34px;background:#fffdf6;border:2px solid #e9dcca;border-radius:7px 20px 12px 18px;box-shadow:7px 8px 0 rgba(201,183,232,.32);min-height:210px;scroll-margin-top:100px;animation:note-arrive .35s ease both}
+  .book-note:before{content:"";position:absolute;left:22px;top:0;bottom:0;border-left:2px dashed rgba(239,142,120,.28)}
+  .book-note-label{font:600 1.2rem var(--sketch);color:var(--coral-dark)}
+  .book-note h2{font:400 clamp(2rem,4vw,3rem)/1.05 var(--sketch);margin:10px 0 3px}
+  .note-author{font:600 1.25rem var(--caveat);color:#8a779e;margin:0 0 15px}
+  .book-note>p:not(.note-author),.takeaway-wrap p{font-size:1.12rem;line-height:1.55}
+  .takeaway-wrap{margin-top:18px;padding:14px 17px;background:#f8f0e5;border-left:4px solid #e2bd73;border-radius:4px 12px 12px 4px}
+  .takeaway-wrap>span{font:600 1.2rem var(--sketch);color:#92713f}
+  .takeaway-wrap p{margin:5px 0 0}
+  .note-heart{position:absolute;right:24px;top:17px;color:#d58a80;font:2rem var(--caveat)}
   .library-footnote{text-align:center;font:1.45rem var(--caveat);color:#887a8f;margin:28px 0 0}
   .library-footnote span{color:#cf8176;font-size:1.7rem}
-  @media(max-width:680px){.library-decor{top:4%;right:7%;gap:10px;font-size:1.5rem}.library-decor span:nth-child(3){font-size:2.8rem}.library-room{margin:26px -5px 18px;padding:18px 8px 8px}.library-shelf{padding:5px 3px 0}.shelf-row{min-height:145px;gap:4px;padding:8px 1px 0}.library-book{height:clamp(105px,29vw,145px);padding:9px 3px 8px;border-radius:4px 6px 2px 2px}.library-book strong{font-size:clamp(.88rem,3.3vw,1.15rem)}.library-book small{font-size:.78rem}.book-number{font-size:.82rem}.book-coral{height:clamp(110px,30vw,150px)}.book-blue{height:clamp(120px,33vw,160px)}.book-sage{height:clamp(104px,28vw,140px)}.book-lilac{height:clamp(124px,34vw,165px)}.book-gold{height:clamp(113px,31vw,151px)}.book-teal{height:clamp(120px,33vw,160px)}.shelf-plank{height:13px;margin:0 -3px}.second-row{padding-top:12px}}
-  @media(max-width:390px){.library-room{padding-left:5px;padding-right:5px}.shelf-row{gap:3px}.library-book{padding-left:2px;padding-right:2px}.library-book strong{font-size:.83rem}.library-book small{font-size:.7rem}}
-  @media(prefers-reduced-motion:reduce){.library-book{transition:none}}
+  @keyframes note-arrive{from{opacity:0;transform:translateY(12px) rotateX(3deg)}to{opacity:1;transform:translateY(0) rotateX(0)}}
+  @media(max-width:760px){.library-decor{top:4%;right:7%;gap:10px;font-size:1.5rem}.library-decor span:nth-child(3){font-size:2.8rem}.library-room{margin:26px -5px 18px;padding:18px 8px 8px}.library-shelf{padding:5px 3px 0}.shelf-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 8px;padding:8px 1px 0}.library-book{height:clamp(135px,33vw,165px);padding:10px 5px 9px}.library-book strong{font-size:clamp(1rem,3.7vw,1.35rem)}.library-book small{font-size:.86rem}.book-number{font-size:.85rem}.shelf-plank{height:13px;margin:0 -3px}.book-note{margin:28px 0 18px;padding:24px 24px 24px 35px}}
+  @media(max-width:390px){.shelf-row{gap:9px 6px}.library-book{height:128px;padding:8px 3px}.library-book strong{font-size:.95rem}.library-book small{font-size:.75rem}.book-note{padding-right:18px}}
+  @media(prefers-reduced-motion:reduce){.library-book,.book-note{transition:none;animation:none}}
 </style>
+<script>
+  (() => {
+    const shelf=document.querySelector('.library-shelf');
+    const note=document.getElementById('book-note');
+    if(!shelf||!note)return;
+    const title=document.getElementById('note-title');
+    const author=document.getElementById('note-author');
+    const description=document.getElementById('note-description');
+    const takeaway=document.getElementById('note-takeaway');
+    shelf.addEventListener('click',event=>{
+      const book=event.target.closest('.library-book');
+      if(!book)return;
+      shelf.querySelectorAll('.library-book').forEach(item=>item.setAttribute('aria-expanded',String(item===book)));
+      title.textContent=book.dataset.title;
+      author.textContent='By '+book.dataset.author;
+      description.textContent=book.dataset.description;
+      takeaway.textContent=book.dataset.takeaway;
+      note.classList.remove('note-refresh');
+      void note.offsetWidth;
+      note.classList.add('note-refresh');
+      if(window.matchMedia('(max-width:760px)').matches)note.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+    });
+  })();
+</script>
