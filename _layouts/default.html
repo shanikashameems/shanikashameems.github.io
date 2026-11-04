@@ -628,12 +628,14 @@
     document.body.appendChild(pencil);
     const bookDialog=document.getElementById('book-dialog');
     if(bookDialog){
-      bookDialog.addEventListener('beforetoggle',event=>{
-        if(event.newState==='open' && pencil.parentElement!==bookDialog)bookDialog.appendChild(pencil);
+      const cursorLayerObserver=new MutationObserver(()=>{
+        if(bookDialog.open){
+          if(pencil.parentElement!==bookDialog)bookDialog.appendChild(pencil);
+        }else if(pencil.parentElement!==document.body){
+          document.body.appendChild(pencil);
+        }
       });
-      bookDialog.addEventListener('close',()=>{
-        if(pencil.parentElement!==document.body)document.body.appendChild(pencil);
-      });
+      cursorLayerObserver.observe(bookDialog,{attributes:true,attributeFilter:['open']});
     }
     window.addEventListener('pointermove',e=>{pencil.style.left=e.clientX+'px';pencil.style.top=e.clientY+'px';},{passive:true});
     document.querySelectorAll('a,button,input,textarea,[role="button"]').forEach(el=>{
