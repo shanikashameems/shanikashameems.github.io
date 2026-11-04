@@ -88,13 +88,13 @@ title: Books
   /* Narrow book spines, like the view of books standing in a real library. */
   .library-room{padding:24px 18px 30px;background:linear-gradient(135deg,#f2e3d1,#fff8ed 48%,#ead7c3);border-color:#d8bea2;box-shadow:inset 0 0 30px rgba(100,65,42,.12),7px 9px 0 rgba(201,183,232,.2)}
   .library-shelf{padding:0 6px;background:linear-gradient(90deg,rgba(100,65,42,.12),transparent 10%,transparent 90%,rgba(100,65,42,.12))}
-  .shelf-row{display:flex;flex-wrap:nowrap;align-items:flex-end;justify-content:center;gap:8px;padding:20px 2px 0}
-  .library-book{flex:0 1 68px;width:68px;max-width:68px;min-width:0;height:clamp(148px,17vw,188px);padding:9px 3px 8px;border-radius:2px 5px 1px 1px;background:linear-gradient(90deg,rgba(35,24,20,.28),rgba(255,255,255,.13) 18%,transparent 43%,rgba(35,24,20,.15) 100%),var(--book);box-shadow:inset 3px 0 4px rgba(255,255,255,.2),inset -3px 0 4px rgba(35,25,20,.2),3px 4px 6px rgba(55,40,30,.2);transform:rotate(var(--spine-tilt,0deg));}
-  .library-book:nth-child(3n){height:clamp(160px,18vw,198px)}
-  .library-book:nth-child(4n){height:clamp(138px,16vw,176px)}
+  .shelf-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:end;justify-items:center;gap:10px;padding:20px 6px 0}
+  .library-book{width:100%;max-width:112px;min-width:0;height:clamp(160px,17vw,190px);padding:9px 5px 8px;border-radius:2px 5px 1px 1px;background:linear-gradient(90deg,rgba(35,24,20,.28),rgba(255,255,255,.13) 18%,transparent 43%,rgba(35,30,20,.15) 100%),var(--book);box-shadow:inset 3px 0 4px rgba(255,255,255,.2),inset -3px 0 4px rgba(35,25,20,.2),3px 4px 6px rgba(55,40,30,.2);transform:rotate(var(--spine-tilt,0deg))}
+  .library-book:nth-child(3n){height:clamp(170px,18vw,200px)}
+  .library-book:nth-child(4n){height:clamp(150px,16vw,180px)}
   .library-book:before{inset:7px 5px;border:0;border-top:1px solid rgba(255,249,237,.35);border-bottom:1px solid rgba(255,249,237,.35);border-radius:0}
   .library-book:after{left:7px;width:1px}
-  .library-book strong{font:700 clamp(.95rem,1.25vw,1.2rem)/1 var(--caveat);writing-mode:vertical-rl;transform:rotate(180deg);max-height:75%;display:flex;align-items:center;justify-content:center;overflow:hidden;overflow-wrap:normal;white-space:nowrap}
+  .library-book strong{font:700 clamp(1rem,1.35vw,1.25rem)/1.08 var(--caveat);writing-mode:vertical-rl;transform:rotate(180deg);height:calc(100% - 34px);max-height:none;display:flex;align-items:center;justify-content:center;overflow:visible;overflow-wrap:anywhere;white-space:normal;text-align:center}
   .library-book small{display:none}
   .book-number{font-size:.78rem;align-self:center}
   .library-book:hover,.library-book:focus-visible{transform:translateY(-9px) rotate(-1deg);box-shadow:inset 3px 0 4px rgba(255,255,255,.2),inset -3px 0 4px rgba(35,25,20,.2),8px 12px 14px rgba(55,40,30,.22);z-index:3}
@@ -104,12 +104,12 @@ title: Books
   .book-dialog::backdrop{background:rgba(43,37,48,.48);backdrop-filter:blur(4px)}
   .book-dialog[open]{animation:dialog-fade .22s ease both}
   .book-dialog .book-note{margin:0;max-width:none;max-height:min(85vh,760px);overflow:auto;padding:38px 42px 32px;box-shadow:10px 12px 0 rgba(201,183,232,.35),0 20px 70px rgba(25,20,30,.22)}
-  .book-dialog .pencil-cursor{position:fixed;z-index:99999;pointer-events:none}
+  .book-dialog .pencil-cursor{position:fixed;z-index:2147483647;pointer-events:none;opacity:1}
   .book-dialog-close{position:absolute;z-index:3;right:12px;top:10px;width:38px;height:38px;border:1px solid #e8d9c9;border-radius:50%;background:#fffaf0;color:#715c65;font:1.8rem/1 var(--hand);cursor:pointer;transition:transform .2s,background .2s}
   .book-dialog-close:hover{transform:rotate(90deg);background:#f8e6dc}
   @keyframes dialog-fade{from{opacity:0}to{opacity:1}}
-  @media(max-width:760px){.library-room{padding:16px 8px 20px}.shelf-row{gap:6px;padding:16px 0 0}.library-book{flex-basis:48px;width:48px;max-width:48px;height:clamp(126px,31vw,156px)}.library-book:nth-child(3n){height:clamp(136px,33vw,166px)}.library-book:nth-child(4n){height:clamp(118px,29vw,148px)}.library-book strong{font-size:clamp(.82rem,3vw,1rem)}.book-number{font-size:.68rem}.shelf-plank{height:14px}.book-dialog .book-note{padding:34px 25px 25px 36px}.book-dialog-close{right:8px;top:7px}}
-  @media(max-width:390px){.shelf-row{gap:4px}.library-book{flex-basis:43px;width:43px;max-width:43px;padding:7px 2px}.library-book strong{font-size:.78rem}.book-dialog .book-note{padding-right:18px}}
+  @media(max-width:760px){.library-room{padding:16px 8px 20px}.shelf-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:16px 2px 0}.library-book{max-width:82px;height:clamp(138px,31vw,160px);padding:8px 4px}.library-book:nth-child(3n){height:clamp(146px,33vw,170px)}.library-book:nth-child(4n){height:clamp(130px,29vw,154px)}.library-book strong{font-size:clamp(.95rem,3.5vw,1.12rem)}.book-number{font-size:.68rem}.shelf-plank{height:14px}.book-dialog .book-note{padding:34px 25px 25px 36px}.book-dialog-close{right:8px;top:7px}}
+  @media(max-width:390px){.shelf-row{gap:6px}.library-book{padding:7px 3px}.library-book strong{font-size:.88rem}.book-dialog .book-note{padding-right:18px}}
   @media(prefers-reduced-motion:reduce){.book-dialog[open]{animation:none}.book-dialog-close{transition:none}}
 </style>
 <script>
@@ -130,10 +130,10 @@ title: Books
     // Arrange the books in separate rows, each resting on its own wooden plank.
     const books=[...shelf.querySelectorAll('.library-book')];
     shelf.innerHTML='';
-    for(let i=0;i<books.length;i+=8){
+    for(let i=0;i<books.length;i+=5){
       const row=document.createElement('div');
       row.className='shelf-row';
-      books.slice(i,i+8).forEach(book=>row.appendChild(book));
+      books.slice(i,i+5).forEach(book=>row.appendChild(book));
       shelf.appendChild(row);
       const plank=document.createElement('div');
       plank.className='shelf-plank';
