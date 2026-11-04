@@ -626,6 +626,15 @@
     pencil.setAttribute('aria-hidden','true');
     pencil.innerHTML='<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path class="pencil-body" d="M10 27 26 5q2-3 5 0l3 2q3 2 1 5L19 34l-9 2z"/><path class="pencil-tip" d="m10 27 9 7-9 2z"/><path class="pencil-line" d="m26 8 7 5M23 12l7 5M10 27l9 7"/></svg>';
     document.body.appendChild(pencil);
+    const bookDialog=document.getElementById('book-dialog');
+    if(bookDialog){
+      bookDialog.addEventListener('beforetoggle',event=>{
+        if(event.newState==='open' && pencil.parentElement!==bookDialog)bookDialog.appendChild(pencil);
+      });
+      bookDialog.addEventListener('close',()=>{
+        if(pencil.parentElement!==document.body)document.body.appendChild(pencil);
+      });
+    }
     window.addEventListener('pointermove',e=>{pencil.style.left=e.clientX+'px';pencil.style.top=e.clientY+'px';},{passive:true});
     document.querySelectorAll('a,button,input,textarea,[role="button"]').forEach(el=>{
       el.addEventListener('pointerenter',()=>document.body.classList.add('cursor-hover'));
