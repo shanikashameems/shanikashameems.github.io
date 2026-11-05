@@ -147,6 +147,42 @@ title: Books
   @media(max-width:760px){.library-room{padding:16px 8px 20px}.shelf-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:16px 2px 0}.library-book{max-width:82px;height:clamp(138px,31vw,160px);padding:8px 4px}.library-book:nth-child(3n){height:clamp(146px,33vw,170px)}.library-book:nth-child(4n){height:clamp(130px,29vw,154px)}.library-book strong{font-size:clamp(.78rem,2.8vw,.9rem);line-height:1.05}.book-number{font-size:.68rem}.shelf-plank{height:14px}.book-dialog .book-note{padding:34px 25px 25px 36px}.book-dialog-close{right:8px;top:7px}}
   @media(max-width:390px){.shelf-row{gap:6px}.library-book{padding:7px 3px}.library-book strong{font-size:.74rem;line-height:1.02}.book-dialog .book-note{padding-right:18px}}
   @media(prefers-reduced-motion:reduce){.book-dialog[open]{animation:none}.book-dialog-close{transition:none}}
+
+  /* Final shelf overrides: keep the illustrated reference styling above older rules. */
+  .library-room{padding:22px 16px 26px!important;background:#123d3b!important;border:8px solid #8a5b3e!important;border-radius:5px!important;box-shadow:inset 0 0 0 2px rgba(255,231,190,.18),7px 9px 0 rgba(201,183,232,.2)!important}
+  .library-shelf{padding:0 4px!important;background:none!important}
+  .shelf-row{display:flex!important;grid-template-columns:none!important;align-items:flex-end!important;justify-content:center!important;gap:7px!important;min-height:190px!important;padding:12px 2px 0!important}
+  .library-book{flex:0 1 13%!important;width:auto!important;max-width:132px!important;min-width:0!important;height:clamp(125px,15vw,178px)!important;padding:9px 7px 8px!important;border-radius:2px 3px 0 0!important;transform:rotate(var(--spine-tilt,0deg));background:linear-gradient(90deg,rgba(25,20,18,.28),rgba(255,255,255,.18) 13%,transparent 35%,rgba(25,20,18,.13) 100%),var(--book)!important;box-shadow:inset 3px 0 4px rgba(255,255,255,.2),inset -3px 0 4px rgba(25,20,18,.18),2px 1px 3px rgba(0,0,0,.22)!important}
+  .library-book:nth-child(3n){height:clamp(145px,17vw,194px)!important}
+  .library-book:nth-child(4n){height:clamp(115px,13vw,155px)!important}
+  .library-book:nth-child(5n){flex:0 1 15%!important;height:58px!important;max-width:145px!important;flex-direction:row!important;gap:7px!important;padding:7px 10px!important;border-radius:3px!important;align-items:center!important;justify-content:flex-start!important;background:linear-gradient(180deg,rgba(255,255,255,.18),transparent 35%,rgba(25,20,18,.16)),var(--book)!important;box-shadow:inset 0 3px 4px rgba(255,255,255,.2),inset 0 -3px 4px rgba(25,20,18,.16),2px 3px 4px rgba(0,0,0,.2)!important}
+  .library-book:before{inset:7px 5px!important;border:0!important;border-top:1px solid rgba(255,249,237,.42)!important;border-bottom:1px solid rgba(255,249,237,.42)!important;border-radius:0!important}
+  .library-book strong{font:700 clamp(.78rem,1vw,.98rem)/1.08 var(--hand)!important;width:100%!important;height:calc(100% - 22px)!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;overflow-wrap:anywhere!important;white-space:normal!important;word-break:normal!important;hyphens:auto!important;color:#fff8e9!important;text-shadow:0 1px 2px rgba(0,0,0,.25)!important}
+  .library-book:nth-child(5n) strong{height:auto!important;display:block!important;text-align:left!important;font-size:.85rem!important;line-height:1.05!important}
+  .library-book small{display:none!important}
+  .book-number{font-size:.72rem!important;align-self:center!important}
+  .shelf-plank{height:15px!important;margin:0 -4px!important;background:linear-gradient(180deg,#b8794e,#875638 55%,#68412f)!important;border-radius:1px 1px 5px 5px!important;box-shadow:0 5px 7px rgba(0,0,0,.28),inset 0 2px 2px rgba(255,230,194,.35)!important}
+  @media(max-width:760px){
+    .library-room{padding:14px 7px 18px!important;border-width:6px!important}
+    .shelf-row{gap:5px!important;min-height:155px!important;padding-top:10px!important}
+    .library-book{flex-basis:13%!important;height:clamp(105px,25vw,145px)!important;padding:6px 3px!important}
+    .library-book:nth-child(3n){height:clamp(120px,28vw,158px)!important}
+    .library-book:nth-child(4n){height:clamp(95px,22vw,130px)!important}
+    .library-book strong{font-size:clamp(.65rem,2.1vw,.82rem)!important}
+    .library-book:nth-child(5n){flex-basis:16%!important;height:48px!important;padding:5px!important}
+    .library-book:nth-child(5n) strong{font-size:.68rem!important}
+    .book-number{font-size:.6rem!important}
+  }
+  @media(max-width:430px){
+    .shelf-row{gap:3px!important;min-height:130px!important}
+    .library-book{flex-basis:13.5%!important;height:108px!important}
+    .library-book:nth-child(3n){height:120px!important}
+    .library-book:nth-child(4n){height:94px!important}
+    .library-book strong{font-size:.58rem!important}
+    .library-book:nth-child(5n){flex-basis:17%!important;height:43px!important}
+    .library-book:nth-child(5n) strong{font-size:.58rem!important}
+  }
+
 </style>
 <script>
   (() => {
