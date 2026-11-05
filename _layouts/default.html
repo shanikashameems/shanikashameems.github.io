@@ -669,7 +669,8 @@
       book.addEventListener('pointerleave',()=>{book.style.removeProperty('transform');book.style.removeProperty('--book-tilt-x');book.style.removeProperty('--book-tilt-y');});
     });
   }
-\n  // Short, soft page-turn transition for internal navigation.
+
+  // Short, soft page-turn transition for internal navigation.
   document.addEventListener('click',event=>{
     const link=event.target.closest('a[href]');
     if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.target||link.hasAttribute('download'))return;
