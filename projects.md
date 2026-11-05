@@ -85,6 +85,42 @@ title: Books
   @media(max-width:390px){.shelf-row{gap:9px 6px}.library-book{height:128px;padding:8px 3px}.library-book strong{font-size:.95rem}.library-book small{font-size:.75rem}.book-note{padding-right:18px}}
   @media(prefers-reduced-motion:reduce){.library-book,.book-note{transition:none;animation:none}}
 
+  /* Three illustrated shelves, following the supplied reference image. */
+  .library-room{padding:22px 16px 26px;background:#123d3b;border:8px solid #8a5b3e;border-radius:5px;box-shadow:inset 0 0 0 2px rgba(255,231,190,.18),7px 9px 0 rgba(201,183,232,.2)}
+  .library-shelf{padding:0 4px;background:none}
+  .shelf-row{display:flex;align-items:flex-end;justify-content:center;gap:7px;min-height:190px;padding:12px 2px 0}
+  .library-book{flex:0 1 13%;width:auto;max-width:132px;min-width:0;height:clamp(125px,15vw,178px);padding:9px 7px 8px;border-radius:2px 3px 0 0;transform:rotate(var(--spine-tilt,0deg));background:linear-gradient(90deg,rgba(25,20,18,.28),rgba(255,255,255,.18) 13%,transparent 35%,rgba(25,20,18,.13) 100%),var(--book);box-shadow:inset 3px 0 4px rgba(255,255,255,.2),inset -3px 0 4px rgba(25,20,18,.18),2px 1px 3px rgba(0,0,0,.22)}
+  .library-book:nth-child(3n){height:clamp(145px,17vw,194px)}
+  .library-book:nth-child(4n){height:clamp(115px,13vw,155px)}
+  .library-book:nth-child(5n){flex:0 1 15%;height:58px;max-width:145px;flex-direction:row;gap:7px;padding:7px 10px;border-radius:3px;align-items:center;justify-content:flex-start;background:linear-gradient(180deg,rgba(255,255,255,.18),transparent 35%,rgba(25,20,18,.16)),var(--book);box-shadow:inset 0 3px 4px rgba(255,255,255,.2),inset 0 -3px 4px rgba(25,20,18,.16),2px 3px 4px rgba(0,0,0,.2)}
+  .library-book:nth-child(5n) strong{height:auto;display:block;text-align:left;font-size:.85rem;line-height:1.05}
+  .library-book:before{inset:7px 5px;border:0;border-top:1px solid rgba(255,249,237,.42);border-bottom:1px solid rgba(255,249,237,.42);border-radius:0}
+  .library-book strong{font:700 clamp(.78rem,1vw,.98rem)/1.08 var(--hand);width:100%;height:calc(100% - 22px);display:flex;align-items:center;justify-content:center;text-align:center;overflow-wrap:anywhere;white-space:normal;word-break:normal;hyphens:auto;color:#fff8e9;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+  .library-book small{display:none}
+  .book-number{font-size:.72rem;align-self:center}
+  .shelf-plank{height:15px;margin:0 -4px;background:linear-gradient(180deg,#b8794e,#875638 55%,#68412f);border-radius:1px 1px 5px 5px;box-shadow:0 5px 7px rgba(0,0,0,.28),inset 0 2px 2px rgba(255,230,194,.35)}
+  .library-book:hover,.library-book:focus-visible{transform:translateY(-8px) rotate(-1deg);z-index:4}
+  @media(max-width:760px){
+    .library-room{padding:14px 7px 18px;border-width:6px}
+    .shelf-row{gap:5px;min-height:155px;padding-top:10px}
+    .library-book{flex-basis:13%;height:clamp(105px,25vw,145px);padding:6px 3px}
+    .library-book:nth-child(3n){height:clamp(120px,28vw,158px)}
+    .library-book:nth-child(4n){height:clamp(95px,22vw,130px)}
+    .library-book strong{font-size:clamp(.65rem,2.1vw,.82rem)}
+    .library-book:nth-child(5n){flex-basis:16%;height:48px;padding:5px}
+    .library-book:nth-child(5n) strong{font-size:.68rem}
+    .book-number{font-size:.6rem}
+  }
+  @media(max-width:430px){
+    .shelf-row{gap:3px;min-height:130px}
+    .library-book{flex-basis:13.5%;height:108px}
+    .library-book:nth-child(3n){height:120px}
+    .library-book:nth-child(4n){height:94px}
+    .library-book strong{font-size:.58rem}
+    .library-book:nth-child(5n){flex-basis:17%;height:43px}
+    .library-book:nth-child(5n) strong{font-size:.58rem}
+  }
+
   /* Narrow book spines, like the view of books standing in a real library. */
   .library-room{padding:24px 18px 30px;background:linear-gradient(135deg,#f2e3d1,#fff8ed 48%,#ead7c3);border-color:#d8bea2;box-shadow:inset 0 0 30px rgba(100,65,42,.12),7px 9px 0 rgba(201,183,232,.2)}
   .library-shelf{padding:0 6px;background:linear-gradient(90deg,rgba(100,65,42,.12),transparent 10%,transparent 90%,rgba(100,65,42,.12))}
@@ -130,10 +166,10 @@ title: Books
     // Arrange the books in separate rows, each resting on its own wooden plank.
     const books=[...shelf.querySelectorAll('.library-book')];
     shelf.innerHTML='';
-    for(let i=0;i<books.length;i+=5){
+    for(let i=0;i<books.length;i+=7){
       const row=document.createElement('div');
       row.className='shelf-row';
-      books.slice(i,i+5).forEach(book=>row.appendChild(book));
+      books.slice(i,i+7).forEach(book=>row.appendChild(book));
       shelf.appendChild(row);
       const plank=document.createElement('div');
       plank.className='shelf-plank';
