@@ -8,7 +8,7 @@
   <title>{{ page.title | default: site.title }} · Shanika's journal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Schoolbell&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Schoolbell&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}">
   <meta name="color-scheme" content="light">
   <style>
@@ -646,7 +646,30 @@
     window.addEventListener('pointerup',()=>document.body.classList.remove('cursor-press'));
   }
 
-  // Short, soft page-turn transition for internal navigation.
+
+  // Soft staggered reveals for handwritten notes and individual shelf rows.
+  const softTargets=document.querySelectorAll('.note-page > p,.note-page .note-quote,.shelf-row');
+  if(!reduced && 'IntersectionObserver' in window){
+    const softObserver=new IntersectionObserver(items=>{
+      items.forEach(item=>{
+        if(item.isIntersecting){item.target.classList.add('is-in');softObserver.unobserve(item.target);}
+      });
+    },{threshold:.12,rootMargin:'0px 0px -30px 0px'});
+    softTargets.forEach((el,index)=>{el.classList.add('soft-reveal');el.style.transitionDelay=(Math.min(index,5)*75)+'ms';softObserver.observe(el);});
+  }
+  // Gentle 3D response on the individual book spines.
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches && !reduced){
+    document.querySelectorAll('.library-book').forEach(book=>{
+      book.addEventListener('pointermove',event=>{
+        const r=book.getBoundingClientRect(),x=(event.clientX-r.left)/r.width,y=(event.clientY-r.top)/r.height;
+        book.style.setProperty('--book-tilt-x',((.5-y)*5).toFixed(2)+'deg');
+        book.style.setProperty('--book-tilt-y',((x-.5)*8).toFixed(2)+'deg');
+        book.style.transform='perspective(650px) rotateX('+book.style.getPropertyValue('--book-tilt-x')+') rotateY('+book.style.getPropertyValue('--book-tilt-y')+') translateY(-7px)';
+      });
+      book.addEventListener('pointerleave',()=>{book.style.removeProperty('transform');book.style.removeProperty('--book-tilt-x');book.style.removeProperty('--book-tilt-y');});
+    });
+  }
+\n  // Short, soft page-turn transition for internal navigation.
   document.addEventListener('click',event=>{
     const link=event.target.closest('a[href]');
     if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.target||link.hasAttribute('download'))return;
