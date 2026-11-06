@@ -499,25 +499,42 @@
       .journal-hero .hero-copy,.journal-hero .book-stage,.entry{animation:none}
     }
 
+
+    /* A handwritten signature replaces the old book-loading scene. */
+    .signature-intro{background:radial-gradient(ellipse at 50% 45%,#fffdf7 0%,#fff7e9 58%,#f1e3d4 100%)}
+    .signature-intro-inner{position:relative;z-index:2;width:min(90vw,650px);display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px;text-align:center}
+    .signature-whisper{margin:0;color:#8a7898;font:600 clamp(1.35rem,3vw,1.9rem)/1.2 var(--caveat);letter-spacing:.03em;opacity:0;animation:signature-soft-in .7s .2s ease forwards}
+    .signature-art{display:block;width:100%;max-width:590px;height:auto;overflow:visible;filter:drop-shadow(0 5px 2px rgba(189,101,89,.08))}
+    .signature-name{font-family:var(--caveat);font-size:132px;font-weight:700;letter-spacing:1px;fill:transparent;stroke:#bd6559;stroke-width:1.5px;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1100;stroke-dashoffset:1100;animation:signature-write 2.65s .55s ease-in-out forwards,signature-fill .55s 2.85s ease forwards}
+    .signature-caption{font:600 clamp(1.1rem,2.5vw,1.45rem) var(--caveat);color:#8a7898;letter-spacing:.02em;opacity:0;transform:translateY(7px);animation:signature-soft-in .7s 2.8s ease forwards}
+    .signature-skip{margin-top:14px;animation:signature-soft-in .5s .7s ease forwards}
+    .signature-spark{position:absolute;color:#d49a83;opacity:0;font:2rem var(--caveat);animation:signature-spark-in .7s 2.7s ease forwards,signature-float 4s 3.4s ease-in-out infinite}
+    .spark-one{left:calc(50% - 235px);top:34%}.spark-two{right:calc(50% - 245px);top:45%;font-size:2.3rem;animation-delay:2.9s,3.6s}.spark-three{right:calc(50% - 185px);bottom:29%;animation-delay:3.05s,3.75s}
+    @keyframes signature-write{to{stroke-dashoffset:0}}
+    @keyframes signature-fill{to{fill:#bd6559;stroke-opacity:0}}
+    @keyframes signature-soft-in{to{opacity:1;transform:translateY(0)}}
+    @keyframes signature-spark-in{to{opacity:.8}}
+    @keyframes signature-float{0%,100%{translate:0 0;rotate:-8deg}50%{translate:0 -9px;rotate:8deg}}
+    @media(max-width:600px){.signature-intro-inner{gap:8px;padding:18px}.signature-name{font-size:124px}.spark-one{left:7%;top:35%}.spark-two{right:7%;top:49%}.spark-three{right:15%;bottom:30%}}
+    @media(prefers-reduced-motion:reduce){.signature-whisper,.signature-name,.signature-caption,.signature-skip,.signature-spark{animation:none!important;opacity:1;transform:none}.signature-name{fill:#bd6559;stroke:none;stroke-dashoffset:0}}
+
   </style>
 </head>
 <body>
 
 {% if page.url == '/' %}
-<div class="diary-intro simple-intro" id="diary-intro" aria-label="Opening Shanika's journal">
-  <div class="simple-intro-inner">
-    <p class="simple-intro-whisper">A little piece of my world...</p>
-    <div class="simple-page-stack" aria-hidden="true">
-      <div class="simple-page-under"></div>
-      <div class="simple-page">
-        <span class="simple-page-kicker">A PERSONAL JOURNAL</span>
-        <strong>Dear little life,</strong>
-        <span class="simple-page-sign">Shanika's journal ✳</span>
-      </div>
-    </div>
-    <span class="simple-intro-hint">turning the page...</span>
-    <button class="intro-skip" type="button" id="intro-skip">Skip intro ↗</button>
+<div class="diary-intro signature-intro" id="diary-intro" aria-label="Shanika's name being handwritten">
+  <div class="signature-intro-inner">
+    <p class="signature-whisper">a little piece of my world</p>
+    <svg class="signature-art" viewBox="0 0 520 180" role="img" aria-label="Shanika">
+      <text class="signature-name" x="50%" y="72%" text-anchor="middle">Shanika</text>
+    </svg>
+    <span class="signature-caption">welcome to my little corner ♡</span>
+    <button class="intro-skip signature-skip" type="button" id="intro-skip">Skip intro ↗</button>
   </div>
+  <span class="signature-spark spark-one" aria-hidden="true">✳</span>
+  <span class="signature-spark spark-two" aria-hidden="true">♡</span>
+  <span class="signature-spark spark-three" aria-hidden="true">✧</span>
 </div>
 {% endif %}
 
@@ -556,7 +573,7 @@
     };
     const skip=document.getElementById('intro-skip');
     if(skip)skip.addEventListener('click',finishIntro);
-    const introDelay=window.matchMedia('(prefers-reduced-motion: reduce)').matches?450:1850;
+    const introDelay=window.matchMedia('(prefers-reduced-motion: reduce)').matches?450:3900;
     window.setTimeout(finishIntro,introDelay);
   }
 
