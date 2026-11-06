@@ -511,17 +511,15 @@
     .name-signature{display:block;width:min(88vw,760px);height:auto;overflow:visible}
     .name-signature text{font-family:'Caveat',cursive;font-size:142px;font-weight:700;fill:#963f39;letter-spacing:1px}
     .name-signature .write-mask{animation:signature-reveal 3.25s cubic-bezier(.35,.05,.2,1) .25s forwards}
-    .name-signature .pen-tip{opacity:0;animation:pen-follow 3.25s cubic-bezier(.35,.05,.2,1) .25s forwards}
     .name-loader-caption{margin:4px 0 0;color:#8a7898;font:600 1.15rem var(--caveat);opacity:0;animation:name-caption-in .5s ease 3.6s forwards}
     .name-loader-skip{margin-top:10px;border:1.5px solid #e4d4c2;background:rgba(255,253,246,.85);border-radius:99px;padding:7px 17px;color:#80758d;font:600 1.1rem var(--caveat);cursor:pointer}
     .name-loader.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
     body.name-intro main,body.name-intro .topbar,body.name-intro footer,body.name-intro .scroll-buddy{transition:opacity .7s ease,visibility .7s ease}
     body.name-intro.is-revealed main,body.name-intro.is-revealed .topbar,body.name-intro.is-revealed footer,body.name-intro.is-revealed .scroll-buddy{opacity:1;visibility:visible}
     @keyframes signature-reveal{to{width:820px}}
-    @keyframes pen-follow{0%{opacity:0;transform:translateX(0)}4%{opacity:1}100%{opacity:1;transform:translateX(730px)}}
     @keyframes name-caption-in{to{opacity:1}}
     @media(max-height:620px){.name-loader-inner{gap:5px;padding:10px}.name-signature{width:min(76vw,560px)}.name-loader-caption{margin-top:2px}}
-    @media(prefers-reduced-motion:reduce){.name-signature .write-mask{animation:none;width:820px}.name-signature .pen-tip{display:none}.name-loader-caption{animation:none;opacity:1}.name-loader{transition:none}}
+    @media(prefers-reduced-motion:reduce){.name-signature .write-mask{animation:none;width:820px}.name-loader-caption{animation:none;opacity:1}.name-loader{transition:none}}
 
   </style>
 </head>
@@ -534,9 +532,8 @@
   <div class="name-loader-inner">
     <p class="name-loader-label">a little piece of my world</p>
     <svg class="name-signature" viewBox="0 0 820 180" role="img" aria-label="Shanika, handwritten">
-      <defs><clipPath id="signature-clip"><rect class="write-mask" x="0" y="0" width="0" height="180"/></clipPath></defs>
+      <defs><clipPath id="signature-clip" clipPathUnits="userSpaceOnUse"><rect class="write-mask" x="0" y="0" width="0" height="180"/></clipPath></defs>
       <text x="410" y="139" text-anchor="middle" clip-path="url(#signature-clip)">Shanika</text>
-      <g class="pen-tip" transform="translate(0 0)"><path d="M0 0 L13 5 L4 15 Z" fill="#6e5146"/><path d="M0 0 L4 15" stroke="#fff8e9" stroke-width="1.2"/></g>
     </svg>
     <p class="name-loader-caption">welcome to my little corner ♡</p>
     <button class="name-loader-skip" type="button" id="name-loader-skip">Skip intro</button>
