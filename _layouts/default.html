@@ -500,29 +500,29 @@
     }
 
 
-    /* A handwritten signature replaces the old book-loading scene. */
+    /* Each letter is drawn like a little pen stroke, one after another. */
     .signature-intro{background:radial-gradient(ellipse at 50% 45%,#fffdf7 0%,#fff7e9 58%,#f1e3d4 100%)}
-    .signature-intro-inner{position:relative;z-index:2;width:min(90vw,680px);display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px;text-align:center}
+    .signature-intro-inner{position:relative;z-index:2;width:min(94vw,760px);display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px;text-align:center}
     .signature-whisper{margin:0;color:#8a7898;font:600 clamp(1.35rem,3vw,1.9rem)/1.2 var(--caveat);letter-spacing:.03em;opacity:0;animation:signature-soft-in .7s .2s ease forwards}
-    .signature-name{position:relative;display:flex;align-items:center;justify-content:center;gap:clamp(0px,.55vw,5px);width:100%;padding:12px 0 22px;color:#bd6559;font:400 clamp(5.2rem,17vw,9.5rem)/.95 var(--sketch);letter-spacing:-.045em;filter:drop-shadow(0 5px 2px rgba(189,101,89,.08))}
-    .signature-name span{display:inline-block;clip-path:inset(0 100% 0 0);opacity:.15;transform:translateY(9px) rotate(-8deg);animation:letter-write .34s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(.48s + var(--letter-order)*.29s)}
-    .signature-name span:nth-child(1){--letter-order:0;transform:rotate(-8deg)}
-    .signature-name span:nth-child(2){--letter-order:1;transform:rotate(3deg)}
-    .signature-name span:nth-child(3){--letter-order:2;transform:rotate(-4deg)}
-    .signature-name span:nth-child(4){--letter-order:3;transform:rotate(2deg)}
-    .signature-name span:nth-child(5){--letter-order:4;transform:rotate(-3deg)}
-    .signature-name span:nth-child(6){--letter-order:5;transform:rotate(4deg)}
-    .signature-name span:nth-child(7){--letter-order:6;transform:rotate(-5deg)}
-    .signature-caption{font:600 clamp(1.1rem,2.5vw,1.45rem) var(--caveat);color:#8a7898;letter-spacing:.02em;opacity:0;transform:translateY(7px);animation:signature-soft-in .7s 2.9s ease forwards}
+    .signature-art{display:block;width:100%;max-width:740px;height:auto;overflow:visible;filter:drop-shadow(0 5px 2px rgba(189,101,89,.08))}
+    .signature-stroke{fill:none;stroke:#bd6559;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:letter-draw .56s cubic-bezier(.45,.05,.35,1) forwards;animation-delay:calc(.42s + var(--letter-order)*.62s)}
+    .signature-stroke:nth-child(1){--letter-order:0}
+    .signature-stroke:nth-child(2){--letter-order:1}
+    .signature-stroke:nth-child(3){--letter-order:2}
+    .signature-stroke:nth-child(4){--letter-order:3}
+    .signature-stroke:nth-child(5){--letter-order:4}
+    .signature-stroke:nth-child(6){--letter-order:5}
+    .signature-stroke:nth-child(7){--letter-order:6}
+    .signature-caption{font:600 clamp(1.1rem,2.5vw,1.45rem) var(--caveat);color:#8a7898;letter-spacing:.02em;opacity:0;transform:translateY(7px);animation:signature-soft-in .7s 4.65s ease forwards}
     .signature-skip{margin-top:14px;animation:signature-soft-in .5s .7s ease forwards}
-    .signature-spark{position:absolute;color:#d49a83;opacity:0;font:2rem var(--caveat);animation:signature-spark-in .7s 2.7s ease forwards,signature-float 4s 3.4s ease-in-out infinite}
-    .spark-one{left:calc(50% - 235px);top:34%}.spark-two{right:calc(50% - 245px);top:45%;font-size:2.3rem;animation-delay:2.9s,3.6s}.spark-three{right:calc(50% - 185px);bottom:29%;animation-delay:3.05s,3.75s}
-    @keyframes letter-write{0%{clip-path:inset(0 100% 0 0);opacity:.15;transform:translateY(9px) rotate(-5deg) scale(.96)}65%{opacity:1}100%{clip-path:inset(0 0 0 0);opacity:1;transform:translateY(0) rotate(0) scale(1)}}
+    .signature-spark{position:absolute;color:#d49a83;opacity:0;font:2rem var(--caveat);animation:signature-spark-in .7s 3.8s ease forwards,signature-float 4s 4.5s ease-in-out infinite}
+    .spark-one{left:calc(50% - 285px);top:34%}.spark-two{right:calc(50% - 285px);top:45%;font-size:2.3rem;animation-delay:4s,4.7s}.spark-three{right:calc(50% - 215px);bottom:29%;animation-delay:4.1s,4.8s}
+    @keyframes letter-draw{to{stroke-dashoffset:0}}
     @keyframes signature-soft-in{to{opacity:1;transform:translateY(0)}}
     @keyframes signature-spark-in{to{opacity:.8}}
     @keyframes signature-float{0%,100%{translate:0 0;rotate:-8deg}50%{translate:0 -9px;rotate:8deg}}
-    @media(max-width:600px){.signature-intro-inner{gap:8px;padding:18px}.signature-name{font-size:clamp(4.8rem,17vw,7rem);gap:0}.spark-one{left:7%;top:35%}.spark-two{right:7%;top:49%}.spark-three{right:15%;bottom:30%}}
-    @media(prefers-reduced-motion:reduce){.signature-whisper,.signature-name span,.signature-caption,.signature-skip,.signature-spark{animation:none!important;opacity:1;transform:none;clip-path:none}}
+    @media(max-width:600px){.signature-intro-inner{gap:8px;padding:18px}.signature-art{width:108%;max-width:none}.spark-one{left:5%;top:35%}.spark-two{right:5%;top:49%}.spark-three{right:12%;bottom:30%}}
+    @media(prefers-reduced-motion:reduce){.signature-whisper,.signature-stroke,.signature-caption,.signature-skip,.signature-spark{animation:none!important;opacity:1;transform:none;stroke-dashoffset:0}}
 
   </style>
 </head>
@@ -532,9 +532,15 @@
 <div class="diary-intro signature-intro" id="diary-intro" aria-label="Shanika's name being handwritten">
   <div class="signature-intro-inner">
     <p class="signature-whisper">a little piece of my world</p>
-    <div class="signature-name" role="img" aria-label="Shanika">
-      <span>S</span><span>h</span><span>a</span><span>n</span><span>i</span><span>k</span><span>a</span>
-    </div>
+    <svg class="signature-art" viewBox="0 0 760 170" role="img" aria-label="Shanika, handwritten">
+      <path class="signature-stroke" pathLength="1" d="M105 34 C83 14 48 25 43 49 C37 74 94 75 102 99 C111 127 69 148 35 128 C23 121 20 112 18 105"/>
+      <path class="signature-stroke" pathLength="1" d="M137 126 C145 91 157 49 166 27 C171 15 179 19 177 32 C171 62 156 103 153 125 C151 139 161 143 174 130 C185 119 192 100 199 83"/>
+      <path class="signature-stroke" pathLength="1" d="M257 91 C246 72 220 77 211 99 C201 124 213 143 232 137 C250 132 260 105 262 82 C263 105 257 130 268 137 C278 144 291 129 301 111"/>
+      <path class="signature-stroke" pathLength="1" d="M321 126 C330 91 341 54 351 29 C356 16 363 20 360 34 C354 64 341 105 338 126 C336 140 347 144 360 130 C373 115 382 91 388 77"/>
+      <path class="signature-stroke" pathLength="1" d="M422 81 C414 103 408 126 411 136 C414 146 426 139 437 123 M432 49 C435 43 442 42 445 48"/>
+      <path class="signature-stroke" pathLength="1" d="M468 126 C479 91 492 55 503 29 C508 17 516 20 512 35 C505 67 492 105 489 126 C487 140 498 144 511 130 C523 117 533 95 540 78 C533 101 527 127 538 136 C549 145 562 126 574 107"/>
+      <path class="signature-stroke" pathLength="1" d="M625 91 C614 72 588 77 579 99 C569 124 581 143 600 137 C618 132 628 105 630 82 C631 105 625 130 636 137 C646 144 660 129 671 111"/>
+    </svg>
     <span class="signature-caption">welcome to my little corner ♡</span>
     <button class="intro-skip signature-skip" type="button" id="intro-skip">Skip intro ↗</button>
   </div>
@@ -579,7 +585,7 @@
     };
     const skip=document.getElementById('intro-skip');
     if(skip)skip.addEventListener('click',finishIntro);
-    const introDelay=window.matchMedia('(prefers-reduced-motion: reduce)').matches?450:3900;
+    const introDelay=window.matchMedia('(prefers-reduced-motion: reduce)').matches?450:5400;
     window.setTimeout(finishIntro,introDelay);
   }
 
