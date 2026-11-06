@@ -508,8 +508,8 @@
     .name-loader:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;background-image:radial-gradient(#ddcdb9 .8px,transparent .8px);background-size:18px 18px}
     .name-loader-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;padding:22px 18px;text-align:center}
     .name-loader-label{margin:0 0 4px;color:#8a7898;font:600 clamp(1.25rem,3vw,1.7rem)/1.2 var(--caveat);letter-spacing:.03em}
-    .name-loader-letters{display:flex;flex-direction:column;align-items:center;gap:0;margin:0;padding:0;list-style:none}
-    .name-loader-letters span{display:block;color:#963f39;font:700 clamp(2.35rem,6vh,3.25rem)/.91 var(--caveat);min-height:clamp(2.3rem,6vh,3.15rem);opacity:0;clip-path:inset(0 100% 0 0);transform:translateX(-9px) rotate(-3deg);animation:name-letter-write .48s cubic-bezier(.2,.75,.25,1) forwards;animation-delay:calc(var(--letter-index)*.48s);text-shadow:0 1px 0 rgba(255,255,255,.5)}
+    .name-loader-letters{display:flex;flex-direction:row;align-items:baseline;justify-content:center;gap:clamp(2px,1.2vw,12px);margin:0;padding:0;list-style:none;white-space:nowrap}
+    .name-loader-letters span{display:block;color:#963f39;font:700 clamp(3.6rem,12vw,7.2rem)/1 var(--caveat);min-width:.32em;opacity:0;clip-path:inset(0 100% 0 0);transform:translateX(-5px) rotate(-4deg);animation:name-letter-write .58s cubic-bezier(.2,.75,.25,1) forwards;animation-delay:calc(var(--letter-index)*.52s);text-shadow:0 1px 0 rgba(255,255,255,.5)}
     .name-loader-caption{margin:8px 0 0;color:#8a7898;font:600 1.15rem var(--caveat);opacity:0;animation:name-caption-in .5s ease 3.55s forwards}
     .name-loader-skip{margin-top:12px;border:1.5px solid #e4d4c2;background:rgba(255,253,246,.85);border-radius:99px;padding:7px 17px;color:#80758d;font:600 1.1rem var(--caveat);cursor:pointer}
     .name-loader.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
@@ -517,7 +517,7 @@
     body.name-intro.is-revealed main,body.name-intro.is-revealed .topbar,body.name-intro.is-revealed footer,body.name-intro.is-revealed .scroll-buddy{opacity:1;visibility:visible}
     @keyframes name-letter-write{0%{opacity:0;clip-path:inset(0 100% 0 0);transform:translateX(-9px) rotate(-3deg)}15%{opacity:1}100%{opacity:1;clip-path:inset(0 0 0 0);transform:translateX(0) rotate(0)}}
     @keyframes name-caption-in{to{opacity:1}}
-    @media(max-height:620px){.name-loader-inner{gap:3px;padding:10px}.name-loader-letters span{font-size:clamp(1.7rem,5vh,2.35rem);min-height:clamp(1.65rem,5vh,2.25rem)}.name-loader-caption{margin-top:4px}}
+    @media(max-height:620px){.name-loader-inner{gap:3px;padding:10px}.name-loader-letters span{font-size:clamp(3rem,10vw,5.2rem)}.name-loader-caption{margin-top:4px}}
     @media(prefers-reduced-motion:reduce){.name-loader-letters span,.name-loader-caption{animation:none!important;opacity:1;clip-path:none;transform:none}.name-loader{transition:none}}
 
   </style>
@@ -585,7 +585,7 @@
     };
     const skipNameLoader=document.getElementById('name-loader-skip');
     if(skipNameLoader)skipNameLoader.addEventListener('click',finishNameLoader);
-    const nameIntroDuration=window.matchMedia('(prefers-reduced-motion: reduce)').matches?900:4450;
+    const nameIntroDuration=window.matchMedia('(prefers-reduced-motion: reduce)').matches?900:4850;
     window.setTimeout(finishNameLoader,nameIntroDuration);
   }
 
