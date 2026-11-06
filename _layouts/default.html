@@ -501,24 +501,26 @@
 
 
 
-    /* Letter-by-letter handwritten name intro */
+    /* A real pen-stroke intro: the name is drawn as one flowing handwritten line. */
     body.name-intro main,body.name-intro .topbar,body.name-intro footer,body.name-intro .scroll-buddy{opacity:0;visibility:hidden}
     body.name-intro{overflow:hidden}
     .name-loader{position:fixed;inset:0;z-index:500;display:grid;place-items:center;overflow:auto;background:radial-gradient(ellipse at 50% 42%,#fffdf7 0%,#fff7e9 60%,#f1e3d4 100%);opacity:1;visibility:visible;transition:opacity .7s ease,visibility .7s ease}
     .name-loader:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;background-image:radial-gradient(#ddcdb9 .8px,transparent .8px);background-size:18px 18px}
-    .name-loader-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;padding:22px 18px;text-align:center}
+    .name-loader-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:12px;padding:22px 18px;text-align:center;width:100%}
     .name-loader-label{margin:0 0 4px;color:#8a7898;font:600 clamp(1.25rem,3vw,1.7rem)/1.2 var(--caveat);letter-spacing:.03em}
-    .name-loader-letters{display:flex;flex-direction:row;align-items:baseline;justify-content:center;gap:clamp(2px,1.2vw,12px);margin:0;padding:0;list-style:none;white-space:nowrap}
-    .name-loader-letters span{display:block;color:#963f39;font:700 clamp(3.6rem,12vw,7.2rem)/1 var(--caveat);min-width:.32em;opacity:0;clip-path:inset(0 100% 0 0);transform:translateX(-5px) rotate(-4deg);animation:name-letter-write .58s cubic-bezier(.2,.75,.25,1) forwards;animation-delay:calc(var(--letter-index)*.52s);text-shadow:0 1px 0 rgba(255,255,255,.5)}
-    .name-loader-caption{margin:8px 0 0;color:#8a7898;font:600 1.15rem var(--caveat);opacity:0;animation:name-caption-in .5s ease 3.55s forwards}
-    .name-loader-skip{margin-top:12px;border:1.5px solid #e4d4c2;background:rgba(255,253,246,.85);border-radius:99px;padding:7px 17px;color:#80758d;font:600 1.1rem var(--caveat);cursor:pointer}
+    .name-signature{display:block;width:min( min(88vw,760px), 760px);height:auto;overflow:visible}
+    .name-signature path{fill:none;stroke:#963f39;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1000;stroke-dashoffset:1000;animation:signature-write 3.65s cubic-bezier(.42,0,.25,1) .25s forwards}
+    .name-signature .signature-dot{stroke-width:0;fill:#963f39;opacity:0;animation:signature-dot  .22s ease 3.35s forwards}
+    .name-loader-caption{margin:4px 0 0;color:#8a7898;font:600 1.15rem var(--caveat);opacity:0;animation:name-caption-in .5s ease 3.75s forwards}
+    .name-loader-skip{margin-top:10px;border:1.5px solid #e4d4c2;background:rgba(255,253,246,.85);border-radius:99px;padding:7px 17px;color:#80758d;font:600 1.1rem var(--caveat);cursor:pointer}
     .name-loader.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
     body.name-intro main,body.name-intro .topbar,body.name-intro footer,body.name-intro .scroll-buddy{transition:opacity .7s ease,visibility .7s ease}
     body.name-intro.is-revealed main,body.name-intro.is-revealed .topbar,body.name-intro.is-revealed footer,body.name-intro.is-revealed .scroll-buddy{opacity:1;visibility:visible}
-    @keyframes name-letter-write{0%{opacity:0;clip-path:inset(0 100% 0 0);transform:translateX(-9px) rotate(-3deg)}15%{opacity:1}100%{opacity:1;clip-path:inset(0 0 0 0);transform:translateX(0) rotate(0)}}
+    @keyframes signature-write{to{stroke-dashoffset:0}}
+    @keyframes signature-dot{to{opacity:1}}
     @keyframes name-caption-in{to{opacity:1}}
-    @media(max-height:620px){.name-loader-inner{gap:3px;padding:10px}.name-loader-letters span{font-size:clamp(3rem,10vw,5.2rem)}.name-loader-caption{margin-top:4px}}
-    @media(prefers-reduced-motion:reduce){.name-loader-letters span,.name-loader-caption{animation:none!important;opacity:1;clip-path:none;transform:none}.name-loader{transition:none}}
+    @media(max-height:620px){.name-loader-inner{gap:5px;padding:10px}.name-signature{width:min(76vw,560px)}.name-loader-caption{margin-top:2px}}
+    @media(prefers-reduced-motion:reduce){.name-signature path{animation:none;stroke-dashoffset:0}.name-signature .signature-dot,.name-loader-caption{animation:none;opacity:1}.name-loader{transition:none}}
 
   </style>
 </head>
@@ -530,15 +532,10 @@
 <div class="name-loader" id="name-loader" role="status" aria-label="Loading Shanika's journal">
   <div class="name-loader-inner">
     <p class="name-loader-label">a little piece of my world</p>
-    <div class="name-loader-letters" aria-label="Shanika">
-      <span style="--letter-index:0">s</span>
-      <span style="--letter-index:1">h</span>
-      <span style="--letter-index:2">a</span>
-      <span style="--letter-index:3">n</span>
-      <span style="--letter-index:4">i</span>
-      <span style="--letter-index:5">k</span>
-      <span style="--letter-index:6">a</span>
-    </div>
+    <svg class="name-signature" viewBox="0 0 760 180" role="img" aria-label="Shanika, written by hand">
+      <path pathLength="1000" d="M22 105 C12 82 42 65 64 78 C82 89 45 112 34 124 C20 140 58 151 84 126 C100 110 107 94 115 91 C127 85 132 104 129 127 C126 146 133 144 143 126 C153 105 160 87 170 45 C176 18 188 24 187 55 L183 111 C181 139 194 139 209 112 C225 82 246 82 246 105 C246 126 222 136 211 120 C199 103 214 86 233 88 C250 90 259 111 269 125 C281 141 291 127 300 108 C313 81 333 82 333 105 C333 128 307 137 296 119 C285 101 302 85 321 88 C342 91 348 113 361 126 C373 138 384 122 392 103 C404 76 425 79 425 103 C425 126 399 137 388 119 C377 101 395 84 414 87 C432 89 440 109 451 123 C463 137 474 123 483 105 C496 78 514 80 514 103 C514 124 491 137 479 121 C466 104 482 87 501 88 C519 89 528 106 539 121 C551 137 563 126 572 108 C583 85 598 82 607 99 C616 116 600 135 584 125 C569 115 578 94 596 91 C615 87 629 105 642 121 C657 140 674 127 687 106 C701 83 719 82 735 98"/>
+      <path class="signature-dot" d="M171 22a5 5 0 1 0 0 .1z"/>
+    </svg>
     <p class="name-loader-caption">welcome to my little corner ♡</p>
     <button class="name-loader-skip" type="button" id="name-loader-skip">Skip intro</button>
   </div>
@@ -585,7 +582,7 @@
     };
     const skipNameLoader=document.getElementById('name-loader-skip');
     if(skipNameLoader)skipNameLoader.addEventListener('click',finishNameLoader);
-    const nameIntroDuration=window.matchMedia('(prefers-reduced-motion: reduce)').matches?900:4850;
+    const nameIntroDuration=window.matchMedia('(prefers-reduced-motion: reduce)').matches?900:5200;
     window.setTimeout(finishNameLoader,nameIntroDuration);
   }
 
