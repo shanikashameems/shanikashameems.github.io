@@ -504,8 +504,8 @@
     .signature-intro{background:radial-gradient(ellipse at 50% 45%,#fffdf7 0%,#fff7e9 58%,#f1e3d4 100%)}
     .signature-intro-inner{position:relative;z-index:2;width:min(94vw,760px);display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px;text-align:center}
     .signature-whisper{margin:0;color:#8a7898;font:600 clamp(1.35rem,3vw,1.9rem)/1.2 var(--caveat);letter-spacing:.03em;opacity:0;animation:signature-soft-in .7s .2s ease forwards}
-    .signature-art{display:block;width:100%;max-width:740px;height:auto;overflow:visible;filter:drop-shadow(0 5px 2px rgba(189,101,89,.08))}
-    .signature-stroke{fill:none;stroke:#bd6559;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:letter-draw .56s cubic-bezier(.45,.05,.35,1) forwards;animation-delay:calc(.42s + var(--letter-order)*.62s)}
+    .signature-art{display:block;width:100%;max-width:860px;height:auto;overflow:visible;filter:drop-shadow(0 6px 3px rgba(112,55,49,.16))}
+    .signature-stroke{fill:none;stroke:#963f39;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:letter-draw .82s cubic-bezier(.4,0,.2,1) forwards;animation-delay:calc(.38s + var(--letter-order)*.76s)}
     .signature-stroke:nth-child(1){--letter-order:0}
     .signature-stroke:nth-child(2){--letter-order:1}
     .signature-stroke:nth-child(3){--letter-order:2}
@@ -513,7 +513,7 @@
     .signature-stroke:nth-child(5){--letter-order:4}
     .signature-stroke:nth-child(6){--letter-order:5}
     .signature-stroke:nth-child(7){--letter-order:6}
-    .signature-caption{font:600 clamp(1.1rem,2.5vw,1.45rem) var(--caveat);color:#8a7898;letter-spacing:.02em;opacity:0;transform:translateY(7px);animation:signature-soft-in .7s 4.65s ease forwards}
+    .signature-caption{font:600 clamp(1.1rem,2.5vw,1.45rem) var(--caveat);color:#8a7898;letter-spacing:.02em;opacity:0;transform:translateY(7px);animation:signature-soft-in .7s 6s ease forwards}
     .signature-skip{margin-top:14px;animation:signature-soft-in .5s .7s ease forwards}
     .signature-spark{position:absolute;color:#d49a83;opacity:0;font:2rem var(--caveat);animation:signature-spark-in .7s 3.8s ease forwards,signature-float 4s 4.5s ease-in-out infinite}
     .spark-one{left:calc(50% - 285px);top:34%}.spark-two{right:calc(50% - 285px);top:45%;font-size:2.3rem;animation-delay:4s,4.7s}.spark-three{right:calc(50% - 215px);bottom:29%;animation-delay:4.1s,4.8s}
@@ -585,7 +585,7 @@
     };
     const skip=document.getElementById('intro-skip');
     if(skip)skip.addEventListener('click',finishIntro);
-    const introDelay=window.matchMedia('(prefers-reduced-motion: reduce)').matches?450:5400;
+    const introDelay=window.matchMedia('(prefers-reduced-motion: reduce)').matches?450:6900;
     window.setTimeout(finishIntro,introDelay);
   }
 
