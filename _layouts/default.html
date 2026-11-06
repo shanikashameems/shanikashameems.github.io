@@ -8,7 +8,7 @@
   <title>{{ page.title | default: site.title }} · Shanika's journal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Schoolbell&family=Kalam:wght@300;400;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Schoolbell&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}">
   <meta name="color-scheme" content="light">
   <style>
@@ -500,42 +500,10 @@
     }
 
 
-    /* Each letter is drawn like a little pen stroke, one after another. */
-    .signature-intro{background:radial-gradient(ellipse at 50% 45%,#fffdf7 0%,#fff7e9 58%,#f1e3d4 100%)}
-    .signature-intro-inner{position:relative;z-index:2;width:min(94vw,760px);display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px;text-align:center}
-    .signature-whisper{margin:0;color:#8a7898;font:600 clamp(1.35rem,3vw,1.9rem)/1.2 var(--caveat);letter-spacing:.03em;opacity:0;animation:signature-soft-in .7s .2s ease forwards}
-    .signature-art{display:block;width:100%;max-width:860px;height:auto;overflow:visible;filter:drop-shadow(0 6px 3px rgba(112,55,49,.16))}
-    .signature-writing{font-family:'Dancing Script',cursive;font-size:158px;font-weight:700;letter-spacing:1px;fill:#963f39;stroke:#963f39;stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill;stroke-dasharray:1;stroke-dashoffset:1;opacity:0;animation:signature-write 2.8s cubic-bezier(.45,.05,.25,1) .45s forwards}
-    .signature-caption{font:600 clamp(1.1rem,2.5vw,1.45rem) var(--caveat);color:#8a7898;letter-spacing:.02em;opacity:0;transform:translateY(7px);animation:signature-soft-in .7s 6s ease forwards}
-    .signature-skip{margin-top:14px;animation:signature-soft-in .5s .7s ease forwards}
-    .signature-spark{position:absolute;color:#d49a83;opacity:0;font:2rem var(--caveat);animation:signature-spark-in .7s 3.8s ease forwards,signature-float 4s 4.5s ease-in-out infinite}
-    .spark-one{left:calc(50% - 285px);top:34%}.spark-two{right:calc(50% - 285px);top:45%;font-size:2.3rem;animation-delay:4s,4.7s}.spark-three{right:calc(50% - 215px);bottom:29%;animation-delay:4.1s,4.8s}
-    @keyframes signature-write{0%{opacity:1;fill:transparent;stroke-dashoffset:1}78%{opacity:1;fill:transparent;stroke-dashoffset:0}100%{opacity:1;fill:#963f39;stroke-dashoffset:0}}
-    @keyframes signature-soft-in{to{opacity:1;transform:translateY(0)}}
-    @keyframes signature-spark-in{to{opacity:.8}}
-    @keyframes signature-float{0%,100%{translate:0 0;rotate:-8deg}50%{translate:0 -9px;rotate:8deg}}
-    @media(max-width:600px){.signature-intro-inner{gap:8px;padding:18px}.signature-art{width:108%;max-width:none}.spark-one{left:5%;top:35%}.spark-two{right:5%;top:49%}.spark-three{right:12%;bottom:30%}}
-    @media(prefers-reduced-motion:reduce){.signature-whisper,.signature-writing,.signature-caption,.signature-skip,.signature-spark{animation:none!important;opacity:1;transform:none;stroke-dashoffset:0;fill:#963f39}}
-
   </style>
 </head>
 <body>
 
-{% if page.url == '/' %}
-<div class="diary-intro signature-intro" id="diary-intro" aria-label="Shanika's name being handwritten">
-  <div class="signature-intro-inner">
-    <p class="signature-whisper">a little piece of my world</p>
-    <svg class="signature-art" viewBox="0 0 760 190" role="img" aria-label="Shanika, handwritten in cursive">
-      <text class="signature-writing" x="380" y="145" text-anchor="middle" textLength="700" lengthAdjust="spacingAndGlyphs" pathLength="1">Shanika</text>
-    </svg>
-    <span class="signature-caption">welcome to my little corner ♡</span>
-    <button class="intro-skip signature-skip" type="button" id="intro-skip">Skip intro ↗</button>
-  </div>
-  <span class="signature-spark spark-one" aria-hidden="true">✳</span>
-  <span class="signature-spark spark-two" aria-hidden="true">♡</span>
-  <span class="signature-spark spark-three" aria-hidden="true">✧</span>
-</div>
-{% endif %}
 
 <header class="topbar">
   <div class="nav">
@@ -558,23 +526,6 @@
 <button class="back-top" type="button" aria-label="Back to top">↑</button>
 <footer><span>© {{ site.time | date: "%Y" }} · Shanika's digital journal</span><span>Made of curiosity <span class="footer-mark">✳</span> and little notes</span></footer>
 <script>
-
-  const intro=document.getElementById('diary-intro');
-  if(intro){
-    document.body.classList.add('home-intro');
-    let introDone=false;
-    const finishIntro=()=>{
-      if(introDone)return;
-      introDone=true;
-      intro.classList.add('is-leaving');
-      document.body.classList.add('is-revealed');
-      window.setTimeout(()=>{intro.remove();document.body.classList.remove('home-intro','is-revealed');},950);
-    };
-    const skip=document.getElementById('intro-skip');
-    if(skip)skip.addEventListener('click',finishIntro);
-    const introDelay=window.matchMedia('(prefers-reduced-motion: reduce)').matches?450:6900;
-    window.setTimeout(finishIntro,introDelay);
-  }
 
   const menuButton=document.querySelector('.menu-toggle');
   const nav=document.querySelector('.navlinks');
