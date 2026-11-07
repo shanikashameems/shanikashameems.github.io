@@ -662,6 +662,17 @@ body.spider-web-hit .web-shooter{animation:web-recoil .22s ease}
 }
 
   
+
+/* Spider-Verse treatment for the existing name intro */
+.diary-intro{background:radial-gradient(ellipse at 50% 42%,#172d4b 0%,#0a1427 58%,#050912 100%)!important;color:#f5f8ff}
+.diary-intro:before{opacity:.24!important;background-image:radial-gradient(#72bfff .8px,transparent .8px)!important}
+.intro-whisper{color:#9bd6ff!important;font:600 clamp(1rem,2.5vw,1.4rem) 'Barlow Condensed',sans-serif!important;letter-spacing:.2em;text-transform:uppercase}
+.intro-cover{background:linear-gradient(145deg,#e51d3d,#9c102c 68%,#102b51)!important;box-shadow:inset 7px 0 10px rgba(255,255,255,.16),inset -5px 0 10px rgba(0,0,0,.22),12px 18px 28px rgba(0,0,0,.45)!important}
+.intro-cover:before{border:1px solid rgba(255,255,255,.55)!important}
+.intro-cover *{color:#fff!important}
+.intro-page{background:#eaf2fb!important;border-color:#7f9fbe!important}
+.intro-book-shadow{background:rgba(0,0,0,.5)!important}
+
 /* ===== SPIDER-VERSE POWER-UP: character, swinging, webbed cursor ===== */
 :root{cursor:crosshair}
 body{cursor:none!important}
@@ -738,7 +749,6 @@ body.web-fired .web-shooter{animation:shooter-recoil .22s ease}
 </head>
 <body>
 <div class="spider-atmosphere" aria-hidden="true"><div class="spider-city"><i style="height:48%"></i><i style="height:76%"></i><i style="height:58%"></i><i style="height:91%"></i><i style="height:65%"></i><i style="height:100%"></i><i style="height:70%"></i><i style="height:84%"></i><i style="height:54%"></i><i style="height:72%"></i><i style="height:43%"></i><i style="height:88%"></i><i style="height:62%"></i><i style="height:78%"></i></div></div>
-<div class="web-burst" id="web-burst" aria-hidden="true"></div>
 
 <div class="web-thread" aria-hidden="true"><svg viewBox="0 0 1440 900" preserveAspectRatio="none"><path d="M0 0L720 450L1440 0M0 0L720 450L0 900M1440 0L720 450L1440 900M0 900L720 450L1440 900M0 0Q720 160 1440 0M0 0Q160 450 0 900M1440 0Q1280 450 1440 900M0 900Q720 740 1440 900"/></svg></div>
 <div class="spider-swing-stage" aria-hidden="true"><div class="spider-swinger">
@@ -802,22 +812,7 @@ body.web-fired .web-shooter{animation:shooter-recoil .22s ease}
 <button class="back-top" type="button" aria-label="Back to top">↑</button>
 <footer><span>© {{ site.time | date: "%Y" }} · Shanika's digital journal</span><span>Made of curiosity <span class="footer-mark">✳</span> and little notes</span></footer>
 <script>
-  // Spider-Verse web-shooter interaction. A short SVG strand fires from the control to the pointer.
-  (()=>{
-    const burst=document.getElementById("web-burst");
-    if(!burst)return;
-    const fire=(x,y)=>{
-      const sx=window.innerWidth-50,sy=window.innerHeight-48;
-      const mx=(sx+x)/2+((Math.random()-.5)*70),my=(sy+y)/2-((Math.random()-.5)*70);
-      burst.innerHTML=`<svg viewBox="0 0 ${window.innerWidth} ${window.innerHeight}" preserveAspectRatio="none"><path d="M${sx} ${sy} Q${mx} ${my} ${x} ${y}"/><circle class="impact" cx="${x}" cy="${y}" r="9"/></svg>`;
-      document.body.classList.add("spider-web-hit");
-      window.setTimeout(()=>{burst.innerHTML="";document.body.classList.remove("spider-web-hit");},650);
-    };
-    document.addEventListener("click",e=>{const b=e.target.closest(".web-shooter");if(b){fire(Math.round(window.innerWidth*.5),Math.round(window.innerHeight*.35));return;}if(e.target.closest("a,button,input,textarea"))return; if(window.matchMedia("(pointer:fine)").matches)fire(e.clientX,e.clientY);});
-    window.addEventListener("keydown",e=>{if(e.key==="Escape")burst.innerHTML="";});
-    const hud=document.createElement("div");hud.className="spider-hud";hud.innerHTML=`<span class="web-shooter-label">Web shooter · tap to fire</span><button class="web-shooter" type="button" aria-label="Fire web shooter"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 18c5-1 7-5 9-10l3 3-2 6 6-5 4 3-6 5 7-1 1 4-9 2-6 4-3-3 4-5-8 1z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M16 8l3-4m1 8 5-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>`;
-    document.body.appendChild(hud);
-  })();
+
 
 
 
