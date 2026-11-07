@@ -839,7 +839,7 @@ body.page-leaving:before{content:"";position:fixed;inset:0;z-index:300;backgroun
 /* Visibility fix: keep the custom web cursor and shooter in the root stacking layer. */
 .spider-verse-cursor{
   display:block!important;position:fixed!important;z-index:2147483647!important;
-  width:46px!important;height:46px!important;opacity:1!important;visibility:visible!important;
+  width:46px!important;height:46px!important;opacity:1!important;visibility:visible!important;left:50vw;top:50vh;
   mix-blend-mode:normal!important;pointer-events:none!important;
   background:radial-gradient(circle,rgba(10,30,55,.94) 0 47%,rgba(229,29,61,.96) 49% 57%,rgba(80,190,255,.95) 59% 65%,transparent 68%)!important;
   border-radius:50%!important;filter:drop-shadow(0 2px 7px rgba(0,0,0,.8))!important;
@@ -867,6 +867,12 @@ body.page-leaving:before{content:"";position:fixed;inset:0;z-index:300;backgroun
  .web-shooter-label{display:none!important}
 }
 
+
+/* Final cursor/shooter positioning: keep both in the page body and follow mouse movement reliably. */
+.spider-verse-cursor{position:fixed!important;left:50vw;top:50vh;z-index:2147483647!important;display:block!important;visibility:visible!important;opacity:1!important;pointer-events:none!important;transform:translate(-50%,-50%)!important;mix-blend-mode:normal!important}
+.web-shooter-dock{position:fixed!important;right:24px!important;bottom:24px!important;z-index:2147483646!important;display:flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+.web-shooter{display:grid!important;visibility:visible!important;opacity:1!important}
+@media(max-width:760px){.spider-verse-cursor{display:none!important}.web-shooter-dock{right:14px!important;bottom:14px!important}}
 </style>
 </head>
 <body>
@@ -1072,11 +1078,12 @@ body.page-leaving:before{content:"";position:fixed;inset:0;z-index:300;backgroun
  const cursor=document.getElementById('spider-verse-cursor');
  if(!layer)return;
  /* Put fixed UI outside body stacking/transform contexts. */
- if(cursor)document.documentElement.appendChild(cursor);
+ if(cursor)document.body.appendChild(cursor);
  let px=innerWidth*.5,py=innerHeight*.5;
- if(cursor){cursor.style.left=px+'px';cursor.style.top=py+'px';}
  const move=e=>{px=e.clientX;py=e.clientY;if(cursor){cursor.style.left=px+'px';cursor.style.top=py+'px';}};
  window.addEventListener('pointermove',move,{passive:true});
+ window.addEventListener('mousemove',move,{passive:true});
+ window.addEventListener('pointerenter',move,{passive:true});
  document.querySelectorAll('a,button,[role="button"]').forEach(el=>{
   el.classList.add('web-action');
   el.addEventListener('pointerenter',()=>cursor&&cursor.classList.add('is-hot'));
@@ -1112,7 +1119,7 @@ body.page-leaving:before{content:"";position:fixed;inset:0;z-index:300;backgroun
 <path d="M25 69L38 77M32 62L45 70M55 80L69 90M65 74L79 83" stroke="#5c0c24" stroke-width="1.3" opacity=".8"/>
 <path d="M48 6L52 1M75 3L78 0M100 17L106 13" stroke="#b8eaff" stroke-width="2" stroke-linecap="round"/>
 </svg></button>';
- document.documentElement.appendChild(dock);
+ document.body.appendChild(dock);
  dock.querySelector('button').addEventListener('click',()=>shoot(innerWidth*.48,innerHeight*.35));
  document.addEventListener('pointerdown',e=>{if(e.target.closest('.web-shooter'))return;shoot(e.clientX,e.clientY)},{passive:true});
  // subtle scroll-triggered web flicks at section boundaries
