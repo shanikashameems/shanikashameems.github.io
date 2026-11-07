@@ -503,8 +503,8 @@
 
 
     /* True pen-stroke signature animation: every glyph is drawn along its stroke path. */
-    body.name-intro main,body.name-intro .topbar,body.name-intro footer,body.name-intro .scroll-buddy{opacity:0;visibility:hidden}
-    body.name-intro{overflow:hidden}
+    
+    
     .name-loader{position:fixed;inset:0;z-index:500;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 42%,#fffdf7 0%,#fff7e9 60%,#f1e3d4 100%);opacity:1;visibility:visible;transition:opacity .65s ease,visibility .65s ease}
     .name-loader:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;background-image:radial-gradient(#ddcdb9 .8px,transparent .8px);background-size:18px 18px}
     .name-loader-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px 12px;text-align:center;width:100%;min-height:100%;margin:auto}
@@ -523,7 +523,7 @@
     .name-loader-caption{margin:0;color:#8a7898;font:600 1.15rem var(--caveat);opacity:0;animation:name-caption-in .45s ease 5.28s forwards}
     .name-loader-skip{margin-top:5px;border:1.5px solid #e4d4c2;background:rgba(255,253,246,.85);border-radius:99px;padding:7px 17px;color:#80758d;font:600 1.1rem var(--caveat);cursor:pointer}
     .name-loader.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
-    body.name-intro main,body.name-intro .topbar,body.name-intro footer,body.name-intro .scroll-buddy{transition:opacity .65s ease,visibility .65s ease}
+    
     body.name-intro.is-revealed main,body.name-intro.is-revealed .topbar,body.name-intro.is-revealed footer,body.name-intro.is-revealed .scroll-buddy{opacity:1;visibility:visible}
     @keyframes pen-write{to{stroke-dashoffset:0}}
     @keyframes ink-dot{to{opacity:1}}
@@ -846,25 +846,7 @@ body.page-leaving:before{content:"";position:fixed;inset:0;z-index:300;backgroun
 
 
 
-{% if page.url == '/' %}
-<div class="name-loader" id="name-loader" role="status" aria-label="Loading Shanika's journal">
-  <div class="name-loader-inner">
-    <p class="name-loader-label">a little piece of my world</p>
-    <svg class="name-signature" viewBox="0 0 760 230" role="img" aria-label="Shanika being handwritten in flowing script, followed by an underline">
-      <path class="pen-stroke s-stroke" pathLength="1" d="M190 63 C184 35 147 39 126 58 C101 80 119 94 151 105 C184 116 193 130 176 153 C159 177 129 192 111 187 C95 183 104 165 124 151"/>
-      <path class="pen-stroke h-stroke" pathLength="1" d="M124 151 C148 130 174 99 190 67 C201 44 212 29 218 34 C224 39 201 99 190 128 C183 148 184 159 194 147 C210 127 225 105 239 108 C252 111 235 137 235 148 C235 158 246 150 258 137"/>
-      <path class="pen-stroke a1-stroke" pathLength="1" d="M258 137 C268 120 285 111 296 119 C307 128 295 150 281 151 C266 152 266 132 280 120 C294 108 309 117 312 132 C315 147 325 149 337 133"/>
-      <path class="pen-stroke n-stroke" pathLength="1" d="M337 133 C346 117 355 105 361 111 C367 117 351 145 356 149 C361 153 380 111 394 112 C408 113 388 146 398 149 C405 151 416 137 423 128"/>
-      <path class="pen-stroke i-stroke" pathLength="1" d="M423 128 C416 141 414 153 422 150 C428 148 434 140 439 134"/>
-      <circle class="i-dot" cx="438" cy="105" r="3.8"/>
-      <path class="pen-stroke k-stroke" pathLength="1" d="M439 134 C451 101 470 66 481 39 C488 22 499 28 493 48 C484 78 467 121 457 146 C469 132 482 119 495 116 C508 113 490 130 478 139 C468 147 479 151 492 143 C502 137 508 126 517 117 C529 105 545 111 552 125 C560 142 546 153 531 151 C515 149 512 132 524 119 C536 106 553 112 559 128 C565 144 575 146 585 132"/>
-      <path class="underline" pathLength="1" d="M104 205 C220 220 435 216 574 193 C615 187 644 177 665 166"/>
-    </svg>
-    <p class="name-loader-caption">welcome to my little corner ♡</p>
-    <button class="name-loader-skip" type="button" id="name-loader-skip">Skip intro</button>
-  </div>
-</div>
-{% endif %}
+
 
 <header class="topbar">
   <div class="nav">
@@ -886,27 +868,6 @@ body.page-leaving:before{content:"";position:fixed;inset:0;z-index:300;backgroun
 
 
 
-
-  const nameLoader=document.getElementById('name-loader');
-  if(nameLoader){
-    document.body.classList.add('name-intro');
-    let loaderFinished=false;
-    const finishNameLoader=()=>{
-      if(loaderFinished)return;
-      loaderFinished=true;
-      nameLoader.classList.add('is-leaving');
-      document.body.classList.add('is-revealed');
-      window.setTimeout(()=>{
-        nameLoader.remove();
-        document.body.classList.remove('name-intro','is-revealed');
-        document.body.style.overflow='';
-      },720);
-    };
-    const skipNameLoader=document.getElementById('name-loader-skip');
-    if(skipNameLoader)skipNameLoader.addEventListener('click',finishNameLoader);
-    const nameIntroDuration=window.matchMedia('(prefers-reduced-motion: reduce)').matches?900:6400;
-    window.setTimeout(finishNameLoader,nameIntroDuration);
-  }
 
   if(!reducedMotionForArrival())document.body.classList.add('page-arriving');
   function reducedMotionForArrival(){return window.matchMedia('(prefers-reduced-motion: reduce)').matches;}
