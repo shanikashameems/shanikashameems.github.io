@@ -14,9 +14,7 @@ title: Journal
   <div class="real-spider-stage" aria-label="Spider-Man in changing action poses">
     <div class="spider-web-halo" aria-hidden="true"></div>
     <div class="hero-pose-stack">
-      <img class="hero-spider-3d pose-a" src="https://image.pngaaa.com/679/1025679-middle.png" alt="Spider-Man leaping forward">
-      <img class="hero-spider-3d pose-b" src="https://clipart-library.com/2023/959-9596659_spiderman-clipart-tom-holland-spider-man-homecoming-spiderman.png" alt="Spider-Man in a crouching action pose">
-      <img class="hero-spider-3d pose-c" src="https://www.clipartmax.com/png/middle/190-1907782_spectacular-spiderman-spiderman-png.png" alt="Spider-Man crouching and ready to shoot a web">
+      <img class="hero-spider-3d" src="https://pngimg.com/uploads/spider_man/spider_man_PNG2.png" alt="Spider-Man in a clean transparent cutout pose">
     </div>
     <div class="spider-caption"><span>FRIENDLY NEIGHBOURHOOD</span><strong>SPIDER-MAN</strong><small>THWIP! · EARTH-616</small></div>
   </div>
@@ -47,14 +45,18 @@ title: Journal
 @media(max-width:760px){.web-mission-grid{grid-template-columns:1fr 1fr}.web-mission{min-height:130px;padding:16px}}
 @media(max-width:420px){.web-mission-grid{grid-template-columns:1fr}}
 
-.hero-pose-stack{position:relative;z-index:2;width:min(100%,520px);height:530px}
-.real-spider{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 24px 24px rgba(0,0,0,.55))}
+.hero-pose-stack{position:relative;z-index:2;width:min(100%,520px);height:clamp(390px,43vw,560px);display:grid;place-items:center;perspective:1200px}
+
 .hero-pose{opacity:0;animation:hero-pose-cycle 12s infinite}
 .pose-one{animation-delay:0s}.pose-two{animation-delay:4s}.pose-three{animation-delay:8s}
 @keyframes hero-pose-cycle{0%,5%{opacity:0;transform:translateY(35px) scale(.94) rotate(-4deg)}10%,27%{opacity:1;transform:translateY(0) scale(1) rotate(0)}33%,100%{opacity:0;transform:translateY(-28px) scale(.96) rotate(5deg)}}
-@media(max-width:760px){.hero-pose-stack{height:390px;width:min(100%,390px)}}
+@media(max-width:760px){.hero-pose-stack{position:relative;z-index:2;width:min(100%,520px);height:clamp(390px,43vw,560px);display:grid;place-items:center;perspective:1200px}}
 @media(prefers-reduced-motion:reduce){.hero-pose{animation:none;opacity:0}.pose-one{opacity:1}}
 
+
+.hero-spider-3d{position:relative;z-index:2;width:min(100%,480px);height:100%;object-fit:contain;object-position:center bottom;background:transparent!important;mix-blend-mode:normal!important;filter:drop-shadow(0 26px 25px rgba(0,0,0,.5)) drop-shadow(0 0 24px rgba(45,150,255,.18));animation:spider-hero-arrive 1.1s cubic-bezier(.2,.8,.2,1) both,spider-hero-float 4.5s ease-in-out 1.1s infinite}
+@media(max-width:760px){.hero-pose-stack{height:390px;width:min(100%,390px)}.hero-spider-3d{width:min(100%,370px)}}
+@media(prefers-reduced-motion:reduce){.hero-spider-3d{animation:none}}
 </style>
 <section class="reveal">
   <div class="section-head">
