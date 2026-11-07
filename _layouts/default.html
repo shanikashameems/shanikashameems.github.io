@@ -8,7 +8,7 @@
   <title>{{ page.title | default: site.title }} · Shanika's journal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Dancing+Script:wght@500;600;700&family=Patrick+Hand&family=Schoolbell&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Caveat:wght@500;600;700&family=Dancing+Script:wght@500;600;700&family=Patrick+Hand&family=Schoolbell&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}">
   <meta name="color-scheme" content="light">
   <style>
@@ -501,30 +501,28 @@
 
 
 
-    /* Centered, flowing handwritten name, written one glyph at a time. */
+    /* Centered signature-style handwriting animation. */
     body.name-intro main,body.name-intro .topbar,body.name-intro footer,body.name-intro .scroll-buddy{opacity:0;visibility:hidden}
     body.name-intro{overflow:hidden}
     .name-loader{position:fixed;inset:0;z-index:500;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 42%,#fffdf7 0%,#fff7e9 60%,#f1e3d4 100%);opacity:1;visibility:visible;transition:opacity .65s ease,visibility .65s ease}
     .name-loader:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;background-image:radial-gradient(#ddcdb9 .8px,transparent .8px);background-size:18px 18px}
-    .name-loader-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;padding:24px 12px;text-align:center;width:100%;min-height:100%;margin:auto}
+    .name-loader-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px 12px;text-align:center;width:100%;min-height:100%;margin:auto}
     .name-loader-label{margin:0 0 2px;color:#8a7898;font:600 clamp(1.25rem,3vw,1.7rem)/1.2 var(--caveat);letter-spacing:.03em}
     .name-signature{display:block;width:min(92vw,760px);height:auto;overflow:visible}
-    .name-signature .letter{font-family:'Dancing Script',cursive;font-size:126px;font-weight:700;letter-spacing:-3px;fill:transparent;stroke:#963f39;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:write-letter .58s cubic-bezier(.4,.05,.2,1) forwards}
-    .name-signature .l1{animation-delay:.25s}.name-signature .l2{animation-delay:.82s}.name-signature .l3{animation-delay:1.39s}.name-signature .l4{animation-delay:1.96s}.name-signature .l5{animation-delay:2.53s}.name-signature .l6{animation-delay:3.10s}.name-signature .l7{animation-delay:3.67s}
-    .name-signature .idot{fill:#963f39;opacity:0;animation:ink-dot .14s ease 2.96s forwards}
-    .name-signature .underline{fill:none;stroke:#963f39;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:write-underline .85s cubic-bezier(.35,.05,.2,1) 4.35s forwards}
-    .name-loader-caption{margin:0;color:#8a7898;font:600 1.15rem var(--caveat);opacity:0;animation:name-caption-in .45s ease 5.25s forwards}
+    .name-signature text{font-family:'Allura',cursive;font-size:164px;font-weight:400;fill:#171515;letter-spacing:0}
+    .name-signature .signature-reveal{animation:signature-write 4.15s cubic-bezier(.42,.05,.2,1) .25s forwards}
+    .name-signature .underline{fill:none;stroke:#171515;stroke-width:2.8;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:write-underline .9s cubic-bezier(.35,.05,.2,1) 4.35s forwards}
+    .name-loader-caption{margin:0;color:#8a7898;font:600 1.15rem var(--caveat);opacity:0;animation:name-caption-in .45s ease 5.35s forwards}
     .name-loader-skip{margin-top:5px;border:1.5px solid #e4d4c2;background:rgba(255,253,246,.85);border-radius:99px;padding:7px 17px;color:#80758d;font:600 1.1rem var(--caveat);cursor:pointer}
     .name-loader.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
     body.name-intro main,body.name-intro .topbar,body.name-intro footer,body.name-intro .scroll-buddy{transition:opacity .65s ease,visibility .65s ease}
     body.name-intro.is-revealed main,body.name-intro.is-revealed .topbar,body.name-intro.is-revealed footer,body.name-intro.is-revealed .scroll-buddy{opacity:1;visibility:visible}
-    @keyframes write-letter{to{stroke-dashoffset:0;fill:#963f39}}
-    @keyframes ink-dot{to{opacity:1}}
+    @keyframes signature-write{to{width:760px}}
     @keyframes write-underline{to{stroke-dashoffset:0}}
     @keyframes name-caption-in{to{opacity:1}}
-    @media(max-width:520px){.name-signature{width:98vw}.name-signature .letter{font-size:118px;stroke-width:2.2}.name-loader-inner{gap:10px;padding:16px 4px}}
+    @media(max-width:520px){.name-signature{width:98vw}.name-signature text{font-size:150px}.name-loader-inner{gap:10px;padding:16px 4px}}
     @media(max-height:620px){.name-loader-inner{gap:5px;padding:10px}.name-signature{width:min(76vw,560px)}.name-loader-caption{margin-top:2px}}
-    @media(prefers-reduced-motion:reduce){.name-signature .letter,.name-signature .underline{animation:none;stroke-dashoffset:0;fill:#963f39}.name-signature .idot,.name-loader-caption{animation:none;opacity:1}.name-loader{transition:none}}
+    @media(prefers-reduced-motion:reduce){.name-signature .signature-reveal{animation:none;width:760px}.name-signature .underline{animation:none;stroke-dashoffset:0}.name-loader-caption{animation:none;opacity:1}.name-loader{transition:none}}
 </style>
 </head>
 <body>
@@ -535,16 +533,10 @@
 <div class="name-loader" id="name-loader" role="status" aria-label="Loading Shanika's journal">
   <div class="name-loader-inner">
     <p class="name-loader-label">a little piece of my world</p>
-    <svg class="name-signature" viewBox="0 0 760 210" role="img" aria-label="Shanika handwritten, with an underline">
-      <text class="letter l1" x="156" y="137" text-anchor="middle" pathLength="1" transform="rotate(-5 156 137)">S</text>
-      <text class="letter l2" x="225" y="137" text-anchor="middle" pathLength="1" transform="rotate(2 225 137)">h</text>
-      <text class="letter l3" x="292" y="137" text-anchor="middle" pathLength="1" transform="rotate(-2 292 137)">a</text>
-      <text class="letter l4" x="356" y="137" text-anchor="middle" pathLength="1" transform="rotate(2 356 137)">n</text>
-      <text class="letter l5" x="418" y="137" text-anchor="middle" pathLength="1" transform="rotate(-3 418 137)">i</text>
-      <circle class="idot" cx="420" cy="42" r="4.8"/>
-      <text class="letter l6" x="474" y="137" text-anchor="middle" pathLength="1" transform="rotate(2 474 137)">k</text>
-      <text class="letter l7" x="550" y="137" text-anchor="middle" pathLength="1" transform="rotate(-2 550 137)">a</text>
-      <path class="underline" pathLength="1" d="M145 166 C245 181 450 181 575 160"/>
+    <svg class="name-signature" viewBox="0 0 760 210" role="img" aria-label="Shanika in flowing handwritten script, with an underline">
+      <defs><clipPath id="signature-writing-clip" clipPathUnits="userSpaceOnUse"><rect class="signature-reveal" x="0" y="0" width="0" height="210"/></clipPath></defs>
+      <text x="380" y="145" text-anchor="middle" clip-path="url(#signature-writing-clip)">Shanika</text>
+      <path class="underline" pathLength="1" d="M170 169 C270 184 470 181 590 160"/>
     </svg>
     <p class="name-loader-caption">welcome to my little corner ♡</p>
     <button class="name-loader-skip" type="button" id="name-loader-skip">Skip intro</button>
