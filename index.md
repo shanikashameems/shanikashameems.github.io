@@ -20,7 +20,6 @@ title: Journal
     </div>
     <div class="spider-caption"><span>FRIENDLY NEIGHBOURHOOD</span><strong>SPIDER-MAN</strong><small>THWIP! · EARTH-616</small></div>
   </div>
-  </div>
 </section>
 
 <section class="web-mission-board reveal" aria-label="Explore the webverse">
@@ -114,13 +113,9 @@ title: Journal
 .hero-spider-3d{background:transparent!important;mix-blend-mode:normal!important;object-fit:contain}
 .real-spider-stage{background:transparent!important}
 
-/* Static hero for now: no swing, float, or pose cycling */
-.hero-spider-3d{animation:none!important;transform:none!important;mix-blend-mode:normal!important;background:transparent!important}
-.real-spider-stage:after{animation:none!important}
-
 .hero-pose-stack{position:relative;z-index:2;width:min(100%,520px);height:clamp(390px,43vw,560px);display:grid;place-items:center;perspective:1200px}
 .hero-spider-3d{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;opacity:0;mix-blend-mode:multiply!important;filter:drop-shadow(0 26px 25px rgba(0,0,0,.5)) drop-shadow(0 0 24px rgba(45,150,255,.18));transform:translate3d(0,24px,-70px) rotateY(-16deg) rotateX(5deg) scale(.9);backface-visibility:hidden;will-change:opacity,transform}
-.pose-a{animation:hero-pose-a 6s cubic-bezier(.45,0,.55,1) infinite}
+.pose-a{animation:hero-pose-a 6s cubic-bezier(.45,0,.55,1) infinite;opacity:1}
 .pose-b{animation:hero-pose-b 6s cubic-bezier(.45,0,.55,1) infinite}
 .pose-c{animation:hero-pose-c 6s cubic-bezier(.45,0,.55,1) infinite}
 @keyframes hero-pose-a{0%,4%{opacity:0;transform:translate3d(-28px,28px,-90px) rotateY(-18deg) rotateZ(-4deg) scale(.88)}10%,29%{opacity:1;transform:translate3d(0,0,35px) rotateY(0) rotateZ(0) scale(1)}35%,100%{opacity:0;transform:translate3d(28px,-18px,-70px) rotateY(16deg) rotateZ(4deg) scale(.94)}}
@@ -130,5 +125,5 @@ title: Journal
 .spider-web-halo{animation:halo-pulse 6s ease-in-out infinite}
 @keyframes halo-pulse{0%,100%{transform:scale(.96);opacity:.65}50%{transform:scale(1.06);opacity:1}}
 @media(max-width:760px){.hero-pose-stack{height:390px;width:min(100%,390px)}.real-spider-stage{min-height:410px}}
-@media(prefers-reduced-motion:reduce){.hero-spider-3d{animation:none!important;opacity:0}.pose-a{opacity:1}}
+@media(prefers-reduced-motion:reduce){.hero-spider-3d{animation:none!important;opacity:0}.pose-a{opacity:1;transform:none}}
 </style>
