@@ -1057,7 +1057,26 @@ body.page-leaving:before{content:"";position:fixed;inset:0;z-index:300;backgroun
   setTimeout(()=>{layer.innerHTML='';document.body.classList.remove('web-fired');dock.classList.remove('is-firing')},720);
  };
  const dock=document.createElement('div');dock.className='web-shooter-dock';
- dock.innerHTML='<span class="web-shooter-label">WEB SHOOTER · FIRE</span><button class="web-shooter" type="button" aria-label="Fire a web"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><defs><linearGradient id="gauntletRed" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff526b"/><stop offset=".55" stop-color="#d8173d"/><stop offset="1" stop-color="#6e1029"/></linearGradient><linearGradient id="gauntletBlue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4dbaff"/><stop offset="1" stop-color="#073d78"/></linearGradient></defs><path d="M16 84Q7 78 13 66L27 40Q31 34 36 38L43 45L48 15Q50 7 57 10Q63 12 61 20L57 42L64 12Q67 5 73 9Q79 12 76 20L69 44L78 23Q82 17 87 22Q91 26 87 33L77 55Q87 48 91 54Q95 60 87 68L70 88Q63 96 49 94L27 91Z" fill="url(#gauntletRed)" stroke="#f7dce4" stroke-width="2.2" stroke-linejoin="round"/><path d="M17 75L31 84L49 89L65 83L75 70L67 61L53 69L43 63L35 57L28 66Z" fill="url(#gauntletBlue)" stroke="#9bdcff" stroke-width="1.5"/><path d="M31 42L43 51L53 48L61 42M43 51L38 66M53 48L51 67M64 42L60 59M73 43L66 59" stroke="#071b34" stroke-width="2.3" stroke-linecap="round"/><path d="M47 57L58 51L69 57L65 70L53 75L43 68Z" fill="#071b34" stroke="#9bdcff" stroke-width="1.6"/><path d="M50 62L56 58L62 62L56 68Z" fill="#eafaff"/><path d="M54 57L56 51M61 61L68 57M51 66L45 70" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/><path d="M50 14L54 4M70 13L77 4M85 25L95 21" stroke="#a8e4ff" stroke-width="2" stroke-linecap="round"/></svg></button>';
+ dock.innerHTML='<span class="web-shooter-label">WEB SHOOTER · FIRE</span><button class="web-shooter" type="button" aria-label="Fire a web"><svg viewBox="0 0 120 120" aria-hidden="true">
+<defs>
+ <linearGradient id="gloveRed" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff6c75"/><stop offset=".34" stop-color="#e82943"/><stop offset=".72" stop-color="#a90f2b"/><stop offset="1" stop-color="#570b20"/></linearGradient>
+ <linearGradient id="gloveBlue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4dbbff"/><stop offset=".5" stop-color="#1265ad"/><stop offset="1" stop-color="#08284e"/></linearGradient>
+ <linearGradient id="gloveHighlight" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff" stop-opacity=".65"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+ <pattern id="webGrid" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M6 0L6 12M0 6L12 6M0 0L12 12M12 0L0 12" stroke="#420c20" stroke-opacity=".65" stroke-width=".8"/><circle cx="6" cy="6" r="1.2" fill="#ffb0b6" fill-opacity=".45"/></pattern>
+</defs>
+<path d="M18 111Q10 105 14 93L27 65Q30 59 37 63L44 68L43 28Q43 18 51 17Q60 17 61 27L61 57L65 15Q66 5 75 7Q84 9 82 20L78 59L87 27Q90 17 98 21Q105 24 101 35L91 69Q101 58 108 64Q114 70 106 80L88 105Q80 116 64 116L34 117Z" fill="url(#gloveRed)" stroke="#ffc1c7" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M43 29Q43 19 51 18Q60 18 61 28L61 58L53 64L46 57Z" fill="url(#webGrid)" opacity=".8"/>
+<path d="M65 16Q66 6 75 8Q84 10 82 21L78 59L68 64L62 57Z" fill="url(#webGrid)" opacity=".8"/>
+<path d="M87 28Q90 18 98 22Q105 25 101 36L91 69L80 74L77 62Z" fill="url(#webGrid)" opacity=".75"/>
+<path d="M29 65Q33 59 39 64L52 75Q57 80 53 87Q49 93 42 88L27 79Q23 73 29 65Z" fill="url(#gloveRed)" stroke="#ff9ba7" stroke-width="1.2"/>
+<path d="M55 73Q63 62 71 67L82 75Q89 82 82 89L70 98Q63 102 57 95L51 87Q49 80 55 73Z" fill="url(#gloveRed)" stroke="#ff9ba7" stroke-width="1.4"/>
+<path d="M58 78Q66 71 74 77L78 82L67 91L58 86Z" fill="url(#webGrid)" opacity=".8"/>
+<path d="M17 98Q26 87 38 93L54 104Q63 111 56 117L34 119Q17 117 17 98Z" fill="url(#gloveBlue)" stroke="#8bd4ff" stroke-width="1.6"/>
+<path d="M19 96Q32 91 43 100L53 108" fill="none" stroke="#9be0ff" stroke-opacity=".7" stroke-width="2"/>
+<path d="M47 22Q50 15 56 20M69 13Q76 9 80 16M92 28Q97 25 99 31" fill="none" stroke="url(#gloveHighlight)" stroke-width="3" stroke-linecap="round"/>
+<path d="M25 69L38 77M32 62L45 70M55 80L69 90M65 74L79 83" stroke="#5c0c24" stroke-width="1.3" opacity=".8"/>
+<path d="M48 6L52 1M75 3L78 0M100 17L106 13" stroke="#b8eaff" stroke-width="2" stroke-linecap="round"/>
+</svg></button>';
  document.body.appendChild(dock);
  dock.querySelector('button').addEventListener('click',()=>shoot(innerWidth*.48,innerHeight*.35));
  document.addEventListener('pointerdown',e=>{if(e.target.closest('.web-shooter'))return;shoot(e.clientX,e.clientY)},{passive:true});
