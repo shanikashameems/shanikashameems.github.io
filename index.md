@@ -13,7 +13,7 @@ title: Journal
   </div>
   <div class="real-spider-stage" aria-label="Spider-Man floating above a cinematic city backdrop">
     <div class="spider-web-halo" aria-hidden="true"></div>
-    <img class="hero-spider-3d" src="https://icon2.cleanpng.com/lnd/20250312/hs/1e520094c960fb8066db92b78c7bef.webp" alt="Spider-Man leaping forward and shooting a web">
+    <img class="hero-spider-3d" src="https://file.aiquickdraw.com/imgcompressed/img/compressed_8564cf822e167db5111eeb300d836f85.webp" alt="Spider-Man leaping forward and shooting a web">
     <div class="spider-caption"><span>FRIENDLY NEIGHBOURHOOD</span><strong>SPIDER-MAN</strong><small>THWIP! · EARTH-616</small></div>
   </div>
 </section>
@@ -108,4 +108,8 @@ title: Journal
 /* Use a real alpha-channel cutout, never a checkerboard preview image */
 .hero-spider-3d{background:transparent!important;mix-blend-mode:normal!important;object-fit:contain}
 .real-spider-stage{background:transparent!important}
+
+/* Static hero for now: no swing, float, or pose cycling */
+.hero-spider-3d{animation:none!important;transform:none!important;mix-blend-mode:normal!important;background:transparent!important}
+.real-spider-stage:after{animation:none!important}
 </style>
