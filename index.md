@@ -11,9 +11,9 @@ title: Journal
     <div class="hero-meta">PLAYER FILE · SHANIKA // WEB-SLINGER IN PROGRESS</div>
     <div class="handwritten" style="margin-top:18px">with great curiosity...</div>
   </div>
-  <div class="real-spider-stage" aria-label="Spider-Man standing above the city">
+  <div class="real-spider-stage" aria-label="Spider-Man floating above a cinematic city backdrop">
     <div class="spider-web-halo" aria-hidden="true"></div>
-    <div class="hero-pose-stack"><img class="real-spider hero-pose pose-one" src="https://www.citypng.com/public/uploads/preview/hd-standing-spider-man-cartoon-character-png-701751694950632dci2oslpe3.png?v=2026040511" alt="Spider-Man standing in his classic suit"><img class="real-spider hero-pose pose-two" src="https://www.clipartmax.com/png/middle/214-2141529_audio-player-ultimate-sticker-collection-spider-man-ultimate-sticker.png" alt="Spider-Man leaping forward and shooting a web"><img class="real-spider hero-pose pose-three" src="https://clipart-library.com/2023/41-419349_spider-man-image-spiderman-comic-png.png" alt="Spider-Man swinging through the air"></div>
+    <img class="hero-spider-3d" src="https://image.pngaaa.com/679/1025679-middle.png" alt="Spider-Man leaping forward and shooting a web">
     <div class="spider-caption"><span>FRIENDLY NEIGHBOURHOOD</span><strong>SPIDER-MAN</strong><small>THWIP! · EARTH-616</small></div>
   </div>
 </section>
