@@ -13,7 +13,7 @@ title: Journal
   </div>
   <div class="real-spider-stage" aria-label="Spider-Man floating above a cinematic city backdrop">
     <div class="spider-web-halo" aria-hidden="true"></div>
-    <img class="hero-spider-3d" src="https://clipart-library.com/2023/22-227717_spiderman-clipart-free-download-clip-art-on-ultimate-spider-man-2011.png" alt="Spider-Man leaping forward and shooting a web">
+    <img class="hero-spider-3d" src="https://icon2.cleanpng.com/lnd/20250312/hs/1e520094c960fb8066db92b78c7bef.webp" alt="Spider-Man leaping forward and shooting a web">
     <div class="spider-caption"><span>FRIENDLY NEIGHBOURHOOD</span><strong>SPIDER-MAN</strong><small>THWIP! · EARTH-616</small></div>
   </div>
 </section>
@@ -104,4 +104,8 @@ title: Journal
 .real-spider-stage{background:transparent!important;border:0!important;box-shadow:none!important}
 .hero-spider-3d{background:transparent!important;filter:drop-shadow(0 25px 28px rgba(0,0,0,.55)) drop-shadow(0 0 30px rgba(55,158,255,.24))!important}
 .spider-web-halo{background:radial-gradient(circle,rgba(31,130,218,.34),rgba(229,29,61,.12) 45%,transparent 72%)!important;border:0!important;box-shadow:0 0 75px rgba(35,140,235,.18)!important}
+
+/* Use a real alpha-channel cutout, never a checkerboard preview image */
+.hero-spider-3d{background:transparent!important;mix-blend-mode:normal!important;object-fit:contain}
+.real-spider-stage{background:transparent!important}
 </style>
