@@ -11,38 +11,10 @@ title: Journal
     <div class="hero-meta">PLAYER FILE · SHANIKA // WEB-SLINGER IN PROGRESS</div>
     <div class="handwritten" style="margin-top:18px">with great curiosity...</div>
   </div>
-  <div class="spider-character-card" aria-hidden="true">
-    <svg viewBox="0 0 260 330">
-      <defs><linearGradient id="spiderSuitRed" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ff526b"/><stop offset="1" stop-color="#9d102c"/></linearGradient><linearGradient id="spiderSuitBlue" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#2d9cf0"/><stop offset="1" stop-color="#102a56"/></linearGradient></defs>
-      <ellipse cx="133" cy="305" rx="78" ry="12" fill="#000" opacity=".25"/>
-      <!-- original spider-hero crouch with one hand shooting a web -->
-      <path d="M102 112Q73 92 53 67L34 46Q25 35 16 45L28 68L58 105L83 145Z" fill="url(#spiderSuitRed)" stroke="#ff8292" stroke-width="2"/>
-      <path d="M31 48L17 35L7 41L16 58L33 63Z" fill="url(#spiderSuitBlue)" stroke="#63baff" stroke-width="2"/>
-      <path d="M157 112L186 79L209 46Q217 34 229 42L222 62L203 103L180 143Z" fill="url(#spiderSuitRed)" stroke="#ff8292" stroke-width="2"/>
-      <path d="M222 46L235 30L249 38L243 56L228 64Z" fill="url(#spiderSuitBlue)" stroke="#63baff" stroke-width="2"/>
-      <path d="M86 111Q93 80 132 79Q172 83 181 120L169 192L91 194L72 145Z" fill="url(#spiderSuitRed)" stroke="#ff8292" stroke-width="2"/>
-      <path d="M93 123L132 143L171 119L168 190L94 194L76 148Z" fill="url(#spiderSuitBlue)" stroke="#63baff" stroke-width="2"/>
-      <path d="M91 192L74 237L38 271L54 287L105 260L131 211Z" fill="url(#spiderSuitRed)" stroke="#ff8292" stroke-width="2"/>
-      <path d="M151 193L170 232L211 256L198 275L145 258L122 211Z" fill="url(#spiderSuitBlue)" stroke="#63baff" stroke-width="2"/>
-      <path d="M94 35Q97 4 132 5Q168 7 171 38L158 83L112 84Z" fill="url(#spiderSuitRed)" stroke="#ff8292" stroke-width="2"/>
-      <path d="M108 43Q123 26 135 42L119 58Z" fill="#f4fbff" stroke="#10182a" stroke-width="3"/>
-      <path d="M139 42Q155 26 164 43L148 59Z" fill="#f4fbff" stroke="#10182a" stroke-width="3"/>
-      <g fill="none" stroke="#ffdce2" stroke-width="1.2" opacity=".8"><path d="M132 8V82M99 19L161 70M163 19L99 70M82 133L132 151L176 130M92 194L132 163L169 194M43 271L57 286M198 258L211 273"/></g>
-      <path d="M132 143l-12 18 13 12 13-12z" fill="#fff" stroke="#10182a" stroke-width="2"/>
-      <path d="M18 43Q2 24 4 7M18 43Q31 20 42 3M18 43Q-1 45 -13 39" fill="none" stroke="#dff6ff" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-  </div>
-  <div class="book-stage" aria-label="A three-dimensional Spider-Verse field archive">
-    <div class="paper-orbit one" aria-hidden="true"></div><div class="paper-orbit two" aria-hidden="true"></div><div class="book-shadow"></div>
-    <div class="book">
-      <div class="book-back"></div><div class="book-spine"></div><div class="book-pages"></div>
-      <div class="book-cover">
-        <div class="book-label">CLASSIFIED · FIELD NOTES 001</div>
-        <div class="book-title">Into the Webverse.</div>
-        <div class="book-mark"><span>SHANIKA // EARTH-616</span><span>✦</span></div>
-      </div>
-    </div>
-    <div class="floating-note"><strong>MISSION LOG</strong>Keep moving. Keep making.</div><div class="handwritten-note">your friendly neighbourhood archive ✦</div>
+  <div class="real-spider-stage" aria-label="Spider-Man standing above the city">
+    <div class="spider-web-halo" aria-hidden="true"></div>
+    <img class="real-spider" src="https://www.citypng.com/public/uploads/preview/hd-standing-spider-man-cartoon-character-png-701751694950632dci2oslpe3.png?v=2026040511" alt="Spider-Man in his classic red and blue suit">
+    <div class="spider-caption"><span>FRIENDLY NEIGHBOURHOOD</span><strong>SPIDER-MAN</strong><small>THWIP! · EARTH-616</small></div>
   </div>
 </section>
 
@@ -103,3 +75,19 @@ title: Journal
     {% endfor %}
   </div>
 </section>
+
+<style>
+.journal-hero{grid-template-columns:.92fr 1.08fr;min-height:590px;gap:2%;overflow:hidden}
+.real-spider-stage{position:relative;min-height:540px;display:flex;align-items:flex-end;justify-content:center;isolation:isolate}
+.real-spider{position:relative;z-index:2;width:min(100%,520px);height:530px;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 24px 24px rgba(0,0,0,.55));animation:spider-hero-arrive 1.1s cubic-bezier(.2,.8,.2,1) both,spider-hero-float 4.5s ease-in-out 1.1s infinite}
+.spider-web-halo{position:absolute;z-index:0;width:min(90%,480px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(27,132,218,.28),rgba(229,29,61,.12) 48%,transparent 72%);border:1px solid rgba(105,190,255,.22);box-shadow:0 0 90px rgba(25,132,220,.17)}
+.spider-web-halo:before,.spider-web-halo:after{content:"";position:absolute;inset:7%;border:1px solid rgba(120,194,255,.35);border-radius:50%;background:repeating-conic-gradient(from 0deg,transparent 0deg 14deg,rgba(120,194,255,.18) 14.2deg 14.6deg,transparent 14.8deg 30deg)}
+.spider-web-halo:after{inset:20%;transform:rotate(15deg)}
+.spider-caption{position:absolute;z-index:3;right:0;bottom:35px;display:flex;flex-direction:column;gap:2px;padding:12px 17px;background:rgba(5,13,28,.88);border-left:3px solid #ef2949;box-shadow:5px 6px 0 rgba(25,132,220,.28);transform:rotate(-3deg)}
+.spider-caption span,.spider-caption small{font:700 .72rem 'Barlow Condensed',sans-serif;letter-spacing:.18em;color:#79c9ff}
+.spider-caption strong{font:400 2rem 'Bangers',cursive;letter-spacing:1px;color:#fff}
+@keyframes spider-hero-arrive{from{opacity:0;transform:translateY(60px) scale(.92)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes spider-hero-float{0%,100%{translate:0 0}50%{translate:0 -12px}}
+@media(max-width:760px){.journal-hero{grid-template-columns:1fr;min-height:0;padding-bottom:30px}.real-spider-stage{min-height:390px;margin-top:-15px}.real-spider{height:390px;width:min(100%,390px)}.spider-caption{right:3%;bottom:12px}}
+@media(prefers-reduced-motion:reduce){.real-spider{animation:none}}
+</style>
