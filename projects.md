@@ -236,3 +236,31 @@ title: Books
     dialog.addEventListener('close',()=>shelf.querySelectorAll('.library-book').forEach(item=>item.setAttribute('aria-expanded','false')));
   })();
 </script>
+
+<style>
+.library-page{background:linear-gradient(145deg,rgba(7,16,32,.97),rgba(12,32,55,.97))!important;border:1px solid rgba(89,176,244,.5)!important;border-radius:3px!important;box-shadow:9px 10px 0 rgba(229,29,61,.2),inset 0 0 50px rgba(24,110,181,.1)!important;color:#eef6ff}
+.library-page:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.13;background:repeating-linear-gradient(135deg,transparent 0 22px,rgba(107,190,255,.18) 23px 24px)}
+.library-page .eyebrow{color:#72c7ff!important;font:700 1rem 'Barlow Condensed',sans-serif!important;letter-spacing:.2em!important;text-transform:uppercase}
+.library-page>h1{font:400 clamp(3.3rem,7vw,5.8rem)/.92 'Bangers',cursive!important;letter-spacing:1px!important;color:#fff!important;text-shadow:4px 4px 0 #a91532,7px 7px 0 rgba(26,132,220,.45)!important}
+.library-page p{color:#c2d5e9!important}
+.library-page .library-intro{font:500 1.25rem/1.5 'Barlow Condensed',sans-serif!important;max-width:680px}
+.library-decor{color:#e52b4c!important;opacity:.9}.library-decor span:nth-child(2){color:#68bfff!important}.library-decor span:nth-child(3){color:#fff!important}
+.library-room{position:relative;background:linear-gradient(145deg,#0c2b4b,#071526 60%,#102e4c)!important;border:5px solid #b21e38!important;border-radius:2px!important;box-shadow:0 0 0 2px #2b9be7,0 18px 38px rgba(0,0,0,.4),inset 0 0 40px rgba(38,139,220,.18)!important}
+.library-room:before{content:"WEB ARCHIVE // ISSUE 001";position:absolute;top:8px;left:14px;color:#8dd3ff;font:700 .72rem 'Barlow Condensed',sans-serif;letter-spacing:.22em}
+.library-shelf{background:none!important}.shelf-row{gap:9px!important;padding-top:22px!important}
+.library-book{border-radius:2px!important;border:1px solid rgba(255,255,255,.2)!important;box-shadow:inset 3px 0 5px rgba(255,255,255,.2),inset -4px 0 8px rgba(0,0,0,.28),3px 5px 10px rgba(0,0,0,.35)!important}
+.library-book:before{inset:7px 5px!important;border:1px solid rgba(255,255,255,.38)!important}
+.library-book:after{content:"✦"!important;left:auto!important;right:7px!important;top:7px!important;bottom:auto!important;width:auto!important;height:auto!important;background:none!important;box-shadow:none!important;color:rgba(255,255,255,.55)!important;font-size:.7rem}
+.library-book strong{font:700 clamp(.78rem,1vw,.98rem)/1.08 'Barlow Condensed',sans-serif!important;text-transform:uppercase!important;letter-spacing:.035em!important;text-shadow:0 2px 4px rgba(0,0,0,.65)!important}
+.book-coral{--book:#bd1836!important}.book-blue{--book:#125b9d!important}.book-sage{--book:#087e91!important}.book-lilac{--book:#593f91!important}.book-gold{--book:#a76b12!important}.book-teal{--book:#08705f!important}
+.shelf-plank{background:linear-gradient(180deg,#238bd0,#10558e 55%,#092f54)!important;box-shadow:0 7px 12px rgba(0,0,0,.45),inset 0 2px 2px rgba(255,255,255,.3)!important}
+.book-dialog::backdrop{background:rgba(0,5,14,.82)!important;backdrop-filter:blur(8px)}
+.book-dialog .book-note{background:linear-gradient(145deg,#102b49,#071626)!important;border:2px solid #e32949!important;border-radius:2px!important;box-shadow:8px 8px 0 #1266a5,0 25px 80px rgba(0,0,0,.5)!important}
+.book-note:before{border-color:rgba(94,186,255,.4)!important}.book-note-label,.book-note h2{color:#fff!important;font-family:'Bangers',cursive!important;letter-spacing:.05em}
+.book-note h2{font-size:clamp(2.3rem,5vw,3.4rem)!important;text-shadow:2px 2px 0 #c51d3a}
+.book-note p,.takeaway-wrap p,.note-author{color:#d3e5f7!important}
+.takeaway-wrap{background:rgba(25,108,171,.2)!important;border-left-color:#ef2949!important}.takeaway-wrap>span{color:#82ceff!important;font-family:'Barlow Condensed',sans-serif!important;text-transform:uppercase;letter-spacing:.1em}
+.note-heart{color:#ef2949!important}.book-dialog-close{background:#102b49!important;color:white!important;border-color:#65bfff!important}
+.library-footnote{color:#9fc8eb!important;font-family:'Barlow Condensed',sans-serif!important}.library-footnote span{color:#f12d4c!important}
+@media(max-width:760px){.shelf-row{gap:6px!important}.library-page>h1{font-size:3.4rem!important}}
+</style>
