@@ -92,7 +92,7 @@ title: Journal
 </section>
 
 <style>
-.journal-hero{grid-template-columns:.92fr 1.08fr;min-height:590px;gap:2%;overflow:hidden}
+.journal-hero{grid-template-columns:.92fr 1.08fr;min-height:450px;gap:2%;overflow:hidden;padding-top:0;padding-bottom:24px}
 .real-spider-stage{position:relative;min-height:540px;display:flex;align-items:flex-end;justify-content:center;isolation:isolate}
 .real-spider{position:relative;z-index:2;width:min(100%,520px);height:530px;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 24px 24px rgba(0,0,0,.55));animation:spider-hero-arrive 1.1s cubic-bezier(.2,.8,.2,1) both,spider-hero-float 4.5s ease-in-out 1.1s infinite}
 .spider-web-halo{position:absolute;z-index:0;width:min(90%,480px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(27,132,218,.28),rgba(229,29,61,.12) 48%,transparent 72%);border:1px solid rgba(105,190,255,.22);box-shadow:0 0 90px rgba(25,132,220,.17)}
