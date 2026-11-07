@@ -13,7 +13,7 @@ title: Journal
   </div>
   <div class="real-spider-stage" aria-label="Spider-Man standing above the city">
     <div class="spider-web-halo" aria-hidden="true"></div>
-    <img class="real-spider" src="https://www.citypng.com/public/uploads/preview/hd-standing-spider-man-cartoon-character-png-701751694950632dci2oslpe3.png?v=2026040511" alt="Spider-Man in his classic red and blue suit">
+    <div class="hero-pose-stack"><img class="real-spider hero-pose pose-one" src="https://www.citypng.com/public/uploads/preview/hd-standing-spider-man-cartoon-character-png-701751694950632dci2oslpe3.png?v=2026040511" alt="Spider-Man standing in his classic suit"><img class="real-spider hero-pose pose-two" src="https://www.clipartmax.com/png/middle/214-2141529_audio-player-ultimate-sticker-collection-spider-man-ultimate-sticker.png" alt="Spider-Man leaping forward and shooting a web"><img class="real-spider hero-pose pose-three" src="https://clipart-library.com/2023/41-419349_spider-man-image-spiderman-comic-png.png" alt="Spider-Man swinging through the air"></div>
     <div class="spider-caption"><span>FRIENDLY NEIGHBOURHOOD</span><strong>SPIDER-MAN</strong><small>THWIP! · EARTH-616</small></div>
   </div>
 </section>
@@ -42,6 +42,15 @@ title: Journal
 .web-mission b{position:absolute;right:18px;bottom:15px;color:#ff4563;font-size:1.4rem}
 @media(max-width:760px){.web-mission-grid{grid-template-columns:1fr 1fr}.web-mission{min-height:130px;padding:16px}}
 @media(max-width:420px){.web-mission-grid{grid-template-columns:1fr}}
+
+.hero-pose-stack{position:relative;z-index:2;width:min(100%,520px);height:530px}
+.real-spider{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 24px 24px rgba(0,0,0,.55))}
+.hero-pose{opacity:0;animation:hero-pose-cycle 12s infinite}
+.pose-one{animation-delay:0s}.pose-two{animation-delay:4s}.pose-three{animation-delay:8s}
+@keyframes hero-pose-cycle{0%,5%{opacity:0;transform:translateY(35px) scale(.94) rotate(-4deg)}10%,27%{opacity:1;transform:translateY(0) scale(1) rotate(0)}33%,100%{opacity:0;transform:translateY(-28px) scale(.96) rotate(5deg)}}
+@media(max-width:760px){.hero-pose-stack{height:390px;width:min(100%,390px)}}
+@media(prefers-reduced-motion:reduce){.hero-pose{animation:none;opacity:0}.pose-one{opacity:1}}
+
 </style>
 <section class="reveal">
   <div class="section-head">
