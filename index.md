@@ -11,10 +11,15 @@ title: Journal
     <div class="hero-meta">PLAYER FILE · SHANIKA // WEB-SLINGER IN PROGRESS</div>
     <div class="handwritten" style="margin-top:18px">with great curiosity...</div>
   </div>
-  <div class="real-spider-stage" aria-label="Spider-Man floating above a cinematic city backdrop">
+  <div class="real-spider-stage" aria-label="Spider-Man in changing action poses">
     <div class="spider-web-halo" aria-hidden="true"></div>
-    <img class="hero-spider-3d" src="https://file.aiquickdraw.com/imgcompressed/img/compressed_8564cf822e167db5111eeb300d836f85.webp" alt="Spider-Man leaping forward and shooting a web">
+    <div class="hero-pose-stack">
+      <img class="hero-spider-3d pose-a" src="https://image.pngaaa.com/679/1025679-middle.png" alt="Spider-Man leaping forward">
+      <img class="hero-spider-3d pose-b" src="https://clipart-library.com/2023/959-9596659_spiderman-clipart-tom-holland-spider-man-homecoming-spiderman.png" alt="Spider-Man in a crouching action pose">
+      <img class="hero-spider-3d pose-c" src="https://www.clipartmax.com/png/middle/190-1907782_spectacular-spiderman-spiderman-png.png" alt="Spider-Man crouching and ready to shoot a web">
+    </div>
     <div class="spider-caption"><span>FRIENDLY NEIGHBOURHOOD</span><strong>SPIDER-MAN</strong><small>THWIP! · EARTH-616</small></div>
+  </div>
   </div>
 </section>
 
@@ -112,4 +117,18 @@ title: Journal
 /* Static hero for now: no swing, float, or pose cycling */
 .hero-spider-3d{animation:none!important;transform:none!important;mix-blend-mode:normal!important;background:transparent!important}
 .real-spider-stage:after{animation:none!important}
+
+.hero-pose-stack{position:relative;z-index:2;width:min(100%,520px);height:clamp(390px,43vw,560px);display:grid;place-items:center;perspective:1200px}
+.hero-spider-3d{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;opacity:0;mix-blend-mode:multiply!important;filter:drop-shadow(0 26px 25px rgba(0,0,0,.5)) drop-shadow(0 0 24px rgba(45,150,255,.18));transform:translate3d(0,24px,-70px) rotateY(-16deg) rotateX(5deg) scale(.9);backface-visibility:hidden;will-change:opacity,transform}
+.pose-a{animation:hero-pose-a 6s cubic-bezier(.45,0,.55,1) infinite}
+.pose-b{animation:hero-pose-b 6s cubic-bezier(.45,0,.55,1) infinite}
+.pose-c{animation:hero-pose-c 6s cubic-bezier(.45,0,.55,1) infinite}
+@keyframes hero-pose-a{0%,4%{opacity:0;transform:translate3d(-28px,28px,-90px) rotateY(-18deg) rotateZ(-4deg) scale(.88)}10%,29%{opacity:1;transform:translate3d(0,0,35px) rotateY(0) rotateZ(0) scale(1)}35%,100%{opacity:0;transform:translate3d(28px,-18px,-70px) rotateY(16deg) rotateZ(4deg) scale(.94)}}
+@keyframes hero-pose-b{0%,30%{opacity:0;transform:translate3d(30px,22px,-80px) rotateY(18deg) rotateZ(5deg) scale(.92)}38%,61%{opacity:1;transform:translate3d(0,-3px,40px) rotateY(0) rotateZ(-1deg) scale(1.02)}68%,100%{opacity:0;transform:translate3d(-24px,-18px,-80px) rotateY(-18deg) rotateZ(-5deg) scale(.93)}}
+@keyframes hero-pose-c{0%,63%{opacity:0;transform:translate3d(-25px,24px,-90px) rotateY(-16deg) rotateZ(-4deg) scale(.9)}70%,93%{opacity:1;transform:translate3d(0,0,38px) rotateY(0) rotateZ(1deg) scale(1)}100%{opacity:0;transform:translate3d(25px,-18px,-80px) rotateY(18deg) rotateZ(5deg) scale(.94)}}
+.real-spider-stage{min-height:clamp(430px,50vw,600px);overflow:visible}
+.spider-web-halo{animation:halo-pulse 6s ease-in-out infinite}
+@keyframes halo-pulse{0%,100%{transform:scale(.96);opacity:.65}50%{transform:scale(1.06);opacity:1}}
+@media(max-width:760px){.hero-pose-stack{height:390px;width:min(100%,390px)}.real-spider-stage{min-height:410px}}
+@media(prefers-reduced-motion:reduce){.hero-spider-3d{animation:none!important;opacity:0}.pose-a{opacity:1}}
 </style>
