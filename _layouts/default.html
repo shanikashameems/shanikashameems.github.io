@@ -501,7 +501,7 @@
 
 
 
-    /* The exact flowing script style, revealed one letter at a time. */
+    /* True pen-stroke signature animation: every glyph is drawn along its stroke path. */
     body.name-intro main,body.name-intro .topbar,body.name-intro footer,body.name-intro .scroll-buddy{opacity:0;visibility:hidden}
     body.name-intro{overflow:hidden}
     .name-loader{position:fixed;inset:0;z-index:500;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 42%,#fffdf7 0%,#fff7e9 60%,#f1e3d4 100%);opacity:1;visibility:visible;transition:opacity .65s ease,visibility .65s ease}
@@ -509,21 +509,27 @@
     .name-loader-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px 12px;text-align:center;width:100%;min-height:100%;margin:auto}
     .name-loader-label{margin:0 0 2px;color:#8a7898;font:600 clamp(1.25rem,3vw,1.7rem)/1.2 var(--caveat);letter-spacing:.03em}
     .name-signature{display:block;width:min(92vw,760px);height:auto;overflow:visible}
-    .name-signature text{font-family:'Allura',cursive;font-size:164px;font-weight:400;fill:#171515;letter-spacing:0}
-    .name-signature .char-reveal{width:0;animation:reveal-character .46s cubic-bezier(.35,.05,.2,1) forwards}
-    .name-signature .c1{animation-delay:.22s}.name-signature .c2{animation-delay:.75s}.name-signature .c3{animation-delay:1.28s}.name-signature .c4{animation-delay:1.81s}.name-signature .c5{animation-delay:2.34s}.name-signature .c6{animation-delay:2.87s}.name-signature .c7{animation-delay:3.40s}
-    .name-signature .underline{fill:none;stroke:#171515;stroke-width:2.8;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:write-underline .82s cubic-bezier(.35,.05,.2,1) 3.98s forwards}
-    .name-loader-caption{margin:0;color:#8a7898;font:600 1.15rem var(--caveat);opacity:0;animation:name-caption-in .45s ease 4.9s forwards}
+    .name-signature .pen-stroke{fill:none;stroke:#171515;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+    .name-signature .s-stroke{animation:pen-write .72s cubic-bezier(.45,.05,.2,1) .2s forwards}
+    .name-signature .h-stroke{animation:pen-write .78s cubic-bezier(.45,.05,.2,1) .88s forwards}
+    .name-signature .a1-stroke{animation:pen-write .58s cubic-bezier(.45,.05,.2,1) 1.62s forwards}
+    .name-signature .n-stroke{animation:pen-write .62s cubic-bezier(.45,.05,.2,1) 2.16s forwards}
+    .name-signature .i-stroke{animation:pen-write .38s cubic-bezier(.45,.05,.2,1) 2.75s forwards}
+    .name-signature .k-stroke{animation:pen-write .72s cubic-bezier(.45,.05,.2,1) 3.08s forwards}
+    .name-signature .a2-stroke{animation:pen-write .58s cubic-bezier(.45,.05,.2,1) 3.76s forwards}
+    .name-signature .i-dot{fill:#171515;opacity:0;animation:ink-dot .12s ease 3.02s forwards}
+    .name-signature .underline{fill:none;stroke:#171515;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:pen-write .85s cubic-bezier(.35,.05,.2,1) 4.38s forwards}
+    .name-loader-caption{margin:0;color:#8a7898;font:600 1.15rem var(--caveat);opacity:0;animation:name-caption-in .45s ease 5.28s forwards}
     .name-loader-skip{margin-top:5px;border:1.5px solid #e4d4c2;background:rgba(255,253,246,.85);border-radius:99px;padding:7px 17px;color:#80758d;font:600 1.1rem var(--caveat);cursor:pointer}
     .name-loader.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
     body.name-intro main,body.name-intro .topbar,body.name-intro footer,body.name-intro .scroll-buddy{transition:opacity .65s ease,visibility .65s ease}
     body.name-intro.is-revealed main,body.name-intro.is-revealed .topbar,body.name-intro.is-revealed footer,body.name-intro.is-revealed .scroll-buddy{opacity:1;visibility:visible}
-    @keyframes reveal-character{to{width:74.3px}}
-    @keyframes write-underline{to{stroke-dashoffset:0}}
+    @keyframes pen-write{to{stroke-dashoffset:0}}
+    @keyframes ink-dot{to{opacity:1}}
     @keyframes name-caption-in{to{opacity:1}}
-    @media(max-width:520px){.name-signature{width:98vw}.name-signature text{font-size:164px}.name-loader-inner{gap:10px;padding:16px 4px}}
+    @media(max-width:520px){.name-signature{width:98vw}.name-signature .pen-stroke{stroke-width:4}.name-loader-inner{gap:10px;padding:16px 4px}}
     @media(max-height:620px){.name-loader-inner{gap:5px;padding:10px}.name-signature{width:min(76vw,560px)}.name-loader-caption{margin-top:2px}}
-    @media(prefers-reduced-motion:reduce){.name-signature .char-reveal{animation:none;width:74.3px}.name-signature .underline{animation:none;stroke-dashoffset:0}.name-loader-caption{animation:none;opacity:1}.name-loader{transition:none}}
+    @media(prefers-reduced-motion:reduce){.name-signature .pen-stroke,.name-signature .underline{animation:none;stroke-dashoffset:0}.name-signature .i-dot,.name-loader-caption{animation:none;opacity:1}.name-loader{transition:none}}
 </style>
 </head>
 <body>
@@ -534,20 +540,16 @@
 <div class="name-loader" id="name-loader" role="status" aria-label="Loading Shanika's journal">
   <div class="name-loader-inner">
     <p class="name-loader-label">a little piece of my world</p>
-    <svg class="name-signature" viewBox="0 0 760 210" role="img" aria-label="Shanika in flowing handwritten script, written letter by letter">
-      <defs>
-        <clipPath id="signature-writing-clip" clipPathUnits="userSpaceOnUse">
-          <rect class="char-reveal c1" x="120" y="0" width="0" height="210"/>
-          <rect class="char-reveal c2" x="194.3" y="0" width="0" height="210"/>
-          <rect class="char-reveal c3" x="268.6" y="0" width="0" height="210"/>
-          <rect class="char-reveal c4" x="342.9" y="0" width="0" height="210"/>
-          <rect class="char-reveal c5" x="417.2" y="0" width="0" height="210"/>
-          <rect class="char-reveal c6" x="491.5" y="0" width="0" height="210"/>
-          <rect class="char-reveal c7" x="565.8" y="0" width="0" height="210"/>
-        </clipPath>
-      </defs>
-      <text x="380" y="145" text-anchor="middle" textLength="520" lengthAdjust="spacingAndGlyphs" clip-path="url(#signature-writing-clip)">Shanika</text>
-      <path class="underline" pathLength="1" d="M120 169 C245 184 475 181 640 160"/>
+    <svg class="name-signature" viewBox="0 0 760 230" role="img" aria-label="Shanika being handwritten in flowing script, followed by an underline">
+      <path class="pen-stroke s-stroke" pathLength="1" d="M190 63 C184 35 147 39 126 58 C101 80 119 94 151 105 C184 116 193 130 176 153 C159 177 129 192 111 187 C95 183 104 165 124 151"/>
+      <path class="pen-stroke h-stroke" pathLength="1" d="M124 151 C148 130 174 99 190 67 C201 44 212 29 218 34 C224 39 201 99 190 128 C183 148 184 159 194 147 C210 127 225 105 239 108 C252 111 235 137 235 148 C235 158 246 150 258 137"/>
+      <path class="pen-stroke a1-stroke" pathLength="1" d="M258 137 C268 120 285 111 296 119 C307 128 295 150 281 151 C266 152 266 132 280 120 C294 108 309 117 312 132 C315 147 325 149 337 133"/>
+      <path class="pen-stroke n-stroke" pathLength="1" d="M337 133 C346 117 355 105 361 111 C367 117 351 145 356 149 C361 153 380 111 394 112 C408 113 388 146 398 149 C405 151 416 137 423 128"/>
+      <path class="pen-stroke i-stroke" pathLength="1" d="M423 128 C416 141 414 153 422 150 C428 148 434 140 439 134"/>
+      <circle class="i-dot" cx="438" cy="105" r="3.8"/>
+      <path class="pen-stroke k-stroke" pathLength="1" d="M439 134 C451 106 467 60 477 38 C483 25 489 29 484 45 C476 73 457 119 448 145 C459 129 474 113 487 112 C499 111 473 135 470 144 C467 153 484 150 498 137"/>
+      <path class="pen-stroke a2-stroke" pathLength="1" d="M498 137 C510 119 528 109 540 118 C552 128 539 149 524 151 C509 153 508 132 523 119 C538 106 554 117 557 132 C560 147 571 150 585 132"/>
+      <path class="underline" pathLength="1" d="M104 205 C220 220 435 216 574 193 C615 187 644 177 665 166"/>
     </svg>
     <p class="name-loader-caption">welcome to my little corner ♡</p>
     <button class="name-loader-skip" type="button" id="name-loader-skip">Skip intro</button>
@@ -595,7 +597,7 @@
     };
     const skipNameLoader=document.getElementById('name-loader-skip');
     if(skipNameLoader)skipNameLoader.addEventListener('click',finishNameLoader);
-    const nameIntroDuration=window.matchMedia('(prefers-reduced-motion: reduce)').matches?900:6000;
+    const nameIntroDuration=window.matchMedia('(prefers-reduced-motion: reduce)').matches?900:6400;
     window.setTimeout(finishNameLoader,nameIntroDuration);
   }
 
