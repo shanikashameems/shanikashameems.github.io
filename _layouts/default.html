@@ -745,12 +745,45 @@ body.web-fired .web-shooter{animation:shooter-recoil .22s ease}
  .web-shot-layer{display:none}
 }
 
+
+/* Midnight comic-city backdrop */
+html,body{background:#050b18!important}
+body{color:#eaf4ff!important;background-image:radial-gradient(ellipse at 76% 12%,rgba(13,87,151,.25),transparent 34%),radial-gradient(ellipse at 12% 75%,rgba(148,17,44,.15),transparent 30%),linear-gradient(180deg,#071426 0%,#050b18 58%,#091629 100%)!important;background-attachment:fixed!important}
+body:before{z-index:0!important;opacity:.2!important;background-image:radial-gradient(rgba(105,185,255,.42) .7px,transparent .8px)!important;background-size:19px 19px!important}
+main,header,footer,.scroll-buddy,.back-top{position:relative;z-index:3}
+.topbar{background:rgba(4,12,25,.9)!important;border-bottom:1px solid rgba(81,166,235,.28)!important}
+.brand{color:#f4f8ff!important;font-family:'Bangers',cursive!important;letter-spacing:1px}
+.brand span{color:#f02c4c!important}
+.navlinks a{color:#b8cce2!important;font-family:'Barlow Condensed',sans-serif!important;text-transform:uppercase;letter-spacing:.08em}
+.navlinks a:hover,.navlinks a.active{color:#fff!important}
+.navlinks a.active:after{background:#e72b4a!important}
+main{isolation:isolate}
+footer{border-color:rgba(93,161,219,.25)!important;color:#9bb5d1!important}
+footer .footer-mark{color:#f02c4c!important}
+.buddy-label,.buddy-caption{color:#83bce9!important}
+.buddy-track{background:rgba(76,139,190,.2)!important}
+.buddy-fill{background:linear-gradient(#e52a4b,#2d9fe8)!important}
+.buddy-marker{color:#f02c4c!important}
+.back-top{background:#0c2340!important;color:#fff!important;border-color:#278bd0!important;box-shadow:3px 4px 0 #8d1730!important}
+/* One real swinging character crosses every page. */
+.spider-swing-stage{display:none!important}
+.web-swing-across{position:fixed;z-index:8;inset:0;pointer-events:none;overflow:hidden}
+.swing-rope:before{content:"";position:absolute;left:var(--rope-x,18%);top:0;width:2px;height:34vh;background:linear-gradient(#e7f7ff,rgba(116,203,255,.85),transparent);transform-origin:top center;filter:drop-shadow(0 0 4px #53baff);animation:rope-travel 13s cubic-bezier(.45,0,.55,1) infinite}
+.swing-body{position:absolute;left:-190px;top:13vh;width:178px;height:210px;transform-origin:50% 0;animation:spider-cross-city 13s cubic-bezier(.45,0,.55,1) infinite;filter:drop-shadow(0 12px 18px rgba(0,0,0,.6))}
+.swing-body img{width:100%;height:100%;object-fit:contain;transform:rotate(12deg);animation:spider-swing-pose 13s ease-in-out infinite}
+@keyframes spider-cross-city{0%{left:-190px;top:13vh;transform:rotate(-28deg)}12%{left:12vw;top:30vh;transform:rotate(8deg)}25%{left:35vw;top:55vh;transform:rotate(28deg)}38%{left:57vw;top:32vh;transform:rotate(-8deg)}52%{left:78vw;top:12vh;transform:rotate(-32deg)}64%{left:calc(100vw + 20px);top:34vh;transform:rotate(-8deg)}65%,100%{left:calc(100vw + 20px);top:34vh;transform:rotate(0)}}
+@keyframes spider-swing-pose{0%,100%{transform:rotate(16deg) scale(.92)}25%{transform:rotate(-18deg) scale(1.03)}52%{transform:rotate(20deg) scale(.96)}}
+@keyframes rope-travel{0%,100%{left:-4%;height:32vh;transform:rotate(-24deg)}25%{left:35%;height:45vh;transform:rotate(12deg)}52%{left:79%;height:30vh;transform:rotate(-26deg)}65%{left:104%;height:30vh;opacity:0}}
+@media(max-width:760px){.swing-body{width:116px;height:142px;animation-duration:16s}.swing-rope:before{animation-duration:16s}}
+@media(prefers-reduced-motion:reduce){.web-swing-across{display:none!important}}
+
 </style>
 </head>
 <body>
 <div class="spider-atmosphere" aria-hidden="true"><div class="spider-city"><i style="height:48%"></i><i style="height:76%"></i><i style="height:58%"></i><i style="height:91%"></i><i style="height:65%"></i><i style="height:100%"></i><i style="height:70%"></i><i style="height:84%"></i><i style="height:54%"></i><i style="height:72%"></i><i style="height:43%"></i><i style="height:88%"></i><i style="height:62%"></i><i style="height:78%"></i></div></div>
 
 <div class="web-thread" aria-hidden="true"><svg viewBox="0 0 1440 900" preserveAspectRatio="none"><path d="M0 0L720 450L1440 0M0 0L720 450L0 900M1440 0L720 450L1440 900M0 900L720 450L1440 900M0 0Q720 160 1440 0M0 0Q160 450 0 900M1440 0Q1280 450 1440 900M0 900Q720 740 1440 900"/></svg></div>
+<div class="web-swing-across" aria-hidden="true"><div class="swing-rope"></div><div class="swing-body"><img src="https://www.clipartmax.com/png/middle/214-2141529_audio-player-ultimate-sticker-collection-spider-man-ultimate-sticker.png" alt=""></div></div>
 <div class="web-shot-layer" id="web-shot-layer" aria-hidden="true"></div>
 <div class="spider-verse-cursor" id="spider-verse-cursor" aria-hidden="true"><svg viewBox="0 0 48 48"><circle class="cursor-ring" cx="24" cy="24" r="18" fill="none" stroke="#78caff" stroke-width="1.5" stroke-dasharray="4 4"/><path d="M24 4V44M4 24H44M12 12L36 36M36 12L12 36" stroke="#fff" stroke-width="1" opacity=".75"/><path d="M24 13L28 20L36 21L30 27L32 35L24 31L16 35L18 27L12 21L20 20Z" fill="#e51d3d" stroke="#fff" stroke-width="1.2"/></svg></div>
 
