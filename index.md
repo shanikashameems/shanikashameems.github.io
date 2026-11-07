@@ -13,7 +13,7 @@ title: Journal
   </div>
   <div class="real-spider-stage" aria-label="Spider-Man floating above a cinematic city backdrop">
     <div class="spider-web-halo" aria-hidden="true"></div>
-    <img class="hero-spider-3d" src="https://image.pngaaa.com/679/1025679-middle.png" alt="Spider-Man leaping forward and shooting a web">
+    <img class="hero-spider-3d" src="https://clipart-library.com/2023/22-227717_spiderman-clipart-free-download-clip-art-on-ultimate-spider-man-2011.png" alt="Spider-Man leaping forward and shooting a web">
     <div class="spider-caption"><span>FRIENDLY NEIGHBOURHOOD</span><strong>SPIDER-MAN</strong><small>THWIP! · EARTH-616</small></div>
   </div>
 </section>
@@ -99,4 +99,9 @@ title: Journal
 @keyframes spider-hero-float{0%,100%{translate:0 0}50%{translate:0 -12px}}
 @media(max-width:760px){.journal-hero{grid-template-columns:1fr;min-height:0;padding-bottom:30px}.real-spider-stage{min-height:390px;margin-top:-15px}.real-spider{height:390px;width:min(100%,390px)}.spider-caption{right:3%;bottom:12px}}
 @media(prefers-reduced-motion:reduce){.real-spider{animation:none}}
+
+/* Let the hero art sit directly in the scene, with no framed/checkerboard panel */
+.real-spider-stage{background:transparent!important;border:0!important;box-shadow:none!important}
+.hero-spider-3d{background:transparent!important;mix-blend-mode:multiply;filter:drop-shadow(0 25px 28px rgba(0,0,0,.55)) drop-shadow(0 0 30px rgba(55,158,255,.24))!important}
+.spider-web-halo{background:radial-gradient(circle,rgba(31,130,218,.34),rgba(229,29,61,.12) 45%,transparent 72%)!important;border:0!important;box-shadow:0 0 75px rgba(35,140,235,.18)!important}
 </style>
