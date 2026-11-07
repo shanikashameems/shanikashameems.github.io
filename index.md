@@ -102,6 +102,6 @@ title: Journal
 
 /* Let the hero art sit directly in the scene, with no framed/checkerboard panel */
 .real-spider-stage{background:transparent!important;border:0!important;box-shadow:none!important}
-.hero-spider-3d{background:transparent!important;mix-blend-mode:multiply;filter:drop-shadow(0 25px 28px rgba(0,0,0,.55)) drop-shadow(0 0 30px rgba(55,158,255,.24))!important}
+.hero-spider-3d{background:transparent!important;filter:drop-shadow(0 25px 28px rgba(0,0,0,.55)) drop-shadow(0 0 30px rgba(55,158,255,.24))!important}
 .spider-web-halo{background:radial-gradient(circle,rgba(31,130,218,.34),rgba(229,29,61,.12) 45%,transparent 72%)!important;border:0!important;box-shadow:0 0 75px rgba(35,140,235,.18)!important}
 </style>
