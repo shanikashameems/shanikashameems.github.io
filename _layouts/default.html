@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fff8e9">
+  <meta name="theme-color" content="#080d1b">
   <meta name="description" content="{{ site.description | escape }}">
   <title>{{ page.title | default: site.title }} · Shanika's journal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Allura&family=Caveat:wght@500;600;700&family=Dancing+Script:wght@500;600;700&family=Patrick+Hand&family=Schoolbell&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="dark">
   <style>
     :root{--paper:#fff8e9;--paper2:#fff0d4;--ink:#403b50;--muted:#777187;--line:#e9dcca;--coral:#ef8e78;--coral-dark:#bd6559;--lilac:#c9b7e8;--mint:#b9d9c5;--sky:#b9d9e8;--yellow:#f5d77e;--hand:'Patrick Hand',cursive;--caveat:'Caveat',cursive;--sketch:'Schoolbell',cursive}
     *{box-sizing:border-box}
@@ -532,6 +532,17 @@
     @media(max-height:620px){.name-loader-inner{gap:5px;padding:10px}.name-signature{width:min(76vw,560px)}.name-loader-caption{margin-top:2px}}
     @media(prefers-reduced-motion:reduce){.name-signature .pen-stroke,.name-signature .underline{animation:none;stroke-dashoffset:0}.name-signature .i-dot,.name-loader-caption{animation:none;opacity:1}.name-loader{transition:none}}
 
+
+/* Interaction polish and section identity */
+.pencil-cursor{display:none!important}
+.navlinks a{white-space:nowrap}
+.topbar .nav:after{content:"EARTH-616  /  FIELD ARCHIVE";font:600 .68rem 'Barlow Condensed',sans-serif;letter-spacing:.2em;color:#6daee4;opacity:.72;position:absolute;left:50%;transform:translateX(-50%);pointer-events:none}
+.journal-hero .hero-copy{animation:spider-hero-enter .85s cubic-bezier(.2,.75,.25,1) both}
+.journal-hero .book-stage{animation:spider-stage-enter 1.1s .12s cubic-bezier(.2,.75,.25,1) both}
+@keyframes spider-hero-enter{from{opacity:0;transform:translateY(28px) skewY(1deg)}to{opacity:1;transform:translateY(0) skewY(0)}}
+@keyframes spider-stage-enter{from{opacity:0;transform:translateY(35px) scale(.94) rotateY(-8deg)}to{opacity:1;transform:translateY(0) scale(1) rotateY(0)}}
+@media(max-width:760px){.topbar .nav:after{display:none}}
+
 /* =========================================================
    INTO THE WEBVERSE — global visual layer
    ========================================================= */
@@ -683,10 +694,10 @@ body.spider-web-hit .web-shooter{animation:web-recoil .22s ease}
     <a class="brand" href="{{ '/' | relative_url }}">shanika<span>.</span>notes</a>
     <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="navlinks" aria-label="Main navigation">
-      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Journal</a>
-      <a href="{{ '/about/' | relative_url }}" {% if page.url contains 'about' %}class="active"{% endif %}>A note</a>
-      <a href="{{ '/projects/' | relative_url }}" {% if page.url contains 'projects' %}class="active"{% endif %}>Books</a>
-      <a href="{{ '/contact/' | relative_url }}" {% if page.url contains 'contact' %}class="active"{% endif %}>Contact</a>
+      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Missions</a>
+      <a href="{{ '/about/' | relative_url }}" {% if page.url contains 'about' %}class="active"{% endif %}>Spider File</a>
+      <a href="{{ '/projects/' | relative_url }}" {% if page.url contains 'projects' %}class="active"{% endif %}>Archives</a>
+      <a href="{{ '/contact/' | relative_url }}" {% if page.url contains 'contact' %}class="active"{% endif %}>Web Line</a>
     </nav>
   </div>
 </header>
