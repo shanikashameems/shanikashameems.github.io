@@ -812,6 +812,28 @@ body:has(.journal-hero) .web-swing-across{display:none!important}
 
 /* Swing animation temporarily disabled site-wide */
 .web-swing-across,.swing-rope,.swing-body{display:none!important;animation:none!important}
+
+/* Comic-panel page transitions */
+body.page-arriving main{animation:comic-page-arrive .62s cubic-bezier(.2,.8,.2,1) both}
+body.page-arriving .topbar,body.page-arriving footer{animation:chrome-arrive .48s ease both}
+body.page-leaving:before{content:"";position:fixed;inset:0;z-index:300;background:linear-gradient(112deg,transparent 0 34%,rgba(229,29,61,.94) 34.5% 39%,#07182d 39.5% 60%,rgba(62,169,255,.92) 60.5% 65%,transparent 65.5%);transform:translateX(-110%);animation:comic-web-wipe .34s cubic-bezier(.7,0,.25,1) forwards;pointer-events:none}
+@keyframes comic-web-wipe{to{transform:translateX(110%)}}
+@keyframes comic-page-arrive{0%{opacity:0;transform:translateX(28px) scale(.985);filter:blur(3px)}65%{opacity:1;transform:translateX(-3px) scale(1.003);filter:blur(0)}100%{opacity:1;transform:none;filter:none}}
+@keyframes chrome-arrive{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+/* Web-shooter gauntlet and responsive impact */
+.web-shooter-dock{gap:8px}
+.web-shooter{width:76px;height:76px;clip-path:none;border:0;background:transparent;box-shadow:none;filter:drop-shadow(0 8px 7px rgba(0,0,0,.55));overflow:visible}
+.web-shooter:before{display:none}
+.web-shooter svg{width:100%;height:100%;overflow:visible}
+.web-shooter:hover{transform:translateY(-4px) rotate(-5deg) scale(1.08);filter:drop-shadow(0 10px 12px rgba(30,150,255,.38))}
+.web-shooter:active{transform:translateY(3px) scale(.9);filter:brightness(1.3)}
+.web-shooter-dock.is-firing .web-shooter{animation:gauntlet-fire .24s ease}
+@keyframes gauntlet-fire{0%,100%{transform:translate(0,0) rotate(0)}35%{transform:translate(-7px,5px) rotate(-13deg) scale(.91)}65%{transform:translate(2px,-2px) rotate(5deg) scale(1.04)}}
+.web-shot-layer path{stroke-width:3.2;stroke-dasharray:1800;filter:drop-shadow(0 0 4px #fff) drop-shadow(0 0 10px #36baff)}
+.web-shot-layer circle{filter:drop-shadow(0 0 9px #48baff)}
+@media(max-width:760px){.web-shooter{width:65px;height:65px}.web-shooter-label{display:none}}
+@media(prefers-reduced-motion:reduce){body.page-arriving main,body.page-arriving .topbar,body.page-arriving footer,body.page-leaving:before{animation:none!important}}
+
 </style>
 </head>
 <body>
@@ -885,6 +907,10 @@ body:has(.journal-hero) .web-swing-across{display:none!important}
     const nameIntroDuration=window.matchMedia('(prefers-reduced-motion: reduce)').matches?900:6400;
     window.setTimeout(finishNameLoader,nameIntroDuration);
   }
+
+  if(!reducedMotionForArrival())document.body.classList.add('page-arriving');
+  function reducedMotionForArrival(){return window.matchMedia('(prefers-reduced-motion: reduce)').matches;}
+  window.setTimeout(()=>document.body.classList.remove('page-arriving'),750);
 
   const menuButton=document.querySelector('.menu-toggle');
   const nav=document.querySelector('.navlinks');
@@ -1004,7 +1030,7 @@ body:has(.journal-hero) .web-swing-across{display:none!important}
     if(next.origin!==window.location.origin||next.pathname===window.location.pathname||next.hash&&next.pathname===window.location.pathname)return;
     event.preventDefault();
     document.body.classList.add('page-leaving');
-    window.setTimeout(()=>{window.location.href=next.href;},190);
+    window.setTimeout(()=>{window.location.href=next.href;},330);
   });
 
 
@@ -1022,17 +1048,19 @@ body:has(.journal-hero) .web-swing-across{display:none!important}
   el.addEventListener('pointerleave',()=>cursor&&cursor.classList.remove('is-hot'));
  });
  const shoot=(x,y)=>{
-  const sx=innerWidth-48,sy=innerHeight-48;
+  const dockRect=dock.getBoundingClientRect();
+  const sx=dockRect.left+dockRect.width/2,sy=dockRect.top+dockRect.height/2;
   const bend=(Math.random()-.5)*120;
-  layer.innerHTML='<svg viewBox="0 0 '+innerWidth+' '+innerHeight+'" preserveAspectRatio="none"><path d="M'+sx+' '+sy+' Q'+((sx+x)/2+bend)+' '+((sy+y)/2-80)+' '+x+' '+y+'"/><circle cx="'+x+'" cy="'+y+'" r="10"/></svg>';
+  layer.innerHTML='<svg viewBox="0 0 '+innerWidth+' '+innerHeight+'" preserveAspectRatio="none"><path d="M'+sx+' '+sy+' Q'+((sx+x)/2+bend)+' '+((sy+y)/2-80)+' '+x+' '+y+'"/><circle cx="'+x+'" cy="'+y+'" r="10"/><path class="web-impact" d="M'+(x-15)+' '+y+'l-12 -7m12 7l-7 13m7 -13l13 -9m-13 9l13 10"/></svg>';
   document.body.classList.add('web-fired');
-  setTimeout(()=>{layer.innerHTML='';document.body.classList.remove('web-fired')},720);
+  dock.classList.add('is-firing');
+  setTimeout(()=>{layer.innerHTML='';document.body.classList.remove('web-fired');dock.classList.remove('is-firing')},720);
  };
  const dock=document.createElement('div');dock.className='web-shooter-dock';
- dock.innerHTML='<span class="web-shooter-label">WEB SHOOTER · FIRE</span><button class="web-shooter" type="button" aria-label="Fire a web"><svg viewBox="0 0 32 32" fill="none"><path d="M5 18c5-1 7-5 9-10l3 3-2 6 6-5 4 3-6 5 7-1 1 4-9 2-6 4-3-3 4-5-8 1z" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M16 8l3-4m1 8 5-3" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></button>';
+ dock.innerHTML='<span class="web-shooter-label">WEB SHOOTER · FIRE</span><button class="web-shooter" type="button" aria-label="Fire a web"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><defs><linearGradient id="gauntletRed" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff526b"/><stop offset=".55" stop-color="#d8173d"/><stop offset="1" stop-color="#6e1029"/></linearGradient><linearGradient id="gauntletBlue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4dbaff"/><stop offset="1" stop-color="#073d78"/></linearGradient></defs><path d="M16 84Q7 78 13 66L27 40Q31 34 36 38L43 45L48 15Q50 7 57 10Q63 12 61 20L57 42L64 12Q67 5 73 9Q79 12 76 20L69 44L78 23Q82 17 87 22Q91 26 87 33L77 55Q87 48 91 54Q95 60 87 68L70 88Q63 96 49 94L27 91Z" fill="url(#gauntletRed)" stroke="#f7dce4" stroke-width="2.2" stroke-linejoin="round"/><path d="M17 75L31 84L49 89L65 83L75 70L67 61L53 69L43 63L35 57L28 66Z" fill="url(#gauntletBlue)" stroke="#9bdcff" stroke-width="1.5"/><path d="M31 42L43 51L53 48L61 42M43 51L38 66M53 48L51 67M64 42L60 59M73 43L66 59" stroke="#071b34" stroke-width="2.3" stroke-linecap="round"/><path d="M47 57L58 51L69 57L65 70L53 75L43 68Z" fill="#071b34" stroke="#9bdcff" stroke-width="1.6"/><path d="M50 62L56 58L62 62L56 68Z" fill="#eafaff"/><path d="M54 57L56 51M61 61L68 57M51 66L45 70" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/><path d="M50 14L54 4M70 13L77 4M85 25L95 21" stroke="#a8e4ff" stroke-width="2" stroke-linecap="round"/></svg></button>';
  document.body.appendChild(dock);
  dock.querySelector('button').addEventListener('click',()=>shoot(innerWidth*.48,innerHeight*.35));
- document.addEventListener('click',e=>{if(e.target.closest('a,button,input,textarea,select'))return;if(matchMedia('(pointer:fine)').matches)shoot(e.clientX,e.clientY)});
+ document.addEventListener('pointerdown',e=>{if(e.target.closest('.web-shooter'))return;shoot(e.clientX,e.clientY)},{passive:true});
  // subtle scroll-triggered web flicks at section boundaries
  let last=0;
  window.addEventListener('scroll',()=>{const y=window.scrollY;if(Math.abs(y-last)>420){last=y;const x=Math.random()*innerWidth*.7+innerWidth*.15;shoot(x,Math.min(innerHeight-100,Math.max(100,innerHeight*.28)));}},{passive:true});
