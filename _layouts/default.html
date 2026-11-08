@@ -1346,5 +1346,21 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
   #spider-verse-cursor, .spider-verse-cursor { display: none !important; }
 }
 </style>
+
+<script id="spider-cursor-tracking-failsafe">
+(() => {
+  const cursor = document.getElementById('spider-verse-cursor');
+  if (!cursor) return;
+  const track = (event) => {
+    cursor.style.setProperty('left', event.clientX + 'px', 'important');
+    cursor.style.setProperty('top', event.clientY + 'px', 'important');
+    cursor.style.setProperty('visibility', 'visible', 'important');
+    cursor.style.setProperty('opacity', '1', 'important');
+  };
+  window.addEventListener('pointermove', track, true);
+  window.addEventListener('mousemove', track, true);
+  window.addEventListener('pointerover', track, true);
+})();
+</script>
 </body>
 </html>
