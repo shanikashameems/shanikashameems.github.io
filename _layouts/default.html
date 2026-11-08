@@ -1482,25 +1482,50 @@ body.intro-complete .web-shooter-dock{display:flex!important}
 @media(max-width:760px){.web-shooter-dock{right:10px!important;bottom:10px!important}.web-shooter-dock button.web-shooter{width:62px!important;height:62px!important;min-width:62px!important;min-height:62px!important}}
 </style>
 <script id="single-web-shooter-launcher">
-(() => {
+(()=>{
  const start=()=>{
-  const layer=document.getElementById('web-shot-layer')||(()=>{const n=document.createElement('div');n.id='web-shot-layer';n.className='web-shot-layer';document.body.appendChild(n);return n;})();
+  const layer=document.getElementById('web-shot-layer')||(()=>{const n=document.createElement('div');n.id='web-shot-layer';n.className='web-shot-layer';document.body.appendChild(n);return n})();
   let dock=document.querySelector('.web-shooter-dock');
-  if(!dock){dock=document.createElement('div');dock.className='web-shooter-dock';document.body.appendChild(dock);}
+  if(!dock){dock=document.createElement('div');dock.className='web-shooter-dock';document.body.appendChild(dock)}
   dock.innerHTML='<button class="web-shooter" type="button" aria-label="Fire web shooter"><svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="bareShooterMetal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f2ff"/><stop offset=".28" stop-color="#718fa4"/><stop offset=".62" stop-color="#233e53"/><stop offset="1" stop-color="#091522"/></linearGradient><radialGradient id="bareShooterCore"><stop stop-color="#fff"/><stop offset=".35" stop-color="#9eeaff"/><stop offset="1" stop-color="#1684bf"/></radialGradient></defs><path d="M13 43Q15 31 27 29L74 20Q88 17 93 31L97 52Q99 65 86 70L31 82Q17 85 13 70Z" fill="url(#bareShooterMetal)" stroke="#c8edff" stroke-width="2"/><path d="M22 41L83 29L89 57L28 71Z" fill="#0a1c2d" stroke="#547c94" stroke-width="1.5"/><path d="M35 37L72 30L77 37L38 45Z" fill="#b21e3c" stroke="#ff9caa" stroke-width="1"/><rect x="39" y="39" width="30" height="25" rx="6" fill="#061522" stroke="#9ddcf3" stroke-width="2"/><circle cx="54" cy="51.5" r="9" fill="url(#bareShooterCore)" stroke="#e8fbff" stroke-width="1.4"/><circle cx="54" cy="51.5" r="2.7" fill="#fff"/><path d="M54 38V32M68 51H75M54 65V71M40 51H33" stroke="#a9eaff" stroke-width="2" stroke-linecap="round"/><path d="M17 52L8 56L12 69L21 66M89 35L96 32L99 47L92 50" fill="none" stroke="#d5f0fa" stroke-width="3"/></svg></button>';
+  let active=[];
+  const makeSvg=(w,h)=>{const ns='http://www.w3.org/2000/svg';const svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','0 0 '+w+' '+h);svg.setAttribute('width',w);svg.setAttribute('height',h);svg.setAttribute('preserveAspectRatio','none');svg.style.cssText='position:fixed;inset:0;width:100vw;height:100vh;overflow:visible;pointer-events:none';return {svg,ns}};
   const fire=(x,y)=>{
-   const r=dock.getBoundingClientRect(),sx=r.left+r.width/2,sy=r.top+r.height*.43;
-   const bend=(Math.random()-.5)*Math.min(65,Math.hypot(x-sx,y-sy)*.08),cx=(sx+x)/2+bend,cy=(sy+y)/2-35;
-   const p='M'+sx+' '+sy+' Q'+cx+' '+cy+' '+x+' '+y;
-   layer.innerHTML='<svg viewBox="0 0 '+innerWidth+' '+innerHeight+'" preserveAspectRatio="none"><path class="web-strand" d="'+p+'"/><path class="web-main" d="'+p+'"/><path class="web-impact" d="M'+(x-15)+' '+(y-7)+'l10 7 -7 12m7 -12l13 -10m-13 10l15 8m-15 -8l-2 -15"/></svg>';
+   const r=dock.getBoundingClientRect(),sx=r.left+r.width*.54,sy=r.top+r.height*.515;
+   const dx=x-sx,dy=y-sy,dist=Math.hypot(dx,dy);
+   if(dist<24)return;
+   const nx=-dy/(dist||1),ny=dx/(dist||1),bend=Math.min(90,dist*.105)*(Math.random()>.5?1:-1);
+   const cx=(sx+x)/2+nx*bend,cy=(sy+y)/2+ny*bend- Math.min(38,dist*.035);
+   const {svg,ns}=makeSvg(innerWidth,innerHeight);
+   const pathD='M'+sx+' '+sy+' Q'+cx+' '+cy+' '+x+' '+y;
+   const el=(tag,attrs)=>{const n=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));svg.appendChild(n);return n};
+   const glow=el('path',{d:pathD,fill:'none',stroke:'#48bfff','stroke-width':'7','stroke-linecap':'round',opacity:'.22','filter':'url(#webGlow)'});
+   const strands=[{w:3.2,c:'#f5fdff',o:1},{w:1.1,c:'#79dfff',o:.95},{w:.75,c:'#ffffff',o:.75}].map(a=>el('path',{d:pathD,fill:'none',stroke:a.c,'stroke-width':a.w,'stroke-linecap':'round',opacity:a.o}));
+   const defs=document.createElementNS(ns,'defs');defs.innerHTML='<filter id="webGlow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>';svg.insertBefore(defs,svg.firstChild);
+   const tip=el('circle',{cx:sx,cy:sy,r:5,fill:'#fff','filter':'url(#webGlow)'});
+   const ring=el('circle',{cx:x,cy:y,r:2,fill:'none',stroke:'#e8fbff','stroke-width':2,opacity:0});
+   const splat=el('g',{transform:'translate('+x+' '+y+')',opacity:0});
+   for(let j=0;j<8;j++){const a=j*Math.PI/4;const q=document.createElementNS(ns,'path');q.setAttribute('d','M0 0L'+Math.cos(a)*16+' '+Math.sin(a)*16);q.setAttribute('stroke','#eafaff');q.setAttribute('stroke-width','1.7');q.setAttribute('stroke-linecap','round');splat.appendChild(q)}
+   svg.appendChild(splat);layer.appendChild(svg);
+   const lengths=[glow,...strands].map(p=>p.getTotalLength());
+   [glow,...strands].forEach((p,i)=>{p.style.strokeDasharray=lengths[i];p.style.strokeDashoffset=lengths[i]});
    dock.classList.remove('is-firing');void dock.offsetWidth;dock.classList.add('is-firing');
-   clearTimeout(window.__singleWebTimer);window.__singleWebTimer=setTimeout(()=>{layer.innerHTML='';dock.classList.remove('is-firing')},850);
+   const duration=Math.min(430,Math.max(190,dist*.34)),began=performance.now();
+   const tick=now=>{
+    const raw=Math.min(1,(now-began)/duration),p=1-Math.pow(1-raw,2.25);
+    [glow,...strands].forEach((path,i)=>{path.style.strokeDashoffset=lengths[i]*(1-p)});
+    const t=p,px=(1-t)*(1-t)*sx+2*(1-t)*t*cx+t*t*x,py=(1-t)*(1-t)*sy+2*(1-t)*t*cy+t*t*y;
+    tip.setAttribute('cx',px);tip.setAttribute('cy',py);tip.setAttribute('r',String(4+3*Math.sin(raw*Math.PI)));
+    if(raw>=1){tip.setAttribute('r','0');ring.setAttribute('opacity','1');splat.setAttribute('opacity','1');ring.animate([{r:2,opacity:1},{r:22,opacity:0}],{duration:330,easing:'ease-out'});splat.animate([{opacity:1,transform:'translate('+x+'px,'+y+'px) scale(.35)'},{opacity:0,transform:'translate('+x+'px,'+y+'px) scale(1.1)'}],{duration:320,easing:'ease-out'});setTimeout(()=>{svg.animate([{opacity:1},{opacity:0}],{duration:260,easing:'ease-out'}).onfinish=()=>svg.remove();},480);setTimeout(()=>dock.classList.remove('is-firing'),520);return}
+    requestAnimationFrame(tick)
+   };
+   requestAnimationFrame(tick);
   };
   dock.querySelector('button').addEventListener('click',e=>{e.stopPropagation();fire(innerWidth*.5,innerHeight*.38)});
-  if(!document.documentElement.dataset.singleWebClick){document.addEventListener('click',e=>{if(e.target.closest('.web-shooter-dock')||e.target.closest('.city-map-panel'))return;fire(e.clientX,e.clientY)},true);document.documentElement.dataset.singleWebClick='1';}
+  if(!document.documentElement.dataset.singleWebClick){document.addEventListener('click',e=>{if(e.target.closest('.web-shooter-dock')||e.target.closest('.city-map-panel'))return;fire(e.clientX,e.clientY)},true);document.documentElement.dataset.singleWebClick='1'}
   const loader=document.getElementById('name-loader');
-  if(!loader){document.body.classList.add('intro-complete');return;}
-  const observer=new MutationObserver(()=>{if(!document.getElementById('name-loader')){observer.disconnect();document.body.classList.add('intro-complete');}});
+  if(!loader){document.body.classList.add('intro-complete');return}
+  const observer=new MutationObserver(()=>{if(!document.getElementById('name-loader')){observer.disconnect();document.body.classList.add('intro-complete')}});
   observer.observe(document.body,{childList:true,subtree:true});
  };
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
@@ -1534,9 +1559,7 @@ body.intro-complete .web-shooter-dock{display:flex!important}
 @keyframes web-filament-draw{from{stroke-dashoffset:160;opacity:0}to{stroke-dashoffset:0;opacity:1}}
 @media(prefers-reduced-motion:reduce){.map-city-silhouette,.map-city-silhouette i:after,.city-map-canvas:before,.web-shot-layer *{animation:none!important}}
 </style>
-<script id="web-filament-upgrade">
-(()=>{const layer=document.getElementById('web-shot-layer');if(!layer)return;const observer=new MutationObserver(()=>{const svg=layer.querySelector('svg');if(!svg||svg.querySelector('.web-filament'))return;const path=svg.querySelector('.web-main');if(!path)return;const d=path.getAttribute('d');const m=d&&d.match(/M([\d.-]+) ([\d.-]+) Q([\d.-]+) ([\d.-]+) ([\d.-]+) ([\d.-]+)/);if(!m)return;const [,sx,sy,cx,cy,tx,ty]=m.map(Number);const strands=[-7,7].map(o=>'<path class="web-filament" d="M'+sx+' '+(sy+o*.2)+' Q'+(cx+o)+' '+(cy-o)+' '+tx+' '+(ty+o*.2)+'"/>').join('');svg.insertAdjacentHTML('beforeend',strands)});observer.observe(layer,{childList:true,subtree:true})})();
-</script>
+
 
 
 <style id="marvel-city-map-v4">
@@ -1708,6 +1731,15 @@ body:has(.journal-hero) main{padding-top:27px!important}
  }catch(err){wrap.classList.add('spider-hero-fallback');const c=wrap.querySelector('canvas');if(c)c.style.display='none';}
 })();
 </script>
+
+
+<style id="web-shooter-projectile-v2">
+.web-shot-layer{position:fixed!important;inset:0!important;z-index:9998!important;pointer-events:none!important;overflow:visible!important}
+.web-shot-layer svg{overflow:visible!important}
+.web-shooter-dock.is-firing button.web-shooter{animation:launcher-recoil-v3 .42s cubic-bezier(.15,.8,.25,1)!important;filter:drop-shadow(0 0 15px rgba(111,220,255,.8))!important}
+@keyframes launcher-recoil-v3{0%{transform:translate(0,0) rotate(0) scale(1)}18%{transform:translate(-6px,7px) rotate(-9deg) scale(.96)}43%{transform:translate(2px,-2px) rotate(3deg) scale(1.02)}70%{transform:translate(-1px,1px)}100%{transform:translate(0,0) rotate(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.web-shooter-dock.is-firing button.web-shooter{animation:none!important}}
+</style>
 
 </body>
 </html>
