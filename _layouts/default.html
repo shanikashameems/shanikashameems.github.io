@@ -891,8 +891,7 @@ body.has-custom-cursor input,
 body.has-custom-cursor textarea,
 body.has-custom-cursor select,
 body.has-custom-cursor [role="button"]{cursor:auto!important}
-a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cursor:pointer!important}
-.spider-verse-cursor,.pencil-cursor{display:none!important}
+a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cursor:none!important}
 
 
 /* Web shooter: persistent launcher plus a bright, readable web-cast effect. */
@@ -1105,9 +1104,9 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 
 /* Spider-Verse interaction controller */
 (()=>{
- const layer=document.getElementById('web-shot-layer');
+ let layer=document.getElementById('web-shot-layer');
  const cursor=document.getElementById('spider-verse-cursor');
- if(!layer)return;
+ if(!layer){layer=document.createElement('div');layer.id='web-shot-layer';layer.className='web-shot-layer';document.body.appendChild(layer);}
  /* Put fixed UI outside body stacking/transform contexts. */
  if(cursor){
    document.documentElement.appendChild(cursor);
@@ -1264,5 +1263,16 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 (()=>{const toggle=document.getElementById('city-map-toggle'),panel=document.getElementById('city-map-panel'),close=document.getElementById('city-map-close');if(!toggle||!panel)return;const setOpen=open=>{panel.hidden=!open;toggle.setAttribute('aria-expanded',String(open));};toggle.addEventListener('click',()=>setOpen(panel.hidden));if(close)close.addEventListener('click',()=>setOpen(false));document.addEventListener('keydown',e=>{if(e.key==='Escape')setOpen(false);});panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setOpen(false)));})();
 </script>
 
+
+<style id="final-spider-map-fix">
+/* Final overrides must come after every legacy style block. */
+@media(hover:hover) and (pointer:fine){html,body,body a,body button,body input,body textarea,body select,body [role="button"]{cursor:none!important}.spider-verse-cursor{display:block!important;visibility:visible!important;opacity:1!important}}
+@media(hover:none),(pointer:coarse){html,body,body a,body button{cursor:auto!important}.spider-verse-cursor{display:none!important}}
+.city-map-panel{width:min(390px,calc(100vw - 32px))!important;background:linear-gradient(150deg,#101d30 0%,#07111f 55%,#090d18 100%)!important;border:1px solid rgba(116,190,231,.6)!important;box-shadow:0 22px 55px rgba(0,0,0,.72),inset 0 0 28px rgba(38,116,168,.12),5px 5px 0 rgba(218,36,65,.55)!important}
+.city-map-canvas{height:260px!important;background-color:#101f30!important;background-image:linear-gradient(30deg,transparent 48%,rgba(98,156,194,.08) 49%,rgba(98,156,194,.08) 51%,transparent 52%),linear-gradient(150deg,transparent 48%,rgba(98,156,194,.08) 49%,rgba(98,156,194,.08) 51%,transparent 52%),linear-gradient(rgba(95,154,191,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(95,154,191,.08) 1px,transparent 1px)!important;background-size:88px 88px,88px 88px,22px 22px,22px 22px!important}
+.city-map-roads .map-route{stroke:#5fd7ff!important;stroke-width:3!important;stroke-dasharray:7 5!important;filter:drop-shadow(0 0 5px rgba(70,190,255,.9))!important;animation:map-route-dash 1.8s linear infinite!important}
+.city-map-toggle{background:linear-gradient(145deg,#162b43,#07111e)!important;border:1px solid #4ca7d4!important;box-shadow:4px 4px 0 #b91e3a,0 0 18px rgba(50,155,220,.18)!important}
+.city-map-toggle:after,.map-radar-sweep,.map-traveller{display:none!important}
+</style>
 </body>
 </html>
