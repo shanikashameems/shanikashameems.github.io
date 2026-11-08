@@ -1507,5 +1507,36 @@ body.intro-complete .web-shooter-dock{display:flex!important}
 })();
 </script>
 
+<style id="high-end-map-web-v3">
+.city-map-panel{background:radial-gradient(ellipse at 50% 30%,rgba(28,93,139,.2),transparent 65%),linear-gradient(145deg,#081625,#030811 75%)!important;border:1px solid rgba(135,202,231,.62)!important;box-shadow:0 28px 80px rgba(0,0,0,.82),inset 0 1px rgba(255,255,255,.08),inset 0 0 45px rgba(40,126,174,.12)!important}
+.city-map-canvas{isolation:isolate!important;background:#081522!important;background-image:radial-gradient(ellipse at 50% 65%,rgba(24,107,153,.2),transparent 70%),linear-gradient(0deg,rgba(100,161,190,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(100,161,190,.09) 1px,transparent 1px)!important;background-size:100% 100%,24px 24px,24px 24px!important}
+.map-city-silhouette{inset:5% -5% 0!important;display:flex!important;align-items:flex-end!important;justify-content:space-evenly!important;gap:1.4%!important;perspective:900px!important;transform:rotateX(12deg) translateY(8px)!important;transform-origin:bottom!important;animation:district-parallax 14s ease-in-out infinite alternate!important;opacity:.95!important}
+.map-city-silhouette i{position:relative!important;display:block!important;flex:1 1 10%!important;max-width:14%!important;clip-path:polygon(8% 0,92% 0,100% 100%,0 100%)!important;border:1px solid rgba(130,190,213,.42)!important;background:linear-gradient(90deg,#071321,#1d3b50 24%,#31566a 49%,#10283b 76%,#06111e)!important;box-shadow:inset 5px 0 12px rgba(0,0,0,.45),inset -4px 0 12px rgba(105,184,218,.13),0 0 24px rgba(28,115,161,.15)!important;overflow:hidden!important}
+.map-city-silhouette i:after{content:"";position:absolute;inset:8% 12%;background:repeating-linear-gradient(90deg,transparent 0 8px,rgba(255,203,128,.48) 8px 10px,transparent 10px 15px),repeating-linear-gradient(0deg,transparent 0 11px,rgba(255,211,148,.34) 11px 13px,transparent 13px 19px);mask-image:linear-gradient(180deg,#000,rgba(0,0,0,.75) 75%,transparent);opacity:.85;animation:windows-flicker 5s steps(2,end) infinite alternate}
+.map-city-silhouette i:nth-child(1){height:48%!important}.map-city-silhouette i:nth-child(2){height:76%!important}.map-city-silhouette i:nth-child(3){height:61%!important}.map-city-silhouette i:nth-child(4){height:96%!important}.map-city-silhouette i:nth-child(5){height:69%!important}.map-city-silhouette i:nth-child(6){height:83%!important}.map-city-silhouette i:nth-child(7){height:54%!important}
+.city-map-roads{z-index:2!important;filter:drop-shadow(0 0 5px rgba(75,193,227,.45))!important}
+.city-map-roads path:first-child{stroke:rgba(124,176,194,.3)!important;stroke-width:13!important}
+.city-map-roads .map-route{stroke:#b2f0ff!important;stroke-width:2.4!important;stroke-dasharray:3 8!important;filter:drop-shadow(0 0 4px #4ecbff)!important;animation:map-route-dash 2.6s linear infinite!important}
+.map-stop i{background:radial-gradient(circle at 35% 25%,#fff,#78d8f3 18%,#12618c 52%,#071a2a 100%)!important;border:1px solid #d9f7ff!important;box-shadow:0 0 0 4px rgba(101,200,226,.12),0 0 18px rgba(77,192,229,.55)!important}
+.map-stop span{background:rgba(4,14,24,.72)!important;padding:2px 5px!important;border-radius:3px!important;backdrop-filter:blur(5px)!important}
+.city-map-canvas:before{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(115deg,transparent 42%,rgba(130,222,255,.12) 50%,transparent 58%);transform:translateX(-100%);animation:city-lidar-pass 9s ease-in-out infinite}
+@keyframes district-parallax{from{transform:rotateX(10deg) translate3d(-5px,5px,0)}to{transform:rotateX(15deg) translate3d(6px,-2px,0)}}
+@keyframes windows-flicker{0%,80%{opacity:.3}84%{opacity:.8}88%{opacity:.35}100%{opacity:.65}}
+@keyframes city-lidar-pass{0%,20%{transform:translateX(-100%)}75%,100%{transform:translateX(100%)}}
+.web-shooter-dock button.web-shooter{width:84px!important;height:84px!important;min-width:84px!important;min-height:84px!important;filter:drop-shadow(0 3px 3px rgba(0,0,0,.8))!important;transition:transform .2s ease,filter .2s ease!important}
+.web-shooter-dock button.web-shooter:hover{transform:translateY(-3px) scale(1.04)!important;filter:drop-shadow(0 0 12px rgba(106,216,255,.45))!important}
+.web-shooter-dock.is-firing button.web-shooter{animation:launcher-recoil-v3 .42s cubic-bezier(.15,.8,.25,1)!important}
+@keyframes launcher-recoil-v3{0%{transform:translate(0,0) rotate(0)}18%{transform:translate(-5px,5px) rotate(-6deg)}42%{transform:translate(2px,-2px) rotate(2deg)}68%{transform:translate(-1px,1px)}100%{transform:translate(0,0) rotate(0)}}
+.web-shot-layer .web-main{stroke:#f9feff!important;stroke-width:2.1!important;filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #8ee7ff) drop-shadow(0 0 12px rgba(38,171,230,.85))!important}
+.web-shot-layer .web-strand{stroke:#a6e8f8!important;stroke-width:.8!important;opacity:.95!important;filter:drop-shadow(0 0 3px #6bd6ff)!important}
+.web-shot-layer .web-impact{stroke:#f1fdff!important;stroke-width:1.7!important;filter:drop-shadow(0 0 5px #71dfff)!important}
+.web-shot-layer .web-filament{fill:none;stroke:rgba(225,249,255,.82);stroke-width:.8;stroke-linecap:round;stroke-dasharray:3 5;animation:web-filament-draw .38s .1s ease-out both;filter:drop-shadow(0 0 3px #6ddaff)}
+@keyframes web-filament-draw{from{stroke-dashoffset:160;opacity:0}to{stroke-dashoffset:0;opacity:1}}
+@media(prefers-reduced-motion:reduce){.map-city-silhouette,.map-city-silhouette i:after,.city-map-canvas:before,.web-shot-layer *{animation:none!important}}
+</style>
+<script id="web-filament-upgrade">
+(()=>{const layer=document.getElementById('web-shot-layer');if(!layer)return;const observer=new MutationObserver(()=>{const svg=layer.querySelector('svg');if(!svg||svg.querySelector('.web-filament'))return;const path=svg.querySelector('.web-main');if(!path)return;const d=path.getAttribute('d');const m=d&&d.match(/M([\d.-]+) ([\d.-]+) Q([\d.-]+) ([\d.-]+) ([\d.-]+) ([\d.-]+)/);if(!m)return;const [,sx,sy,cx,cy,tx,ty]=m.map(Number);const strands=[-7,7].map(o=>'<path class="web-filament" d="M'+sx+' '+(sy+o*.2)+' Q'+(cx+o)+' '+(cy-o)+' '+tx+' '+(ty+o*.2)+'"/>').join('');svg.insertAdjacentHTML('beforeend',strands)});observer.observe(layer,{childList:true,subtree:true})})();
+</script>
+
 </body>
 </html>
