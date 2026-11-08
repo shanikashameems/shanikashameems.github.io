@@ -873,11 +873,15 @@ body.page-leaving:before{content:"";position:fixed;inset:0;z-index:300;backgroun
 @media(max-width:760px){.spider-verse-cursor{display:none!important}.web-shooter-dock{right:14px!important;bottom:14px!important}}
 
 
-/* Spider-Verse pointer: a native browser cursor with a custom web-spider design. */
-:root,body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='18' r='14' fill='%23081529' fill-opacity='.96' stroke='%2359c7ff' stroke-width='1.8'/%3E%3Cpath d='M18 3v30M3 18h30M7.4 7.4l21.2 21.2M28.6 7.4L7.4 28.6' stroke='%23dff6ff' stroke-width='1' opacity='.8'/%3E%3Cpath d='M18 8l3.1 5.3 6.1.9-4.4 4.3 1 6.1-5.8-2.9-5.8 2.9 1.1-6.1-4.5-4.3 6.2-.9z' fill='%23ef2949' stroke='white' stroke-width='1.2'/%3E%3C/svg%3E") 18 18,auto!important}
-a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='18' r='14' fill='%23081529' fill-opacity='.96' stroke='%23ff4968' stroke-width='2'/%3E%3Cpath d='M18 3v30M3 18h30M7.4 7.4l21.2 21.2M28.6 7.4L7.4 28.6' stroke='%23dff6ff' stroke-width='1' opacity='.8'/%3E%3Cpath d='M18 8l3.1 5.3 6.1.9-4.4 4.3 1 6.1-5.8-2.9-5.8 2.9 1.1-6.1-4.5-4.3 6.2-.9z' fill='%23ef2949' stroke='white' stroke-width='1.2'/%3E%3C/svg%3E") 18 18,pointer!important}
-.spider-verse-cursor,.pencil-cursor{display:none!important}
-
+/* A visible Spider-Verse cursor, rendered as a tracked overlay. */
+:root,body{cursor:none!important}
+a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cursor:none!important}
+.spider-verse-cursor{display:block!important;position:fixed!important;left:0!important;top:0!important;width:42px!important;height:42px!important;z-index:2147483647!important;opacity:1!important;visibility:visible!important;pointer-events:none!important;transform:translate(-50%,-50%)!important;mix-blend-mode:normal!important;filter:drop-shadow(0 2px 5px rgba(0,0,0,.75)) drop-shadow(0 0 8px rgba(50,180,255,.7))!important}
+.spider-verse-cursor svg{display:block!important;width:100%!important;height:100%!important;filter:none!important}
+.spider-verse-cursor .cursor-ring{stroke:#75d8ff!important;stroke-width:2.2!important}
+.spider-verse-cursor.is-hot{width:54px!important;height:54px!important}
+.pencil-cursor{display:none!important}
+@media(hover:none),(pointer:coarse){body{cursor:auto!important}.spider-verse-cursor{display:none!important}}
 /* Guaranteed visible Spider-Verse browser cursor. */
 html,body{cursor:auto!important}
 body.has-custom-cursor,
@@ -1105,19 +1109,17 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
  const cursor=document.getElementById('spider-verse-cursor');
  if(!layer)return;
  /* Put fixed UI outside body stacking/transform contexts. */
- if(cursor)document.documentElement.appendChild(cursor);
- let px=innerWidth*.5,py=innerHeight*.5;
+ if(cursor){
+   document.documentElement.appendChild(cursor);
+   cursor.style.setProperty('left','0px','important');
+   cursor.style.setProperty('top','0px','important');
+ }
  const move=e=>{
-   px=e.clientX;py=e.clientY;
    if(cursor){
-     cursor.style.setProperty('left',px+'px','important');
-     cursor.style.setProperty('top',py+'px','important');
+     cursor.style.setProperty('left',e.clientX+'px','important');
+     cursor.style.setProperty('top',e.clientY+'px','important');
    }
  };
- if(cursor){
-   cursor.style.setProperty('left',px+'px','important');
-   cursor.style.setProperty('top',py+'px','important');
- }
  document.addEventListener('pointermove',move,{passive:true});
  document.addEventListener('mousemove',move,{passive:true});
  document.querySelectorAll('a,button,[role="button"]').forEach(el=>{
