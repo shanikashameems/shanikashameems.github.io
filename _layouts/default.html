@@ -1420,5 +1420,83 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 })();
 </script>
 
+
+<style id="cinematic-redesign-v2">
+/* A refined comet pointer: tiny glass arrow with a soft motion trail. */
+@media(hover:hover) and (pointer:fine){
+ html,body,body *{cursor:none!important}
+ #spider-verse-cursor,.spider-verse-cursor{position:fixed!important;left:50vw;top:50vh;width:22px!important;height:30px!important;min-width:22px!important;min-height:30px!important;z-index:2147483647!important;display:block!important;visibility:visible!important;opacity:1!important;pointer-events:none!important;transform:translate(-3px,-2px)!important;filter:drop-shadow(0 2px 5px rgba(55,190,255,.7))!important}
+ #spider-verse-cursor svg,.spider-verse-cursor svg{width:100%!important;height:100%!important;animation:none!important}
+ #spider-verse-cursor.is-hot,.spider-verse-cursor.is-hot{width:26px!important;height:34px!important}
+}
+@media(hover:none),(pointer:coarse){html,body,body *{cursor:auto!important}#spider-verse-cursor,.spider-verse-cursor{display:none!important}}
+/* Full cinematic map console, almost edge-to-edge. */
+.city-map-panel{position:fixed!important;inset:5vh 4vw!important;left:4vw!important;top:5vh!important;right:4vw!important;bottom:5vh!important;transform:none!important;width:92vw!important;height:90vh!important;max-width:none!important;max-height:90vh!important;padding:clamp(18px,2.4vw,36px)!important;display:flex!important;flex-direction:column!important;gap:14px!important;overflow:hidden!important;border:1px solid rgba(110,208,255,.72)!important;border-radius:22px!important;background:radial-gradient(ellipse at 50% 65%,rgba(22,125,194,.22),transparent 58%),linear-gradient(145deg,#091a2c,#030811 76%)!important;box-shadow:0 35px 110px rgba(0,0,0,.9),0 0 0 100vmax rgba(0,4,12,.82),inset 0 0 60px rgba(45,155,220,.13)!important;z-index:2147483002!important}
+.city-map-panel[hidden]{display:none!important}
+.city-map-heading strong{font-size:clamp(2.2rem,3.4vw,3.5rem)!important;letter-spacing:.12em!important}
+.city-map-heading small{font-size:.9rem!important;letter-spacing:.24em!important}
+.city-map-heading button{width:44px!important;height:44px!important;border:1px solid rgba(123,210,255,.45)!important;border-radius:50%!important;background:rgba(22,57,82,.55)!important}
+.city-map-hint{font-size:1.05rem!important;margin:0!important}
+.city-map-canvas{position:relative!important;flex:1!important;height:auto!important;min-height:0!important;width:100%!important;overflow:hidden!important;border-radius:14px!important;perspective:1400px!important;transform-style:preserve-3d!important;background-color:#061426!important;background-image:radial-gradient(ellipse at 50% 80%,rgba(34,139,212,.28),transparent 65%),linear-gradient(rgba(78,158,207,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(78,158,207,.09) 1px,transparent 1px)!important;background-size:100% 100%,34px 34px,34px 34px!important;box-shadow:inset 0 0 100px rgba(0,0,0,.7),0 0 35px rgba(41,158,224,.14)!important}
+.map-city-silhouette{inset:8% -2% 0!important;opacity:.85!important;align-items:flex-end!important;transform:perspective(900px) rotateX(18deg) translateZ(-45px)!important;transform-origin:bottom center!important;animation:cityscape-drift 12s ease-in-out infinite alternate!important}
+.map-city-silhouette i{position:relative!important;width:12%!important;background:linear-gradient(90deg,#0b2138 0%,#285779 48%,#0a1a2d 100%)!important;border:1px solid rgba(112,204,255,.52)!important;box-shadow:inset 0 0 22px rgba(75,184,255,.22),0 0 26px rgba(25,128,196,.18)!important}
+.map-city-silhouette i:nth-child(2){height:75%!important}.map-city-silhouette i:nth-child(3){height:59%!important}.map-city-silhouette i:nth-child(4){height:94%!important}.map-city-silhouette i:nth-child(5){height:68%!important}.map-city-silhouette i:nth-child(6){height:82%!important}.map-city-silhouette i:nth-child(7){height:55%!important}
+.map-city-silhouette i:after{content:"";position:absolute;inset:8% 15%;background:repeating-linear-gradient(90deg,transparent 0 9px,rgba(111,205,255,.32) 10px 12px),repeating-linear-gradient(0deg,transparent 0 13px,rgba(111,205,255,.24) 14px 16px);opacity:.9}
+.city-map-roads{transform:translateZ(24px)!important;filter:drop-shadow(0 0 8px rgba(76,196,255,.55))!important}
+.city-map-roads path{stroke-width:12!important;stroke:rgba(115,173,205,.24)!important}
+.city-map-roads .map-route{stroke:#74e2ff!important;stroke-width:4!important;stroke-dasharray:9 8!important;filter:drop-shadow(0 0 7px #39bfff)!important;animation:map-route-dash 1.15s linear infinite!important}
+.map-stop{font-size:clamp(.82rem,1.1vw,1.05rem)!important;transform:translateZ(45px)!important}
+.map-stop i{width:clamp(38px,3.5vw,52px)!important;height:clamp(38px,3.5vw,52px)!important;font-size:.9rem!important;border-width:2px!important;box-shadow:0 0 0 7px rgba(40,157,220,.17),0 0 25px rgba(55,180,255,.65)!important}
+.map-district{font-size:.78rem!important;letter-spacing:.22em!important;color:rgba(170,220,246,.55)!important}
+.city-map-canvas:before{content:"";position:absolute;inset:-35% -20%;z-index:4;pointer-events:none;background:linear-gradient(110deg,transparent 42%,rgba(74,195,255,.02) 47%,rgba(74,195,255,.2) 50%,rgba(74,195,255,.02) 53%,transparent 58%);transform:translateX(-80%) skewX(-18deg);animation:city-scan-v2 8s ease-in-out infinite}
+.city-map-canvas:after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(180deg,rgba(3,10,19,.05),transparent 40%,rgba(3,9,17,.42));box-shadow:inset 0 0 90px rgba(0,0,0,.6)}
+.city-map-footer{font-size:.84rem!important;margin:0!important;letter-spacing:.16em!important}
+@keyframes cityscape-drift{from{transform:perspective(900px) rotateX(14deg) translate3d(-8px,0,-45px)}to{transform:perspective(900px) rotateX(20deg) translate3d(8px,-9px,-45px)}}
+@keyframes city-scan-v2{0%,15%{transform:translateX(-80%) skewX(-18deg)}80%,100%{transform:translateX(80%) skewX(-18deg)}}
+@media(max-width:760px){.city-map-panel{inset:2vh 2vw!important;width:96vw!important;height:96vh!important;padding:14px!important}.city-map-canvas{min-height:0!important}.map-district{font-size:.55rem!important}}
+/* Mechanical wrist-mounted launcher, with a proper spring-loaded firing action. */
+.web-shooter-dock{position:fixed!important;right:22px!important;bottom:22px!important;z-index:2147483646!important;display:flex!important;align-items:center!important;gap:12px!important;padding:9px 14px!important;border:1px solid rgba(117,204,255,.55)!important;border-radius:16px!important;background:linear-gradient(145deg,rgba(13,34,54,.97),rgba(3,10,19,.98))!important;box-shadow:0 12px 35px rgba(0,0,0,.7),inset 0 1px rgba(255,255,255,.08),0 0 24px rgba(45,166,231,.22)!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+.web-shooter-label{font:800 .72rem 'Barlow Condensed',sans-serif!important;letter-spacing:.2em!important;color:#cceeff!important}
+.web-shooter{width:78px!important;height:68px!important;min-width:78px!important;min-height:68px!important;display:grid!important;place-items:center!important;border:0!important;background:transparent!important;cursor:pointer!important;filter:drop-shadow(0 5px 7px rgba(0,0,0,.7))!important}
+.web-shooter svg{width:100%!important;height:100%!important;display:block!important}
+.web-shooter-dock.is-firing .web-shooter{animation:wrist-recoil .38s cubic-bezier(.2,.8,.2,1)!important}
+@keyframes wrist-recoil{0%{transform:translateX(0) rotate(0)}22%{transform:translateX(-8px) rotate(-8deg)}48%{transform:translateX(3px) rotate(3deg)}100%{transform:translateX(0) rotate(0)}}
+.web-shot-layer{position:fixed!important;inset:0!important;z-index:2147483000!important;pointer-events:none!important;overflow:visible!important}
+.web-shot-layer svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.web-shot-layer .web-main{fill:none;stroke:#f7fdff;stroke-width:2.6;stroke-linecap:round;stroke-dasharray:1800;stroke-dashoffset:1800;animation:web-fire-real .42s cubic-bezier(.15,.85,.25,1) forwards;filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 8px #65cfff)}
+.web-shot-layer .web-strand{fill:none;stroke:#8edfff;stroke-width:1;stroke-dasharray:1800;stroke-dashoffset:1800;animation:web-fire-real .48s .02s ease-out forwards;opacity:.85}
+.web-shot-layer .web-impact{fill:none;stroke:#eafaff;stroke-width:2;stroke-linecap:round;opacity:0;animation:web-impact-real .48s .35s ease-out forwards;filter:drop-shadow(0 0 6px #5bcaff)}
+.web-shot-layer .web-anchor{fill:#fff;stroke:#6ed5ff;stroke-width:2;filter:drop-shadow(0 0 7px #5bcaff);transform-box:fill-box;transform-origin:center;animation:web-anchor-real .5s .32s ease-out both}
+@keyframes web-fire-real{to{stroke-dashoffset:0}}
+@keyframes web-impact-real{0%{opacity:0;transform:scale(.4)}35%{opacity:1;transform:scale(1.15)}100%{opacity:0;transform:scale(1.5)}}
+@keyframes web-anchor-real{0%{opacity:0;transform:scale(.1)}55%{opacity:1;transform:scale(1.25)}100%{opacity:1;transform:scale(1)}}
+@media(max-width:760px){.web-shooter-dock{right:10px!important;bottom:10px!important;padding:5px!important}.web-shooter{width:62px!important;height:56px!important;min-width:62px!important;min-height:56px!important}.web-shooter-label{display:none!important}}
+</style>
+<script id="web-shooter-realism-v2">
+(() => {
+ const boot=()=>{
+  let layer=document.getElementById('web-shot-layer');
+  if(!layer){layer=document.createElement('div');layer.id='web-shot-layer';layer.className='web-shot-layer';document.body.appendChild(layer);}
+  let dock=document.querySelector('.web-shooter-dock');
+  if(!dock){dock=document.createElement('div');dock.className='web-shooter-dock';document.body.appendChild(dock);}
+  dock.innerHTML='<span class="web-shooter-label">WRIST WEB SYSTEM · READY</span><button class="web-shooter" type="button" aria-label="Fire web shooter"><svg viewBox="0 0 120 100" aria-hidden="true"><defs><linearGradient id="wristTitanium" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7e9f2"/><stop offset=".22" stop-color="#637e91"/><stop offset=".48" stop-color="#1c3448"/><stop offset=".75" stop-color="#0b1827"/><stop offset="1" stop-color="#8cb7c9"/></linearGradient><linearGradient id="wristRed" x2="0" y2="1"><stop stop-color="#fa5266"/><stop offset="1" stop-color="#8c102a"/></linearGradient><radialGradient id="wristCore"><stop stop-color="#fff"/><stop offset=".28" stop-color="#9ceaff"/><stop offset="1" stop-color="#1479b5"/></radialGradient></defs><path d="M9 43Q11 29 27 25L82 17Q99 15 107 30L113 54Q115 68 100 73L34 86Q17 89 12 73Z" fill="url(#wristTitanium)" stroke="#a9d5e7" stroke-width="2"/><path d="M18 39L94 26L102 58L25 75Z" fill="#101f30" stroke="#52788f" stroke-width="1.5"/><path d="M30 35L87 26L93 34L34 45Z" fill="url(#wristRed)" stroke="#ff9eaa" stroke-width="1"/><path d="M32 65L91 53L95 62L35 75Z" fill="#173d5a" stroke="#5cbbe8" stroke-width="1"/><rect x="45" y="36" width="35" height="27" rx="7" fill="#071522" stroke="#8ecce5" stroke-width="2"/><circle cx="62.5" cy="49.5" r="10" fill="url(#wristCore)" stroke="#d9f7ff" stroke-width="1.5"/><circle cx="62.5" cy="49.5" r="3" fill="#fff"/><path d="M62 37V30M75 49H84M62 62V69M49 49H41" stroke="#9ceaff" stroke-width="2" stroke-linecap="round"/><path d="M16 50L7 53L11 68L21 66M100 35L110 32L115 48L105 51" fill="none" stroke="#d4eaf3" stroke-width="3"/><path d="M28 28L36 18L83 10L91 18" fill="none" stroke="#7fb4cb" stroke-width="2"/><path d="M24 78L33 91L93 79L102 70" fill="none" stroke="#080f18" stroke-width="4"/></svg></button>';
+  const fire=(x,y)=>{
+   const r=dock.getBoundingClientRect(),sx=r.left+r.width*.48,sy=r.top+r.height*.42;
+   const dx=x-sx,dy=y-sy,dist=Math.max(1,Math.hypot(dx,dy)),bend=(Math.random()-.5)*Math.min(100,dist*.12);
+   const cx=(sx+x)/2+bend,cy=(sy+y)/2-Math.min(90,dist*.1);
+   const path='M'+sx+' '+sy+' Q'+cx+' '+cy+' '+x+' '+y;
+   const strand='M'+(sx+2)+' '+(sy+2)+' Q'+(cx-3)+' '+(cy+3)+' '+(x-2)+' '+(y+2);
+   layer.innerHTML='<svg viewBox="0 0 '+innerWidth+' '+innerHeight+'" preserveAspectRatio="none"><path class="web-strand" d="'+strand+'"/><path class="web-main" d="'+path+'"/><circle class="web-anchor" cx="'+x+'" cy="'+y+'" r="4"/><path class="web-impact" d="M'+(x-18)+' '+(y-8)+'l12 8 -8 13m8 -13l14 -12m-14 12l16 9m-16 -9l-2 -18"/></svg>';
+   dock.classList.remove('is-firing');void dock.offsetWidth;dock.classList.add('is-firing');
+   clearTimeout(window.__webV2Timer);window.__webV2Timer=setTimeout(()=>{layer.innerHTML='';dock.classList.remove('is-firing')},1050);
+  };
+  const btn=dock.querySelector('button');
+  btn.addEventListener('click',e=>{e.stopPropagation();fire(innerWidth*.52,innerHeight*.42)});
+  if(!document.documentElement.dataset.webV2Bound){document.addEventListener('click',e=>{if(e.target.closest('.web-shooter-dock'))return;if(e.target.closest('.city-map-panel'))return;fire(e.clientX,e.clientY)},true);document.documentElement.dataset.webV2Bound='1';}
+ };
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+})();
+</script>
+
 </body>
 </html>
