@@ -914,7 +914,14 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 <div class="web-thread" aria-hidden="true"><svg viewBox="0 0 1440 900" preserveAspectRatio="none"><path d="M0 0L720 450L1440 0M0 0L720 450L0 900M1440 0L720 450L1440 900M0 900L720 450L1440 900M0 0Q720 160 1440 0M0 0Q160 450 0 900M1440 0Q1280 450 1440 900M0 900Q720 740 1440 900"/></svg></div>
 
 <div class="web-shot-layer" id="web-shot-layer" aria-hidden="true"></div>
-<div class="spider-verse-cursor" id="spider-verse-cursor" aria-hidden="true"><svg viewBox="0 0 48 48"><circle class="cursor-ring" cx="24" cy="24" r="18" fill="none" stroke="#78caff" stroke-width="1.5" stroke-dasharray="4 4"/><path d="M24 4V44M4 24H44M12 12L36 36M36 12L12 36" stroke="#fff" stroke-width="1" opacity=".75"/><path d="M24 13L28 20L36 21L30 27L32 35L24 31L16 35L18 27L12 21L20 20Z" fill="#e51d3d" stroke="#fff" stroke-width="1.2"/></svg></div>
+<div class="spider-verse-cursor" id="spider-verse-cursor" aria-hidden="true"><svg viewBox="0 0 64 64">
+<defs><linearGradient id="spideyMask" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff5268"/><stop offset=".55" stop-color="#df1538"/><stop offset="1" stop-color="#7d0924"/></linearGradient><filter id="spideyGlow"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<circle class="cursor-ring" cx="32" cy="32" r="29" fill="#07172b" fill-opacity=".94" stroke="#55caff" stroke-width="2" stroke-dasharray="5 4"/>
+<path d="M32 8C18 8 10 18 12 34c1 11 8 18 20 23 12-5 19-12 20-23C54 18 46 8 32 8Z" fill="url(#spideyMask)" stroke="#ffb7c4" stroke-width="1.4" filter="url(#spideyGlow)"/>
+<path d="M32 10V54M13 24L51 40M13 40L51 24M18 15L46 49M46 15L18 49M17 32H47" fill="none" stroke="#5b071d" stroke-width="1.2" opacity=".8"/>
+<path d="M16 25Q24 17 30 28L27 34Q20 33 16 25Z" fill="#f7fbff" stroke="#10243a" stroke-width="1.5"/><path d="M48 25Q40 17 34 28L37 34Q44 33 48 25Z" fill="#f7fbff" stroke="#10243a" stroke-width="1.5"/>
+<path d="M32 29L29 39L32 42L35 39Z" fill="#09172a"/><path d="M8 32H2M62 32H56M32 2V7M32 57V62" stroke="#ff405e" stroke-width="2" stroke-linecap="round"/>
+</svg></div>
 
 
 {% if page.url == '/' %}
@@ -1273,6 +1280,27 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 .city-map-roads .map-route{stroke:#5fd7ff!important;stroke-width:3!important;stroke-dasharray:7 5!important;filter:drop-shadow(0 0 5px rgba(70,190,255,.9))!important;animation:map-route-dash 1.8s linear infinite!important}
 .city-map-toggle{background:linear-gradient(145deg,#162b43,#07111e)!important;border:1px solid #4ca7d4!important;box-shadow:4px 4px 0 #b91e3a,0 0 18px rgba(50,155,220,.18)!important}
 .city-map-toggle:after,.map-radar-sweep,.map-traveller{display:none!important}
+</style>
+
+<style id="spider-man-cursor-and-webshooters">
+/* Spider-Man mask cursor, not a generic crosshair. */
+@media(hover:hover) and (pointer:fine){
+ html,body,body a,body button,body input,body textarea,body select,body [role="button"]{cursor:none!important}
+ .spider-verse-cursor{display:block!important;width:54px!important;height:54px!important;transition:width .16s ease,height .16s ease,filter .16s ease!important;filter:drop-shadow(0 0 7px rgba(35,168,255,.85)) drop-shadow(0 3px 5px rgba(0,0,0,.8))!important}
+ .spider-verse-cursor svg{width:100%!important;height:100%!important;display:block!important;animation:spidey-cursor-float 2.2s ease-in-out infinite}
+ .spider-verse-cursor.is-hot{width:66px!important;height:66px!important;filter:drop-shadow(0 0 10px rgba(255,40,80,.95)) drop-shadow(0 0 12px rgba(35,168,255,.8))!important}
+}
+@keyframes spidey-cursor-float{0%,100%{transform:rotate(-5deg) scale(1)}50%{transform:rotate(5deg) scale(1.06)}}
+@media(hover:none),(pointer:coarse){.spider-verse-cursor{display:none!important}}
+/* Always-visible web-shooter launcher. */
+.web-shooter-dock{position:fixed!important;right:24px!important;bottom:22px!important;display:flex!important;align-items:center!important;gap:10px!important;z-index:2147483646!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;padding:8px 10px 8px 14px!important;border:1px solid rgba(96,190,255,.45)!important;border-radius:16px!important;background:linear-gradient(135deg,rgba(5,17,34,.96),rgba(12,38,65,.94))!important;box-shadow:0 8px 28px rgba(0,0,0,.55),0 0 18px rgba(31,151,230,.2)!important}
+.web-shooter-label{display:block!important;color:#eaf6ff!important;font:800 .72rem 'Barlow Condensed',sans-serif!important;letter-spacing:.2em!important;text-shadow:0 0 10px rgba(67,185,255,.8)!important}
+.web-shooter{width:82px!important;height:82px!important;min-width:82px!important;min-height:82px!important;display:grid!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;background:transparent!important;border:0!important;box-shadow:none!important;cursor:pointer!important;filter:drop-shadow(0 0 8px rgba(65,185,255,.6)) drop-shadow(0 7px 8px rgba(0,0,0,.65))!important;animation:shooter-ready-pulse 2s ease-in-out infinite}
+.web-shooter svg{display:block!important;width:100%!important;height:100%!important}
+@keyframes shooter-ready-pulse{0%,100%{transform:translateY(0) scale(1);filter:drop-shadow(0 0 5px rgba(65,185,255,.42))}50%{transform:translateY(-4px) scale(1.04);filter:drop-shadow(0 0 15px rgba(65,185,255,.9))}}
+.web-shooter-dock.is-firing .web-shooter{animation:gauntlet-fire .34s ease!important}
+.web-shot-layer{position:fixed!important;inset:0!important;z-index:2147483000!important;pointer-events:none!important;overflow:visible!important}
+@media(max-width:760px){.web-shooter-dock{right:12px!important;bottom:12px!important;padding:5px!important}.web-shooter{width:68px!important;height:68px!important;min-width:68px!important;min-height:68px!important}.web-shooter-label{display:none!important}}
 </style>
 </body>
 </html>
