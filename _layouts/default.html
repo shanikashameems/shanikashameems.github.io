@@ -874,7 +874,13 @@ body.page-leaving:before{content:"";position:fixed;inset:0;z-index:300;backgroun
 .web-shooter{display:grid!important;visibility:visible!important;opacity:1!important}
 @media(max-width:760px){.spider-verse-cursor{display:none!important}.web-shooter-dock{right:14px!important;bottom:14px!important}}
 
-/* Guaranteed visible system cursor: disable the broken custom overlay. */
+
+/* Spider-Verse pointer: a native browser cursor with a custom web-spider design. */
+:root,body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='18' r='14' fill='%23081529' fill-opacity='.96' stroke='%2359c7ff' stroke-width='1.8'/%3E%3Cpath d='M18 3v30M3 18h30M7.4 7.4l21.2 21.2M28.6 7.4L7.4 28.6' stroke='%23dff6ff' stroke-width='1' opacity='.8'/%3E%3Cpath d='M18 8l3.1 5.3 6.1.9-4.4 4.3 1 6.1-5.8-2.9-5.8 2.9 1.1-6.1-4.5-4.3 6.2-.9z' fill='%23ef2949' stroke='white' stroke-width='1.2'/%3E%3C/svg%3E") 18 18,auto!important}
+a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='18' r='14' fill='%23081529' fill-opacity='.96' stroke='%23ff4968' stroke-width='2'/%3E%3Cpath d='M18 3v30M3 18h30M7.4 7.4l21.2 21.2M28.6 7.4L7.4 28.6' stroke='%23dff6ff' stroke-width='1' opacity='.8'/%3E%3Cpath d='M18 8l3.1 5.3 6.1.9-4.4 4.3 1 6.1-5.8-2.9-5.8 2.9 1.1-6.1-4.5-4.3 6.2-.9z' fill='%23ef2949' stroke='white' stroke-width='1.2'/%3E%3C/svg%3E") 18 18,pointer!important}
+.spider-verse-cursor,.pencil-cursor{display:none!important}
+
+/* Guaranteed visible Spider-Verse browser cursor. */
 html,body{cursor:auto!important}
 body.has-custom-cursor,
 body.has-custom-cursor a,
@@ -912,7 +918,6 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
       <path class="underline" pathLength="1" d="M104 205 C220 220 435 216 574 193 C615 187 644 177 665 166"/>
     </svg>
     <p class="name-loader-caption">welcome to my little corner ♡</p>
-    <button class="name-loader-skip" type="button" id="name-loader-skip">Skip intro</button>
   </div>
 </div>
 {% endif %}
@@ -932,7 +937,7 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 
 <main>{{ content }}</main>
 <button class="back-top" type="button" aria-label="Back to top">↑</button>
-<footer><span>© {{ site.time | date: "%Y" }} · Shanika's digital journal</span><span>Made of curiosity <span class="footer-mark">✳</span> and little notes</span></footer>
+<footer><span>© 2025 · Shanika's digital journal</span><span>Made of curiosity <span class="footer-mark">✳</span> and little notes</span></footer>
 <script>
 
 
@@ -953,8 +958,6 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
         document.body.style.overflow='';
       },720);
     };
-    const skipNameLoader=document.getElementById('name-loader-skip');
-    if(skipNameLoader)skipNameLoader.addEventListener('click',finishNameLoader);
     const nameIntroDuration=window.matchMedia('(prefers-reduced-motion: reduce)').matches?900:6800;
     window.setTimeout(finishNameLoader,nameIntroDuration);
   }
@@ -1158,6 +1161,7 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
     <div class="city-map-heading"><div><small>EARTH-616 · NAV SYSTEM</small><strong>YOUR CITY MAP</strong></div><button id="city-map-close" type="button" aria-label="Close map">×</button></div>
     <p class="city-map-hint">Pick a landmark to travel there.</p>
     <div class="city-map-canvas">
+      <div class="map-city-silhouette" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="map-radar-sweep" aria-hidden="true"></div><span class="map-traveller" aria-hidden="true">✦</span>
       <svg class="city-map-roads" viewBox="0 0 320 230" aria-hidden="true"><path d="M-10 45L330 195M-10 180L330 25M80 -10L235 245M260 -10L65 245M-10 112L330 112" /><path d="M-10 45L330 195M-10 180L330 25" class="map-route"/></svg>
       <a class="map-stop map-home" href="{{ '/' | relative_url }}"><i>01</i><span>THE HQ</span></a>
       <a class="map-stop map-missions" href="{{ '/#all-entries' | relative_url }}"><i>02</i><span>MISSIONS</span></a>
@@ -1187,6 +1191,34 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 .map-home{left:12%;top:12%}.map-missions{left:58%;top:13%}.map-archives{left:37%;top:58%}.map-profile{left:7%;top:69%}.map-comms{right:7%;top:67%}
 .city-map-footer{display:flex;justify-content:space-between;gap:8px;margin-top:11px;font-size:.61rem;letter-spacing:.1em;color:#75caff}.city-map-footer span:first-child{color:#ff647c}
 @media(max-width:760px){.city-map-widget{left:12px;bottom:12px}.city-map-panel{bottom:54px}}
+</style>
+<style>
+
+.city-map-panel{animation:map-panel-arrive .38s cubic-bezier(.2,.8,.2,1) both;transform-origin:bottom left}
+@keyframes map-panel-arrive{from{opacity:0;transform:translateY(14px) scale(.96);filter:blur(3px)}to{opacity:1;transform:none;filter:none}}
+.city-map-toggle{position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.city-map-toggle:after{content:"";position:absolute;inset:-60% auto -60% -45%;width:35%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.24),transparent);transform:skewX(-25deg);animation:map-button-glint 4s ease-in-out infinite}
+@keyframes map-button-glint{0%,55%{left:-45%}85%,100%{left:130%}}
+.city-map-pulse{animation:map-beacon 1.6s ease-in-out infinite}
+@keyframes map-beacon{0%,100%{box-shadow:0 0 0 0 rgba(85,198,255,.6),0 0 10px #55c6ff}50%{box-shadow:0 0 0 8px rgba(85,198,255,0),0 0 18px #55c6ff}}
+.city-map-canvas{background-image:linear-gradient(rgba(88,157,218,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(88,157,218,.09) 1px,transparent 1px),radial-gradient(ellipse at 50% 50%,rgba(20,95,160,.2),transparent 70%);background-size:22px 22px,22px 22px,100% 100%}
+.city-map-roads .map-route{stroke-dasharray:8 8;animation:map-route-flow 1.2s linear infinite;filter:drop-shadow(0 0 4px #e52c4c)}
+@keyframes map-route-flow{to{stroke-dashoffset:-32}}
+.map-city-silhouette{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-around;opacity:.25;pointer-events:none}
+.map-city-silhouette i{width:9%;height:26%;background:linear-gradient(#3979a7,#102b48);border:1px solid #62bfff;clip-path:polygon(15% 0,85% 0,100% 100%,0 100%)}
+.map-city-silhouette i:nth-child(2){height:42%}.map-city-silhouette i:nth-child(3){height:31%}.map-city-silhouette i:nth-child(4){height:55%}.map-city-silhouette i:nth-child(5){height:37%}.map-city-silhouette i:nth-child(6){height:47%}.map-city-silhouette i:nth-child(7){height:29%}
+.map-radar-sweep{position:absolute;inset:-35%;z-index:1;pointer-events:none;background:conic-gradient(from 0deg,transparent 0 78%,rgba(68,184,255,.18) 88%,transparent 100%);animation:map-radar-rotate 7s linear infinite;border-radius:50%}
+@keyframes map-radar-rotate{to{transform:rotate(360deg)}}
+.map-stop{z-index:2;transition:transform .2s,color .2s}
+.map-stop i{animation:map-pin-pulse 2.4s ease-in-out infinite}
+@keyframes map-pin-pulse{0%,100%{box-shadow:0 0 0 3px rgba(39,145,220,.16),0 0 10px rgba(61,170,255,.45)}50%{box-shadow:0 0 0 8px rgba(39,145,220,0),0 0 18px rgba(61,170,255,.85)}}
+.map-stop:hover{transform:translateY(-3px) scale(1.06);color:#8edbff}
+.map-traveller{position:absolute;z-index:3;left:13%;top:24%;color:#fff;font-size:1.1rem;text-shadow:0 0 8px #5bc7ff;animation:map-traveller-route 8s ease-in-out infinite;pointer-events:none}
+@keyframes map-traveller-route{0%,100%{left:13%;top:24%}25%{left:68%;top:25%}50%{left:48%;top:72%}75%{left:15%;top:78%}}
+.city-map-footer span:first-child{animation:map-status-blink 1.8s steps(2,end) infinite}
+@keyframes map-status-blink{50%{opacity:.42}}
+@media(prefers-reduced-motion:reduce){.city-map-panel,.city-map-toggle:after,.city-map-pulse,.city-map-roads .map-route,.map-radar-sweep,.map-stop i,.map-traveller,.city-map-footer span:first-child{animation:none!important}}
+
 </style>
 <script>
 (()=>{const toggle=document.getElementById('city-map-toggle'),panel=document.getElementById('city-map-panel'),close=document.getElementById('city-map-close');if(!toggle||!panel)return;const setOpen=open=>{panel.hidden=!open;toggle.setAttribute('aria-expanded',String(open));};toggle.addEventListener('click',()=>setOpen(panel.hidden));if(close)close.addEventListener('click',()=>setOpen(false));document.addEventListener('keydown',e=>{if(e.key==='Escape')setOpen(false);});panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setOpen(false)));})();
