@@ -914,7 +914,7 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 <div class="web-thread" aria-hidden="true"><svg viewBox="0 0 1440 900" preserveAspectRatio="none"><path d="M0 0L720 450L1440 0M0 0L720 450L0 900M1440 0L720 450L1440 900M0 900L720 450L1440 900M0 0Q720 160 1440 0M0 0Q160 450 0 900M1440 0Q1280 450 1440 900M0 900Q720 740 1440 900"/></svg></div>
 
 <div class="web-shot-layer" id="web-shot-layer" aria-hidden="true"></div>
-<div class="spider-verse-cursor" id="spider-verse-cursor" aria-hidden="true"><svg viewBox="0 0 32 40"><defs><linearGradient id="cometFill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5fdff"/><stop offset=".45" stop-color="#75dcff"/><stop offset="1" stop-color="#1678b7"/></linearGradient></defs><path d="M3 2L28 20L17 22L12 36Z" fill="url(#cometFill)" stroke="#e9faff" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 36L17 22L28 20" fill="none" stroke="#0b4e7c" stroke-width="1.2"/><path d="M2 28L7 25M0 35L6 32" stroke="#62d4ff" stroke-width="1.6" stroke-linecap="round" opacity=".85"/></svg></div>
+<div class="spider-verse-cursor" id="spider-verse-cursor" aria-hidden="true"><svg viewBox="0 0 40 44"><defs><linearGradient id="shieldSteel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f1fbff"/><stop offset=".35" stop-color="#65c9ed"/><stop offset=".68" stop-color="#17618e"/><stop offset="1" stop-color="#071c34"/></linearGradient></defs><path d="M20 2L36 8V20Q35 33 20 42Q5 33 4 20V8Z" fill="#061629" stroke="#b8efff" stroke-width="1.6"/><path d="M20 5L33 10V20Q32 30 20 38Q8 30 7 20V10Z" fill="url(#shieldSteel)" stroke="#4ab8e6" stroke-width="1"/><path d="M20 7V36M8 18H32M11 27L20 32L29 27" fill="none" stroke="#e8faff" stroke-width="1" opacity=".8"/><path d="M20 12L24 19L20 27L16 19Z" fill="#f7fdff" opacity=".9"/></svg></div>
 
 
 {% if page.url == '/' %}
@@ -1395,30 +1395,7 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 .web-shot-layer path:not(.web-impact){fill:none!important;stroke:#fff!important;stroke-width:4!important;stroke-linecap:round!important;stroke-dasharray:1800!important;stroke-dashoffset:1800!important;animation:web-line-launch .5s cubic-bezier(.2,.75,.25,1) forwards!important;filter:drop-shadow(0 0 5px #fff) drop-shadow(0 0 14px #35baff)!important}
 @media(max-width:760px){.web-shooter-dock{right:10px!important;bottom:10px!important;padding:4px!important}.web-shooter{width:62px!important;height:62px!important;min-width:62px!important;min-height:62px!important}.web-shooter-label{display:none!important}}
 </style>
-<script id="reliable-web-shooter">
-(() => {
- const boot = () => {
-  let layer=document.getElementById('web-shot-layer');
-  if(!layer){layer=document.createElement('div');layer.id='web-shot-layer';layer.className='web-shot-layer';document.body.appendChild(layer);}
-  let dock=document.querySelector('.web-shooter-dock');
-  if(!dock){
-   dock=document.createElement('div');dock.className='web-shooter-dock';
-   dock.innerHTML='<span class="web-shooter-label">WEB SHOOTER</span><button class="web-shooter" type="button" aria-label="Fire web"><svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="launcherMetal" x2="1" y2="1"><stop stop-color="#d8f5ff"/><stop offset=".35" stop-color="#398bc5"/><stop offset=".7" stop-color="#102e50"/><stop offset="1" stop-color="#07111f"/></linearGradient></defs><path d="M18 58Q13 51 21 43L36 29Q43 22 49 30L58 39L68 21Q73 12 80 18Q86 22 81 31L72 48L83 40Q91 35 95 43Q98 50 90 56L72 76Q64 86 48 82L29 77Q19 73 18 58Z" fill="url(#launcherMetal)" stroke="#a9e7ff" stroke-width="2"/><path d="M42 31L58 43L50 56M59 41L74 49M29 53L49 64L67 61" fill="none" stroke="#e7f8ff" stroke-width="2"/><circle cx="54" cy="56" r="9" fill="#e51d3d" stroke="#d6f5ff" stroke-width="2"/><circle cx="54" cy="56" r="3" fill="#fff"/><path d="M54 47V39M63 56H72M54 65V73M45 56H37" stroke="#71d6ff" stroke-width="2"/></svg></button>';
-   document.body.appendChild(dock);
-  }
-  const fire=(x,y)=>{
-   const b=dock.getBoundingClientRect(),sx=b.left+b.width*.5,sy=b.top+b.height*.45;
-   const bend=(Math.random()-.5)*100;
-   layer.innerHTML='<svg viewBox="0 0 '+innerWidth+' '+innerHeight+'" preserveAspectRatio="none"><path d="M'+sx+' '+sy+' Q'+((sx+x)/2+bend)+' '+((sy+y)/2-70)+' '+x+' '+y+'"/><circle cx="'+x+'" cy="'+y+'" r="9"/><path class="web-impact" d="M'+(x-16)+' '+y+'l-10 -8m10 8l-6 13m6 -13l14 -9m-14 9l14 10"/></svg>';
-   dock.classList.add('is-firing');clearTimeout(window.__webShotTimer);window.__webShotTimer=setTimeout(()=>{layer.innerHTML='';dock.classList.remove('is-firing')},850);
-  };
-  const btn=dock.querySelector('button');
-  if(btn&&!btn.dataset.webBound){btn.dataset.webBound='1';btn.addEventListener('click',e=>{e.stopPropagation();fire(innerWidth*.5,innerHeight*.4)});}
-  if(!document.body.dataset.webClickBound){document.body.dataset.webClickBound='1';document.addEventListener('click',e=>{if(e.target.closest('.web-shooter-dock'))return;fire(e.clientX,e.clientY)},true);}
- };
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
-})();
-</script>
+
 
 
 <style id="cinematic-redesign-v2">
@@ -1472,29 +1449,61 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 @keyframes web-anchor-real{0%{opacity:0;transform:scale(.1)}55%{opacity:1;transform:scale(1.25)}100%{opacity:1;transform:scale(1)}}
 @media(max-width:760px){.web-shooter-dock{right:10px!important;bottom:10px!important;padding:5px!important}.web-shooter{width:62px!important;height:56px!important;min-width:62px!important;min-height:56px!important}.web-shooter-label{display:none!important}}
 </style>
-<script id="web-shooter-realism-v2">
+
+
+
+<style id="latest-ui-adjustments">
+@media(hover:hover) and (pointer:fine){
+ html,body,body *{cursor:none!important}
+ #spider-verse-cursor,.spider-verse-cursor{position:fixed!important;width:27px!important;height:30px!important;min-width:27px!important;min-height:30px!important;z-index:2147483647!important;display:block!important;visibility:visible!important;opacity:1!important;pointer-events:none!important;transform:translate(-50%,-50%)!important;filter:drop-shadow(0 0 5px rgba(85,204,255,.75))!important}
+ #spider-verse-cursor svg,.spider-verse-cursor svg{width:100%!important;height:100%!important;animation:none!important}
+ #spider-verse-cursor.is-hot,.spider-verse-cursor.is-hot{width:31px!important;height:34px!important}
+}
+@media(hover:none),(pointer:coarse){html,body,body *{cursor:auto!important}#spider-verse-cursor,.spider-verse-cursor{display:none!important}}
+/* Compact city-map window instead of a near-full-screen takeover. */
+.city-map-panel{position:fixed!important;left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important;width:min(520px,calc(100vw - 32px))!important;height:min(470px,78vh)!important;max-width:calc(100vw - 32px)!important;max-height:78vh!important;padding:20px!important;display:flex!important;flex-direction:column!important;gap:9px!important;overflow:hidden!important;border-radius:16px!important}
+.city-map-panel[hidden]{display:none!important}
+.city-map-canvas{flex:1!important;min-height:0!important;height:auto!important}
+@media(max-width:760px){.city-map-panel{width:calc(100vw - 24px)!important;height:min(430px,78vh)!important;padding:13px!important}}
+/* Launcher is hidden during the intro and is just the web-shooter device, no label or HUD. */
+.web-shooter-dock{display:none!important;position:fixed!important;right:22px!important;bottom:20px!important;z-index:2147483646!important;align-items:center!important;justify-content:center!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important}
+body.intro-complete .web-shooter-dock{display:flex!important}
+.web-shooter-dock button.web-shooter{width:76px!important;height:76px!important;min-width:76px!important;min-height:76px!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;filter:drop-shadow(0 5px 8px rgba(0,0,0,.55))!important;cursor:pointer!important}
+.web-shooter-dock button.web-shooter svg{display:block!important;width:100%!important;height:100%!important}
+.web-shot-layer{position:fixed!important;inset:0!important;z-index:2147483000!important;pointer-events:none!important;overflow:visible!important}
+.web-shot-layer svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.web-shot-layer .web-main{fill:none;stroke:#f7fdff;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:1800;stroke-dashoffset:1800;animation:web-fire-final .38s cubic-bezier(.18,.8,.25,1) forwards;filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 8px #65cfff)}
+.web-shot-layer .web-strand{fill:none;stroke:#91dfff;stroke-width:.9;stroke-dasharray:1800;stroke-dashoffset:1800;animation:web-fire-final .43s .02s ease-out forwards;opacity:.9}
+.web-shot-layer .web-impact{fill:none;stroke:#eafaff;stroke-width:1.8;stroke-linecap:round;opacity:0;animation:web-impact-final .4s .3s ease-out forwards;filter:drop-shadow(0 0 5px #5bcaff)}
+@keyframes web-fire-final{to{stroke-dashoffset:0}}
+@keyframes web-impact-final{0%{opacity:0;transform:scale(.4)}35%{opacity:1;transform:scale(1.1)}100%{opacity:0;transform:scale(1.45)}}
+.web-shooter-dock.is-firing .web-shooter{animation:launcher-kick .32s ease-out!important}
+@keyframes launcher-kick{0%{transform:translateY(0)}35%{transform:translateY(5px) rotate(-5deg)}100%{transform:translateY(0) rotate(0)}}
+@media(max-width:760px){.web-shooter-dock{right:10px!important;bottom:10px!important}.web-shooter-dock button.web-shooter{width:62px!important;height:62px!important;min-width:62px!important;min-height:62px!important}}
+</style>
+<script id="single-web-shooter-launcher">
 (() => {
- const boot=()=>{
-  let layer=document.getElementById('web-shot-layer');
-  if(!layer){layer=document.createElement('div');layer.id='web-shot-layer';layer.className='web-shot-layer';document.body.appendChild(layer);}
+ const start=()=>{
+  const layer=document.getElementById('web-shot-layer')||(()=>{const n=document.createElement('div');n.id='web-shot-layer';n.className='web-shot-layer';document.body.appendChild(n);return n;})();
   let dock=document.querySelector('.web-shooter-dock');
   if(!dock){dock=document.createElement('div');dock.className='web-shooter-dock';document.body.appendChild(dock);}
-  dock.innerHTML='<span class="web-shooter-label">WRIST WEB SYSTEM · READY</span><button class="web-shooter" type="button" aria-label="Fire web shooter"><svg viewBox="0 0 120 100" aria-hidden="true"><defs><linearGradient id="wristTitanium" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7e9f2"/><stop offset=".22" stop-color="#637e91"/><stop offset=".48" stop-color="#1c3448"/><stop offset=".75" stop-color="#0b1827"/><stop offset="1" stop-color="#8cb7c9"/></linearGradient><linearGradient id="wristRed" x2="0" y2="1"><stop stop-color="#fa5266"/><stop offset="1" stop-color="#8c102a"/></linearGradient><radialGradient id="wristCore"><stop stop-color="#fff"/><stop offset=".28" stop-color="#9ceaff"/><stop offset="1" stop-color="#1479b5"/></radialGradient></defs><path d="M9 43Q11 29 27 25L82 17Q99 15 107 30L113 54Q115 68 100 73L34 86Q17 89 12 73Z" fill="url(#wristTitanium)" stroke="#a9d5e7" stroke-width="2"/><path d="M18 39L94 26L102 58L25 75Z" fill="#101f30" stroke="#52788f" stroke-width="1.5"/><path d="M30 35L87 26L93 34L34 45Z" fill="url(#wristRed)" stroke="#ff9eaa" stroke-width="1"/><path d="M32 65L91 53L95 62L35 75Z" fill="#173d5a" stroke="#5cbbe8" stroke-width="1"/><rect x="45" y="36" width="35" height="27" rx="7" fill="#071522" stroke="#8ecce5" stroke-width="2"/><circle cx="62.5" cy="49.5" r="10" fill="url(#wristCore)" stroke="#d9f7ff" stroke-width="1.5"/><circle cx="62.5" cy="49.5" r="3" fill="#fff"/><path d="M62 37V30M75 49H84M62 62V69M49 49H41" stroke="#9ceaff" stroke-width="2" stroke-linecap="round"/><path d="M16 50L7 53L11 68L21 66M100 35L110 32L115 48L105 51" fill="none" stroke="#d4eaf3" stroke-width="3"/><path d="M28 28L36 18L83 10L91 18" fill="none" stroke="#7fb4cb" stroke-width="2"/><path d="M24 78L33 91L93 79L102 70" fill="none" stroke="#080f18" stroke-width="4"/></svg></button>';
+  dock.innerHTML='<button class="web-shooter" type="button" aria-label="Fire web shooter"><svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="bareShooterMetal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9f2ff"/><stop offset=".28" stop-color="#718fa4"/><stop offset=".62" stop-color="#233e53"/><stop offset="1" stop-color="#091522"/></linearGradient><radialGradient id="bareShooterCore"><stop stop-color="#fff"/><stop offset=".35" stop-color="#9eeaff"/><stop offset="1" stop-color="#1684bf"/></radialGradient></defs><path d="M13 43Q15 31 27 29L74 20Q88 17 93 31L97 52Q99 65 86 70L31 82Q17 85 13 70Z" fill="url(#bareShooterMetal)" stroke="#c8edff" stroke-width="2"/><path d="M22 41L83 29L89 57L28 71Z" fill="#0a1c2d" stroke="#547c94" stroke-width="1.5"/><path d="M35 37L72 30L77 37L38 45Z" fill="#b21e3c" stroke="#ff9caa" stroke-width="1"/><rect x="39" y="39" width="30" height="25" rx="6" fill="#061522" stroke="#9ddcf3" stroke-width="2"/><circle cx="54" cy="51.5" r="9" fill="url(#bareShooterCore)" stroke="#e8fbff" stroke-width="1.4"/><circle cx="54" cy="51.5" r="2.7" fill="#fff"/><path d="M54 38V32M68 51H75M54 65V71M40 51H33" stroke="#a9eaff" stroke-width="2" stroke-linecap="round"/><path d="M17 52L8 56L12 69L21 66M89 35L96 32L99 47L92 50" fill="none" stroke="#d5f0fa" stroke-width="3"/></svg></button>';
   const fire=(x,y)=>{
-   const r=dock.getBoundingClientRect(),sx=r.left+r.width*.48,sy=r.top+r.height*.42;
-   const dx=x-sx,dy=y-sy,dist=Math.max(1,Math.hypot(dx,dy)),bend=(Math.random()-.5)*Math.min(100,dist*.12);
-   const cx=(sx+x)/2+bend,cy=(sy+y)/2-Math.min(90,dist*.1);
-   const path='M'+sx+' '+sy+' Q'+cx+' '+cy+' '+x+' '+y;
-   const strand='M'+(sx+2)+' '+(sy+2)+' Q'+(cx-3)+' '+(cy+3)+' '+(x-2)+' '+(y+2);
-   layer.innerHTML='<svg viewBox="0 0 '+innerWidth+' '+innerHeight+'" preserveAspectRatio="none"><path class="web-strand" d="'+strand+'"/><path class="web-main" d="'+path+'"/><circle class="web-anchor" cx="'+x+'" cy="'+y+'" r="4"/><path class="web-impact" d="M'+(x-18)+' '+(y-8)+'l12 8 -8 13m8 -13l14 -12m-14 12l16 9m-16 -9l-2 -18"/></svg>';
+   const r=dock.getBoundingClientRect(),sx=r.left+r.width/2,sy=r.top+r.height*.43;
+   const bend=(Math.random()-.5)*Math.min(65,Math.hypot(x-sx,y-sy)*.08),cx=(sx+x)/2+bend,cy=(sy+y)/2-35;
+   const p='M'+sx+' '+sy+' Q'+cx+' '+cy+' '+x+' '+y;
+   layer.innerHTML='<svg viewBox="0 0 '+innerWidth+' '+innerHeight+'" preserveAspectRatio="none"><path class="web-strand" d="'+p+'"/><path class="web-main" d="'+p+'"/><path class="web-impact" d="M'+(x-15)+' '+(y-7)+'l10 7 -7 12m7 -12l13 -10m-13 10l15 8m-15 -8l-2 -15"/></svg>';
    dock.classList.remove('is-firing');void dock.offsetWidth;dock.classList.add('is-firing');
-   clearTimeout(window.__webV2Timer);window.__webV2Timer=setTimeout(()=>{layer.innerHTML='';dock.classList.remove('is-firing')},1050);
+   clearTimeout(window.__singleWebTimer);window.__singleWebTimer=setTimeout(()=>{layer.innerHTML='';dock.classList.remove('is-firing')},850);
   };
-  const btn=dock.querySelector('button');
-  btn.addEventListener('click',e=>{e.stopPropagation();fire(innerWidth*.52,innerHeight*.42)});
-  if(!document.documentElement.dataset.webV2Bound){document.addEventListener('click',e=>{if(e.target.closest('.web-shooter-dock'))return;if(e.target.closest('.city-map-panel'))return;fire(e.clientX,e.clientY)},true);document.documentElement.dataset.webV2Bound='1';}
+  dock.querySelector('button').addEventListener('click',e=>{e.stopPropagation();fire(innerWidth*.5,innerHeight*.38)});
+  if(!document.documentElement.dataset.singleWebClick){document.addEventListener('click',e=>{if(e.target.closest('.web-shooter-dock')||e.target.closest('.city-map-panel'))return;fire(e.clientX,e.clientY)},true);document.documentElement.dataset.singleWebClick='1';}
+  const loader=document.getElementById('name-loader');
+  if(!loader){document.body.classList.add('intro-complete');return;}
+  const observer=new MutationObserver(()=>{if(!document.getElementById('name-loader')){observer.disconnect();document.body.classList.add('intro-complete');}});
+  observer.observe(document.body,{childList:true,subtree:true});
  };
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
 </script>
 
