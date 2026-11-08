@@ -892,6 +892,19 @@ body.has-custom-cursor [role="button"]{cursor:auto!important}
 a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cursor:pointer!important}
 .spider-verse-cursor,.pencil-cursor{display:none!important}
 
+
+/* Web shooter: persistent launcher plus a bright, readable web-cast effect. */
+.web-shooter-dock{display:flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;z-index:2147483646!important}
+.web-shooter{display:grid!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;transform-origin:55% 70%;filter:drop-shadow(0 0 7px rgba(75,190,255,.5)) drop-shadow(0 7px 7px rgba(0,0,0,.55))!important;animation:shooter-idle-pulse 2.8s ease-in-out infinite}
+@keyframes shooter-idle-pulse{0%,100%{filter:drop-shadow(0 0 5px rgba(75,190,255,.32)) drop-shadow(0 7px 7px rgba(0,0,0,.55))}50%{filter:drop-shadow(0 0 13px rgba(75,190,255,.78)) drop-shadow(0 7px 7px rgba(0,0,0,.55))}}
+.web-shooter-dock.is-firing .web-shooter{animation:gauntlet-fire .34s ease!important}
+.web-shot-layer{z-index:2147483000!important;overflow:visible!important}
+.web-shot-layer svg{overflow:visible}
+.web-shot-layer path{stroke:#f4fbff!important;stroke-width:3.8!important;stroke-dasharray:1800!important;filter:drop-shadow(0 0 5px #fff) drop-shadow(0 0 12px #35baff)!important}
+.web-shot-layer circle{fill:#fff!important;stroke:#56c8ff!important;stroke-width:3!important;filter:drop-shadow(0 0 12px #48baff)!important}
+.web-shot-layer .web-impact{stroke:#8edbff!important;stroke-width:2.4!important;stroke-dasharray:none!important;animation:web-shot-pop .48s .38s ease-out both}
+@media(prefers-reduced-motion:reduce){.web-shooter{animation:none!important}}
+
 </style>
 </head>
 <body>
