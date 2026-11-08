@@ -1302,5 +1302,49 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 .web-shot-layer{position:fixed!important;inset:0!important;z-index:2147483000!important;pointer-events:none!important;overflow:visible!important}
 @media(max-width:760px){.web-shooter-dock{right:12px!important;bottom:12px!important;padding:5px!important}.web-shooter{width:68px!important;height:68px!important;min-width:68px!important;min-height:68px!important}.web-shooter-label{display:none!important}}
 </style>
+
+<style id="cursor-visibility-final-fix">
+/* One final source of truth for the Spider-Man cursor. */
+@media (hover: hover), (pointer: fine) {
+  html, body, body * { cursor: none !important; }
+  #spider-verse-cursor,
+  .spider-verse-cursor {
+    display: block !important;
+    position: fixed !important;
+    left: 50vw !important;
+    top: 50vh !important;
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px !important;
+    min-height: 58px !important;
+    z-index: 2147483647 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: none !important;
+    transform: translate(-50%, -50%) !important;
+    mix-blend-mode: normal !important;
+    filter: drop-shadow(0 0 9px rgba(35,168,255,.95)) drop-shadow(0 3px 6px rgba(0,0,0,.9)) !important;
+    overflow: visible !important;
+  }
+  #spider-verse-cursor svg,
+  .spider-verse-cursor svg {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: spidey-cursor-float 2.2s ease-in-out infinite !important;
+  }
+  #spider-verse-cursor.is-hot,
+  .spider-verse-cursor.is-hot {
+    width: 68px !important;
+    height: 68px !important;
+  }
+}
+@media (hover: none) and (pointer: coarse) {
+  html, body, body * { cursor: auto !important; }
+  #spider-verse-cursor, .spider-verse-cursor { display: none !important; }
+}
+</style>
 </body>
 </html>
