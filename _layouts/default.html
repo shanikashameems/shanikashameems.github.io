@@ -1631,5 +1631,83 @@ body:has(.journal-hero) main{padding-top:27px!important}
 }
 </style>
 
+
+<style id="spider-hero-3d-v1">
+/* Interactive Spider-Verse hero: real WebGL mask, responsive web field and floating skill cards. */
+.journal-hero .book-stage{isolation:isolate;overflow:visible;min-height:440px}
+.journal-hero .book-stage .book,.journal-hero .book-stage .book-shadow,
+.journal-hero .book-stage .floating-note,.journal-hero .book-stage .handwritten-note,
+.journal-hero .book-stage .paper-orbit{opacity:0!important;pointer-events:none!important}
+.spider-hero-scene{position:absolute;inset:0;z-index:3;min-height:420px;overflow:visible;perspective:1000px}
+.spider-hero-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline:0}
+.spider-hero-glow{position:absolute;width:68%;height:65%;left:16%;top:17%;border-radius:50%;background:radial-gradient(ellipse,rgba(22,119,190,.22),rgba(205,25,59,.08) 42%,transparent 72%);filter:blur(14px);pointer-events:none}
+.spider-project-chip{position:absolute;z-index:5;padding:9px 13px;border:1px solid rgba(87,166,220,.42);border-radius:9px;background:linear-gradient(145deg,rgba(8,25,46,.94),rgba(15,13,31,.9));box-shadow:0 12px 28px rgba(0,0,0,.2),inset 0 1px rgba(255,255,255,.1);color:#eaf6ff;font:600 12px/1.25 'Barlow Condensed',sans-serif;letter-spacing:.12em;text-transform:uppercase;backdrop-filter:blur(10px);animation:spider-chip-float 5s ease-in-out infinite;pointer-events:none}
+.spider-project-chip b{display:block;color:#ff657c;font-size:10px;letter-spacing:.18em;margin-bottom:3px}
+.spider-project-chip.chip-one{left:0;top:18%;animation-delay:-1s}
+.spider-project-chip.chip-two{right:-1%;top:32%;animation-delay:-2.4s}
+.spider-project-chip.chip-three{left:8%;bottom:13%;animation-delay:-3.2s}
+.spider-hero-hint{position:absolute;right:4%;bottom:4%;z-index:5;color:#5984a2;font:700 9px 'Barlow Condensed',sans-serif;letter-spacing:.22em;text-transform:uppercase}
+@keyframes spider-chip-float{0%,100%{transform:translate3d(0,0,0) rotate(-2deg)}50%{transform:translate3d(0,-9px,0) rotate(1deg)}}
+@media(max-width:760px){.journal-hero .book-stage{min-height:350px;height:350px;margin-top:4px}.spider-hero-scene{min-height:350px}.spider-project-chip{font-size:10px;padding:7px 9px}.spider-project-chip.chip-one{left:0;top:10%}.spider-project-chip.chip-two{right:0;top:20%}.spider-project-chip.chip-three{left:1%;bottom:8%}.spider-hero-hint{font-size:8px;bottom:1%}}
+@media(prefers-reduced-motion:reduce){.spider-project-chip{animation:none!important}}
+</style>
+<script type="module" id="spider-hero-3d-engine">
+(async()=>{
+ const stage=document.querySelector('.journal-hero .book-stage');
+ if(!stage||stage.dataset.spiderScene==='ready')return;
+ stage.dataset.spiderScene='ready';
+ const wrap=document.createElement('div');wrap.className='spider-hero-scene';wrap.innerHTML='<div class="spider-hero-glow"></div><canvas class="spider-hero-canvas" aria-label="Interactive 3D Spider-Man inspired mask"></canvas><div class="spider-project-chip chip-one"><b>01 / BUILD</b>Python · AI / ML</div><div class="spider-project-chip chip-two"><b>02 / ENGINEER</b>Backend · APIs</div><div class="spider-project-chip chip-three"><b>03 / CREATE</b>Projects · Ideas</div><div class="spider-hero-hint">MOVE TO INTERACT</div>';
+ stage.appendChild(wrap);
+ try{
+  const THREE=await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
+  if(!wrap.isConnected)return;
+  const canvas=wrap.querySelector('canvas');
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});
+  renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.7));
+  renderer.setSize(wrap.clientWidth,wrap.clientHeight,false);
+  renderer.outputColorSpace=THREE.SRGBColorSpace;
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(34,wrap.clientWidth/wrap.clientHeight,.1,100);
+  camera.position.set(0,0,7.5);
+  scene.add(new THREE.AmbientLight(0x9ccfff,1.5));
+  const key=new THREE.DirectionalLight(0xffffff,3.1);key.position.set(-3,4,6);scene.add(key);
+  const red=new THREE.PointLight(0xff174d,28,12);red.position.set(3,1,3);scene.add(red);
+  const blue=new THREE.PointLight(0x168fff,24,12);blue.position.set(-3,-1,2);scene.add(blue);
+  const mask=new THREE.Group();scene.add(mask);
+  const shell=new THREE.Mesh(new THREE.SphereGeometry(1,64,48),new THREE.MeshPhysicalMaterial({color:0x9d102b,metalness:.72,roughness:.24,clearcoat:1,clearcoatRoughness:.12}));
+  shell.scale.set(.91,1.12,.64);mask.add(shell);
+  const eyeMat=new THREE.MeshPhysicalMaterial({color:0xeaf7ff,metalness:.22,roughness:.16,clearcoat:1,emissive:0x438dc4,emissiveIntensity:.22,side:THREE.DoubleSide});
+  const eyeRim=new THREE.MeshBasicMaterial({color:0x160c18,side:THREE.DoubleSide});
+  function eyeShape(sign,scale){
+   const sh=new THREE.Shape();sh.moveTo(0,0);sh.quadraticCurveTo(.22,.22,.49,.19);sh.quadraticCurveTo(.4,-.02,.12,-.22);sh.quadraticCurveTo(.05,-.1,0,0);
+   const geo=new THREE.ShapeGeometry(sh,24);const mesh=new THREE.Mesh(geo,scale?eyeMat:eyeRim);
+   mesh.position.set(sign*.12,.17,.54);mesh.rotation.y=sign*-.19;mesh.scale.set(sign*.94,.78,1);
+   mesh.position.z+=scale? .018:0;mask.add(mesh);
+  }
+  eyeShape(-1,false);eyeShape(1,false);eyeShape(-1,true);eyeShape(1,true);
+  const webMat=new THREE.LineBasicMaterial({color:0x240d1b,transparent:true,opacity:.8});
+  const webGroup=new THREE.Group();mask.add(webGroup);
+  for(let lat=-3;lat<=3;lat++){
+   const pts=[];const y=lat*.25;
+   for(let j=0;j<=48;j++){const a=-Math.PI/2+j*Math.PI/48;const x=.91*Math.cos(a)*Math.sqrt(Math.max(.08,1-(y/1.12)**2));const z=.64*Math.sin(a)*Math.sqrt(Math.max(.08,1-(y/1.12)**2));pts.push(new THREE.Vector3(x,y,z+.012))}
+   webGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),webMat));
+  }
+  for(let k=0;k<12;k++){const a=k*Math.PI/6;const pts=[];for(let j=0;j<=32;j++){const t=-1.35+j*2.7/32;pts.push(new THREE.Vector3(.91*Math.sin(a)*Math.cos(t),1.12*Math.sin(t),.64*Math.cos(a)*Math.cos(t)+.014))}webGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),webMat))}
+  const webField=new THREE.Group();scene.add(webField);
+  const webGlow=new THREE.LineBasicMaterial({color:0x56c8ff,transparent:true,opacity:.36});
+  for(let i=0;i<14;i++){const a=i*Math.PI*2/14;const points=[new THREE.Vector3(Math.cos(a)*2.15,Math.sin(a)*1.9,-.8),new THREE.Vector3(0,0,-.8)];webField.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(points),webGlow))}
+  const pointer={x:0,y:0,tx:0,ty:0};
+  wrap.addEventListener('pointermove',e=>{const r=wrap.getBoundingClientRect();pointer.tx=((e.clientX-r.left)/r.width-.5)*2;pointer.ty=((e.clientY-r.top)/r.height-.5)*2});
+  wrap.addEventListener('pointerleave',()=>{pointer.tx=0;pointer.ty=0});
+  let raf=0;const clock=new THREE.Clock();
+  function resize(){const w=Math.max(1,wrap.clientWidth),h=Math.max(1,wrap.clientHeight);camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false)}
+  const ro=new ResizeObserver(resize);ro.observe(wrap);
+  function render(){raf=requestAnimationFrame(render);const t=clock.getElapsedTime();pointer.x+=(pointer.tx-pointer.x)*.045;pointer.y+=(pointer.ty-pointer.y)*.045;mask.rotation.y=Math.sin(t*.38)*.17+pointer.x*.3;mask.rotation.x=-pointer.y*.17+Math.sin(t*.55)*.035;mask.position.y=Math.sin(t*.8)*.08;webField.rotation.z=-pointer.x*.08;webField.rotation.x=pointer.y*.06;renderer.render(scene,camera)}
+  render();
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(raf);else if(!raf||document.visibilityState==='visible')render()});
+ }catch(err){wrap.classList.add('spider-hero-fallback');const c=wrap.querySelector('canvas');if(c)c.style.display='none';}
+})();
+</script>
+
 </body>
 </html>
