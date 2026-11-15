@@ -907,16 +907,12 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 @media(prefers-reduced-motion:reduce){.web-shooter{animation:none!important}}
 
 </style>
-<link rel="preload" as="image" href="{{ '/assets/spider-mask-reference.webp' | relative_url }}" fetchpriority="high">
+<link rel="preload" as="image" href="{{ '/assets/spider-mask-hero.webp' | relative_url }}" fetchpriority="high">
 </head>
 <body>
 <div class="spider-atmosphere" aria-hidden="true"><div class="spider-city"><i style="height:48%"></i><i style="height:76%"></i><i style="height:58%"></i><i style="height:91%"></i><i style="height:65%"></i><i style="height:100%"></i><i style="height:70%"></i><i style="height:84%"></i><i style="height:54%"></i><i style="height:72%"></i><i style="height:43%"></i><i style="height:88%"></i><i style="height:62%"></i><i style="height:78%"></i></div></div>
 
 <div class="web-thread" aria-hidden="true"><svg viewBox="0 0 1440 900" preserveAspectRatio="none"><path d="M0 0L720 450L1440 0M0 0L720 450L0 900M1440 0L720 450L1440 900M0 900L720 450L1440 900M0 0Q720 160 1440 0M0 0Q160 450 0 900M1440 0Q1280 450 1440 900M0 900Q720 740 1440 900"/></svg></div>
-
-<div class="web-shot-layer" id="web-shot-layer" aria-hidden="true"></div>
-<div class="spider-verse-cursor" id="spider-verse-cursor" aria-hidden="true"><svg viewBox="0 0 42 42"><g fill="none" stroke="#dcefff" stroke-width="2" stroke-linecap="round"><path d="M13 15L4 8M11 20L2 19M12 26L4 33M29 15L38 8M31 20L40 19M30 26L38 33"/><path d="M14 13L8 4M28 13L34 4M14 29L9 38M28 29L33 38"/></g><ellipse cx="21" cy="18" rx="6" ry="8" fill="#dcefff"/><ellipse cx="21" cy="27" rx="7" ry="5" fill="#e52b4b"/><circle cx="19" cy="17" r="1.5" fill="#0a1424"/><circle cx="23" cy="17" r="1.5" fill="#0a1424"/></svg></div>
-
 
 {% if page.url == '/' %}
 <div class="name-loader" id="name-loader" role="status" aria-label="Loading Shanika's journal">
@@ -968,217 +964,67 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 <button class="back-top" type="button" aria-label="Back to top">↑</button>
 <footer><span>© 2025 · Shanika's digital journal</span><span>Made of curiosity <span class="footer-mark">✳</span> and little notes</span></footer>
 <script>
+(() => {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-
-
-
-  const nameLoader=document.getElementById('name-loader');
-  if(nameLoader){
+  // The signature finishes first. Then the homepage portrait drops into its ID-card position.
+  const nameLoader = document.getElementById('name-loader');
+  if (nameLoader) {
     document.body.classList.add('name-intro');
-    let loaderFinished=false;
-    const finishNameLoader=()=>{
-      if(loaderFinished)return;
-      loaderFinished=true;
+    let finished = false;
+    const finishIntro = () => {
+      if (finished) return;
+      finished = true;
+      document.body.classList.add('is-revealed', 'is-home-revealed');
       nameLoader.classList.add('is-leaving');
-      document.body.classList.add('is-revealed');
-      window.setTimeout(()=>{
+      window.setTimeout(() => {
         nameLoader.remove();
-        document.body.classList.remove('name-intro','is-revealed');
-        document.body.style.overflow='';
-      },720);
+        document.body.classList.remove('name-intro', 'is-revealed');
+        document.body.style.overflow = '';
+      }, reduced ? 80 : 480);
     };
-    const nameIntroDuration=window.matchMedia('(prefers-reduced-motion: reduce)').matches?700:3600;
-    window.setTimeout(finishNameLoader,nameIntroDuration);
+    window.setTimeout(finishIntro, reduced ? 180 : 4450);
   }
 
-  if(!reducedMotionForArrival())document.body.classList.add('page-arriving');
-  function reducedMotionForArrival(){return window.matchMedia('(prefers-reduced-motion: reduce)').matches;}
-  window.setTimeout(()=>document.body.classList.remove('page-arriving'),750);
-
-  const menuButton=document.querySelector('.menu-toggle');
-  const nav=document.querySelector('.navlinks');
-  if(menuButton&&nav)menuButton.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));});
-  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const buddy=document.querySelector('.scroll-buddy');
-  const backTop=document.querySelector('.back-top');
-  let ticking=false;
-  const updateScroll=()=>{const max=document.documentElement.scrollHeight-window.innerHeight;const amount=max>0?Math.min(1,Math.max(0,window.scrollY/max)):0;document.documentElement.style.setProperty('--scroll-progress',(amount*100)+'%');if(backTop)backTop.classList.toggle('show',window.scrollY>450);ticking=false;};
-  window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(updateScroll);ticking=true;}},{passive:true});
-  window.addEventListener('resize',updateScroll);
-  updateScroll();
-  if(backTop)backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:reduced?'auto':'smooth'}));
-
-
-
-  // Floating handwritten doodles make the long page feel connected.
-  const ambient=document.createElement('div');
-  ambient.className='ambient-layer';
-  ambient.setAttribute('aria-hidden','true');
-  ambient.innerHTML='<span class="ambient-doodle">✳</span><span class="ambient-doodle">♡</span><span class="ambient-doodle">✿</span><span class="ambient-doodle">✧</span><span class="ambient-doodle">·</span>';
-  const mainContent=document.querySelector('main');
-  if(mainContent)mainContent.prepend(ambient);
-
-  // Reveal major sections gently as they enter the viewport.
-  const revealTargets=document.querySelectorAll('main > *, .section-head, .entry, .shelf-card, .post-row, footer');
-  if(!reduced && 'IntersectionObserver' in window){
-    const revealObserver=new IntersectionObserver(items=>{
-      items.forEach(item=>{
-        if(item.isIntersecting){item.target.classList.add('motion-visible');revealObserver.unobserve(item.target);}
-      });
-    },{threshold:.12,rootMargin:'0px 0px -35px 0px'});
-    revealTargets.forEach((el,index)=>{
-      el.classList.add('motion-reveal');
-      el.style.transitionDelay=(Math.min(index%4,3)*65)+'ms';
-      revealObserver.observe(el);
+  const menuButton = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.navlinks');
+  if (menuButton && nav) {
+    menuButton.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
     });
-  }else{revealTargets.forEach(el=>el.classList.add('motion-visible'));}
-  // Pointer-based 3D tilt is deliberately subtle and only runs on desktop.
-  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches && !reduced){
-    document.querySelectorAll('.entry,.shelf-card,.content-page').forEach(card=>{
-      card.addEventListener('pointermove',event=>{
-        const r=card.getBoundingClientRect();
-        const px=(event.clientX-r.left)/r.width;
-        const py=(event.clientY-r.top)/r.height;
-        card.style.setProperty('--tilt-x',((.5-py)*7).toFixed(2)+'deg');
-        card.style.setProperty('--tilt-y',((px-.5)*8).toFixed(2)+'deg');
-        card.classList.add('motion-tilting');
-      });
-      const reset=()=>{
-        card.classList.remove('motion-tilting');
-        card.style.removeProperty('--tilt-x');
-        card.style.removeProperty('--tilt-y');
-      };
-      card.addEventListener('pointerleave',reset);
-      card.addEventListener('pointercancel',reset);
-    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+    }));
   }
 
-  // A small pencil follows the pointer and reacts to clicks and interactive elements.
-  if(window.matchMedia('(hover: hover) and (pointer: fine)').matches){
-    document.body.classList.add('has-custom-cursor');
-    const pencil=document.createElement('span');
-    pencil.className='pencil-cursor';
-    pencil.setAttribute('aria-hidden','true');
-    pencil.innerHTML='<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path class="pencil-body" d="M10 27 26 5q2-3 5 0l3 2q3 2 1 5L19 34l-9 2z"/><path class="pencil-tip" d="m10 27 9 7-9 2z"/><path class="pencil-line" d="m26 8 7 5M23 12l7 5M10 27l9 7"/></svg>';
-    document.body.appendChild(pencil);
-    const bookDialog=document.getElementById('book-dialog');
-    if(bookDialog){
-      const cursorLayerObserver=new MutationObserver(()=>{
-        if(bookDialog.open){
-          if(pencil.parentElement!==bookDialog)bookDialog.appendChild(pencil);
-        }else if(pencil.parentElement!==document.body){
-          document.body.appendChild(pencil);
-        }
-      });
-      cursorLayerObserver.observe(bookDialog,{attributes:true,attributeFilter:['open']});
-    }
-    window.addEventListener('pointermove',e=>{pencil.style.left=e.clientX+'px';pencil.style.top=e.clientY+'px';},{passive:true});
-    document.querySelectorAll('a,button,input,textarea,[role="button"]').forEach(el=>{
-      el.addEventListener('pointerenter',()=>document.body.classList.add('cursor-hover'));
-      el.addEventListener('pointerleave',()=>document.body.classList.remove('cursor-hover'));
-    });
-    window.addEventListener('pointerdown',()=>document.body.classList.add('cursor-press'));
-    window.addEventListener('pointerup',()=>document.body.classList.remove('cursor-press'));
-  }
-
-
-  // Soft staggered reveals for handwritten notes and individual shelf rows.
-  const softTargets=document.querySelectorAll('.note-page > p,.note-page .note-quote,.shelf-row');
-  if(!reduced && 'IntersectionObserver' in window){
-    const softObserver=new IntersectionObserver(items=>{
-      items.forEach(item=>{
-        if(item.isIntersecting){item.target.classList.add('is-in');softObserver.unobserve(item.target);}
-      });
-    },{threshold:.12,rootMargin:'0px 0px -30px 0px'});
-    softTargets.forEach((el,index)=>{el.classList.add('soft-reveal');el.style.transitionDelay=(Math.min(index,5)*75)+'ms';softObserver.observe(el);});
-  }
-  // Gentle 3D response on the individual book spines.
-  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches && !reduced){
-    document.querySelectorAll('.library-book').forEach(book=>{
-      book.addEventListener('pointermove',event=>{
-        const r=book.getBoundingClientRect(),x=(event.clientX-r.left)/r.width,y=(event.clientY-r.top)/r.height;
-        book.style.setProperty('--book-tilt-x',((.5-y)*5).toFixed(2)+'deg');
-        book.style.setProperty('--book-tilt-y',((x-.5)*8).toFixed(2)+'deg');
-        book.style.transform='perspective(650px) rotateX('+book.style.getPropertyValue('--book-tilt-x')+') rotateY('+book.style.getPropertyValue('--book-tilt-y')+') translateY(-7px)';
-      });
-      book.addEventListener('pointerleave',()=>{book.style.removeProperty('transform');book.style.removeProperty('--book-tilt-x');book.style.removeProperty('--book-tilt-y');});
-    });
-  }
-
-  // Short, soft page-turn transition for internal navigation.
-  document.addEventListener('click',event=>{
-    const link=event.target.closest('a[href]');
-    if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.target||link.hasAttribute('download'))return;
-    const next=new URL(link.href,window.location.href);
-    if(next.origin!==window.location.origin||next.pathname===window.location.pathname||next.hash&&next.pathname===window.location.pathname)return;
-    event.preventDefault();
-    document.body.classList.add('page-leaving');
-    window.setTimeout(()=>{window.location.href=next.href;},330);
-  });
-
-
-/* Realistic click-to-web effect and delegated cursor tracking */
-(()=>{
- const layer=document.getElementById('web-shot-layer')||document.createElement('div');
- layer.id='web-shot-layer';layer.className='web-shot-layer';layer.setAttribute('aria-hidden','true');
- if(!layer.isConnected)document.body.appendChild(layer);
- const cursor=document.getElementById('spider-verse-cursor');
- if(cursor){document.body.appendChild(cursor);cursor.style.zIndex='2147483647';}
- const track=e=>{if(cursor){cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';}};
- window.addEventListener('pointermove',track,{passive:true});
- window.addEventListener('pointerover',e=>{const hit=e.target.closest('a,button,[role="button"],.library-book');if(hit)cursor?.classList.add('is-hot')},{passive:true});
- window.addEventListener('pointerout',e=>{const hit=e.target.closest('a,button,[role="button"],.library-book');if(hit&&!hit.contains(e.relatedTarget))cursor?.classList.remove('is-hot')},{passive:true});
- const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
- function shoot(tx,ty){
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  const w=innerWidth,h=innerHeight;
-  const sx=clamp(tx-86,18,w-18),sy=clamp(ty+126,18,h-18);
-  const dx=tx-sx,dy=ty-sy,dist=Math.hypot(dx,dy)||1;
-  const nx=-dy/dist,ny=dx/dist;
-  const bend=(Math.random()-.5)*Math.min(58,dist*.12);
-  const cx=(sx+tx)/2+nx*bend,cy=(sy+ty)/2+ny*bend;
-  const ns='http://www.w3.org/2000/svg';
-  const svg=document.createElementNS(ns,'svg');
-  svg.setAttribute('viewBox','0 0 '+w+' '+h);svg.setAttribute('preserveAspectRatio','none');
-  svg.style.cssText='position:fixed;inset:0;width:100vw;height:100vh;overflow:visible;pointer-events:none';
-  const add=(tag,attrs,parent=svg)=>{const n=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));parent.appendChild(n);return n};
-  const defs=add('defs',{});defs.innerHTML='<filter id="web-real-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3.2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>';
-  const d='M'+sx+' '+sy+' Q'+cx+' '+cy+' '+tx+' '+ty;
-  const path=add('path',{d,fill:'none',stroke:'#effaff','stroke-width':2.15,'stroke-linecap':'round','filter':'url(#web-real-glow)'});
-  const thread1=add('path',{d,fill:'none',stroke:'#8bdcff','stroke-width':.85,'stroke-linecap':'round',opacity:.9});
-  const thread2=add('path',{d,fill:'none',stroke:'#fff','stroke-width':.55,'stroke-linecap':'round',opacity:.8});
-  const tail=add('circle',{cx:sx,cy:sy,r:3.5,fill:'#fff','filter':'url(#web-real-glow)'});
-  const impact=add('g',{transform:'translate('+tx+' '+ty+')',opacity:0});
-  for(let j=0;j<9;j++){const a=j*Math.PI*2/9;add('path',{d:'M0 0L'+Math.cos(a)* (10+(j%3)*3)+' '+Math.sin(a)*(10+(j%3)*3),stroke:'#eafaff','stroke-width':1.35,'stroke-linecap':'round'},impact)}
-  add('circle',{cx:0,cy:0,r:3,fill:'#fff'},impact);
-  const wrist=add('g',{transform:'translate('+sx+' '+sy+')'});
-  add('path',{d:'M-10 9Q-8 -2 0 -5Q8 -2 10 9L6 13H-6Z',fill:'#9d1830',stroke:'#ff9aaa','stroke-width':1.1});
-  add('path',{d:'M-4 4L0 -1L4 4',fill:'none',stroke:'#d9f5ff','stroke-width':1.2,'stroke-linecap':'round'});
-  layer.appendChild(svg);
-  const len=path.getTotalLength();
-  [path,thread1,thread2].forEach(el=>{const l=el.getTotalLength();el.style.strokeDasharray=l;el.style.strokeDashoffset=l});
-  const duration=clamp(dist*.42,210,470),began=performance.now();
-  const animate=now=>{
-   const raw=Math.min(1,(now-began)/duration),p=1-Math.pow(1-raw,2.05);
-   [path,thread1,thread2].forEach(el=>{const l=el.getTotalLength();el.style.strokeDashoffset=l*(1-p)});
-   const pt=path.getPointAtLength(len*p);tail.setAttribute('cx',pt.x);tail.setAttribute('cy',pt.y);tail.setAttribute('r',String(2.5+2*Math.sin(raw*Math.PI)));
-   if(raw<1){requestAnimationFrame(animate);return;}
-   tail.setAttribute('r','0');
-   impact.animate([{opacity:0,transform:'translate('+tx+'px,'+ty+'px) scale(.3)'},{opacity:1,transform:'translate('+tx+'px,'+ty+'px) scale(1)'},{opacity:0,transform:'translate('+tx+'px,'+ty+'px) scale(1.55)'}],{duration:360,easing:'cubic-bezier(.16,.7,.25,1)'});
-   wrist.animate([{opacity:1,transform:'translate('+sx+'px,'+sy+'px) scale(1)'},{opacity:0,transform:'translate('+sx+'px,'+sy+'px) scale(.55)'}],{duration:240});
-   setTimeout(()=>{svg.animate([{opacity:1},{opacity:0}],{duration:220}).onfinish=()=>svg.remove()},430);
+  const backTop = document.querySelector('.back-top');
+  let scrollPending = false;
+  const updateScrollState = () => {
+    if (backTop) backTop.classList.toggle('show', window.scrollY > 450);
+    scrollPending = false;
   };
-  requestAnimationFrame(animate);
- }
- document.addEventListener('pointerdown',e=>{
-  if(e.button!==0||e.target.closest('#city-map-toggle,#city-map-close,.book-dialog-close'))return;
-  shoot(e.clientX,e.clientY);
- },{passive:true});
- const dialog=document.getElementById('book-dialog');
- if(dialog&&cursor){
-  const observer=new MutationObserver(()=>{if(dialog.open){dialog.appendChild(cursor)}else if(cursor.parentElement===dialog){document.body.appendChild(cursor)}});
-  observer.observe(dialog,{attributes:true,attributeFilter:['open']});
- }
+  window.addEventListener('scroll', () => {
+    if (!scrollPending) {
+      window.requestAnimationFrame(updateScrollState);
+      scrollPending = true;
+    }
+  }, { passive: true });
+  if (backTop) backTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+  });
+  updateScrollState();
+
+  // Small, static Spider-Verse markers. No floating DOM layers or pointer tracking.
+  const main = document.querySelector('main');
+  if (main) {
+    const ambient = document.createElement('div');
+    ambient.className = 'ambient-layer';
+    ambient.setAttribute('aria-hidden', 'true');
+    ambient.innerHTML = '<span class="ambient-doodle">🕷</span><span class="ambient-doodle">🕸</span>';
+    main.prepend(ambient);
+  }
 })();
 </script>
 
@@ -1356,22 +1202,6 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
   #spider-verse-cursor, .spider-verse-cursor { display: none !important; }
 }
 </style>
-
-<script id="spider-cursor-tracking-failsafe">
-(() => {
-  const cursor = document.getElementById('spider-verse-cursor');
-  if (!cursor) return;
-  const track = (event) => {
-    cursor.style.setProperty('left', event.clientX + 'px', 'important');
-    cursor.style.setProperty('top', event.clientY + 'px', 'important');
-    cursor.style.setProperty('visibility', 'visible', 'important');
-    cursor.style.setProperty('opacity', '1', 'important');
-  };
-  window.addEventListener('pointermove', track, true);
-  window.addEventListener('mousemove', track, true);
-  window.addEventListener('pointerover', track, true);
-})();
-</script>
 
 <style id="final-cursor-map-shooter-redesign">
 /* Minimal animated web-reticle cursor: no character face, no oversized badge. */
@@ -1965,6 +1795,104 @@ footer:after{content:"🕷";position:absolute;right:24px;top:-13px;font-size:1.1
  .spider-photo-card figcaption{font-size:.55rem}
 }
 @media(prefers-reduced-motion:reduce){.spider-photo-card{animation:none!important;transition:none!important}}
+</style>
+<style id="spider-smooth-performance-and-id-card">
+/* Dark Spider-Verse signature intro, then one deliberate ID-card entrance. */
+.name-loader{
+  background:radial-gradient(ellipse at 50% 44%,#132943 0%,#081629 58%,#040912 100%)!important;
+  animation:none!important;
+  transition:opacity .42s ease,visibility .42s ease!important;
+}
+.name-loader:before{
+  opacity:.25!important;
+  background-image:
+    repeating-radial-gradient(circle at 50% 43%,transparent 0 24px,rgba(117,197,247,.22) 25px 26px,transparent 27px 49px),
+    repeating-conic-gradient(from 0deg at 50% 43%,transparent 0deg 14deg,rgba(117,197,247,.13) 14.2deg 14.8deg,transparent 15deg 30deg)!important;
+  background-size:100% 100%!important;
+}
+.name-loader-label{font:700 .9rem var(--reading-font)!important;letter-spacing:.2em!important;text-transform:uppercase;color:#8ecbf2!important}
+.name-signature .pen-stroke{stroke:#f0f7ff!important}
+.name-signature .underline{stroke:#ed2948!important}
+.name-signature .i-dot{fill:#ed2948!important}
+.name-loader-caption{font:600 1.1rem var(--caveat)!important;color:#a9cce7!important}
+.name-loader:after{content:"🕷";position:absolute;right:clamp(22px,7vw,90px);bottom:clamp(22px,7vh,70px);font-size:26px;filter:drop-shadow(0 0 10px rgba(80,175,232,.5))}
+.name-signature .s-stroke{animation:pen-write .48s cubic-bezier(.42,0,.58,1) .12s forwards!important}
+.name-signature .h-stroke{animation:pen-write .52s cubic-bezier(.45,.05,.2,1) .57s forwards!important}
+.name-signature .a1-stroke{animation:pen-write .40s cubic-bezier(.45,.05,.2,1) 1.05s forwards!important}
+.name-signature .n-stroke{animation:pen-write .43s cubic-bezier(.45,.05,.2,1) 1.42s forwards!important}
+.name-signature .i-stroke{animation:pen-write .27s cubic-bezier(.45,.05,.2,1) 1.82s forwards!important}
+.name-signature .k-stroke{animation:pen-write .90s cubic-bezier(.45,.05,.2,1) 2.05s forwards!important}
+.name-signature .a2-stroke{animation:pen-write .40s cubic-bezier(.45,.05,.2,1) 2.66s forwards!important}
+.name-signature .i-dot{animation:ink-dot .1s ease 1.98s forwards!important}
+.name-signature .underline{animation:pen-write .58s cubic-bezier(.42,0,.58,1) 3.08s forwards!important}
+.name-loader-caption{animation:name-caption-in .3s ease 3.72s forwards!important}
+
+/* The portrait stays at its native aspect ratio and enters once, from above. */
+.spider-photo-card{
+  width:clamp(224px,23vw,260px)!important;
+  aspect-ratio:227/340!important;
+  padding:6px!important;
+  opacity:0!important;
+  transform:translate3d(0,-105vh,0) rotate(-7deg) scale(.92)!important;
+  animation:none!important;
+  will-change:transform,opacity;
+  box-shadow:0 18px 38px rgba(0,0,0,.48),0 0 0 1px rgba(112,194,241,.55),5px 6px 0 rgba(229,29,61,.48)!important;
+}
+.spider-photo-card img{
+  width:100%!important;height:100%!important;aspect-ratio:227/340!important;
+  object-fit:contain!important;image-rendering:auto!important;filter:none!important;
+}
+body.is-home-revealed .spider-photo-card{
+  animation:spider-id-card-drop .95s cubic-bezier(.16,1,.3,1) .08s both!important;
+}
+@keyframes spider-id-card-drop{
+  0%{opacity:0;transform:translate3d(0,-105vh,0) rotate(-7deg) scale(.92)}
+  68%{opacity:1;transform:translate3d(0,9px,0) rotate(1.2deg) scale(1.015)}
+  84%{transform:translate3d(0,-4px,0) rotate(-.45deg) scale(.997)}
+  100%{opacity:1;transform:translate3d(0,0,0) rotate(0) scale(1)}
+}
+.spider-photo-card:hover{transform:none!important;animation-play-state:paused!important}
+.spider-photo-card:before{transform:none!important;box-shadow:0 0 0 7px rgba(18,100,164,.05)!important}
+.spider-photo-card:after{opacity:.72!important;mask-image:none!important}
+.spider-photo-halo{filter:none!important;opacity:.78!important}
+.spider-web-backdrop{opacity:.46!important}
+.spider-web-backdrop .web-lines{stroke-width:1!important;stroke-opacity:.24!important}
+
+/* Turn off legacy infinite animation and custom cursor loops that were causing stutter. */
+html,body,body *{cursor:auto!important}
+#spider-verse-cursor,.spider-verse-cursor,.pencil-cursor,.web-shot-layer,
+.spider-swing-stage,.spider-swinger,.web-shooter-dock{display:none!important}
+.ambient-doodle,.hero-copy .page-kicker,.hero-copy h1 em,.book-stage:before,
+.entry,.shelf-card,.buddy-marker,.footer-mark,.spider-verse-cursor svg,
+.city-map-pulse,.city-map-toggle:after,.city-map-roads .map-route,
+.spider-character-card,.web-shooter,.spider-project-chip{
+  animation:none!important;transition:none!important;
+}
+.ambient-doodle{opacity:.12!important;filter:none!important;transform:none!important}
+.motion-reveal,.motion-reveal.motion-visible,.soft-reveal,.soft-reveal.is-in{
+  opacity:1!important;transform:none!important;transition:none!important;
+}
+.motion-tilting,.entry.motion-tilting,.shelf-card.motion-tilting,.content-page.motion-tilting{
+  transform:none!important;transition:none!important;
+}
+.topbar{backdrop-filter:blur(9px)!important}
+.city-map-panel{animation:none!important;filter:none!important}
+.city-map-toggle{transition:background-color .16s ease!important}
+.city-map-roads .map-route{filter:none!important;stroke-dasharray:none!important}
+body.page-arriving main,body.page-arriving .topbar,body.page-arriving footer,
+body.page-leaving:before{animation:none!important}
+.spider-photo-stamp{filter:none!important}
+@media(max-width:850px){
+  .spider-photo-card{width:clamp(218px,39vw,252px)!important}
+}
+@media(max-width:560px){
+  .spider-photo-card{width:224px!important}
+  .spider-photo-stamp{filter:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .name-loader{display:none!important}
+  .spider-photo-card,body.is-home-revealed .spider-photo-card{opacity:1!important;transform:none!important;animation:none!important}
+}
 </style>
 </body>
 </html>
