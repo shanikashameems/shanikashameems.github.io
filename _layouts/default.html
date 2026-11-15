@@ -986,7 +986,7 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
         document.body.style.overflow='';
       },720);
     };
-    const nameIntroDuration=window.matchMedia('(prefers-reduced-motion: reduce)').matches?900:6800;
+    const nameIntroDuration=window.matchMedia('(prefers-reduced-motion: reduce)').matches?700:3600;
     window.setTimeout(finishNameLoader,nameIntroDuration);
   }
 
@@ -2034,6 +2034,27 @@ main:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
 @media(max-width:850px){.home-post-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.journal-hero .book-stage{min-height:480px!important;height:480px!important}.spider-hero-hud{font-size:.73rem}}
 @media(max-width:560px){.home-post-grid{grid-template-columns:1fr!important}.home-post-media{height:230px!important}.journal-hero .book-stage{min-height:390px!important;height:390px!important}.spider-hero-hud{top:4%;padding:5px 7px;font-size:.63rem}.spider-hero-hud.hud-left{left:0}.spider-hero-hud.hud-right{right:0}.spider-issue-overline{font-size:.65rem}.spider-issue-page{padding:24px 19px}.spider-issue-cover{aspect-ratio:4/3}}
 @media(prefers-reduced-motion:reduce){.spider-hero-hint{display:none}}
+</style>
+<style id="spider-man-final-polish">
+/* Spider-Man finish: the personal handwritten type remains, with the web-city world around it. */
+.name-loader{background:radial-gradient(ellipse at 50% 42%,#14243a 0%,#091321 55%,#050a13 100%)!important}
+.name-loader:before{opacity:.28!important;background-image:repeating-radial-gradient(circle at 50% 42%,transparent 0 25px,rgba(96,180,232,.28) 26px 27px,transparent 28px 52px),repeating-conic-gradient(from 0deg at 50% 42%,transparent 0deg 14deg,rgba(96,180,232,.18) 14.2deg 14.6deg,transparent 15deg 30deg)!important;background-size:100% 100%!important}
+.name-loader-label,.name-loader-caption{color:#9dc8e8!important;text-shadow:0 2px 12px rgba(0,0,0,.55)!important}
+.name-signature .pen-stroke{stroke:#f3f8ff!important;filter:drop-shadow(0 0 6px rgba(65,174,242,.35))!important}
+.name-signature .underline{stroke:#e52b4b!important;filter:drop-shadow(0 0 8px rgba(229,43,75,.42))!important}
+.name-signature .i-dot{fill:#e52b4b!important}
+.name-loader-caption{font:600 1.45rem var(--caveat)!important}
+.library-book strong{font:700 clamp(.9rem,1.15vw,1.12rem)/1.04 var(--caveat)!important;text-transform:none!important;letter-spacing:0!important}
+.library-book small{font:1rem var(--hand)!important}
+.book-note-label,.book-note h2{font-family:var(--caveat)!important;letter-spacing:0!important;text-shadow:0 2px 10px rgba(0,0,0,.35)!important}
+.book-note h2{font-size:clamp(2.3rem,4.7vw,3.3rem)!important;color:#f3f8ff!important}
+.book-note p,.takeaway-wrap p{font:1.22rem/1.6 var(--hand)!important;color:#c8dcef!important}
+.takeaway-wrap>span{font:700 1.35rem var(--caveat)!important}
+.city-map-heading strong{font:400 1.9rem var(--sketch)!important;letter-spacing:0!important}
+.city-map-heading small,.city-map-footer,.city-map-hint{font-family:'Barlow Condensed',sans-serif!important}
+.entry h3{font:700 2rem var(--caveat)!important}
+.entry p{font:1.15rem/1.5 var(--hand)!important}
+@media(max-width:560px){.name-loader-caption{font-size:1.25rem!important}}
 </style>
 </body>
 </html>
