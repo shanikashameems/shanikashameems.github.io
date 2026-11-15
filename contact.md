@@ -5,8 +5,8 @@ title: Contact
 ---
 
 <section class="content-page reveal">
-  <div class="eyebrow">A note is always welcome</div>
-  <h1>Let's talk.</h1>
+  <div class="eyebrow">WEB LINE // OPEN TRANSMISSION</div>
+  <h1>Send a signal.</h1>
   <p>Have a project in mind, want to exchange ideas, or just want to say hello? Leave a little message below, or find me around the internet.</p>
 
   <div class="contact-layout">
