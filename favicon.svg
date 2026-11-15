@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect x="8" y="5" width="45" height="54" rx="8" fill="#ef8e78" stroke="#403b50" stroke-width="3"/>
-  <path d="M17 5v54" stroke="#bd6559" stroke-width="4"/>
-  <path d="M23 17h21M23 25h17M23 33h20" stroke="#fff8e9" stroke-width="3" stroke-linecap="round"/>
-  <path d="m43 39 3.2 6.5 7.2 1-5.2 5.1 1.2 7.2-6.4-3.4-6.4 3.4 1.2-7.2-5.2-5.1 7.2-1z" fill="#f5d77e" stroke="#403b50" stroke-width="1.8" stroke-linejoin="round"/>
-  <path d="M11 11 14 8M52 15l4-3" stroke="#fff8e9" stroke-width="2.5" stroke-linecap="round"/>
+<defs><linearGradient id="red" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f04459"/><stop offset="1" stop-color="#8d1028"/></linearGradient></defs>
+<path d="M32 3C17 3 7 14 7 29c0 16 11 27 25 32 14-5 25-16 25-32C57 14 47 3 32 3Z" fill="url(#red)" stroke="#071426" stroke-width="3"/>
+<path d="M32 5 32 57M10 24Q32 32 54 24M14 13Q32 22 50 13M13 43Q32 34 51 43M21 6Q25 22 32 32Q39 22 43 6M16 53Q25 42 32 32Q39 42 48 53" fill="none" stroke="#161923" stroke-width="1.7" stroke-linecap="round"/>
+<path d="M13 27Q22 20 29 30L25 39Q17 37 13 27ZM51 27Q42 20 35 30L39 39Q47 37 51 27Z" fill="#f3fbff" stroke="#101827" stroke-width="3" stroke-linejoin="round"/>
 </svg>
