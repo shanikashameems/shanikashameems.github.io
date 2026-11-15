@@ -982,7 +982,7 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
         document.body.style.overflow = '';
       }, reduced ? 80 : 480);
     };
-    window.setTimeout(finishIntro, reduced ? 180 : 4450);
+    window.setTimeout(finishIntro, reduced ? 180 : 6100);
   }
 
   const menuButton = document.querySelector('.menu-toggle');
@@ -2562,6 +2562,32 @@ body.is-home-revealed .spider-photo-stage .spider-card-shell{
   });
 })();
 </script>
+
+
+<style id="spider-home-navbar-spacing-and-loader-timing">
+/* Bring the homepage title closer to the navigation bar. */
+body:has(.journal-hero) main{
+  padding-top:8px!important;
+}
+.journal-hero{
+  padding-top:0!important;
+}
+@media(max-width:760px){
+  body:has(.journal-hero) main{
+    padding-top:6px!important;
+  }
+  .journal-hero{
+    padding-top:0!important;
+  }
+}
+/* The handwritten signature is the loading screen. Let the underline and caption finish. */
+.name-loader{
+  animation-duration:8.4s!important;
+}
+.name-loader-caption{
+  animation-delay:5.28s!important;
+}
+</style>
 
 </body>
 </html>
