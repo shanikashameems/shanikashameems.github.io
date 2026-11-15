@@ -1,6 +1,7 @@
 ---
 layout: default
 title: My First Blog Post
+image: /assets/spider-journal.svg
 ---
 
 So this is me Shanika and this is my first ever blog
