@@ -32,11 +32,37 @@ title: Journal
     <span class="spider-hero-particle particle-five" aria-hidden="true"></span>
     <span class="spider-hero-scan" aria-hidden="true"></span>
     <div class="spider-card-shell">
-    <figure class="spider-photo-card">
+      <button class="spider-mask-open" type="button" aria-haspopup="dialog" aria-controls="spider-mask-dialog" aria-label="Open the full Spider-Man mask artwork">
+        <figure class="spider-photo-card">
       <img class="spider-mask-art" src="{{ '/assets/spider-mask-direct.png' | relative_url }}" alt="Red Spider-Man webbed mask emblem with white eyes" width="368" height="528" fetchpriority="high" decoding="async">
       <figcaption><span>EARTH-616 · NEW YORK</span><span>SPIDER-JOURNAL</span></figcaption>
     </figure>
+      </button>
+      <span class="spider-mask-open-hint" aria-hidden="true">TAP TO INSPECT THE MASK <b>↗</b></span>
     </div>
+    <span class="spider-depth-shard shard-one" aria-hidden="true"></span>
+    <span class="spider-depth-shard shard-two" aria-hidden="true"></span>
+    <span class="spider-depth-shard shard-three" aria-hidden="true"></span>
+    <span class="spider-stage-light" aria-hidden="true"></span>
+    <dialog class="spider-mask-dialog" id="spider-mask-dialog" aria-labelledby="spider-mask-dialog-title">
+      <button class="spider-mask-dialog-close" type="button" aria-label="Close mask preview">×</button>
+      <div class="spider-mask-dialog-panel">
+        <div class="spider-mask-dialog-copy">
+          <span class="spider-mask-dialog-kicker">EARTH-616 / SHANIKA'S SPIDER-VERSE</span>
+          <h2 id="spider-mask-dialog-title">THE MASK REVEAL</h2>
+          <p>A closer look at the emblem guarding this little corner of the web.</p>
+          <span class="spider-mask-dialog-stamp">SPIDER-JOURNAL · ISSUE 001</span>
+        </div>
+        <figure class="spider-mask-popup-card">
+          <span class="spider-mask-popup-label">CLASSIFIED · EARTH-616</span>
+          <img src="{{ '/assets/spider-mask-direct.png' | relative_url }}" alt="Full view of the red Spider-Man mask emblem with black web lines and white eyes" width="368" height="528" loading="lazy" decoding="async">
+          <figcaption><span>FRIENDLY NEIGHBOURHOOD FILE</span><span>NO. 001</span></figcaption>
+        </figure>
+      </div>
+      <span class="spider-mask-dialog-web" aria-hidden="true"></span>
+      <span class="spider-mask-dialog-orbit orbit-a" aria-hidden="true"></span>
+      <span class="spider-mask-dialog-orbit orbit-b" aria-hidden="true"></span>
+    </dialog>
     <svg class="spider-photo-stamp" viewBox="0 0 48 48" aria-hidden="true">
       <g fill="none" stroke="#eaf7ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
         <path d="M18 18L8 8M15 23L4 22M17 29L7 38M30 18L40 8M33 23L44 22M31 29L41 38M20 16L15 5M28 16L33 5M20 32L15 43M28 32L33 43"/>

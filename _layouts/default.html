@@ -2318,5 +2318,250 @@ body.is-home-revealed .spider-photo-stage .spider-card-shell{
   .spider-photo-stage .spider-card-shell{opacity:1!important;transform:none!important;animation:none!important}
 }
 </style>
+
+<style id="spider-mask-popup-and-3d-upgrade">
+/* The existing portrait remains the hero. Its button is the doorway to a full artwork reveal. */
+.spider-photo-stage .spider-mask-open{
+  appearance:none!important;-webkit-appearance:none!important;
+  display:block!important;position:relative!important;z-index:7!important;
+  width:max-content!important;max-width:100%!important;
+  margin:0!important;padding:0!important;border:0!important;border-radius:13px!important;
+  background:transparent!important;color:inherit!important;font:inherit!important;
+  line-height:0!important;text-align:initial!important;overflow:visible!important;
+  cursor:pointer!important;transform-style:preserve-3d!important;
+  transition:transform .48s cubic-bezier(.2,.8,.2,1),filter .48s ease!important;
+}
+.spider-photo-stage .spider-mask-open:focus-visible{
+  outline:2px solid #8be0ff!important;outline-offset:12px!important;
+  box-shadow:0 0 0 7px rgba(65,174,240,.16)!important;
+}
+.spider-photo-stage .spider-mask-open:hover,
+.spider-photo-stage .spider-mask-open:focus-visible{
+  transform:translate3d(0,-7px,36px) rotateY(-6deg) rotateX(3deg) scale(1.035)!important;
+  filter:drop-shadow(0 18px 24px rgba(0,0,0,.3))!important;
+}
+.spider-photo-stage .spider-mask-open:hover .spider-photo-card,
+.spider-photo-stage .spider-mask-open:focus-visible .spider-photo-card{
+  animation-play-state:paused!important;
+  box-shadow:0 38px 72px rgba(0,0,0,.66),0 0 0 2px rgba(113,214,255,.72),10px 12px 0 rgba(237,41,72,.55),0 0 48px rgba(31,153,225,.38)!important;
+}
+.spider-mask-open-hint{
+  position:absolute;z-index:9;left:50%;bottom:-43px;white-space:nowrap;
+  transform:translateX(-50%);padding:7px 12px;border:1px solid rgba(111,198,245,.35);
+  border-radius:999px;background:rgba(5,15,28,.8);color:#bde8ff;
+  font:700 .66rem 'Barlow Condensed',sans-serif;letter-spacing:.19em;
+  box-shadow:0 8px 22px rgba(0,0,0,.24),0 0 16px rgba(65,172,232,.12);
+  animation:spider-hint-hover 3.8s ease-in-out infinite;pointer-events:none;
+}
+.spider-mask-open-hint b{color:#ff4567;font-size:.9rem;margin-left:5px}
+@keyframes spider-hint-hover{0%,100%{opacity:.68;translate:0 0}50%{opacity:1;translate:0 -3px}}
+
+/* Extra dimensional pieces drift at separate depths, without a continuous JS animation loop. */
+.spider-photo-stage{perspective:1500px!important;transform-style:preserve-3d!important}
+.spider-depth-shard{
+  position:absolute;z-index:3;display:block;width:30px;height:30px;
+  border:1px solid rgba(121,211,255,.62);border-radius:5px;
+  background:linear-gradient(145deg,rgba(76,174,231,.14),rgba(8,18,34,.02));
+  box-shadow:0 0 18px rgba(71,172,235,.17),inset 0 0 12px rgba(85,190,255,.12);
+  pointer-events:none;transform-style:preserve-3d;will-change:transform,opacity;
+}
+.spider-depth-shard:after{
+  content:"";position:absolute;inset:7px;border:1px solid rgba(239,54,85,.55);
+  transform:rotate(45deg);box-shadow:0 0 9px rgba(239,54,85,.22)
+}
+.spider-depth-shard.shard-one{top:23%;left:10%;animation:spider-shard-one 11s ease-in-out infinite}
+.spider-depth-shard.shard-two{right:8%;bottom:19%;width:22px;height:22px;border-color:rgba(240,66,95,.55);animation:spider-shard-two 13s ease-in-out infinite}
+.spider-depth-shard.shard-three{top:52%;right:17%;width:12px;height:12px;border-radius:50%;animation:spider-shard-three 8s ease-in-out infinite}
+.spider-depth-shard.shard-three:after{display:none}
+@keyframes spider-shard-one{
+  0%,100%{transform:translate3d(0,8px,-20px) rotateX(15deg) rotateY(0) rotateZ(0);opacity:.45}
+  50%{transform:translate3d(18px,-22px,90px) rotateX(65deg) rotateY(150deg) rotateZ(45deg);opacity:1}
+}
+@keyframes spider-shard-two{
+  0%,100%{transform:translate3d(0,0,20px) rotateX(0) rotateY(0);opacity:.45}
+  50%{transform:translate3d(-16px,-18px,110px) rotateX(90deg) rotateY(180deg) rotateZ(40deg);opacity:.95}
+}
+@keyframes spider-shard-three{
+  0%,100%{transform:translate3d(0,8px,90px) scale(.7);opacity:.32;box-shadow:0 0 5px #7ed7ff}
+  50%{transform:translate3d(-20px,-25px,150px) scale(1.45);opacity:1;box-shadow:0 0 22px #7ed7ff}
+}
+.spider-stage-light{
+  position:absolute;z-index:4;inset:8% 4%;pointer-events:none;border-radius:50%;
+  background:linear-gradient(110deg,transparent 35%,rgba(92,193,247,0) 44%,rgba(92,193,247,.15) 49%,rgba(240,55,88,.08) 52%,transparent 61%);
+  transform:translate3d(-70%,0,-25px) rotateY(-16deg);
+  animation:spider-stage-light-pass 9s ease-in-out infinite;mix-blend-mode:screen;
+}
+@keyframes spider-stage-light-pass{
+  0%,18%{transform:translate3d(-75%,0,-25px) rotateY(-16deg);opacity:0}
+  35%{opacity:.9}
+  76%,100%{transform:translate3d(75%,0,35px) rotateY(16deg);opacity:0}
+}
+.journal-hero .hero-copy h1{transform-style:preserve-3d;text-shadow:2px 2px 0 rgba(16,143,226,.17)}
+.journal-hero .hero-copy h1 em{filter:drop-shadow(0 7px 0 rgba(7,15,28,.16))}
+.spider-photo-stage .spider-photo-card{backface-visibility:hidden;transform-style:preserve-3d}
+
+/* A native modal keeps the enlarged image sharp, accessible, and easy to dismiss. */
+.spider-mask-dialog{
+  position:fixed!important;inset:0!important;margin:auto!important;
+  width:min(900px,calc(100vw - 34px))!important;
+  max-width:calc(100vw - 34px)!important;
+  max-height:calc(100dvh - 34px)!important;
+  padding:0!important;border:1px solid rgba(121,207,255,.78)!important;
+  border-radius:22px!important;overflow:hidden!important;
+  color:#eef8ff!important;
+  background:radial-gradient(ellipse at 20% 85%,rgba(28,120,190,.2),transparent 42%),linear-gradient(145deg,#10243a 0%,#050d19 58%,#210d18 100%)!important;
+  box-shadow:0 35px 110px rgba(0,0,0,.82),0 0 0 2px rgba(237,41,72,.38),0 0 65px rgba(55,167,230,.25),inset 0 0 45px rgba(89,181,232,.1)!important;
+}
+.spider-mask-dialog::backdrop{
+  background:rgba(1,5,13,.82);backdrop-filter:blur(12px) saturate(.75);
+}
+.spider-mask-dialog[open]{display:block!important;animation:spider-dialog-veil-in .28s ease both}
+@keyframes spider-dialog-veil-in{from{opacity:0}to{opacity:1}}
+.spider-mask-dialog-panel{
+  position:relative;z-index:3;display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.86fr);
+  align-items:center;gap:clamp(20px,4vw,58px);
+  min-height:min(650px,calc(100dvh - 34px));
+  max-height:calc(100dvh - 34px);padding:clamp(26px,5vw,58px);
+  perspective:1400px;transform-style:preserve-3d;overflow:auto;
+}
+.spider-mask-dialog-copy{position:relative;z-index:4;transform:translateZ(45px);animation:spider-dialog-copy-enter .75s .08s cubic-bezier(.16,1,.3,1) both}
+.spider-mask-dialog-kicker{
+  display:inline-block;margin-bottom:16px;color:#82d7ff;
+  font:800 .72rem 'Barlow Condensed',sans-serif;letter-spacing:.22em;text-transform:uppercase;
+}
+.spider-mask-dialog-copy h2{
+  margin:0 0 14px!important;color:#fff!important;
+  font:400 clamp(2.5rem,5.4vw,5.2rem)/.91 'Bangers',Impact,sans-serif!important;
+  letter-spacing:.035em!important;text-transform:uppercase!important;
+  text-shadow:3px 3px 0 #e52b4d,-2px -2px 0 rgba(65,177,245,.48),0 14px 30px rgba(0,0,0,.5)!important;
+}
+.spider-mask-dialog-copy p{
+  max-width:310px;margin:0!important;color:#b6c9d9!important;
+  font:500 1.08rem/1.6 'Barlow Condensed',sans-serif!important;
+}
+.spider-mask-dialog-stamp{
+  display:inline-block;margin-top:25px;padding:9px 12px;
+  border:1px solid rgba(110,196,244,.42);border-radius:4px;
+  color:#9fc8e3;font:700 .65rem 'Barlow Condensed',sans-serif;letter-spacing:.16em;
+}
+.spider-mask-popup-card{
+  position:relative;z-index:5;justify-self:center;width:min(100%,350px);
+  margin:0;padding:8px;border:1px solid rgba(125,207,255,.8);border-radius:13px;
+  background:linear-gradient(145deg,#1b3550,#050b14 58%,#3b1020);
+  box-shadow:0 30px 65px rgba(0,0,0,.65),8px 10px 0 rgba(236,41,72,.45),0 0 35px rgba(52,159,221,.27);
+  transform-style:preserve-3d;will-change:transform;
+  animation:spider-popup-card-enter .82s cubic-bezier(.16,1,.3,1) both;
+  transition:transform .42s ease,box-shadow .42s ease;
+}
+.spider-mask-popup-card:before{
+  content:"";position:absolute;inset:-17px;z-index:-1;border:1px solid rgba(104,195,244,.36);
+  border-radius:18px;transform:translateZ(-28px) rotateY(9deg);
+  box-shadow:0 0 0 9px rgba(43,133,194,.055),0 0 35px rgba(25,133,205,.2);
+}
+.spider-mask-popup-card:after{
+  content:"";position:absolute;inset:-29px;z-index:-2;border:1px solid rgba(237,41,72,.25);
+  border-radius:22px;transform:translateZ(-54px) rotateY(-10deg) rotateX(4deg);
+}
+.spider-mask-popup-card img{
+  display:block!important;width:100%!important;height:auto!important;max-height:calc(100dvh - 180px)!important;
+  aspect-ratio:368/528!important;object-fit:contain!important;object-position:center!important;
+  border-radius:6px!important;background:#000!important;filter:none!important;
+  image-rendering:auto!important;transform:translateZ(24px);backface-visibility:hidden;
+}
+.spider-mask-popup-card figcaption{
+  display:flex;justify-content:space-between;gap:8px;padding:9px 7px 3px;
+  color:#d9efff;font:800 .64rem 'Barlow Condensed',sans-serif;letter-spacing:.15em;
+}
+.spider-mask-popup-label{
+  position:absolute;top:16px;left:15px;z-index:4;padding:6px 8px;
+  color:#f2faff;background:rgba(4,11,20,.85);border:1px solid rgba(135,210,249,.4);
+  font:800 .58rem 'Barlow Condensed',sans-serif;letter-spacing:.16em;
+}
+@keyframes spider-popup-card-enter{
+  0%{opacity:0;transform:perspective(1300px) translate3d(45px,20px,-180px) rotateY(-38deg) rotateX(12deg) scale(.72)}
+  68%{opacity:1;transform:perspective(1300px) translate3d(-5px,-4px,35px) rotateY(5deg) rotateX(-2deg) scale(1.025)}
+  100%{opacity:1;transform:perspective(1300px) translate3d(0,0,0) rotateY(-5deg) rotateX(2deg) scale(1)}
+}
+@keyframes spider-dialog-copy-enter{
+  from{opacity:0;transform:translate3d(-28px,0,-70px) rotateY(12deg)}
+  to{opacity:1;transform:translate3d(0,0,45px) rotateY(0)}
+}
+@media(hover:hover) and (pointer:fine){
+  .spider-mask-popup-card:hover{
+    transform:perspective(1300px) translate3d(0,-8px,40px) rotateY(0deg) rotateX(-2deg) scale(1.025);
+    box-shadow:0 42px 80px rgba(0,0,0,.72),10px 13px 0 rgba(236,41,72,.5),0 0 48px rgba(52,159,221,.4);
+  }
+}
+.spider-mask-dialog-close{
+  position:absolute!important;top:15px!important;right:17px!important;z-index:10!important;
+  display:grid!important;place-items:center!important;width:42px!important;height:42px!important;
+  padding:0!important;border:1px solid rgba(134,207,248,.5)!important;border-radius:50%!important;
+  background:rgba(4,13,25,.84)!important;color:#fff!important;
+  font:300 1.8rem/1 Arial,sans-serif!important;cursor:pointer!important;
+  box-shadow:0 0 18px rgba(58,171,232,.16)!important;
+  transition:transform .22s ease,background .22s ease!important;
+}
+.spider-mask-dialog-close:hover{transform:rotate(90deg) scale(1.08)!important;background:#8f1732!important}
+.spider-mask-dialog-web{
+  position:absolute;z-index:1;inset:-45% -25%;pointer-events:none;opacity:.32;
+  background:repeating-radial-gradient(circle at 50% 50%,transparent 0 38px,rgba(137,207,246,.16) 39px 40px,transparent 41px 78px),
+  repeating-conic-gradient(from 12deg at 50% 50%,transparent 0deg 14deg,rgba(137,207,246,.12) 14.4deg 14.9deg,transparent 15.3deg 30deg);
+  animation:spider-dialog-web-turn 36s linear infinite;
+}
+.spider-mask-dialog-orbit{
+  position:absolute;z-index:2;left:52%;top:50%;width:75%;height:43%;border:1px solid rgba(88,190,244,.34);
+  border-radius:50%;pointer-events:none;transform:translate(-50%,-50%) rotateX(72deg) rotateZ(-15deg);
+  box-shadow:0 0 25px rgba(60,172,231,.1),inset 0 0 20px rgba(60,172,231,.08);
+}
+.spider-mask-dialog-orbit.orbit-a{animation:spider-dialog-orbit-a 18s linear infinite}
+.spider-mask-dialog-orbit.orbit-b{width:62%;height:85%;border-color:rgba(232,50,81,.28);transform:translate(-50%,-50%) rotateY(68deg) rotateX(10deg);animation:spider-dialog-orbit-b 24s linear infinite}
+@keyframes spider-dialog-orbit-a{to{transform:translate(-50%,-50%) rotateX(72deg) rotateZ(345deg)}}
+@keyframes spider-dialog-orbit-b{to{transform:translate(-50%,-50%) rotateY(428deg) rotateX(10deg)}}
+@keyframes spider-dialog-web-turn{to{transform:rotate(360deg)}}
+@media(max-width:680px){
+  .spider-mask-dialog{width:calc(100vw - 22px)!important;max-height:calc(100dvh - 22px)!important}
+  .spider-mask-dialog-panel{
+    grid-template-columns:1fr;gap:18px;min-height:0;max-height:calc(100dvh - 22px);
+    padding:54px 20px 24px;justify-items:center;text-align:center;
+  }
+  .spider-mask-dialog-copy{order:2}
+  .spider-mask-dialog-copy h2{font-size:clamp(2.1rem,9vw,3.2rem)!important}
+  .spider-mask-dialog-copy p{margin:0 auto!important;font-size:.98rem!important}
+  .spider-mask-dialog-stamp{margin-top:13px}
+  .spider-mask-popup-card{order:1;width:min(66vw,250px);max-height:58vh}
+  .spider-mask-popup-card img{max-height:54vh!important}
+  .spider-mask-popup-card figcaption{font-size:.52rem}
+  .spider-mask-dialog-close{top:9px!important;right:10px!important;width:36px!important;height:36px!important}
+  .spider-depth-shard.shard-one{left:5%}
+  .spider-depth-shard.shard-two{right:4%}
+  .spider-mask-open-hint{bottom:-40px;font-size:.58rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .spider-mask-open-hint,.spider-depth-shard,.spider-stage-light,
+  .spider-mask-popup-card,.spider-mask-dialog-copy,.spider-mask-dialog-web,
+  .spider-mask-dialog-orbit{animation:none!important}
+  .spider-photo-stage .spider-mask-open,.spider-mask-popup-card{transition:none!important}
+}
+</style>
+<script id="spider-mask-popup-script">
+(()=>{
+  const opener=document.querySelector('.spider-mask-open');
+  const dialog=document.getElementById('spider-mask-dialog');
+  if(!opener||!dialog)return;
+  const close=dialog.querySelector('.spider-mask-dialog-close');
+  const dismiss=()=>{if(dialog.open)dialog.close();else dialog.removeAttribute('open');};
+  opener.addEventListener('click',()=>{
+    if(typeof dialog.showModal==='function')dialog.showModal();
+    else dialog.setAttribute('open','');
+  });
+  close?.addEventListener('click',dismiss);
+  dialog.addEventListener('click',event=>{if(event.target===dialog)dismiss();});
+  dialog.addEventListener('close',()=>{opener.focus({preventScroll:true});});
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&dialog.open) dismiss();
+  });
+})();
+</script>
+
 </body>
 </html>
