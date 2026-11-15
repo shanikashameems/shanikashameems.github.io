@@ -9,6 +9,12 @@ title: Contact
   <h1>Send a signal.</h1>
   <p>Have a project in mind, want to exchange ideas, or just want to say hello? Leave a little message below, or find me around the internet.</p>
 
+  <div class="webline-statusbar" role="status" aria-label="Web Line communication channel is open">
+    <span class="status-open"><i aria-hidden="true"></i> CHANNEL OPEN</span>
+    <b>EARTH-616 // WEB LINE</b>
+    <span>TRANSMISSION STATUS: <em>READY</em></span>
+  </div>
+
   <div class="contact-layout">
     <form class="journal-form" action="https://formspree.io/f/mpwvklre" method="POST">
       <label for="name">Your name</label>
