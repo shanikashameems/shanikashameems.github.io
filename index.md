@@ -11,8 +11,29 @@ title: Journal
     <div class="hero-meta">SHANIKA · READER, BUILDER, FRIENDLY NEIGHBOURHOOD OVERTHINKER</div>
     <div class="handwritten" style="margin-top:18px">with great curiosity... and a little responsibility.</div>
   </div>
-  <div class="book-stage" aria-label="Interactive three-dimensional red-and-blue Spider-Man inspired mask with a moving webbed suit">
-    
+  <div class="book-stage spider-photo-stage" aria-label="The Spider-Man portrait selected for Shanika's Spider-Verse homepage">
+    <div class="spider-web-backdrop" aria-hidden="true">
+      <svg viewBox="0 0 520 580" preserveAspectRatio="none">
+        <g class="web-lines">
+          <path d="M260 12L260 550M20 70L500 510M500 70L20 510M10 290H510M80 18L440 560M440 18L80 560"/>
+          <path d="M260 12Q385 100 500 70M260 12Q135 100 20 70M20 70Q90 290 20 510M500 70Q430 290 500 510M20 510Q260 430 500 510M80 18Q260 125 440 18M80 560Q260 450 440 560"/>
+          <path d="M160 65Q260 110 360 65M92 140Q260 215 428 140M42 218Q260 310 478 218M33 370Q260 285 487 370M92 455Q260 370 428 455M160 520Q260 465 360 520" class="web-red"/>
+        </g>
+      </svg>
+    </div>
+    <div class="spider-photo-halo" aria-hidden="true"></div>
+    <span class="spider-photo-cable" aria-hidden="true"></span>
+    <figure class="spider-photo-card">
+      <img src="{{ '/assets/spider-mask-reference.webp' | relative_url }}" alt="Spider-Man mask portrait chosen for the homepage" width="227" height="340" fetchpriority="high" decoding="async">
+      <figcaption><span>EARTH-616 · NEW YORK</span><span>SPIDER-JOURNAL</span></figcaption>
+    </figure>
+    <svg class="spider-photo-stamp" viewBox="0 0 48 48" aria-hidden="true">
+      <g fill="none" stroke="#eaf7ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 18L8 8M15 23L4 22M17 29L7 38M30 18L40 8M33 23L44 22M31 29L41 38M20 16L15 5M28 16L33 5M20 32L15 43M28 32L33 43"/>
+      </g>
+      <ellipse cx="24" cy="24" rx="6.3" ry="9" fill="#ed2948"/>
+      <circle cx="24" cy="15" r="4.2" fill="#ed2948"/>
+    </svg>
   </div>
 </section>
 
