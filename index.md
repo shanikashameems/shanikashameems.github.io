@@ -11,7 +11,7 @@ title: Journal
     <div class="hero-meta">SHANIKA · READER, BUILDER, FRIENDLY NEIGHBOURHOOD OVERTHINKER</div>
     <div class="handwritten" style="margin-top:18px">with great curiosity... and a little responsibility.</div>
   </div>
-  <div class="book-stage spider-photo-stage" aria-label="The Spider-Man portrait selected for Shanika's Spider-Verse homepage">
+  <div class="book-stage spider-photo-stage" aria-label="Shanika's animated Spider-Verse mask emblem">
     <div class="spider-web-backdrop" aria-hidden="true">
       <svg viewBox="0 0 520 580" preserveAspectRatio="none">
         <g class="web-lines">
@@ -33,7 +33,7 @@ title: Journal
     <span class="spider-hero-scan" aria-hidden="true"></span>
     <div class="spider-card-shell">
     <figure class="spider-photo-card">
-      <img class="spider-mask-art" src="{{ '/assets/spider-mask-card.webp' | relative_url }}" alt="Spider-Man red webbed mask emblem uploaded for the homepage" width="560" height="804" fetchpriority="high" decoding="async">
+      <img class="spider-mask-art" src="data:image/webp;base64,{% include spider-mask-part-1.b64 %}{% include spider-mask-part-2.b64 %}{% include spider-mask-part-3.b64 %}{% include spider-mask-part-4.b64 %}{% include spider-mask-part-5.b64 %}" alt="Red Spider-Man webbed mask emblem with white eyes" width="560" height="804" fetchpriority="high" decoding="async">
       <figcaption><span>EARTH-616 · NEW YORK</span><span>SPIDER-JOURNAL</span></figcaption>
     </figure>
     </div>
