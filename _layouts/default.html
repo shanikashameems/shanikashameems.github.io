@@ -1648,7 +1648,6 @@ body:has(.journal-hero) main{padding-top:27px!important}
   const camera=new THREE.PerspectiveCamera(31,wrap.clientWidth/wrap.clientHeight,.1,100);
   camera.position.set(0,.05,7.8);
   scene.add(new THREE.HemisphereLight(0x9ebcda,0x080d17,2.0));
-  const key=new THREE.AreaLight?null:null;
   const soft=new THREE.DirectionalLight(0xe5f1ff,3.5);soft.position.set(-3,4,6);scene.add(soft);
   const rim=new THREE.PointLight(0x2e9eea,42,12);rim.position.set(-3,.2,2);scene.add(rim);
   const red=new THREE.PointLight(0xd21f43,34,10);red.position.set(3,1,1);scene.add(red);
