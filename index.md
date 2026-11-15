@@ -33,7 +33,7 @@ title: Journal
     <span class="spider-hero-scan" aria-hidden="true"></span>
     <div class="spider-card-shell">
     <figure class="spider-photo-card">
-      <img class="spider-mask-art" src="data:image/webp;base64,{% include spider-mask-part-1.b64 %}{% include spider-mask-part-2.b64 %}{% include spider-mask-part-3.b64 %}{% include spider-mask-part-4.b64 %}{% include spider-mask-part-5.b64 %}" alt="Red Spider-Man webbed mask emblem with white eyes" width="560" height="804" fetchpriority="high" decoding="async">
+      <img class="spider-mask-art" src="{{ '/assets/spider-mask-direct.png' | relative_url }}" alt="Red Spider-Man webbed mask emblem with white eyes" width="368" height="528" fetchpriority="high" decoding="async">
       <figcaption><span>EARTH-616 · NEW YORK</span><span>SPIDER-JOURNAL</span></figcaption>
     </figure>
     </div>
