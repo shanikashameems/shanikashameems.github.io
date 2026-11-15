@@ -1,6 +1,7 @@
 ---
 layout: default
 title: LinkedIn Post Generator
+image: /assets/spider-ai-workflow.svg
 ---
 The problem is simple: you dont feel to post coz you dont have the right content
 So i simplified this by creating a linkedin post generator
