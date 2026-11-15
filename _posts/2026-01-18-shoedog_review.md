@@ -1,6 +1,7 @@
 ---
 layout: default
 title: SHOE DOG by Phil Knight
+image: /assets/spider-shoedog.svg
 ---
 
 This is one of the books in my stack that changed my idea about my life. Usually whenever I read a book, I focus on the takeaways from the book and this book is one 
