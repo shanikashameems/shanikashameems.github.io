@@ -27,9 +27,13 @@ title: Journal
     <span class="spider-3d-orbit orbit-two" aria-hidden="true"></span>
     <span class="spider-3d-spark spark-one" aria-hidden="true"></span>
     <span class="spider-3d-spark spark-two" aria-hidden="true"></span>
+    <span class="spider-hero-particle particle-three" aria-hidden="true"></span>
+    <span class="spider-hero-particle particle-four" aria-hidden="true"></span>
+    <span class="spider-hero-particle particle-five" aria-hidden="true"></span>
+    <span class="spider-hero-scan" aria-hidden="true"></span>
     <div class="spider-card-shell">
     <figure class="spider-photo-card">
-      <img src="{{ '/assets/spider-mask-hero.webp' | relative_url }}" alt="Spider-Man mask portrait chosen for the homepage" width="227" height="340" fetchpriority="high" decoding="async">
+      <img class="spider-mask-art" src="{{ '/assets/spider-mask-card.webp' | relative_url }}" alt="Spider-Man red webbed mask emblem uploaded for the homepage" width="560" height="804" fetchpriority="high" decoding="async">
       <figcaption><span>EARTH-616 · NEW YORK</span><span>SPIDER-JOURNAL</span></figcaption>
     </figure>
     </div>
