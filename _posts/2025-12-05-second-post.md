@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Unheard journey beginss!!
+image: /assets/spider-chatbot.svg
 ---
 
 Second day today!
