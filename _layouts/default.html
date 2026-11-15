@@ -914,7 +914,7 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 <div class="web-thread" aria-hidden="true"><svg viewBox="0 0 1440 900" preserveAspectRatio="none"><path d="M0 0L720 450L1440 0M0 0L720 450L0 900M1440 0L720 450L1440 900M0 900L720 450L1440 900M0 0Q720 160 1440 0M0 0Q160 450 0 900M1440 0Q1280 450 1440 900M0 900Q720 740 1440 900"/></svg></div>
 
 <div class="web-shot-layer" id="web-shot-layer" aria-hidden="true"></div>
-<div class="spider-verse-cursor" id="spider-verse-cursor" aria-hidden="true"><svg viewBox="0 0 40 44"><defs><linearGradient id="shieldSteel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f1fbff"/><stop offset=".35" stop-color="#65c9ed"/><stop offset=".68" stop-color="#17618e"/><stop offset="1" stop-color="#071c34"/></linearGradient></defs><path d="M20 2L36 8V20Q35 33 20 42Q5 33 4 20V8Z" fill="#061629" stroke="#b8efff" stroke-width="1.6"/><path d="M20 5L33 10V20Q32 30 20 38Q8 30 7 20V10Z" fill="url(#shieldSteel)" stroke="#4ab8e6" stroke-width="1"/><path d="M20 7V36M8 18H32M11 27L20 32L29 27" fill="none" stroke="#e8faff" stroke-width="1" opacity=".8"/><path d="M20 12L24 19L20 27L16 19Z" fill="#f7fdff" opacity=".9"/></svg></div>
+<div class="spider-verse-cursor" id="spider-verse-cursor" aria-hidden="true"><svg viewBox="0 0 42 42"><g fill="none" stroke="#dcefff" stroke-width="2" stroke-linecap="round"><path d="M13 15L4 8M11 20L2 19M12 26L4 33M29 15L38 8M31 20L40 19M30 26L38 33"/><path d="M14 13L8 4M28 13L34 4M14 29L9 38M28 29L33 38"/></g><ellipse cx="21" cy="18" rx="6" ry="8" fill="#dcefff"/><ellipse cx="21" cy="27" rx="7" ry="5" fill="#e52b4b"/><circle cx="19" cy="17" r="1.5" fill="#0a1424"/><circle cx="23" cy="17" r="1.5" fill="#0a1424"/></svg></div>
 
 
 {% if page.url == '/' %}
@@ -943,13 +943,27 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
     <nav class="navlinks" aria-label="Main navigation">
       <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Missions</a>
       <a href="{{ '/about/' | relative_url }}" {% if page.url contains 'about' %}class="active"{% endif %}>Spider File</a>
-      <a href="{{ '/projects/' | relative_url }}" {% if page.url contains 'projects' %}class="active"{% endif %}>Archives</a>
+      <a href="{{ '/projects/' | relative_url }}" {% if page.url contains 'projects' %}class="active"{% endif %}>Issue Library</a>
       <a href="{{ '/contact/' | relative_url }}" {% if page.url contains 'contact' %}class="active"{% endif %}>Web Line</a>
     </nav>
   </div>
 </header>
 
-<main>{{ content }}</main>
+<main{% if page.path contains '_posts/' %} class="spider-post-main"{% endif %}>
+{% if page.path contains '_posts/' %}
+<article class="spider-issue-page">
+  <header class="spider-issue-header">
+    <div class="spider-issue-overline"><span>MARVEL-INSPIRED JOURNAL</span><b>PERSONAL ISSUE · EARTH-616</b></div>
+    <div class="spider-issue-label">THE DAILY BUGLE / PERSONAL EDITION</div>
+    <h1>{{ page.title }}</h1>
+    <p class="spider-issue-date">{{ page.date | date: "%d %B %Y" }} <span>·</span> WRITTEN BY SHANIKA</p>
+    {% if page.image %}<img class="spider-issue-cover" src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}" loading="eager">{% endif %}
+  </header>
+  <div class="spider-issue-content">{{ content }}</div>
+  <div class="spider-issue-end"><span>END OF ISSUE</span><b>TO BE CONTINUED…</b></div>
+</article>
+{% else %}{{ content }}{% endif %}
+</main>
 <button class="back-top" type="button" aria-label="Back to top">↑</button>
 <footer><span>© 2025 · Shanika's digital journal</span><span>Made of curiosity <span class="footer-mark">✳</span> and little notes</span></footer>
 <script>
@@ -1632,69 +1646,206 @@ body:has(.journal-hero) main{padding-top:27px!important}
  const stage=document.querySelector('.journal-hero .book-stage');
  if(!stage||stage.dataset.spiderScene==='ready')return;
  stage.dataset.spiderScene='ready';
- const wrap=document.createElement('div');wrap.className='spider-hero-scene';
- wrap.innerHTML='<div class="spider-hero-glow"></div><canvas class="spider-hero-canvas" aria-label="Interactive three-dimensional crimson and midnight-blue masked hero portrait"></canvas><div class="spider-hero-hint">MOVE TO LOOK AROUND</div>';
+ const wrap=document.createElement('div');
+ wrap.className='spider-hero-scene';
+ wrap.innerHTML='<div class="spider-hero-glow"></div><canvas class="spider-hero-canvas" aria-label="Detailed three-dimensional red and blue webbed Spider-Man mask, gently turning toward the viewer"></canvas><div class="spider-hero-hud hud-left"><span>EARTH-616</span><b>NEW YORK CITY</b></div><div class="spider-hero-hud hud-right"><span>FRIENDLY NEIGHBOURHOOD</span><b>SPIDER-JOURNAL</b></div><div class="spider-hero-hint">MOVE YOUR CURSOR TO LOOK AROUND</div>';
  stage.appendChild(wrap);
  try{
   const THREE=await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
   if(!wrap.isConnected)return;
   const canvas=wrap.querySelector('canvas');
   const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'high-performance'});
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.8));
   renderer.setSize(wrap.clientWidth,wrap.clientHeight,false);
   renderer.outputColorSpace=THREE.SRGBColorSpace;
-  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=1.18;
+  renderer.shadowMap.enabled=true;
+  renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+
   const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(31,wrap.clientWidth/wrap.clientHeight,.1,100);
-  camera.position.set(0,.05,7.8);
-  scene.add(new THREE.HemisphereLight(0x9ebcda,0x080d17,2.0));
-  const soft=new THREE.DirectionalLight(0xe5f1ff,3.5);soft.position.set(-3,4,6);scene.add(soft);
-  const rim=new THREE.PointLight(0x2e9eea,42,12);rim.position.set(-3,.2,2);scene.add(rim);
-  const red=new THREE.PointLight(0xd21f43,34,10);red.position.set(3,1,1);scene.add(red);
-  const fill=new THREE.PointLight(0x7bb9e8,8,8);fill.position.set(0,-3,3);scene.add(fill);
+  const camera=new THREE.PerspectiveCamera(30,wrap.clientWidth/wrap.clientHeight,.1,100);
+  camera.position.set(0,.04,7.5);
+
+  scene.add(new THREE.HemisphereLight(0x9cc9eb,0x080d19,1.7));
+  const key=new THREE.DirectionalLight(0xffe7e3,3.4);key.position.set(-3.5,4.5,5);key.castShadow=true;scene.add(key);
+  const blueRim=new THREE.PointLight(0x219bfa,34,12);blueRim.position.set(-3,.4,-.5);scene.add(blueRim);
+  const redRim=new THREE.PointLight(0xef2346,30,11);redRim.position.set(3,1.4,1);scene.add(redRim);
+  const faceFill=new THREE.PointLight(0xd5eaff,9,8);faceFill.position.set(0,-1.6,4);scene.add(faceFill);
+
+  // Fine woven fabric plus a hand-drawn radial web pattern on the mask.
+  const textureCanvas=document.createElement('canvas');textureCanvas.width=1024;textureCanvas.height=512;
+  const ctx=textureCanvas.getContext('2d');
+  const base=ctx.createLinearGradient(0,0,1024,512);base.addColorStop(0,'#ee3348');base.addColorStop(.48,'#a90e2c');base.addColorStop(1,'#5c102b');
+  ctx.fillStyle=base;ctx.fillRect(0,0,1024,512);
+  let seed=616;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};
+  for(let i=0;i<26000;i++){
+   const x=random()*1024,y=random()*512,a=random()*.11;
+   ctx.fillStyle=random()>.5?'rgba(255,217,222,'+a+')':'rgba(3,8,19,'+a+')';
+   ctx.fillRect(x,y,random()*1.8+.25,random()*1.8+.25);
+  }
+  ctx.save();ctx.translate(512,256);
+  ctx.strokeStyle='rgba(10,14,28,.62)';ctx.lineWidth=2.2;
+  for(let i=0;i<20;i++){const a=Math.PI*2*i/20;ctx.beginPath();ctx.moveTo(Math.cos(a)*16,Math.sin(a)*16);ctx.lineTo(Math.cos(a)*620,Math.sin(a)*620);ctx.stroke();}
+  for(let r=40;r<610;r+=39){
+   ctx.beginPath();
+   for(let i=0;i<=240;i++){const a=Math.PI*2*i/240;const rr=r+Math.sin(a*10)*5;const x=Math.cos(a)*rr,y=Math.sin(a)*rr;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}
+   ctx.stroke();
+  }
+  ctx.strokeStyle='rgba(255,196,204,.18)';ctx.lineWidth=1;
+  for(let r=52;r<590;r+=39){ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.stroke();}
+  ctx.restore();
+  const maskTexture=new THREE.CanvasTexture(textureCanvas);
+  maskTexture.colorSpace=THREE.SRGBColorSpace;
+  maskTexture.wrapS=THREE.RepeatWrapping;maskTexture.wrapT=THREE.ClampToEdgeWrapping;
+  maskTexture.anisotropy=Math.min(renderer.capabilities.getMaxAnisotropy(),8);
+
+  const suitCanvas=document.createElement('canvas');suitCanvas.width=256;suitCanvas.height=256;
+  const sx=suitCanvas.getContext('2d');
+  const sg=sx.createLinearGradient(0,0,256,256);sg.addColorStop(0,'#164b81');sg.addColorStop(.5,'#0d315c');sg.addColorStop(1,'#071b39');
+  sx.fillStyle=sg;sx.fillRect(0,0,256,256);
+  sx.strokeStyle='rgba(115,190,245,.16)';sx.lineWidth=1;
+  for(let i=0;i<256;i+=8){sx.beginPath();sx.moveTo(i,0);sx.lineTo(i,256);sx.stroke();sx.beginPath();sx.moveTo(0,i);sx.lineTo(256,i);sx.stroke();}
+  const suitTexture=new THREE.CanvasTexture(suitCanvas);suitTexture.colorSpace=THREE.SRGBColorSpace;
+  const redSuit=new THREE.MeshPhysicalMaterial({map:maskTexture,color:0xffffff,metalness:.12,roughness:.49,clearcoat:.72,clearcoatRoughness:.3,bumpMap:maskTexture,bumpScale:.018});
+  const blueSuit=new THREE.MeshPhysicalMaterial({map:suitTexture,color:0xffffff,metalness:.19,roughness:.55,clearcoat:.42,clearcoatRoughness:.46});
+  const blackWeb=new THREE.MeshStandardMaterial({color:0x090d19,roughness:.74,metalness:.08});
+  const brightWeb=new THREE.MeshStandardMaterial({color:0x283c57,roughness:.56,metalness:.14});
+  const lensFrame=new THREE.MeshPhysicalMaterial({color:0x050b16,metalness:.38,roughness:.25,clearcoat:.8});
+  const lensGlass=new THREE.MeshPhysicalMaterial({color:0xe7f6ff,metalness:.3,roughness:.17,clearcoat:1,clearcoatRoughness:.07,emissive:0x294e77,emissiveIntensity:.18});
   const hero=new THREE.Group();scene.add(hero);
   const head=new THREE.Group();hero.add(head);
-  const textureCanvas=document.createElement('canvas');textureCanvas.width=512;textureCanvas.height=512;
-  const ctx=textureCanvas.getContext('2d');ctx.fillStyle='#a51b32';ctx.fillRect(0,0,512,512);
-  for(let y=0;y<512;y+=4)for(let x=0;x<512;x+=4){const n=Math.random()*22;ctx.fillStyle='rgba(255,210,220,'+(n/500)+')';ctx.fillRect(x,y,2,2);ctx.fillStyle='rgba(5,10,25,'+(n/650)+')';ctx.fillRect(x+2,y+2,2,2)}
-  const fabric=new THREE.CanvasTexture(textureCanvas);fabric.colorSpace=THREE.SRGBColorSpace;fabric.wrapS=fabric.wrapT=THREE.RepeatWrapping;fabric.repeat.set(2,2);
-  const shellGeo=new THREE.SphereGeometry(1,96,72);
-  const pos=shellGeo.attributes.position;
-  for(let j=0;j<pos.count;j++){const x=pos.getX(j),y=pos.getY(j),z=pos.getZ(j);const jaw=1-.18*Math.max(0,-y);pos.setXYZ(j,x*jaw,y,z)}
-  shellGeo.computeVertexNormals();
-  const shell=new THREE.Mesh(shellGeo,new THREE.MeshPhysicalMaterial({color:0xc12742,map:fabric,metalness:.12,roughness:.58,clearcoat:.35,clearcoatRoughness:.42}));
-  shell.scale.set(.94,1.24,.72);shell.position.y=.04;head.add(shell);
-  const navy=new THREE.MeshPhysicalMaterial({color:0x102b4b,metalness:.24,roughness:.48,clearcoat:.5});
-  const crown=new THREE.Mesh(new THREE.SphereGeometry(.94,64,32,0,Math.PI*2,0,Math.PI*.37),navy);crown.scale.set(1,1.18,.76);crown.position.y=.53;head.add(crown);
-  const dark=new THREE.MeshPhysicalMaterial({color:0x090e18,metalness:.3,roughness:.34});
-  const lens=new THREE.MeshPhysicalMaterial({color:0xeaf5ff,metalness:.28,roughness:.16,clearcoat:1,clearcoatRoughness:.08,emissive:0x254d72,emissiveIntensity:.22});
-  function makeEye(sign){
-   const s=new THREE.Shape();s.moveTo(0,0);s.quadraticCurveTo(.18,.25,.49,.19);s.quadraticCurveTo(.43,-.02,.12,-.22);s.quadraticCurveTo(.05,-.13,0,0);
-   const g=new THREE.ExtrudeGeometry(s,{depth:.045,bevelEnabled:true,bevelSegments:4,steps:1,bevelSize:.025,bevelThickness:.025});
-   const rimMesh=new THREE.Mesh(g,dark);rimMesh.position.set(sign*.105,.17,.605);rimMesh.rotation.y=sign*-.16;rimMesh.scale.set(sign*.93,.88,1);head.add(rimMesh);
-   const glass=new THREE.Mesh(g,lens);glass.position.set(sign*.105,.17,.65);glass.rotation.y=sign*-.16;glass.scale.set(sign*.91,.85,1);head.add(glass);return glass;
+
+  const faceGeo=new THREE.SphereGeometry(1,128,96);
+  const fp=faceGeo.attributes.position;
+  for(let i=0;i<fp.count;i++){
+   const x=fp.getX(i),y=fp.getY(i),z=fp.getZ(i);
+   const jaw=1-.23*Math.max(0,-y);
+   fp.setXYZ(i,x*jaw,y,z*(1-.07*Math.max(0,-y)));
   }
-  const eyes=[makeEye(-1),makeEye(1)];
-  const seamMat=new THREE.LineBasicMaterial({color:0x350d1a,transparent:true,opacity:.55});
-  const seams=new THREE.Group();head.add(seams);
-  for(let k=-4;k<=4;k++){const pts=[];const y=k*.19;for(let j=0;j<=50;j++){const a=-1.28+j*2.56/50;const x=.94*Math.cos(a)*Math.sqrt(Math.max(.08,1-y*y));const z=.72*Math.sin(a)*Math.sqrt(Math.max(.08,1-y*y));pts.push(new THREE.Vector3(x,y+.04,z+.012))}seams.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),seamMat))}
-  for(let k=0;k<16;k++){const a=k*Math.PI/8;const pts=[];for(let j=0;j<=40;j++){const t=-1.18+j*2.36/40;pts.push(new THREE.Vector3(.945*Math.sin(a)*Math.cos(t),.04+1.24*Math.sin(t),.725*Math.cos(a)*Math.cos(t)+.02))}seams.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),seamMat))}
-  const neck=new THREE.Mesh(new THREE.CylinderGeometry(.34,.46,.65,48),new THREE.MeshPhysicalMaterial({color:0x102b49,metalness:.18,roughness:.52}));neck.position.y=-1.25;head.add(neck);
-  const shoulders=new THREE.Mesh(new THREE.SphereGeometry(1,64,40),navy);shoulders.scale.set(1.5,.48,.55);shoulders.position.set(0,-1.52,-.02);head.add(shoulders);
-  const collar=new THREE.Mesh(new THREE.TorusGeometry(.47,.055,12,64),new THREE.MeshStandardMaterial({color:0xb21c37,metalness:.2,roughness:.45}));collar.rotation.x=Math.PI/2;collar.position.y=-1.23;head.add(collar);
-  const backdrop=new THREE.Group();scene.add(backdrop);
-  const strands=new THREE.Group();backdrop.add(strands);
-  const strandMat=new THREE.LineBasicMaterial({color:0x8bcfff,transparent:true,opacity:.17});
-  for(let k=0;k<18;k++){const a=k*Math.PI*2/18;const pts=[new THREE.Vector3(Math.cos(a)*2.8,Math.sin(a)*2.5,-1.3),new THREE.Vector3(Math.cos(a)*.5,Math.sin(a)*.5,-1.3),new THREE.Vector3(0,0,-1.3)];strands.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),strandMat))}
-  const pointer={x:0,y:0,tx:0,ty:0};wrap.addEventListener('pointermove',e=>{const r=wrap.getBoundingClientRect();pointer.tx=((e.clientX-r.left)/r.width-.5)*2;pointer.ty=((e.clientY-r.top)/r.height-.5)*2});
-  wrap.addEventListener('pointerleave',()=>{pointer.tx=0;pointer.ty=0});
-  let raf=0,active=true;const clock=new THREE.Clock();
-  function resize(){const w=Math.max(1,wrap.clientWidth),h=Math.max(1,wrap.clientHeight);camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false)}
-  const ro=new ResizeObserver(resize);ro.observe(wrap);
-  function render(){if(!active)return;raf=requestAnimationFrame(render);const t=clock.getElapsedTime();pointer.x+=(pointer.tx-pointer.x)*.035;pointer.y+=(pointer.ty-pointer.y)*.035;head.rotation.y=Math.sin(t*.22)*.10+pointer.x*.28;head.rotation.x=-pointer.y*.13+Math.sin(t*.42)*.018;head.rotation.z=Math.sin(t*.31)*.018;head.position.y=Math.sin(t*.72)*.035;eyes.forEach((e,i)=>{const blink=Math.pow(Math.max(0,Math.sin(t*.72+1.2)),34)*.16;e.scale.y=(i===0?.85:.85)*(1-blink)});strands.rotation.z=-pointer.x*.045;renderer.render(scene,camera)}
+  faceGeo.computeVertexNormals();
+  const mask=new THREE.Mesh(faceGeo,redSuit);
+  mask.name='webbed-crimson-mask';mask.scale.set(.91,1.22,.75);mask.position.y=.1;mask.castShadow=true;mask.receiveShadow=true;head.add(mask);
+
+  // Side and crown panels make the head read as a fitted suit rather than a plain sphere.
+  const crown=new THREE.Mesh(new THREE.SphereGeometry(.92,72,48,0,Math.PI*2,0,Math.PI*.36),blueSuit);
+  crown.scale.set(1.01,1.19,.79);crown.position.set(0,.49,-.05);head.add(crown);
+  const jawPanel=new THREE.Mesh(new THREE.SphereGeometry(.915,72,48,0,Math.PI*2,Math.PI*.63,Math.PI*.25),blueSuit);
+  jawPanel.scale.set(.99,1.2,.77);jawPanel.position.y=.1;head.add(jawPanel);
+
+  const eyeGroups=[];
+  function makeEye(sign){
+   const makeShape=(factor)=>{const shape=new THREE.Shape();shape.moveTo(0,0);shape.quadraticCurveTo(sign*.15*factor,.27*factor,sign*.47*factor,.205*factor);shape.quadraticCurveTo(sign*.43*factor,-.015*factor,sign*.16*factor,-.19*factor);shape.quadraticCurveTo(sign*.055*factor,-.13*factor,0,0);return shape;};
+   const group=new THREE.Group();group.position.set(sign*.105,.205,.667);head.add(group);
+   const frameGeo=new THREE.ExtrudeGeometry(makeShape(1.12),{depth:.055,bevelEnabled:true,bevelSegments:5,steps:1,bevelSize:.026,bevelThickness:.026});
+   const frame=new THREE.Mesh(frameGeo,lensFrame);frame.position.z=-.005;group.add(frame);
+   const glassGeo=new THREE.ExtrudeGeometry(makeShape(.91),{depth:.025,bevelEnabled:true,bevelSegments:4,steps:1,bevelSize:.018,bevelThickness:.016});
+   const glass=new THREE.Mesh(glassGeo,lensGlass);glass.position.set(0,.002,.05);group.add(glass);
+   const glint=new THREE.Mesh(new THREE.SphereGeometry(.022,16,12),new THREE.MeshBasicMaterial({color:0xffffff}));
+   glint.position.set(sign*.22,.12,.09);group.add(glint);
+   eyeGroups.push(group);
+  }
+  makeEye(-1);makeEye(1);
+
+  // Blue shoulders and torso, sculpted as a connected upper-body silhouette.
+  const neck=new THREE.Mesh(new THREE.CylinderGeometry(.31,.42,.62,64),blueSuit);
+  neck.position.set(0,-1.18,-.06);neck.castShadow=true;head.add(neck);
+  const torso=new THREE.Mesh(new THREE.SphereGeometry(1,96,64),blueSuit);
+  torso.scale.set(1.36,.73,.58);torso.position.set(0,-1.62,-.12);torso.castShadow=true;head.add(torso);
+  for(const sign of [-1,1]){
+   const shoulder=new THREE.Mesh(new THREE.SphereGeometry(1,64,48),blueSuit);
+   shoulder.scale.set(.79,.47,.58);shoulder.position.set(sign*.89,-1.43,-.08);head.add(shoulder);
+   const redShoulder=new THREE.Mesh(new THREE.SphereGeometry(1,48,32),redSuit);
+   redShoulder.scale.set(.49,.14,.6);redShoulder.position.set(sign*.84,-1.27,.04);head.add(redShoulder);
+  }
+  const chestSpider=new THREE.Group();chestSpider.position.set(0,-1.61,.46);chestSpider.scale.set(.76,.83,.72);head.add(chestSpider);
+  const emblemMat=new THREE.MeshStandardMaterial({color:0x050b16,metalness:.25,roughness:.42});
+  const spiderBody=new THREE.Mesh(new THREE.SphereGeometry(.085,28,20),emblemMat);spiderBody.scale.set(.75,1.7,.65);chestSpider.add(spiderBody);
+  const spiderHead=new THREE.Mesh(new THREE.SphereGeometry(.065,24,16),emblemMat);spiderHead.position.y=.17;chestSpider.add(spiderHead);
+  for(let side of [-1,1])for(let row=0;row<4;row++){
+   const y=.12-row*.085;
+   const curve=new THREE.CatmullRomCurve3([
+    new THREE.Vector3(side*.035,y,.02),
+    new THREE.Vector3(side*(.15+row*.025),y+.10-row*.045,.035),
+    new THREE.Vector3(side*(.22+row*.045),y-.02-row*.075,.025),
+    new THREE.Vector3(side*(.34+row*.035),y-.10-row*.075,.0)
+   ]);
+   chestSpider.add(new THREE.Mesh(new THREE.TubeGeometry(curve,18,.018,7,false),emblemMat));
+  }
+
+  // A tiny raised web detail along the brow and cheek edges catches the light.
+  const seamGroup=new THREE.Group();head.add(seamGroup);
+  const seamMaterial=new THREE.LineBasicMaterial({color:0x190c1a,transparent:true,opacity:.42});
+  for(let sign of [-1,1]){
+   for(let row=0;row<3;row++){
+    const points=[];
+    for(let k=0;k<=24;k++){const t=k/24;points.push(new THREE.Vector3(sign*(.52+t*.23),.46-row*.15-t*.08,.48+t*.07));}
+    seamGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(points),seamMaterial));
+   }
+  }
+
+  // Rain-lit New York skyline and a large web geometry behind the mask.
+  const city=new THREE.Group();scene.add(city);
+  const buildingMat=new THREE.MeshStandardMaterial({color:0x091727,metalness:.22,roughness:.84});
+  const windowMats=[new THREE.MeshBasicMaterial({color:0x2d8cc4}),new THREE.MeshBasicMaterial({color:0xb8324c}),new THREE.MeshBasicMaterial({color:0xe2bd7b})];
+  for(let i=0;i<23;i++){
+   const x=-4.7+i*.43+(random()-.5)*.18;
+   const h=.55+random()*1.65,w=.28+random()*.2;
+   const building=new THREE.Mesh(new THREE.BoxGeometry(w,h,.28),buildingMat);
+   building.position.set(x,-2.05+h/2,-2.65-(random()*.35));city.add(building);
+   for(let row=0;row<Math.floor(h*4);row++)for(let col=0;col<2;col++){
+    if(random()>.53)continue;
+    const win=new THREE.Mesh(new THREE.PlaneGeometry(.035,.045),windowMats[Math.floor(random()*windowMats.length)]);
+    win.position.set(x-w*.24+col*w*.42,-2.05+.18+row*.18,-2.47-(i%3)*.006);city.add(win);
+   }
+  }
+  const webGroup=new THREE.Group();scene.add(webGroup);
+  const webMaterial=new THREE.LineBasicMaterial({color:0x71c7f4,transparent:true,opacity:.2});
+  for(let ray=0;ray<16;ray++){
+   const a=Math.PI*2*ray/16,pts=[new THREE.Vector3(0,.1,-2.2),new THREE.Vector3(Math.cos(a)*1.9,Math.sin(a)*1.9,-2.2),new THREE.Vector3(Math.cos(a)*3.2,Math.sin(a)*3.2,-2.2)];
+   webGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),webMaterial));
+  }
+  for(let ring=1;ring<=6;ring++){
+   const r=ring*.48,pts=[];
+   for(let i=0;i<=128;i++){const a=Math.PI*2*i/128;pts.push(new THREE.Vector3(Math.cos(a)*r,Math.sin(a)*r,-2.2));}
+   webGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),webMaterial));
+  }
+
+  const dustGeo=new THREE.BufferGeometry(),dustPoints=[];
+  for(let i=0;i<130;i++)dustPoints.push((random()-.5)*7,(random()-.5)*4,-1.8-random()*2);
+  dustGeo.setAttribute('position',new THREE.Float32BufferAttribute(dustPoints,3));
+  const dust=new THREE.Points(dustGeo,new THREE.PointsMaterial({color:0xbadff7,size:.018,transparent:true,opacity:.38}));
+  scene.add(dust);
+
+  const pointer={x:0,y:0,tx:0,ty:0};
+  wrap.addEventListener('pointermove',event=>{const r=wrap.getBoundingClientRect();pointer.tx=((event.clientX-r.left)/r.width-.5)*2;pointer.ty=((event.clientY-r.top)/r.height-.5)*2;});
+  wrap.addEventListener('pointerleave',()=>{pointer.tx=0;pointer.ty=0;});
+  const clock=new THREE.Clock();let raf=0,active=true;
+  const resize=()=>{const w=Math.max(1,wrap.clientWidth),h=Math.max(1,wrap.clientHeight);camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);};
+  const observer=new ResizeObserver(resize);observer.observe(wrap);
+  function render(){
+   if(!active)return;
+   raf=requestAnimationFrame(render);
+   const t=clock.getElapsedTime();
+   pointer.x+=(pointer.tx-pointer.x)*.035;pointer.y+=(pointer.ty-pointer.y)*.035;
+   head.rotation.y=Math.sin(t*.2)*.075+pointer.x*.24;
+   head.rotation.x=-pointer.y*.11+Math.sin(t*.42)*.013;
+   head.rotation.z=Math.sin(t*.27)*.012;
+   head.position.y=.1+Math.sin(t*.75)*.022;
+   const blink=Math.pow(Math.max(0,Math.sin(t*.61+1.6)),36)*.18;
+   eyeGroups.forEach(group=>{group.scale.y=1-blink;});
+   webGroup.rotation.z=Math.sin(t*.1)*.018-pointer.x*.022;
+   dust.rotation.y=t*.01;
+   renderer.render(scene,camera);
+  }
   render();
-  document.addEventListener('visibilitychange',()=>{if(document.hidden){active=false;cancelAnimationFrame(raf)}else if(!active){active=true;clock.start();render()}});
- }catch(err){wrap.classList.add('spider-hero-fallback');wrap.querySelector('canvas').style.display='none'}
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){active=false;cancelAnimationFrame(raf);}else if(!active){active=true;clock.start();render();}});
+  window.addEventListener('beforeunload',()=>{active=false;observer.disconnect();renderer.dispose();},{once:true});
+ }catch(error){
+  wrap.classList.add('spider-hero-fallback');
+  const fallback=wrap.querySelector('canvas');if(fallback)fallback.style.display='none';
+  console.error('Spider-Man hero scene could not be initialized:',error);
+ }
 })();
 </script>
 
@@ -1799,6 +1950,88 @@ body{background:radial-gradient(ellipse at 50% -12%,#1c2a3b 0,#0a111b 45%,#070b1
 @media(max-width:850px){.journal-hero{grid-template-columns:1fr;min-height:0}.journal-hero .book-stage{min-height:440px;height:440px;margin-top:0}.home-post-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.journal-hero .book-stage{height:360px;min-height:360px}.home-post-grid{grid-template-columns:1fr}.home-post-media{height:230px}}
 @media(prefers-reduced-motion:reduce){.home-post-card,.home-post-media img{transition:none!important}}
+</style>
+<style id="spider-man-global-identity">
+:root{--hand:'Patrick Hand',cursive;--caveat:'Caveat',cursive;--sketch:'Schoolbell',cursive;--spider-red:#e51d3d;--spider-blue:#1676c8;--spider-ink:#070c18}
+body{font-family:var(--hand)!important;background:#070c18!important;color:#eaf2fa!important}
+h1,h2,h3{font-family:var(--sketch)!important;font-weight:400!important;letter-spacing:0!important;text-shadow:1.5px 2px 0 rgba(8,13,24,.9),2px 3px 18px rgba(16,102,175,.18)!important}
+.brand,.navlinks a,.handwritten,.hero-meta,.entry-date,.text-link,.home-post-author,.home-post-actions,.spider-hero-hint{font-family:var(--caveat)!important;letter-spacing:0!important;text-transform:none!important}
+.brand{font-size:2.05rem!important;text-shadow:2px 2px 0 #e51d3d,4px 4px 0 #1676c8!important}
+.navlinks a{font-size:1.55rem!important}
+.eyebrow,.page-kicker{font:700 1.22rem var(--caveat)!important;letter-spacing:.07em!important;text-transform:uppercase!important;color:#75caff!important}
+main{position:relative;isolation:isolate}
+main:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.22;background:radial-gradient(ellipse at 50% 0,rgba(18,113,183,.15),transparent 62%),repeating-linear-gradient(135deg,transparent 0 98px,rgba(103,180,231,.08) 99px 100px)}
+.journal-hero{min-height:600px!important;padding-top:28px!important;padding-bottom:65px!important}
+.journal-hero .hero-copy h1{font:400 clamp(3.6rem,7.4vw,6.6rem)/.95 var(--sketch)!important;letter-spacing:0!important;text-shadow:2px 3px 0 rgba(9,17,31,.85),0 0 28px rgba(34,121,192,.22)!important}
+.journal-hero .hero-copy h1 em{color:#ff4a62!important;text-shadow:2px 2px 0 #071426,0 0 22px rgba(230,35,62,.28)!important}
+.hero-lede{font:1.32rem/1.58 var(--hand)!important;color:#c6d5e5!important;max-width:520px!important}
+.hero-meta{font-size:1.42rem!important;color:#9cc6e6!important}
+.handwritten{font-size:clamp(2.1rem,4vw,3.1rem)!important;color:#f04a62!important}
+.journal-hero .book-stage{min-height:570px!important;height:min(64vw,670px)!important}
+.spider-hero-scene{min-height:100%!important;overflow:visible!important}
+.spider-hero-glow{inset:8% 6%!important;width:auto!important;height:auto!important;background:radial-gradient(ellipse,rgba(25,107,176,.33),rgba(215,27,58,.13) 42%,transparent 72%)!important;filter:blur(22px)!important}
+.spider-hero-hint{font:600 1.05rem var(--caveat)!important;letter-spacing:.04em!important;color:#9dbdd9!important}
+.spider-hero-hud{position:absolute;z-index:6;top:12%;display:grid;gap:3px;padding:9px 12px;border-left:2px solid #e52b4b;background:linear-gradient(90deg,rgba(5,14,27,.8),rgba(5,14,27,0));font:600 .9rem 'Barlow Condensed',sans-serif;letter-spacing:.16em;color:#8db9dc;pointer-events:none}
+.spider-hero-hud b{font-weight:600;color:#e7f3ff;font-size:.72rem;letter-spacing:.13em}
+.spider-hero-hud.hud-left{left:-1%}.spider-hero-hud.hud-right{right:-1%;text-align:right;border-left:0;border-right:2px solid #1676c8;background:linear-gradient(270deg,rgba(5,14,27,.8),rgba(5,14,27,0))}
+.home-recent-feed{margin-top:5px!important}
+.home-recent-feed .section-head{border-color:rgba(86,168,224,.28)!important}
+.home-recent-feed .section-head h2{font:400 clamp(2.7rem,4vw,3.7rem)/1.05 var(--sketch)!important}
+.home-post-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:18px!important}
+.home-post-card{border:1px solid rgba(89,167,219,.3)!important;border-radius:9px!important;background:linear-gradient(150deg,#14243a,#080f1d 76%)!important;box-shadow:0 18px 50px rgba(0,0,0,.38),inset 0 0 0 1px rgba(255,255,255,.025)!important}
+.home-post-card:hover{border-color:rgba(236,47,73,.72)!important;box-shadow:0 22px 58px rgba(0,0,0,.5),0 0 22px rgba(22,118,200,.15)!important}
+.home-post-media{height:190px!important;background:#081423!important}
+.home-post-media:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 50%,rgba(3,8,16,.72))}
+.home-post-media img{filter:saturate(.92) contrast(1.08)!important}
+.home-post-body h3{font:700 1.8rem/1 var(--caveat)!important;letter-spacing:0!important;text-transform:none!important}
+.home-post-body p{font:1.1rem/1.45 var(--hand)!important;color:#b9cde0!important}
+.home-post-avatar{box-shadow:0 0 0 2px #0a1528,0 0 0 3px #e52b4b!important}
+.content-page{position:relative;overflow:hidden;max-width:940px!important;margin:22px auto 50px!important;padding:clamp(25px,5vw,52px)!important;background:linear-gradient(145deg,rgba(14,29,49,.97),rgba(5,12,24,.98))!important;border:1px solid rgba(89,174,232,.35)!important;border-radius:8px!important;box-shadow:0 24px 70px rgba(0,0,0,.42),inset 0 0 45px rgba(13,87,145,.1)!important}
+.content-page:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.12;background-image:repeating-radial-gradient(circle at 100% 0,transparent 0 22px,rgba(173,217,245,.5) 23px 24px,transparent 25px 46px),repeating-conic-gradient(from 0deg at 100% 0,transparent 0deg 14deg,rgba(173,217,245,.26) 14.3deg 14.7deg,transparent 15deg 30deg)}
+.content-page>*{position:relative;z-index:1}
+.content-page>h1{font:400 clamp(3.4rem,6.5vw,5.6rem)/.94 var(--sketch)!important;color:#f4f7fc!important}
+.content-page p,.content-page li{font:1.28rem/1.68 var(--hand)!important;color:#c6d6e6!important}
+.content-page h2,.contact-aside h2{font:400 clamp(2.5rem,4vw,3.5rem)/1 var(--sketch)!important;color:#f0f6ff!important}
+.content-page blockquote{border-left:4px solid #e52b4b!important;background:linear-gradient(90deg,rgba(224,34,65,.14),rgba(15,105,172,.08))!important;color:#d9eafa!important;border-radius:0 8px 8px 0!important}
+.note-page .note-quote{position:relative;color:#f2f7fc!important;background:linear-gradient(120deg,rgba(211,33,62,.22),rgba(15,92,154,.16))!important;border:1px solid rgba(103,184,239,.35)!important;border-left:4px solid #e52b4b!important;box-shadow:4px 5px 0 rgba(8,20,40,.5)!important}
+.note-page .note-welcome,.note-page .note-signoff{color:#ff7184!important}
+.note-page .note-heart{color:#ff526b!important}
+.library-page{background:linear-gradient(145deg,rgba(8,27,48,.97),rgba(5,13,24,.99))!important}
+.library-page>h1{font:400 clamp(3.3rem,6vw,5.5rem)/.95 var(--sketch)!important;text-shadow:2px 2px 0 #e51d3d,4px 4px 0 #1676c8!important}
+.library-page .library-intro{font:1.25rem/1.6 var(--hand)!important;color:#c9d9e8!important}
+.library-page .library-room{border:5px solid #a51c35!important;box-shadow:0 0 0 2px #1676c8,0 18px 40px rgba(0,0,0,.45)!important}
+.contact-layout{gap:34px!important}
+.journal-form{background:linear-gradient(150deg,#132740,#091423)!important;border:1px solid rgba(93,173,229,.4)!important;border-radius:8px!important;box-shadow:0 18px 42px rgba(0,0,0,.3),inset 0 0 25px rgba(17,98,161,.1)!important}
+.journal-form label{font:600 1.4rem var(--caveat)!important;color:#a8d3f2!important}
+.journal-form input,.journal-form textarea{background:#050d19!important;color:#f1f7ff!important;border:1px solid rgba(103,181,233,.38)!important;border-radius:6px!important;font:1.18rem var(--hand)!important}
+.journal-form input:focus,.journal-form textarea:focus{border-color:#f0445d!important;box-shadow:0 0 0 3px rgba(229,29,61,.15)!important}
+.journal-form button{background:linear-gradient(120deg,#e52b4b,#125d9d)!important;color:#fff!important;border-radius:5px!important;box-shadow:3px 4px 0 #071529,0 0 16px rgba(20,120,200,.2)!important;font:700 1.5rem var(--caveat)!important}
+.contact-aside>a{color:#eaf4ff!important;border-color:rgba(100,176,226,.22)!important}
+.contact-aside>a:hover{color:#ff6178!important}
+.contact-aside>a small{color:#92b7d4!important}
+.post-main{max-width:1080px!important}
+.spider-issue-page{max-width:920px;margin:22px auto 72px;padding:clamp(24px,5vw,54px);position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(13,30,51,.98),rgba(4,11,22,.99));border:1px solid rgba(95,176,232,.4);border-radius:8px;box-shadow:0 25px 75px rgba(0,0,0,.48),inset 0 0 55px rgba(11,94,159,.12)}
+.spider-issue-page:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;background:repeating-radial-gradient(circle at 100% 0,transparent 0 22px,rgba(174,218,249,.6) 23px 24px,transparent 25px 46px),repeating-conic-gradient(from 0deg at 100% 0,transparent 0deg 14deg,rgba(174,218,249,.22) 14.3deg 14.7deg,transparent 15deg 30deg)}
+.spider-issue-page>*{position:relative;z-index:1}
+.spider-issue-overline{display:flex;justify-content:space-between;gap:14px;color:#9ac9e9;font:600 .8rem 'Barlow Condensed',sans-serif;letter-spacing:.18em}
+.spider-issue-overline span{color:#ff5c72}
+.spider-issue-label{display:inline-block;margin-top:25px;padding:6px 10px;background:#e52b4b;color:#fff;font:700 .72rem 'Barlow Condensed',sans-serif;letter-spacing:.16em;transform:skew(-7deg)}
+.spider-issue-header h1{font:400 clamp(3rem,6vw,5rem)/.98 var(--sketch)!important;color:#fff!important;margin:17px 0 9px!important}
+.spider-issue-date{font:600 1.15rem var(--caveat)!important;color:#91b9d7!important}
+.spider-issue-date span{color:#e52b4b}
+.spider-issue-cover{display:block;width:100%;max-height:430px;aspect-ratio:16/9;object-fit:cover;margin:24px 0 34px;border:1px solid rgba(105,182,235,.42);box-shadow:0 15px 42px rgba(0,0,0,.42)}
+.spider-issue-content{font:1.3rem/1.72 var(--hand)!important;color:#c8d8e8!important}
+.spider-issue-content p,.spider-issue-content li{font:1.3rem/1.72 var(--hand)!important;color:#c8d8e8!important}
+.spider-issue-content h2,.spider-issue-content h3{font:400 2.25rem/1.05 var(--caveat)!important;color:#ff6479!important}
+.spider-issue-content blockquote{margin:24px 0;padding:12px 20px;border-left:4px solid #e52b4b;background:rgba(12,90,150,.14);color:#e2f1fc;border-radius:0 8px 8px 0}
+.spider-issue-content a{color:#71c6ff}
+.spider-issue-end{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:36px;padding-top:17px;border-top:1px solid rgba(100,180,230,.25);font:600 .8rem 'Barlow Condensed',sans-serif;letter-spacing:.2em;color:#8cb8d7}
+.spider-issue-end b{color:#ff5b72;font-weight:600}
+.spider-verse-cursor{width:34px!important;height:34px!important;filter:drop-shadow(0 0 8px rgba(73,180,255,.7))!important}
+.spider-verse-cursor svg{width:100%;height:100%}
+@media(max-width:850px){.home-post-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.journal-hero .book-stage{min-height:480px!important;height:480px!important}.spider-hero-hud{font-size:.73rem}}
+@media(max-width:560px){.home-post-grid{grid-template-columns:1fr!important}.home-post-media{height:230px!important}.journal-hero .book-stage{min-height:390px!important;height:390px!important}.spider-hero-hud{top:4%;padding:5px 7px;font-size:.63rem}.spider-hero-hud.hud-left{left:0}.spider-hero-hud.hud-right{right:0}.spider-issue-overline{font-size:.65rem}.spider-issue-page{padding:24px 19px}.spider-issue-cover{aspect-ratio:4/3}}
+@media(prefers-reduced-motion:reduce){.spider-hero-hint{display:none}}
 </style>
 </body>
 </html>
