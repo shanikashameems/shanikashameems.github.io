@@ -5,7 +5,7 @@ title: Books
 ---
 
 <article class="content-page reveal library-page">
-  <div class="eyebrow">my little reading corner</div>
+  <div class="eyebrow">THE ISSUE LIBRARY // ON MY SHELF</div>
   <h1>Books I’ve read.</h1>
   <p class="library-intro">Some stories stay in your head longer than expected. These are a few that made it onto my shelf. Tap one if you feel like snooping through my notes. ♡</p>
   <div class="library-decor" aria-hidden="true"><span>✳</span><span>✿</span><span>“</span></div>
