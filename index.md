@@ -20,17 +20,7 @@ title: Journal
   </div>
 </section>
 
-<section class="web-mission-board reveal" aria-label="Explore the webverse">
-  <div class="section-head"><div><div class="eyebrow">Choose your next destination</div><h2>Explore the webverse</h2></div><span class="page-kicker">6 LOCATIONS · 1 UNIVERSE</span></div>
-  <div class="web-mission-grid">
-    <a href="#all-entries" class="web-mission"><span>01 / MISSIONS</span><strong>Daily Missions</strong><small>Stories, thoughts & memories</small><b>↗</b></a>
-    <a href="{{ '/projects/' | relative_url }}" class="web-mission"><span>02 / ARCHIVES</span><strong>The Archives</strong><small>Books & collected stories</small><b>↗</b></a>
-    <a href="{{ '/projects/' | relative_url }}" class="web-mission"><span>03 / THE LAB</span><strong>Project Files</strong><small>Experiments & things I build</small><b>↗</b></a>
-    <a href="{{ '/about/' | relative_url }}" class="web-mission"><span>04 / PROFILE</span><strong>The Spider File</strong><small>Origin story & abilities</small><b>↗</b></a>
-    <a href="{{ '/contact/' | relative_url }}" class="web-mission"><span>05 / COMMS</span><strong>The Web Line</strong><small>Send a signal</small><b>↗</b></a>
-    <a href="#all-entries" class="web-mission"><span>06 / CITY LOG</span><strong>Memory Lane</strong><small>Browse the full archive</small><b>↗</b></a>
-  </div>
-</section>
+
 
 
 <style>
@@ -58,24 +48,55 @@ title: Journal
 @media(max-width:760px){.hero-pose-stack{height:390px;width:min(100%,390px)}.hero-spider-3d{width:min(100%,370px)}}
 @media(prefers-reduced-motion:reduce){.hero-spider-3d{animation:none}}
 </style>
-<section class="reveal">
-  <div class="section-head">
-    <div><div class="eyebrow">The latest entries</div><h2>Recently written</h2></div>
-    <a class="text-link" href="#all-entries">Browse the pages ↓</a>
+
+<section class="home-recent-feed reveal">
+ <div class="section-head">
+  <div><div class="eyebrow">A few moments from the journal</div><h2>Recently written</h2></div>
+  <a class="text-link" href="#all-entries">View all posts ↗</a>
+ </div>
+ <div class="home-post-grid">
+ {% for post in site.posts limit:3 %}
+ <a class="home-post-card" href="{{ post.url | relative_url }}">
+  <div class="home-post-media">
+   {% if post.image %}<img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" loading="lazy">{% endif %}
+   <span class="feed-date">{{ post.date | date: "%d %B %Y" }}</span>
   </div>
-  <div class="entries">
-    {% for post in site.posts limit:3 %}
-    <a class="entry" href="{{ post.url | relative_url }}">
-      <div class="entry-date">{{ post.date | date: "%d %B %Y" }}</div>
-      <h3>{{ post.title }}</h3>
-      <p>{{ post.excerpt | strip_html | strip | truncate: 120 }}</p>
-      <span class="entry-arrow">↗</span>
-    </a>
-    {% else %}
-    <div class="empty-note">The next page is waiting to be written.</div>
-    {% endfor %}
+  <div class="home-post-body">
+   <div class="home-post-author"><span class="home-post-avatar">S</span> SHANIKA · JOURNAL</div>
+   <h3>{{ post.title }}</h3>
+   <p>{{ post.excerpt | strip_html | strip | truncate: 135 }}</p>
+   <div class="home-post-actions"><span>♡ LIKE</span><span>↗ READ STORY</span></div>
   </div>
+ </a>
+ {% else %}
+ <div class="empty-note">The next page is waiting to be written.</div>
+ {% endfor %}
+ </div>
 </section>
+<style id="recently-written-social-feed">
+/* A restrained social-style journal feed, not another dashboard full of boxes. */
+.home-recent-feed{margin:10px 0 70px}
+.home-recent-feed .section-head{align-items:end}
+.home-recent-feed .section-head h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:-.025em;text-transform:uppercase;text-shadow:none}
+.home-recent-feed .section-head .eyebrow{color:#91a9c3}
+.home-post-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.home-post-card{min-width:0;overflow:hidden;text-decoration:none;background:#0b1421;border:1px solid rgba(151,181,209,.2);border-radius:13px;box-shadow:0 14px 36px rgba(0,0,0,.24);transition:transform .28s,border-color .28s,box-shadow .28s}
+.home-post-card:hover{transform:translateY(-5px);border-color:rgba(105,186,239,.55);box-shadow:0 22px 44px rgba(0,0,0,.34)}
+.home-post-media{height:210px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 20%,#263c50,#101b2a 65%,#080e18)}
+.home-post-media:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(2,7,13,.72));z-index:1}
+.home-post-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .55s}
+.home-post-card:hover .home-post-media img{transform:scale(1.045);filter:saturate(1.08)}
+.home-post-media .feed-date{position:absolute;left:15px;bottom:13px;z-index:2;color:#edf6ff;font:600 .76rem 'Barlow Condensed',sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.home-post-body{padding:17px 18px 19px}
+.home-post-author{display:flex;align-items:center;gap:9px;margin-bottom:12px;color:#91a8c0;font:600 .72rem 'Barlow Condensed',sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.home-post-avatar{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#b51d3b,#143e65);border:1px solid rgba(255,255,255,.28);color:white;font:700 .75rem 'Barlow Condensed',sans-serif}
+.home-post-body h3{margin:0 0 9px;font:700 1.45rem/1.12 'Barlow Condensed',sans-serif;letter-spacing:0;text-shadow:none;color:#f1f6fc}
+.home-post-body p{margin:0;color:#aebdd0;font:400 1rem/1.5 'Barlow Condensed',sans-serif}
+.home-post-actions{display:flex;gap:17px;margin-top:15px;padding-top:12px;border-top:1px solid rgba(151,181,209,.13);color:#8da5bf;font:600 .76rem 'Barlow Condensed',sans-serif;letter-spacing:.08em}
+.home-post-actions span:first-child{color:#ff6176}
+@media(max-width:850px){.home-post-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.home-post-media{height:180px}}
+@media(max-width:560px){.home-post-grid{grid-template-columns:1fr}.home-post-media{height:220px}.home-recent-feed{margin-bottom:48px}}
+</style>
 
 <section class="reveal" id="all-entries" style="margin-top:76px">
   <div class="section-head">
