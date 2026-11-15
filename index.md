@@ -24,7 +24,7 @@ title: Journal
     <div class="spider-photo-halo" aria-hidden="true"></div>
     <span class="spider-photo-cable" aria-hidden="true"></span>
     <figure class="spider-photo-card">
-      <img src="{{ '/assets/spider-mask-reference.webp' | relative_url }}" alt="Spider-Man mask portrait chosen for the homepage" width="227" height="340" fetchpriority="high" decoding="async">
+      <img src="{{ '/assets/spider-mask-hero.webp' | relative_url }}" alt="Spider-Man mask portrait chosen for the homepage" width="454" height="680" fetchpriority="high" decoding="async">
       <figcaption><span>EARTH-616 · NEW YORK</span><span>SPIDER-JOURNAL</span></figcaption>
     </figure>
     <svg class="spider-photo-stamp" viewBox="0 0 48 48" aria-hidden="true">
