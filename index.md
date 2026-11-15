@@ -23,10 +23,16 @@ title: Journal
     </div>
     <div class="spider-photo-halo" aria-hidden="true"></div>
     <span class="spider-photo-cable" aria-hidden="true"></span>
+    <span class="spider-3d-orbit orbit-one" aria-hidden="true"></span>
+    <span class="spider-3d-orbit orbit-two" aria-hidden="true"></span>
+    <span class="spider-3d-spark spark-one" aria-hidden="true"></span>
+    <span class="spider-3d-spark spark-two" aria-hidden="true"></span>
+    <div class="spider-card-shell">
     <figure class="spider-photo-card">
       <img src="{{ '/assets/spider-mask-hero.webp' | relative_url }}" alt="Spider-Man mask portrait chosen for the homepage" width="227" height="340" fetchpriority="high" decoding="async">
       <figcaption><span>EARTH-616 · NEW YORK</span><span>SPIDER-JOURNAL</span></figcaption>
     </figure>
+    </div>
     <svg class="spider-photo-stamp" viewBox="0 0 48 48" aria-hidden="true">
       <g fill="none" stroke="#eaf7ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
         <path d="M18 18L8 8M15 23L4 22M17 29L7 38M30 18L40 8M33 23L44 22M31 29L41 38M20 16L15 5M28 16L33 5M20 32L15 43M28 32L33 43"/>
