@@ -1728,10 +1728,12 @@ body:has(.journal-hero) main{padding-top:27px!important}
   mask.name='webbed-crimson-mask';mask.scale.set(.91,1.22,.75);mask.position.y=.1;mask.castShadow=true;mask.receiveShadow=true;head.add(mask);
 
   // Side and crown panels make the head read as a fitted suit rather than a plain sphere.
-  const crown=new THREE.Mesh(new THREE.SphereGeometry(.92,72,48,0,Math.PI*2,0,Math.PI*.36),blueSuit);
-  crown.scale.set(1.01,1.19,.79);crown.position.set(0,.49,-.05);head.add(crown);
-  const jawPanel=new THREE.Mesh(new THREE.SphereGeometry(.915,72,48,0,Math.PI*2,Math.PI*.63,Math.PI*.25),blueSuit);
-  jawPanel.scale.set(.99,1.2,.77);jawPanel.position.y=.1;head.add(jawPanel);
+  // Keep the mask itself crimson; the classic blue panels belong on the shoulders and suit.
+  const templeMaterial=new THREE.MeshPhysicalMaterial({color:0x9b102b,metalness:.12,roughness:.55,clearcoat:.48});
+  for(const sign of [-1,1]){
+   const temple=new THREE.Mesh(new THREE.SphereGeometry(.91,48,32,sign<0?Math.PI*.72:Math.PI*.08,Math.PI*.2,.42,.72),templeMaterial);
+   temple.scale.set(.98,1.22,.752);temple.position.y=.1;head.add(temple);
+  }
 
   const eyeGroups=[];
   function makeEye(sign){
@@ -2009,7 +2011,7 @@ main:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
 .contact-aside>a{color:#eaf4ff!important;border-color:rgba(100,176,226,.22)!important}
 .contact-aside>a:hover{color:#ff6178!important}
 .contact-aside>a small{color:#92b7d4!important}
-.post-main{max-width:1080px!important}
+.spider-post-main{max-width:1080px!important}
 .spider-issue-page{max-width:920px;margin:22px auto 72px;padding:clamp(24px,5vw,54px);position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(13,30,51,.98),rgba(4,11,22,.99));border:1px solid rgba(95,176,232,.4);border-radius:8px;box-shadow:0 25px 75px rgba(0,0,0,.48),inset 0 0 55px rgba(11,94,159,.12)}
 .spider-issue-page:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;background:repeating-radial-gradient(circle at 100% 0,transparent 0 22px,rgba(174,218,249,.6) 23px 24px,transparent 25px 46px),repeating-conic-gradient(from 0deg at 100% 0,transparent 0deg 14deg,rgba(174,218,249,.22) 14.3deg 14.7deg,transparent 15deg 30deg)}
 .spider-issue-page>*{position:relative;z-index:1}
