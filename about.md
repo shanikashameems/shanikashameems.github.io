@@ -5,7 +5,7 @@ title: A note
 ---
 
 <article class="content-page reveal note-page">
-  <div class="eyebrow">a tiny corner of my brain ♡</div>
+  <div class="eyebrow">SPIDER FILE // BEHIND THE MASK</div>
   <h1>Hey, you! <span class="note-heart">♡</span></h1>
   <p class="note-welcome">Come in, get comfy. No formalities here.</p>
 
