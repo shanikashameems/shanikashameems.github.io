@@ -907,6 +907,7 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 @media(prefers-reduced-motion:reduce){.web-shooter{animation:none!important}}
 
 </style>
+<link rel="preload" as="image" href="{{ '/assets/spider-mask-reference.webp' | relative_url }}" fetchpriority="high">
 </head>
 <body>
 <div class="spider-atmosphere" aria-hidden="true"><div class="spider-city"><i style="height:48%"></i><i style="height:76%"></i><i style="height:58%"></i><i style="height:91%"></i><i style="height:65%"></i><i style="height:100%"></i><i style="height:70%"></i><i style="height:84%"></i><i style="height:54%"></i><i style="height:72%"></i><i style="height:43%"></i><i style="height:88%"></i><i style="height:62%"></i><i style="height:78%"></i></div></div>
@@ -938,7 +939,7 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 
 <header class="topbar">
   <div class="nav">
-    <a class="brand" href="{{ '/' | relative_url }}">shanika<span>.</span>notes</a>
+    <a class="brand" href="{{ '/' | relative_url }}"><svg class="brand-spider-mark" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 18L8 8M15 23L4 22M17 29L7 38M30 18L40 8M33 23L44 22M31 29L41 38M20 16L15 5M28 16L33 5M20 32L15 43M28 32L33 43"/></g><ellipse cx="24" cy="24" rx="6.3" ry="9" fill="#e51d3d"/><circle cx="24" cy="15" r="4.2" fill="#e51d3d"/></svg>shanika<span>.</span>notes</a>
     <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="navlinks" aria-label="Main navigation">
       <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Missions</a>
@@ -1641,215 +1642,7 @@ body:has(.journal-hero) main{padding-top:27px!important}
 @media(max-width:760px){.journal-hero .book-stage{min-height:350px;height:350px;margin-top:4px}.spider-hero-scene{min-height:350px}.spider-project-chip{font-size:10px;padding:7px 9px}.spider-project-chip.chip-one{left:0;top:10%}.spider-project-chip.chip-two{right:0;top:20%}.spider-project-chip.chip-three{left:1%;bottom:8%}.spider-hero-hint{font-size:8px;bottom:1%}}
 @media(prefers-reduced-motion:reduce){.spider-project-chip{animation:none!important}}
 </style>
-<script type="module" id="spider-hero-3d-engine">
-(async()=>{
- const stage=document.querySelector('.journal-hero .book-stage');
- if(!stage||stage.dataset.spiderScene==='ready')return;
- stage.dataset.spiderScene='ready';
- const wrap=document.createElement('div');
- wrap.className='spider-hero-scene';
- wrap.innerHTML='<div class="spider-hero-glow"></div><canvas class="spider-hero-canvas" aria-label="Detailed three-dimensional red and blue webbed Spider-Man mask, gently turning toward the viewer"></canvas><div class="spider-hero-hud hud-left"><span>EARTH-616</span><b>NEW YORK CITY</b></div><div class="spider-hero-hud hud-right"><span>FRIENDLY NEIGHBOURHOOD</span><b>SPIDER-JOURNAL</b></div><div class="spider-hero-hint">MOVE YOUR CURSOR TO LOOK AROUND</div>';
- stage.appendChild(wrap);
- try{
-  const THREE=await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
-  if(!wrap.isConnected)return;
-  const canvas=wrap.querySelector('canvas');
-  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'high-performance'});
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.8));
-  renderer.setSize(wrap.clientWidth,wrap.clientHeight,false);
-  renderer.outputColorSpace=THREE.SRGBColorSpace;
-  renderer.toneMapping=THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure=1.18;
-  renderer.shadowMap.enabled=true;
-  renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 
-  const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(30,wrap.clientWidth/wrap.clientHeight,.1,100);
-  camera.position.set(0,.04,7.5);
-
-  scene.add(new THREE.HemisphereLight(0x9cc9eb,0x080d19,1.7));
-  const key=new THREE.DirectionalLight(0xffe7e3,3.4);key.position.set(-3.5,4.5,5);key.castShadow=true;scene.add(key);
-  const blueRim=new THREE.PointLight(0x219bfa,34,12);blueRim.position.set(-3,.4,-.5);scene.add(blueRim);
-  const redRim=new THREE.PointLight(0xef2346,30,11);redRim.position.set(3,1.4,1);scene.add(redRim);
-  const faceFill=new THREE.PointLight(0xd5eaff,9,8);faceFill.position.set(0,-1.6,4);scene.add(faceFill);
-
-  // Fine woven fabric plus a hand-drawn radial web pattern on the mask.
-  const textureCanvas=document.createElement('canvas');textureCanvas.width=1024;textureCanvas.height=512;
-  const ctx=textureCanvas.getContext('2d');
-  const base=ctx.createLinearGradient(0,0,1024,512);base.addColorStop(0,'#ee3348');base.addColorStop(.48,'#a90e2c');base.addColorStop(1,'#5c102b');
-  ctx.fillStyle=base;ctx.fillRect(0,0,1024,512);
-  let seed=616;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};
-  for(let i=0;i<26000;i++){
-   const x=random()*1024,y=random()*512,a=random()*.11;
-   ctx.fillStyle=random()>.5?'rgba(255,217,222,'+a+')':'rgba(3,8,19,'+a+')';
-   ctx.fillRect(x,y,random()*1.8+.25,random()*1.8+.25);
-  }
-  ctx.save();ctx.translate(512,256);
-  ctx.strokeStyle='rgba(10,14,28,.62)';ctx.lineWidth=2.2;
-  for(let i=0;i<20;i++){const a=Math.PI*2*i/20;ctx.beginPath();ctx.moveTo(Math.cos(a)*16,Math.sin(a)*16);ctx.lineTo(Math.cos(a)*620,Math.sin(a)*620);ctx.stroke();}
-  for(let r=40;r<610;r+=39){
-   ctx.beginPath();
-   for(let i=0;i<=240;i++){const a=Math.PI*2*i/240;const rr=r+Math.sin(a*10)*5;const x=Math.cos(a)*rr,y=Math.sin(a)*rr;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}
-   ctx.stroke();
-  }
-  ctx.strokeStyle='rgba(255,196,204,.18)';ctx.lineWidth=1;
-  for(let r=52;r<590;r+=39){ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.stroke();}
-  ctx.restore();
-  const maskTexture=new THREE.CanvasTexture(textureCanvas);
-  maskTexture.colorSpace=THREE.SRGBColorSpace;
-  maskTexture.wrapS=THREE.RepeatWrapping;maskTexture.wrapT=THREE.ClampToEdgeWrapping;
-  maskTexture.anisotropy=Math.min(renderer.capabilities.getMaxAnisotropy(),8);
-
-  const suitCanvas=document.createElement('canvas');suitCanvas.width=256;suitCanvas.height=256;
-  const sx=suitCanvas.getContext('2d');
-  const sg=sx.createLinearGradient(0,0,256,256);sg.addColorStop(0,'#164b81');sg.addColorStop(.5,'#0d315c');sg.addColorStop(1,'#071b39');
-  sx.fillStyle=sg;sx.fillRect(0,0,256,256);
-  sx.strokeStyle='rgba(115,190,245,.16)';sx.lineWidth=1;
-  for(let i=0;i<256;i+=8){sx.beginPath();sx.moveTo(i,0);sx.lineTo(i,256);sx.stroke();sx.beginPath();sx.moveTo(0,i);sx.lineTo(256,i);sx.stroke();}
-  const suitTexture=new THREE.CanvasTexture(suitCanvas);suitTexture.colorSpace=THREE.SRGBColorSpace;
-  const redSuit=new THREE.MeshPhysicalMaterial({map:maskTexture,color:0xffffff,metalness:.12,roughness:.49,clearcoat:.72,clearcoatRoughness:.3,bumpMap:maskTexture,bumpScale:.018});
-  const blueSuit=new THREE.MeshPhysicalMaterial({map:suitTexture,color:0xffffff,metalness:.19,roughness:.55,clearcoat:.42,clearcoatRoughness:.46});
-  const blackWeb=new THREE.MeshStandardMaterial({color:0x090d19,roughness:.74,metalness:.08});
-  const brightWeb=new THREE.MeshStandardMaterial({color:0x283c57,roughness:.56,metalness:.14});
-  const lensFrame=new THREE.MeshPhysicalMaterial({color:0x050b16,metalness:.38,roughness:.25,clearcoat:.8});
-  const lensGlass=new THREE.MeshPhysicalMaterial({color:0xe7f6ff,metalness:.3,roughness:.17,clearcoat:1,clearcoatRoughness:.07,emissive:0x294e77,emissiveIntensity:.18});
-  const hero=new THREE.Group();scene.add(hero);
-  const head=new THREE.Group();hero.add(head);
-
-  const faceGeo=new THREE.SphereGeometry(1,128,96);
-  const fp=faceGeo.attributes.position;
-  for(let i=0;i<fp.count;i++){
-   const x=fp.getX(i),y=fp.getY(i),z=fp.getZ(i);
-   const jaw=1-.23*Math.max(0,-y);
-   fp.setXYZ(i,x*jaw,y,z*(1-.07*Math.max(0,-y)));
-  }
-  faceGeo.computeVertexNormals();
-  const mask=new THREE.Mesh(faceGeo,redSuit);
-  mask.name='webbed-crimson-mask';mask.scale.set(.91,1.22,.75);mask.position.y=.1;mask.castShadow=true;mask.receiveShadow=true;head.add(mask);
-
-  // Side and crown panels make the head read as a fitted suit rather than a plain sphere.
-  // Keep the mask itself crimson; the classic blue panels belong on the shoulders and suit.
-  const templeMaterial=new THREE.MeshPhysicalMaterial({color:0x9b102b,metalness:.12,roughness:.55,clearcoat:.48});
-  for(const sign of [-1,1]){
-   const temple=new THREE.Mesh(new THREE.SphereGeometry(.91,48,32,sign<0?Math.PI*.72:Math.PI*.08,Math.PI*.2,.42,.72),templeMaterial);
-   temple.scale.set(.98,1.22,.752);temple.position.y=.1;head.add(temple);
-  }
-
-  const eyeGroups=[];
-  function makeEye(sign){
-   const makeShape=(factor)=>{const shape=new THREE.Shape();shape.moveTo(0,0);shape.quadraticCurveTo(sign*.15*factor,.27*factor,sign*.47*factor,.205*factor);shape.quadraticCurveTo(sign*.43*factor,-.015*factor,sign*.16*factor,-.19*factor);shape.quadraticCurveTo(sign*.055*factor,-.13*factor,0,0);return shape;};
-   const group=new THREE.Group();group.position.set(sign*.105,.205,.667);head.add(group);
-   const frameGeo=new THREE.ExtrudeGeometry(makeShape(1.12),{depth:.055,bevelEnabled:true,bevelSegments:5,steps:1,bevelSize:.026,bevelThickness:.026});
-   const frame=new THREE.Mesh(frameGeo,lensFrame);frame.position.z=-.005;group.add(frame);
-   const glassGeo=new THREE.ExtrudeGeometry(makeShape(.91),{depth:.025,bevelEnabled:true,bevelSegments:4,steps:1,bevelSize:.018,bevelThickness:.016});
-   const glass=new THREE.Mesh(glassGeo,lensGlass);glass.position.set(0,.002,.05);group.add(glass);
-   const glint=new THREE.Mesh(new THREE.SphereGeometry(.022,16,12),new THREE.MeshBasicMaterial({color:0xffffff}));
-   glint.position.set(sign*.22,.12,.09);group.add(glint);
-   eyeGroups.push(group);
-  }
-  makeEye(-1);makeEye(1);
-
-  // Blue shoulders and torso, sculpted as a connected upper-body silhouette.
-  const neck=new THREE.Mesh(new THREE.CylinderGeometry(.31,.42,.62,64),blueSuit);
-  neck.position.set(0,-1.18,-.06);neck.castShadow=true;head.add(neck);
-  const torso=new THREE.Mesh(new THREE.SphereGeometry(1,96,64),blueSuit);
-  torso.scale.set(1.36,.73,.58);torso.position.set(0,-1.62,-.12);torso.castShadow=true;head.add(torso);
-  for(const sign of [-1,1]){
-   const shoulder=new THREE.Mesh(new THREE.SphereGeometry(1,64,48),blueSuit);
-   shoulder.scale.set(.79,.47,.58);shoulder.position.set(sign*.89,-1.43,-.08);head.add(shoulder);
-   const redShoulder=new THREE.Mesh(new THREE.SphereGeometry(1,48,32),redSuit);
-   redShoulder.scale.set(.49,.14,.6);redShoulder.position.set(sign*.84,-1.27,.04);head.add(redShoulder);
-  }
-  const chestSpider=new THREE.Group();chestSpider.position.set(0,-1.61,.46);chestSpider.scale.set(.76,.83,.72);head.add(chestSpider);
-  const emblemMat=new THREE.MeshStandardMaterial({color:0x050b16,metalness:.25,roughness:.42});
-  const spiderBody=new THREE.Mesh(new THREE.SphereGeometry(.085,28,20),emblemMat);spiderBody.scale.set(.75,1.7,.65);chestSpider.add(spiderBody);
-  const spiderHead=new THREE.Mesh(new THREE.SphereGeometry(.065,24,16),emblemMat);spiderHead.position.y=.17;chestSpider.add(spiderHead);
-  for(let side of [-1,1])for(let row=0;row<4;row++){
-   const y=.12-row*.085;
-   const curve=new THREE.CatmullRomCurve3([
-    new THREE.Vector3(side*.035,y,.02),
-    new THREE.Vector3(side*(.15+row*.025),y+.10-row*.045,.035),
-    new THREE.Vector3(side*(.22+row*.045),y-.02-row*.075,.025),
-    new THREE.Vector3(side*(.34+row*.035),y-.10-row*.075,.0)
-   ]);
-   chestSpider.add(new THREE.Mesh(new THREE.TubeGeometry(curve,18,.018,7,false),emblemMat));
-  }
-
-  // A tiny raised web detail along the brow and cheek edges catches the light.
-  const seamGroup=new THREE.Group();head.add(seamGroup);
-  const seamMaterial=new THREE.LineBasicMaterial({color:0x190c1a,transparent:true,opacity:.42});
-  for(let sign of [-1,1]){
-   for(let row=0;row<3;row++){
-    const points=[];
-    for(let k=0;k<=24;k++){const t=k/24;points.push(new THREE.Vector3(sign*(.52+t*.23),.46-row*.15-t*.08,.48+t*.07));}
-    seamGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(points),seamMaterial));
-   }
-  }
-
-  // Rain-lit New York skyline and a large web geometry behind the mask.
-  const city=new THREE.Group();scene.add(city);
-  const buildingMat=new THREE.MeshStandardMaterial({color:0x091727,metalness:.22,roughness:.84});
-  const windowMats=[new THREE.MeshBasicMaterial({color:0x2d8cc4}),new THREE.MeshBasicMaterial({color:0xb8324c}),new THREE.MeshBasicMaterial({color:0xe2bd7b})];
-  for(let i=0;i<23;i++){
-   const x=-4.7+i*.43+(random()-.5)*.18;
-   const h=.55+random()*1.65,w=.28+random()*.2;
-   const building=new THREE.Mesh(new THREE.BoxGeometry(w,h,.28),buildingMat);
-   building.position.set(x,-2.05+h/2,-2.65-(random()*.35));city.add(building);
-   for(let row=0;row<Math.floor(h*4);row++)for(let col=0;col<2;col++){
-    if(random()>.53)continue;
-    const win=new THREE.Mesh(new THREE.PlaneGeometry(.035,.045),windowMats[Math.floor(random()*windowMats.length)]);
-    win.position.set(x-w*.24+col*w*.42,-2.05+.18+row*.18,-2.47-(i%3)*.006);city.add(win);
-   }
-  }
-  const webGroup=new THREE.Group();scene.add(webGroup);
-  const webMaterial=new THREE.LineBasicMaterial({color:0x71c7f4,transparent:true,opacity:.2});
-  for(let ray=0;ray<16;ray++){
-   const a=Math.PI*2*ray/16,pts=[new THREE.Vector3(0,.1,-2.2),new THREE.Vector3(Math.cos(a)*1.9,Math.sin(a)*1.9,-2.2),new THREE.Vector3(Math.cos(a)*3.2,Math.sin(a)*3.2,-2.2)];
-   webGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),webMaterial));
-  }
-  for(let ring=1;ring<=6;ring++){
-   const r=ring*.48,pts=[];
-   for(let i=0;i<=128;i++){const a=Math.PI*2*i/128;pts.push(new THREE.Vector3(Math.cos(a)*r,Math.sin(a)*r,-2.2));}
-   webGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),webMaterial));
-  }
-
-  const dustGeo=new THREE.BufferGeometry(),dustPoints=[];
-  for(let i=0;i<130;i++)dustPoints.push((random()-.5)*7,(random()-.5)*4,-1.8-random()*2);
-  dustGeo.setAttribute('position',new THREE.Float32BufferAttribute(dustPoints,3));
-  const dust=new THREE.Points(dustGeo,new THREE.PointsMaterial({color:0xbadff7,size:.018,transparent:true,opacity:.38}));
-  scene.add(dust);
-
-  const pointer={x:0,y:0,tx:0,ty:0};
-  wrap.addEventListener('pointermove',event=>{const r=wrap.getBoundingClientRect();pointer.tx=((event.clientX-r.left)/r.width-.5)*2;pointer.ty=((event.clientY-r.top)/r.height-.5)*2;});
-  wrap.addEventListener('pointerleave',()=>{pointer.tx=0;pointer.ty=0;});
-  const clock=new THREE.Clock();let raf=0,active=true;
-  const resize=()=>{const w=Math.max(1,wrap.clientWidth),h=Math.max(1,wrap.clientHeight);camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);};
-  const observer=new ResizeObserver(resize);observer.observe(wrap);
-  function render(){
-   if(!active)return;
-   raf=requestAnimationFrame(render);
-   const t=clock.getElapsedTime();
-   pointer.x+=(pointer.tx-pointer.x)*.035;pointer.y+=(pointer.ty-pointer.y)*.035;
-   head.rotation.y=Math.sin(t*.2)*.075+pointer.x*.24;
-   head.rotation.x=-pointer.y*.11+Math.sin(t*.42)*.013;
-   head.rotation.z=Math.sin(t*.27)*.012;
-   head.position.y=.1+Math.sin(t*.75)*.022;
-   const blink=Math.pow(Math.max(0,Math.sin(t*.61+1.6)),36)*.18;
-   eyeGroups.forEach(group=>{group.scale.y=1-blink;});
-   webGroup.rotation.z=Math.sin(t*.1)*.018-pointer.x*.022;
-   dust.rotation.y=t*.01;
-   renderer.render(scene,camera);
-  }
-  render();
-  document.addEventListener('visibilitychange',()=>{if(document.hidden){active=false;cancelAnimationFrame(raf);}else if(!active){active=true;clock.start();render();}});
-  window.addEventListener('beforeunload',()=>{active=false;observer.disconnect();renderer.dispose();},{once:true});
- }catch(error){
-  wrap.classList.add('spider-hero-fallback');
-  const fallback=wrap.querySelector('canvas');if(fallback)fallback.style.display='none';
-  console.error('Spider-Man hero scene could not be initialized:',error);
- }
-})();
-</script>
 
 
 <style id="web-shooter-projectile-v2">
@@ -2055,6 +1848,123 @@ main:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
 .entry h3{font:700 2rem var(--caveat)!important}
 .entry p{font:1.15rem/1.5 var(--hand)!important}
 @media(max-width:560px){.name-loader-caption{font-size:1.25rem!important}}
+</style>
+<style id="spider-comic-typography-and-portrait">
+:root{
+ --spider-red:#ed2948;
+ --spider-red-hot:#ff4963;
+ --spider-blue:#1679c9;
+ --spider-blue-bright:#6fc5ff;
+ --spider-ink:#060c18;
+ --spider-paper:#eaf5ff;
+ --comic-font:'Bangers',Impact,sans-serif;
+ --reading-font:'Barlow Condensed',Arial,sans-serif;
+}
+html,body{background:#060c18!important;color:#eef5fc!important}
+body{font-family:var(--reading-font)!important;font-size:19px!important;letter-spacing:.01em!important}
+h1,h2,h3,.brand,.navlinks a,.handwritten,.home-post-body h3,.library-book strong,.book-note h2,.city-map-heading strong{
+ font-family:var(--comic-font)!important;font-weight:400!important;letter-spacing:.035em!important;text-transform:uppercase!important;
+}
+h1,h2,h3{color:#f7fbff!important;text-shadow:2px 2px 0 rgba(237,41,72,.65),-2px -1px 0 rgba(22,121,201,.5),0 8px 28px rgba(0,0,0,.4)!important}
+h1{line-height:.96!important}
+p,li,.hero-lede,.home-post-body p,.content-page p,.content-page li,.spider-issue-content p,.spider-issue-content li,.book-note p,.takeaway-wrap p{
+ font-family:var(--reading-font)!important;letter-spacing:.012em!important;
+}
+a{color:#e8f4ff}
+a:hover{color:#ff6479}
+.topbar{background:rgba(4,10,19,.92)!important;border-bottom:1px solid rgba(80,164,223,.28)!important;box-shadow:0 10px 35px rgba(0,0,0,.38)!important}
+.brand{display:inline-flex!important;align-items:center;gap:9px;font-size:1.85rem!important;letter-spacing:.055em!important;color:#fff!important;text-shadow:2px 2px 0 var(--spider-red),4px 4px 0 var(--spider-blue)!important;transform:none!important}
+.brand-spider-mark{width:27px;height:27px;flex:0 0 auto;color:#eaf7ff;filter:drop-shadow(0 0 6px rgba(84,181,242,.45))}
+.brand span{color:#ff536c!important}
+.navlinks a{font-size:1.25rem!important;letter-spacing:.06em!important;color:#bfd5ea!important;text-shadow:1px 1px 0 rgba(237,41,72,.35)!important}
+.navlinks a:hover,.navlinks a.active{color:#ff667d!important}
+.navlinks a.active:after{background:var(--spider-blue)!important;box-shadow:0 0 12px var(--spider-blue)!important}
+.menu-toggle{background:#0b1b2d!important;border:1px solid rgba(90,174,231,.38)!important;color:#eef7ff!important}
+main{max-width:1320px!important}
+.eyebrow,.page-kicker{font:700 .9rem var(--reading-font)!important;letter-spacing:.22em!important;text-transform:uppercase!important;color:#76c8ff!important}
+.eyebrow:before,.page-kicker:before{content:"🕷";display:inline-block;margin-right:.55rem;font-size:.95em;filter:drop-shadow(0 0 5px rgba(237,41,72,.4))}
+.journal-hero{min-height:620px!important;grid-template-columns:1fr 1fr!important;align-items:center!important;gap:2%!important}
+.journal-hero .hero-copy h1{font:400 clamp(3.8rem,7.5vw,6.9rem)/.93 var(--comic-font)!important;letter-spacing:.025em!important;color:#fff!important;text-shadow:3px 3px 0 #e51d3d,-2px -2px 0 #1679c9,0 12px 32px rgba(0,0,0,.48)!important}
+.journal-hero .hero-copy h1 em{color:#ff405e!important;font-style:normal!important;text-shadow:3px 3px 0 #071426,-2px -1px 0 #1679c9,0 0 25px rgba(237,41,72,.32)!important}
+.hero-lede{font-size:1.32rem!important;line-height:1.52!important;color:#c9d8e7!important;max-width:530px!important}
+.hero-meta{font:700 .92rem var(--reading-font)!important;letter-spacing:.16em!important;color:#83bce3!important}
+.handwritten{font:400 clamp(1.8rem,3.5vw,2.7rem) var(--comic-font)!important;letter-spacing:.04em!important;color:#ff647b!important;text-shadow:2px 2px 0 rgba(9,19,36,.85)!important}
+.journal-hero .book-stage,.journal-hero .book-stage.spider-photo-stage{
+ position:relative!important;isolation:isolate!important;display:grid!important;place-items:center!important;
+ min-height:580px!important;height:580px!important;overflow:visible!important;perspective:1300px!important;
+}
+.spider-web-backdrop{position:absolute;inset:4% -2%;z-index:-2;pointer-events:none;opacity:.64}
+.spider-web-backdrop svg{width:100%;height:100%;overflow:visible}
+.spider-web-backdrop .web-lines{fill:none;stroke:#8bd3ff;stroke-width:1.2;stroke-opacity:.3}
+.spider-web-backdrop .web-red{stroke:#ed2948;stroke-opacity:.42}
+.spider-photo-halo{position:absolute;width:78%;aspect-ratio:1;z-index:-1;top:12%;left:11%;border-radius:50%;background:radial-gradient(circle,rgba(18,121,196,.34),rgba(225,31,67,.16) 48%,transparent 72%);filter:blur(22px);pointer-events:none}
+.spider-photo-card{
+ position:relative;z-index:2;width:clamp(236px,26vw,300px);margin:0;padding:7px;
+ aspect-ratio:227/340;transform-style:preserve-3d;
+ border:1px solid rgba(133,203,247,.65);border-radius:12px;
+ background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(12,24,40,.88) 40%,rgba(229,35,65,.68));
+ box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 28px rgba(22,121,201,.24),0 0 0 2px rgba(229,35,65,.22);
+ animation:spider-photo-float 6s ease-in-out infinite;
+}
+.spider-photo-card:before{content:"";position:absolute;inset:-16px;z-index:-1;border:1px solid rgba(110,193,241,.25);border-radius:16px;transform:translateZ(-24px);box-shadow:0 0 0 9px rgba(18,100,164,.055),0 0 36px rgba(224,36,67,.13)}
+.spider-photo-card:after{content:"";position:absolute;inset:-22px;z-index:-2;pointer-events:none;background:repeating-radial-gradient(circle at 50% 8%,transparent 0 24px,rgba(145,208,246,.16) 25px 26px,transparent 27px 51px),repeating-conic-gradient(from 0deg at 50% 8%,transparent 0deg 14deg,rgba(145,208,246,.13) 14.2deg 14.8deg,transparent 15deg 30deg);mask-image:linear-gradient(to bottom,black,transparent 86%)}
+.spider-photo-card img{display:block;width:100%;height:100%;aspect-ratio:227/340;object-fit:contain;object-position:center;border-radius:7px;background:#152033;image-rendering:auto;filter:none!important;box-shadow:0 0 0 1px rgba(255,255,255,.12);backface-visibility:hidden}
+.spider-photo-card figcaption{position:absolute;left:8px;right:8px;bottom:8px;display:flex;justify-content:space-between;gap:8px;padding:8px 9px;background:linear-gradient(90deg,rgba(4,10,19,.9),rgba(4,10,19,.55));border-top:1px solid rgba(120,199,246,.38);color:#eaf6ff;font:700 .62rem var(--reading-font);letter-spacing:.13em;text-shadow:0 2px 4px #000}
+.spider-photo-stamp{position:absolute;z-index:4;top:9%;right:5%;width:54px;height:54px;color:#f4faff;filter:drop-shadow(0 0 8px rgba(62,170,231,.65));transform:rotate(11deg);pointer-events:none}
+.spider-photo-cable{position:absolute;top:-6%;left:50%;z-index:4;width:2px;height:13%;background:linear-gradient(#83d1ff,rgba(131,209,255,0));box-shadow:0 0 8px rgba(90,188,245,.6);pointer-events:none}
+.spider-photo-card:hover{animation-play-state:paused;transform:translateY(-7px) rotateY(-4deg) rotateX(2deg) scale(1.015)}
+@keyframes spider-photo-float{0%,100%{transform:translate3d(0,5px,0) rotateY(-2deg) rotateZ(-.4deg)}50%{transform:translate3d(0,-10px,0) rotateY(2deg) rotateZ(.4deg)}}
+.home-recent-feed{margin-top:7px!important}
+.home-recent-feed .section-head h2{font:400 clamp(2.8rem,4.5vw,4rem) var(--comic-font)!important;letter-spacing:.04em!important;text-transform:uppercase!important}
+.home-post-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:18px!important}
+.home-post-card{border:1px solid rgba(85,174,235,.28)!important;border-radius:6px!important;background:linear-gradient(150deg,#14243a,#080f1d 76%)!important;box-shadow:0 18px 48px rgba(0,0,0,.4)!important;position:relative}
+.home-post-card:before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border:1px solid rgba(237,41,72,.14);clip-path:polygon(0 0,18% 0,0 18%,0 0,100% 0,100% 100%,82% 100%,100% 82%,100% 100%,0 100%)}
+.home-post-card:hover{border-color:rgba(237,41,72,.8)!important}
+.home-post-body h3{font:400 1.65rem/1.04 var(--comic-font)!important;text-transform:uppercase!important;letter-spacing:.04em!important}
+.home-post-body p{font:1.08rem/1.42 var(--reading-font)!important;color:#b9cde0!important}
+.home-post-author,.home-post-actions{font:700 .9rem var(--reading-font)!important;letter-spacing:.13em!important}
+.home-post-author:before{content:"🕷";margin-right:6px;color:#ff536a}
+.content-page{background:linear-gradient(145deg,rgba(14,29,49,.97),rgba(5,12,24,.98))!important;border:1px solid rgba(89,174,232,.35)!important}
+.content-page>h1{font:400 clamp(3.3rem,6vw,5.6rem)/.94 var(--comic-font)!important;text-transform:uppercase!important}
+.content-page h2,.contact-aside h2{font:400 clamp(2.4rem,4vw,3.5rem)/1 var(--comic-font)!important;text-transform:uppercase!important}
+.content-page p,.content-page li{font:1.25rem/1.62 var(--reading-font)!important}
+.library-page>h1{font:400 clamp(3.3rem,6vw,5.5rem)/.95 var(--comic-font)!important;text-shadow:2px 2px 0 #e51d3d,-2px -1px 0 #1676c8!important}
+.library-page .library-intro{font:1.25rem/1.55 var(--reading-font)!important}
+.library-book strong{font:400 clamp(.9rem,1.15vw,1.1rem)/1.03 var(--comic-font)!important;text-transform:uppercase!important}
+.book-note-label,.book-note h2{font-family:var(--comic-font)!important;text-transform:uppercase!important}
+.book-note p,.takeaway-wrap p{font:1.18rem/1.55 var(--reading-font)!important}
+.note-page .note-quote{font:400 1.3rem/1.35 var(--comic-font)!important;text-transform:uppercase!important}
+.journal-form label{font:700 1rem var(--reading-font)!important;letter-spacing:.12em!important;text-transform:uppercase!important}
+.journal-form input,.journal-form textarea{font:1.1rem var(--reading-font)!important}
+.journal-form button{font:400 1.25rem var(--comic-font)!important;text-transform:uppercase!important}
+.contact-aside>a{font:400 1.3rem var(--comic-font)!important;text-transform:uppercase!important}
+.contact-aside>a small{font:1rem var(--reading-font)!important;text-transform:none!important}
+.spider-issue-header h1,.spider-issue-content h2,.spider-issue-content h3{font-family:var(--comic-font)!important;text-transform:uppercase!important}
+.spider-issue-content,.spider-issue-content p,.spider-issue-content li{font-family:var(--reading-font)!important}
+.spider-issue-label,.spider-issue-overline,.spider-issue-end{font-family:var(--reading-font)!important}
+.city-map-heading strong{font-family:var(--comic-font)!important;text-transform:uppercase!important}
+footer{font-family:var(--reading-font)!important;letter-spacing:.08em}
+footer:after{content:"🕷";position:absolute;right:24px;top:-13px;font-size:1.1rem;filter:drop-shadow(0 0 6px rgba(237,41,72,.7))}
+@media(max-width:850px){
+ .journal-hero{grid-template-columns:1fr!important;gap:0!important;min-height:0!important}
+ .journal-hero .book-stage,.journal-hero .book-stage.spider-photo-stage{min-height:505px!important;height:505px!important}
+ .spider-photo-card{width:clamp(230px,42vw,290px)}
+ .home-post-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:560px){
+ body{font-size:18px!important}
+ .journal-hero .hero-copy h1{font-size:clamp(3.2rem,13vw,4.7rem)!important}
+ .journal-hero .book-stage,.journal-hero .book-stage.spider-photo-stage{min-height:420px!important;height:420px!important}
+ .spider-photo-card{width:232px}
+ .spider-photo-stamp{right:2%;top:6%;width:43px;height:43px}
+ .home-post-grid{grid-template-columns:1fr!important}
+ .home-post-media{height:230px!important}
+ .brand{font-size:1.5rem!important}
+ .brand-spider-mark{width:23px;height:23px}
+ .navlinks a{font-size:1.15rem!important}
+ .spider-photo-card figcaption{font-size:.55rem}
+}
+@media(prefers-reduced-motion:reduce){.spider-photo-card{animation:none!important;transition:none!important}}
 </style>
 </body>
 </html>
