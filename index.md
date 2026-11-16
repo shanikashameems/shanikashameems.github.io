@@ -81,7 +81,7 @@ title: Journal
  {% for post in site.posts limit:4 %}
  <a class="home-post-card" href="{{ post.url | relative_url }}">
   <div class="home-post-media">
-   {% if post.image %}<img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" loading="lazy">{% else %}<div class="post-artwork" role="img" aria-label="A red-and-blue Spider-Verse inspired web over a rain-lit New York skyline"><span class="post-art-glow"></span><span class="post-art-web"></span><span class="post-art-silhouette"></span><span class="post-art-label">DAILY BUGLE · PERSONAL EDITION</span></div>{% endif %}
+   {% if post.image %}<img src="{{ post.image | relative_url }}" alt="{{ post.image_alt | default: post.title | escape }}" loading="lazy">{% else %}<div class="post-artwork" role="img" aria-label="A red-and-blue Spider-Verse inspired web over a rain-lit New York skyline"><span class="post-art-glow"></span><span class="post-art-web"></span><span class="post-art-silhouette"></span><span class="post-art-label">DAILY BUGLE · PERSONAL EDITION</span></div>{% endif %}
    <span class="feed-date">{{ post.date | date: "%d %B %Y" }}</span>
   </div>
   <div class="home-post-body">
