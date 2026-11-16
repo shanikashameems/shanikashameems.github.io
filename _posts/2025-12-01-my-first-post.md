@@ -2,7 +2,7 @@
 layout: default
 title: My First Blog Post
 image: /assets/thumb-origin-notes.svg
-image_alt: "An open journal and pen floating above a midnight city with red and blue web lines"
+image_alt: "Spider-Man mask on a New York rooftop beside an open journal, with web lines and a red-blue city skyline"
 ---
 
 So this is me Shanika and this is my first ever blog
