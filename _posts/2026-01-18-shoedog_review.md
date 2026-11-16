@@ -1,7 +1,8 @@
 ---
 layout: default
 title: SHOE DOG by Phil Knight
-image: /assets/spider-shoedog.svg
+image: /assets/thumb-shoedog-runner.svg
+image_alt: "An athletic running shoe surrounded by red and blue web-like energy"
 ---
 
 This is one of the books in my stack that changed my idea about my life. Usually whenever I read a book, I focus on the takeaways from the book and this book is one 
