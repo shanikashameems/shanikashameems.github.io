@@ -2589,5 +2589,108 @@ body:has(.journal-hero) main{
 }
 </style>
 
+
+<style id="spider-hero-one-screen-and-post-thumbnail-refresh">
+/* Reduce the oversized hero headline and fit the whole intro into a laptop viewport. */
+@media(min-width:851px){
+  body:has(.journal-hero) main{padding-top:4px!important;padding-bottom:24px!important}
+  .journal-hero{
+    min-height:calc(100svh - 86px)!important;
+    padding:4px 0 8px!important;
+    align-items:center!important;
+    gap:clamp(12px,2vw,28px)!important;
+  }
+  .journal-hero .hero-copy{max-width:620px!important;align-self:center!important}
+  .journal-hero .hero-copy h1{
+    font-size:clamp(3.15rem,5.05vw,5.2rem)!important;
+    line-height:.9!important;letter-spacing:.005em!important;
+    margin:8px 0 13px!important;max-width:620px!important;
+  }
+  .journal-hero .hero-lede{
+    font-size:clamp(1rem,1.12vw,1.12rem)!important;
+    line-height:1.43!important;max-width:490px!important;margin:0!important;
+  }
+  .journal-hero .hero-meta{
+    font-size:clamp(.68rem,.76vw,.79rem)!important;
+    line-height:1.35!important;letter-spacing:.12em!important;margin-top:13px!important;
+  }
+  .journal-hero .hero-meta:before{width:27px!important}
+  .journal-hero .hero-copy .handwritten{
+    display:inline-block!important;font-size:clamp(1.65rem,2.45vw,2.12rem)!important;
+    line-height:1.02!important;margin-top:8px!important;letter-spacing:.025em!important;
+  }
+  .journal-hero .book-stage,.journal-hero .book-stage.spider-photo-stage{
+    height:clamp(400px,58svh,520px)!important;
+    min-height:clamp(400px,58svh,520px)!important;
+  }
+  .spider-photo-card{width:clamp(218px,20vw,258px)!important}
+}
+@media(max-height:790px) and (min-width:851px){
+  .journal-hero{min-height:calc(100svh - 76px)!important;padding-top:0!important;padding-bottom:0!important}
+  .journal-hero .hero-copy h1{font-size:clamp(3rem,4.7vw,4.7rem)!important;margin:5px 0 9px!important}
+  .journal-hero .hero-lede{font-size:1rem!important;line-height:1.36!important}
+  .journal-hero .hero-meta{margin-top:9px!important;font-size:.68rem!important}
+  .journal-hero .hero-copy .handwritten{font-size:1.7rem!important;margin-top:5px!important}
+  .journal-hero .book-stage,.journal-hero .book-stage.spider-photo-stage{
+    height:clamp(360px,55svh,460px)!important;min-height:clamp(360px,55svh,460px)!important
+  }
+}
+@media(max-width:850px){
+  .journal-hero{padding-top:6px!important;padding-bottom:26px!important;gap:0!important}
+  .journal-hero .hero-copy h1{font-size:clamp(2.85rem,8vw,4.35rem)!important;line-height:.91!important;margin:9px 0 12px!important}
+  .journal-hero .hero-lede{font-size:1.05rem!important;line-height:1.45!important;margin:0!important}
+  .journal-hero .hero-meta{font-size:.76rem!important;line-height:1.35!important;margin-top:12px!important}
+  .journal-hero .hero-copy .handwritten{font-size:clamp(1.65rem,5vw,2.1rem)!important;margin-top:8px!important;line-height:1.02!important}
+}
+/* The four issue covers share one cinematic Spider-Verse visual system. */
+.home-post-grid{gap:16px!important}
+.home-post-card{
+  overflow:hidden!important;border:1px solid rgba(104,190,241,.34)!important;
+  border-radius:8px!important;background:linear-gradient(150deg,#132943 0%,#080f1d 78%)!important;
+  box-shadow:0 14px 38px rgba(0,0,0,.34),inset 0 0 0 1px rgba(255,255,255,.025)!important;
+  transform:translateZ(0);transition:transform .32s ease,border-color .32s ease,box-shadow .32s ease!important;
+}
+.home-post-card:hover{
+  transform:translateY(-5px) rotateX(1deg)!important;border-color:rgba(244,66,99,.82)!important;
+  box-shadow:0 22px 48px rgba(0,0,0,.48),0 0 24px rgba(32,137,204,.18)!important;
+}
+.home-post-media{
+  height:auto!important;aspect-ratio:16/9!important;min-height:0!important;
+  overflow:hidden!important;background:#071321!important;border-bottom:1px solid rgba(100,185,235,.24)!important;
+}
+.home-post-media:before{
+  background:linear-gradient(180deg,rgba(3,8,16,.02) 45%,rgba(3,8,16,.36) 100%)!important;
+}
+.home-post-media:after{
+  content:""!important;position:absolute!important;inset:0!important;z-index:1!important;
+  pointer-events:none!important;
+  background:linear-gradient(115deg,transparent 35%,rgba(120,208,255,.1) 49%,transparent 62%)!important;
+  opacity:.72!important;
+}
+.home-post-media img{
+  display:block!important;width:100%!important;height:100%!important;
+  object-fit:cover!important;object-position:center!important;
+  filter:saturate(1.05) contrast(1.06)!important;transform:scale(1.001);
+  transition:transform .65s cubic-bezier(.2,.75,.25,1),filter .65s ease!important;
+}
+.home-post-card:hover .home-post-media img{
+  transform:scale(1.055)!important;filter:saturate(1.18) contrast(1.08)!important;
+}
+.home-post-media .feed-date{
+  z-index:3!important;left:13px!important;bottom:11px!important;
+  padding:4px 8px!important;border:1px solid rgba(139,207,246,.28)!important;
+  background:rgba(4,12,23,.76)!important;border-radius:3px!important;
+  font:700 .7rem var(--reading-font)!important;letter-spacing:.12em!important;
+}
+.home-post-body{padding:15px 16px 17px!important}
+.home-post-body h3{margin:10px 0 8px!important;font-size:1.45rem!important;line-height:1.08!important}
+.home-post-body p{font-size:1rem!important;line-height:1.42!important}
+@media(max-width:560px){
+  .home-post-grid{gap:18px!important}
+  .home-post-media{aspect-ratio:16/9!important;height:auto!important}
+}
+@media(prefers-reduced-motion:reduce){.home-post-card,.home-post-media img{transition:none!important}}
+</style>
+
 </body>
 </html>
