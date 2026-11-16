@@ -1,7 +1,8 @@
 ---
 layout: default
 title: My First Blog Post
-image: /assets/spider-journal.svg
+image: /assets/thumb-origin-notes.svg
+image_alt: "An open journal and pen floating above a midnight city with red and blue web lines"
 ---
 
 So this is me Shanika and this is my first ever blog
