@@ -1030,27 +1030,23 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
 <div class="city-map-widget" id="city-map-widget">
   <button class="city-map-toggle" id="city-map-toggle" type="button" aria-label="Open city map" aria-expanded="false" aria-controls="city-map-panel">
     <b class="city-map-icon" aria-hidden="true">
-      <svg viewBox="0 0 64 64">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
         <defs>
-          <radialGradient id="nyc-map-core" cx="32%" cy="22%" r="80%">
-            <stop offset="0" stop-color="#1a5276"/>
-            <stop offset=".56" stop-color="#0a2037"/>
-            <stop offset="1" stop-color="#030914"/>
-          </radialGradient>
-          <filter id="nyc-map-glow"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <linearGradient id="map-shield-metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dff8ff"/><stop offset=".42" stop-color="#62c9fa"/><stop offset="1" stop-color="#176ca7"/></linearGradient>
+          <linearGradient id="map-pin-core" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7890"/><stop offset=".48" stop-color="#ed2948"/><stop offset="1" stop-color="#8f1235"/></linearGradient>
+          <filter id="map-pin-glow"><feGaussianBlur stdDeviation="2" result="glow"/><feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
         </defs>
-        <circle cx="32" cy="32" r="30" fill="url(#nyc-map-core)" stroke="#9ce5ff" stroke-width="1.1"/>
-        <circle cx="32" cy="32" r="26" fill="none" stroke="#4cb8ec" stroke-width=".8" stroke-dasharray="2 3" opacity=".8"/>
-        <circle cx="32" cy="32" r="21" fill="none" stroke="#dff8ff" stroke-width=".7" opacity=".3"/>
-        <path d="M32 4V60M4 32H60M12 12L52 52M52 12L12 52M20 5L32 18L44 5M5 20L18 32L5 44M59 20L46 32L59 44M20 59L32 46L44 59" fill="none" stroke="#8fdcff" stroke-width=".9" opacity=".55"/>
-        <path d="M32 11Q46 20 53 32Q43 43 32 53Q21 43 11 32Q20 20 32 11Z" fill="none" stroke="#64cfff" stroke-width="1.05" opacity=".72"/>
-        <path d="M17 22L26 17L38 20L47 16M17 42L26 47L38 44L47 48" fill="none" stroke="#ed2948" stroke-width="1" opacity=".9"/>
-        <g filter="url(#nyc-map-glow)" fill="none" stroke="#f3fbff" stroke-width="1.7" stroke-linecap="round">
-          <path d="M32 25V38M28 27L22 22M28 31L19 31M28 35L22 40M36 27L42 22M36 31L45 31M36 35L42 40"/>
+        <path d="M32 3.5 54 15.6v27L32 60.5 10 42.6v-27Z" fill="#04101f" stroke="url(#map-shield-metal)" stroke-width="2"/>
+        <path d="M32 8.5 49.5 18v22.2L32 54.8 14.5 40.2V18Z" fill="#0b2d49" stroke="#7edaff" stroke-width=".8" opacity=".95"/>
+        <path d="M17 20.5 32 29l15-8.5M17 41.5 32 50l15-8.5M32 29v21M17 20.5v21M47 20.5v21" fill="none" stroke="#83d9ff" stroke-width=".8" opacity=".46"/>
+        <path d="M32 11v9M11 32h8M45 32h8M32 44v9" stroke="#ff5270" stroke-width="1.2" stroke-linecap="round" opacity=".9"/>
+        <g filter="url(#map-pin-glow)">
+          <path d="M32 17.2c-7.1 0-12.1 5.2-12.1 11.8 0 8.3 12.1 20.2 12.1 20.2s12.1-11.9 12.1-20.2c0-6.6-5-11.8-12.1-11.8Z" fill="url(#map-pin-core)" stroke="#ffe4eb" stroke-width="1.3"/>
+          <circle cx="32" cy="28.8" r="7.4" fill="#0a2137" stroke="#ffb2c2" stroke-width="1"/>
+          <path d="M32 24.2v9.1m-2.7-7.1-3.8-2.8m3.7 5.3-5.1.5m5.8 2-3.5 3.3m8.3-8.3 3.8-2.8m-3.7 5.3 5.1.5m-5.8 2 3.5 3.3" fill="none" stroke="#f1fbff" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
         </g>
-        <ellipse cx="32" cy="30" rx="4" ry="5.5" fill="#ed2948" stroke="#ffdce4" stroke-width=".8"/>
-        <circle cx="32" cy="23.5" r="2.1" fill="#ff637e"/>
-        <circle cx="32" cy="32" r="1.2" fill="#fff"/>
+        <circle cx="32" cy="7.4" r="1.5" fill="#fff"/><circle cx="53.5" cy="43.5" r="1.7" fill="#ff6a82"/>
+        <path d="M7 17h5M7 17v5M57 17h-5M57 17v5M7 47h5M7 47v-5M57 47h-5M57 47v-5" fill="none" stroke="#b9eeff" stroke-width="1.2" stroke-linecap="round" opacity=".75"/>
       </svg>
     </b>
   </button>
@@ -3992,6 +3988,103 @@ body.city-map-open{overflow:hidden!important}
 @media(max-width:850px){
   .journal-hero .hero-copy{max-width:100%!important}
   .journal-hero .hero-copy h1{width:100%!important;max-width:100%!important}
+}
+</style>
+
+
+<style id="spider-map-portal-3d-and-mask-scale">
+@media(min-width:851px){.spider-photo-stage .spider-photo-card{width:clamp(246px,21vw,282px)!important}}
+@media(max-width:850px){.spider-photo-stage .spider-photo-card{width:min(258px,78vw)!important}}
+
+/* New dimensional map pin: a shield-shaped locator with a spider core. */
+.city-map-icon{
+  border-radius:24%!important;background:linear-gradient(145deg,#24678c 0%,#0a2c49 48%,#030d1c 100%)!important;
+  box-shadow:inset 0 3px 11px rgba(223,249,255,.26),inset 0 -8px 15px rgba(0,0,0,.62),0 0 0 3px rgba(74,182,231,.16),0 0 29px rgba(72,191,242,.42),5px 6px 0 rgba(229,29,61,.48)!important;
+  clip-path:polygon(50% 0,100% 25%,100% 70%,50% 100%,0 70%,0 25%)!important;
+}
+.city-map-icon:before{inset:-9px!important;border-radius:28%!important;clip-path:polygon(50% 0,100% 25%,100% 70%,50% 100%,0 70%,0 25%)!important}
+.city-map-icon:after{top:7px!important;right:9px!important}
+.city-map-icon svg{width:69px!important;height:69px!important;filter:drop-shadow(0 0 8px rgba(104,216,255,.72)) drop-shadow(2px 3px 0 rgba(0,0,0,.3))!important}
+
+/* Portal-opening sequence: each map layer arrives at a different depth. */
+.city-map-widget.is-open .city-map-panel{
+  transform-style:preserve-3d!important;backface-visibility:visible!important;
+  animation:spider-map-portal-deploy .94s cubic-bezier(.16,1,.3,1) both!important;
+  box-shadow:0 42px 125px rgba(0,0,0,.88),0 0 0 100vmax rgba(0,4,12,.78),0 0 42px rgba(51,171,232,.2),inset 0 0 58px rgba(41,145,209,.16)!important;
+}
+@keyframes spider-map-portal-deploy{
+  0%{opacity:0;translate:-50% calc(-50% + 92px);scale:.66;rotate:.7 1 0 25deg;filter:blur(12px) brightness(1.8)}
+  58%{opacity:1;translate:-50% calc(-50% - 8px);scale:1.035;rotate:.7 1 0 -3deg;filter:blur(0) brightness(1.18)}
+  78%{translate:-50% calc(-50% + 3px);scale:.992;rotate:0 1 0 1deg;filter:brightness(1.04)}
+  100%{opacity:1;translate:-50% -50%;scale:1;rotate:0 1 0 0deg;filter:none}
+}
+.city-map-widget.is-open .city-map-heading{transform-style:preserve-3d!important;animation:spider-map-hud-in .68s .16s cubic-bezier(.2,.8,.2,1) both!important}
+.city-map-widget.is-open .city-map-hint{animation:spider-map-hud-in .62s .24s ease-out both!important}
+@keyframes spider-map-hud-in{
+  from{opacity:0;translate:0 14px -38px;scale:.92;filter:blur(5px)}
+  to{opacity:1;translate:0 0 0;scale:1;filter:none}
+}
+.city-map-widget.is-open .city-map-canvas{transform-style:preserve-3d!important;animation:spider-map-terrain-rise .9s .18s cubic-bezier(.16,1,.3,1) both!important}
+@keyframes spider-map-terrain-rise{
+  0%{opacity:0;translate:0 32px -100px;scale:.78;rotate:1 0 0 17deg;filter:blur(8px) brightness(1.7)}
+  68%{opacity:1;translate:0 -3px 18px;scale:1.02;rotate:1 0 0 -2deg;filter:blur(0) brightness(1.16)}
+  100%{opacity:1;translate:0 0 0;scale:1;rotate:0 1 0 0deg;filter:none}
+}
+.city-map-widget.is-open .map-city-silhouette{transform-style:preserve-3d!important;animation:spider-map-city-lift .95s .34s cubic-bezier(.16,1,.3,1) both!important}
+@keyframes spider-map-city-lift{
+  0%{opacity:0;translate:-5px 42px -150px;scale:.72;rotate:0 0 1 -5deg}
+  70%{opacity:.9;translate:2px -7px 10px;scale:1.03;rotate:0 0 1 1deg}
+  100%{opacity:.82;translate:0 0 0;scale:1;rotate:0 0 1 0deg}
+}
+.city-map-widget.is-open .map-city-silhouette i{transform-origin:bottom center!important;animation:spider-map-building-rise .7s cubic-bezier(.16,1,.3,1) var(--building-delay,.42s) both!important}
+.city-map-widget.is-open .map-city-silhouette i:nth-child(1){--building-delay:.4s}
+.city-map-widget.is-open .map-city-silhouette i:nth-child(2){--building-delay:.48s}
+.city-map-widget.is-open .map-city-silhouette i:nth-child(3){--building-delay:.56s}
+.city-map-widget.is-open .map-city-silhouette i:nth-child(4){--building-delay:.64s}
+.city-map-widget.is-open .map-city-silhouette i:nth-child(5){--building-delay:.72s}
+.city-map-widget.is-open .map-city-silhouette i:nth-child(6){--building-delay:.8s}
+.city-map-widget.is-open .map-city-silhouette i:nth-child(7){--building-delay:.88s}
+@keyframes spider-map-building-rise{
+  from{opacity:.15;translate:0 28px -48px;scale:1 .24;filter:brightness(1.8)}
+  to{opacity:1;translate:0 0 0;scale:1 1;filter:brightness(1)}
+}
+.city-map-widget.is-open .city-map-roads{transform-style:preserve-3d!important;animation:spider-map-road-layer-in .82s .43s cubic-bezier(.2,.8,.2,1) both!important}
+@keyframes spider-map-road-layer-in{
+  from{opacity:0;translate:0 12px -65px;scale:.78}
+  to{opacity:1;translate:0 0 0;scale:1}
+}
+.city-map-widget.is-open .city-map-roads .map-route{
+  stroke-dasharray:6 12!important;stroke-dashoffset:260!important;
+  animation:spider-map-route-draw 1.45s .66s ease-out forwards!important;
+}
+@keyframes spider-map-route-draw{to{stroke-dashoffset:0}}
+.city-map-widget.is-open .map-stop{transform-style:preserve-3d!important;animation:spider-map-pin-arrive .68s var(--pin-delay,.72s) cubic-bezier(.16,1,.3,1) both!important}
+.city-map-widget.is-open .map-home{--pin-delay:.62s}
+.city-map-widget.is-open .map-missions{--pin-delay:.74s}
+.city-map-widget.is-open .map-archives{--pin-delay:.86s}
+.city-map-widget.is-open .map-profile{--pin-delay:.98s}
+.city-map-widget.is-open .map-comms{--pin-delay:1.1s}
+@keyframes spider-map-pin-arrive{
+  0%{opacity:0;translate:0 28px 54px;scale:.3;rotate:0 0 1 -18deg;filter:blur(5px)}
+  72%{opacity:1;translate:0 -5px 0;scale:1.14;rotate:0 0 1 4deg;filter:blur(0)}
+  100%{opacity:1;translate:0 0 0;scale:1;rotate:0 0 1 0deg;filter:none}
+}
+.city-map-widget.is-open .map-stop i{animation:spider-map-pin-glow .9s var(--pin-delay,.72s) both!important}
+@keyframes spider-map-pin-glow{
+  0%{box-shadow:0 0 0 0 rgba(68,184,255,0),0 0 0 rgba(237,41,72,0);filter:brightness(1.8)}
+  55%{box-shadow:0 0 0 13px rgba(68,184,255,.22),0 0 24px rgba(237,41,72,.8);filter:brightness(1.4)}
+  100%{box-shadow:0 0 0 5px rgba(39,145,220,.18),0 0 13px rgba(61,170,255,.5);filter:none}
+}
+.city-map-widget.is-open .city-map-footer{animation:spider-map-hud-in .58s .48s ease-out both!important}
+@media(prefers-reduced-motion:reduce){
+  .spider-photo-stage .spider-photo-card,.city-map-widget.is-open .city-map-panel,
+  .city-map-widget.is-open .city-map-heading,.city-map-widget.is-open .city-map-hint,
+  .city-map-widget.is-open .city-map-canvas,.city-map-widget.is-open .map-city-silhouette,
+  .city-map-widget.is-open .map-city-silhouette i,.city-map-widget.is-open .city-map-roads,
+  .city-map-widget.is-open .city-map-roads .map-route,.city-map-widget.is-open .map-stop,
+  .city-map-widget.is-open .map-stop i,.city-map-widget.is-open .city-map-footer{
+    animation:none!important;transition:none!important;
+  }
 }
 </style>
 
