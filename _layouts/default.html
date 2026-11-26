@@ -1054,6 +1054,8 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
     <div class="city-map-heading"><div><small>EARTH-616 · NAV SYSTEM</small><strong>YOUR CITY MAP</strong></div><button id="city-map-close" type="button" aria-label="Close map">×</button></div>
     <p class="city-map-hint">Pick a landmark to travel there.</p>
     <div class="city-map-canvas">
+      <div class="map-depth-rings" aria-hidden="true"><i class="depth-ring ring-a"></i><i class="depth-ring ring-b"></i><i class="depth-ring ring-c"></i></div>
+      <div class="map-energy-orbs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       <div class="map-city-silhouette" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="map-district district-a">FINANCIAL DISTRICT</div><div class="map-district district-b">MIDTOWN</div><div class="map-district district-c">THE DOCKS</div><div class="map-map-stamp">NYC // 616<br><b>TACTICAL GRID</b></div>
       <svg class="city-map-roads" viewBox="0 0 320 230" aria-hidden="true"><path d="M-10 45L330 195M-10 180L330 25M80 -10L235 245M260 -10L65 245M-10 112L330 112" /><path d="M-10 45L330 195M-10 180L330 25" class="map-route"/></svg>
       <a class="map-stop map-home" href="{{ '/' | relative_url }}"><i>01</i><span>THE HQ</span></a>
@@ -4087,6 +4089,148 @@ body.city-map-open{overflow:hidden!important}
   }
 }
 </style>
+
+
+<style id="spider-extreme-map-3d-and-giant-mask">
+/* Make the mask the visual centre of the home hero. */
+@media(min-width:851px){
+  .spider-photo-stage .spider-photo-card{width:clamp(285px,24vw,340px)!important}
+}
+@media(min-width:561px) and (max-width:850px){
+  .spider-photo-stage .spider-photo-card{width:min(310px,82vw)!important}
+}
+@media(max-width:560px){
+  .journal-hero .book-stage,.journal-hero .book-stage.spider-photo-stage{min-height:456px!important;height:456px!important}
+  .spider-photo-stage .spider-photo-card{width:min(294px,82vw)!important}
+}
+
+/* A layered holographic city model with a three-axis camera. */
+.city-map-widget.is-open .city-map-canvas{
+  --map-camera-x:0deg;--map-camera-y:0deg;--map-dx:0px;--map-dy:0px;
+  transform:perspective(1350px) rotateX(calc(5deg + var(--map-camera-x))) rotateY(var(--map-camera-y))!important;
+  transform-style:preserve-3d!important;transform-origin:50% 50%!important;
+  transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .3s ease!important;
+  box-shadow:inset 0 0 75px rgba(0,0,0,.78),0 22px 35px rgba(0,0,0,.3),0 0 46px rgba(43,169,233,.23)!important;
+  border:1px solid rgba(142,225,255,.62)!important;
+}
+.city-map-widget.is-open .map-city-silhouette{
+  transform:translate3d(calc(var(--map-dx)*-.42),calc(var(--map-dy)*-.42),0)
+    perspective(950px) rotateX(13deg) rotateZ(-6deg) translateZ(-18px)!important;
+  transform-style:preserve-3d!important;
+}
+.city-map-widget.is-open .map-city-silhouette i{
+  transform:translateZ(20px) rotateY(-3deg)!important;transform-style:preserve-3d!important;
+  filter:drop-shadow(5px 7px 0 rgba(0,0,0,.36)) drop-shadow(0 0 8px rgba(40,162,227,.3))!important;
+}
+.city-map-widget.is-open .city-map-roads{
+  transform:translate3d(calc(var(--map-dx)*.18),calc(var(--map-dy)*.18),30px)!important;
+  transform-style:preserve-3d!important;
+}
+.city-map-widget.is-open .map-stop{
+  transform:translate3d(calc(var(--map-dx)*.58),calc(var(--map-dy)*.58),76px)!important;
+  transform-style:preserve-3d!important;filter:drop-shadow(0 9px 9px rgba(0,0,0,.5))!important;
+}
+.city-map-widget.is-open .map-stop i{
+  position:relative!important;transform:translateZ(28px)!important;
+  box-shadow:inset 0 3px 6px rgba(255,255,255,.36),inset 0 -7px 9px rgba(0,0,0,.48),
+    0 7px 0 #68152a,0 12px 20px rgba(0,0,0,.58),0 0 22px rgba(255,54,90,.68)!important;
+}
+.city-map-widget.is-open .map-stop i:after{
+  content:"";position:absolute;inset:-8px;border:1px solid rgba(112,216,255,.72);
+  border-radius:50%;transform:translateZ(-6px);opacity:.65;
+  animation:spider-map-pin-orbit 3.2s ease-in-out infinite;
+}
+@keyframes spider-map-pin-orbit{
+  0%,100%{transform:translateZ(-6px) scale(.82);opacity:.25}
+  50%{transform:translateZ(10px) scale(1.22);opacity:.9}
+}
+
+/* Three rotating rings make the map feel like a physical hologram. */
+.map-depth-rings{
+  position:absolute;inset:3%;z-index:1;pointer-events:none;
+  transform-style:preserve-3d;perspective:900px;opacity:.8;
+}
+.map-depth-rings .depth-ring{
+  position:absolute;inset:8%;display:block;border:1px solid rgba(101,213,255,.46);
+  border-radius:50%;box-shadow:0 0 14px rgba(64,186,244,.22),inset 0 0 14px rgba(64,186,244,.12);
+  transform-style:preserve-3d;
+}
+.map-depth-rings .ring-a{transform:rotateX(68deg) rotateZ(-18deg) translateZ(-26px);animation:spider-map-ring-spin 16s linear infinite}
+.map-depth-rings .ring-b{inset:16%;border-style:dashed;border-color:rgba(238,52,88,.54);transform:rotateY(67deg) rotateZ(25deg) translateZ(16px);animation:spider-map-ring-reverse 20s linear infinite}
+.map-depth-rings .ring-c{inset:2% 20%;border-color:rgba(174,236,255,.24);transform:rotateX(76deg) rotateZ(58deg) translateZ(34px);animation:spider-map-ring-pulse 5.5s ease-in-out infinite}
+@keyframes spider-map-ring-spin{to{rotate:0 0 1 360deg}}
+@keyframes spider-map-ring-reverse{to{rotate:0 1 0 -360deg}}
+@keyframes spider-map-ring-pulse{0%,100%{scale:.92;opacity:.25}50%{scale:1.08;opacity:.8}}
+
+/* Floating energy points orbit the skyline at different depths. */
+.map-energy-orbs{position:absolute;inset:0;z-index:8;pointer-events:none;transform-style:preserve-3d}
+.map-energy-orbs i{
+  position:absolute;width:7px;height:7px;border-radius:50%;background:#b9efff;
+  box-shadow:0 0 8px #6dd8ff,0 0 22px rgba(59,184,255,.9);
+  animation:spider-map-orb-float 4.8s ease-in-out infinite;
+}
+.map-energy-orbs i:nth-child(1){left:12%;top:21%;animation-delay:-.8s}
+.map-energy-orbs i:nth-child(2){right:12%;top:17%;width:5px;height:5px;animation-delay:-2.2s}
+.map-energy-orbs i:nth-child(3){left:18%;bottom:18%;width:6px;height:6px;animation-delay:-1.4s}
+.map-energy-orbs i:nth-child(4){right:19%;bottom:23%;width:8px;height:8px;background:#ff6d89;box-shadow:0 0 9px #ff3658,0 0 24px rgba(255,54,88,.8);animation-delay:-3s}
+.map-energy-orbs i:nth-child(5){left:51%;top:8%;width:4px;height:4px;animation-delay:-2.7s}
+@keyframes spider-map-orb-float{
+  0%,100%{translate:0 0 14px;scale:.7;opacity:.35}
+  50%{translate:0 -16px 68px;scale:1.45;opacity:1}
+}
+
+/* City buildings gain side depth and illuminated windows. */
+.city-map-widget.is-open .map-city-silhouette i{
+  border-right:2px solid rgba(143,226,255,.42)!important;
+  box-shadow:inset 4px 0 9px rgba(179,231,255,.2),inset -8px -5px 12px rgba(0,0,0,.68),
+    10px 12px 0 rgba(0,0,0,.22),0 0 20px rgba(40,161,225,.18)!important;
+  transition:filter .3s ease,box-shadow .3s ease!important;
+}
+.city-map-widget.is-open .map-city-silhouette i:hover{filter:brightness(1.55) drop-shadow(0 0 14px rgba(79,202,255,.7))!important}
+
+/* Cursor-driven parallax on desktop; touch users still get the full animation. */
+.city-map-widget.is-open .city-map-canvas{will-change:transform}
+@media(hover:hover) and (pointer:fine){.city-map-widget.is-open .city-map-canvas{cursor:crosshair}}
+@media(prefers-reduced-motion:reduce){
+  .map-depth-rings .depth-ring,.map-energy-orbs i,.city-map-widget.is-open .map-stop i:after{animation:none!important}
+  .city-map-widget.is-open .city-map-canvas{transition:none!important;transform:none!important}
+}
+</style>
+<script id="spider-map-live-parallax-camera">
+(()=>{
+  const canvas=document.querySelector('#city-map-panel .city-map-canvas');
+  if(!canvas)return;
+  const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)');
+  if(reduced?.matches)return;
+  let frame=0,lastEvent=null;
+  const reset=()=>{
+    canvas.style.setProperty('--map-camera-x','0deg');
+    canvas.style.setProperty('--map-camera-y','0deg');
+    canvas.style.setProperty('--map-dx','0px');
+    canvas.style.setProperty('--map-dy','0px');
+  };
+  const move=event=>{
+    lastEvent=event;
+    if(frame)return;
+    frame=requestAnimationFrame(()=>{
+      frame=0;
+      const rect=canvas.getBoundingClientRect();
+      if(!rect.width||!rect.height)return;
+      const x=Math.max(-1,Math.min(1,((lastEvent.clientX-rect.left)/rect.width-.5)*2));
+      const y=Math.max(-1,Math.min(1,((lastEvent.clientY-rect.top)/rect.height-.5)*2));
+      canvas.style.setProperty('--map-camera-x',((-y*8).toFixed(2))+'deg');
+      canvas.style.setProperty('--map-camera-y',((x*10).toFixed(2))+'deg');
+      canvas.style.setProperty('--map-dx',((x*13).toFixed(2))+'px');
+      canvas.style.setProperty('--map-dy',((y*13).toFixed(2))+'px');
+    });
+  };
+  canvas.addEventListener('pointermove',move,{passive:true});
+  canvas.addEventListener('pointerleave',reset,{passive:true});
+  document.getElementById('city-map-toggle')?.addEventListener('click',reset);
+  document.getElementById('city-map-close')?.addEventListener('click',reset);
+  document.addEventListener('keydown',event=>{if(event.key==='Escape')reset()});
+})();
+</script>
 
 </body>
 </html>
