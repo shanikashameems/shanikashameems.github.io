@@ -5,19 +5,20 @@ title: A note
 ---
 
 <article class="content-page reveal note-page">
-  <div class="eyebrow">SPIDER FILE // BEHIND THE MASK</div>
-  <h1>Hey, you! <span class="note-heart">♡</span></h1>
-  <p class="note-welcome">Come in, get comfy. No formalities here.</p>
+  <div class="eyebrow">SPIDER FILE // PERSONAL TRANSMISSION</div>
+  <div class="note-stamp"><span>EARTH-616 / PERSONAL LOG</span><span>TRANSMISSION 001 · OPEN</span></div>
+  <h1>A note from HQ. <span class="note-heart">♡</span></h1>
+  <p class="note-welcome">Hey, you. Glad you found this little corner of the multiverse.</p>
 
-  <p>This is basically my little internet hideout. A place for random thoughts, tiny wins, questionable decisions, big dreams, silly moments and the occasional overthinking session. You know, the usual human package.</p>
+  <p>This is my little HQ on the internet: a place to log tiny wins, weird plot twists, big plans, unfinished ideas and the days that don't quite go to plan. Every entry is a snapshot from this side of the web.</p>
 
-  <p>Some days there might be something meaningful here. Other days it might just be a thought that refused to leave me alone. There isn't really a theme. I'm just collecting bits of life as they happen.</p>
+  <p>Some pages are full-on missions; others are quick thoughts caught before they disappear. No perfect script and no fixed storyline. Just me, collecting the moments as they happen.</p>
 
-  <div class="note-quote" role="note">Still figuring things out. Probably always will be. ♡</div>
+  <div class="note-quote" role="note"><span class="note-quote-kicker">FIELD NOTE // 001</span><br>Not every day needs a heroic origin story. Sometimes showing up is the whole mission. ♡</div>
 
-  <p>So have a look around. Read a page, open a book, stay for a bit. Consider this the digital version of finding a comfy corner and chatting about absolutely everything.</p>
+  <p>Take a look through the logs, open a book from the archive, and stay awhile. You don't need a badge to get in.</p>
 
-  <p class="note-signoff">that's all for now,<br>Shasha ♡</p>
+  <p class="note-signoff">Stay curious. Stay kind. Keep swinging,<br>Shasha ♡</p>
 </article>
 
 <style>
