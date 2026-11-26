@@ -4106,7 +4106,7 @@ body.city-map-open{overflow:hidden!important}
 
 /* A layered holographic city model with a three-axis camera. */
 .city-map-widget.is-open .city-map-canvas{
-  --map-camera-x:0deg;--map-camera-y:0deg;--map-dx:0px;--map-dy:0px;
+  --map-camera-x:0deg;--map-camera-y:0deg;--map-city-x:0px;--map-city-y:0px;--map-road-x:0px;--map-road-y:0px;--map-stop-x:0px;--map-stop-y:0px;
   transform:perspective(1350px) rotateX(calc(5deg + var(--map-camera-x))) rotateY(var(--map-camera-y))!important;
   transform-style:preserve-3d!important;transform-origin:50% 50%!important;
   transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .3s ease!important;
@@ -4114,7 +4114,7 @@ body.city-map-open{overflow:hidden!important}
   border:1px solid rgba(142,225,255,.62)!important;
 }
 .city-map-widget.is-open .map-city-silhouette{
-  transform:translate3d(calc(var(--map-dx)*-.42),calc(var(--map-dy)*-.42),0)
+  transform:translate3d(var(--map-city-x),var(--map-city-y),0)
     perspective(950px) rotateX(13deg) rotateZ(-6deg) translateZ(-18px)!important;
   transform-style:preserve-3d!important;
 }
@@ -4123,11 +4123,11 @@ body.city-map-open{overflow:hidden!important}
   filter:drop-shadow(5px 7px 0 rgba(0,0,0,.36)) drop-shadow(0 0 8px rgba(40,162,227,.3))!important;
 }
 .city-map-widget.is-open .city-map-roads{
-  transform:translate3d(calc(var(--map-dx)*.18),calc(var(--map-dy)*.18),30px)!important;
+  transform:translate3d(var(--map-road-x),var(--map-road-y),30px)!important;
   transform-style:preserve-3d!important;
 }
 .city-map-widget.is-open .map-stop{
-  transform:translate3d(calc(var(--map-dx)*.58),calc(var(--map-dy)*.58),76px)!important;
+  transform:translate3d(var(--map-stop-x),var(--map-stop-y),76px)!important;
   transform-style:preserve-3d!important;filter:drop-shadow(0 9px 9px rgba(0,0,0,.5))!important;
 }
 .city-map-widget.is-open .map-stop i{
@@ -4206,8 +4206,12 @@ body.city-map-open{overflow:hidden!important}
   const reset=()=>{
     canvas.style.setProperty('--map-camera-x','0deg');
     canvas.style.setProperty('--map-camera-y','0deg');
-    canvas.style.setProperty('--map-dx','0px');
-    canvas.style.setProperty('--map-dy','0px');
+    canvas.style.setProperty('--map-city-x','0px');
+    canvas.style.setProperty('--map-city-y','0px');
+    canvas.style.setProperty('--map-road-x','0px');
+    canvas.style.setProperty('--map-road-y','0px');
+    canvas.style.setProperty('--map-stop-x','0px');
+    canvas.style.setProperty('--map-stop-y','0px');
   };
   const move=event=>{
     lastEvent=event;
@@ -4220,8 +4224,12 @@ body.city-map-open{overflow:hidden!important}
       const y=Math.max(-1,Math.min(1,((lastEvent.clientY-rect.top)/rect.height-.5)*2));
       canvas.style.setProperty('--map-camera-x',((-y*8).toFixed(2))+'deg');
       canvas.style.setProperty('--map-camera-y',((x*10).toFixed(2))+'deg');
-      canvas.style.setProperty('--map-dx',((x*13).toFixed(2))+'px');
-      canvas.style.setProperty('--map-dy',((y*13).toFixed(2))+'px');
+      canvas.style.setProperty('--map-city-x',((-x*5.5).toFixed(2))+'px');
+      canvas.style.setProperty('--map-city-y',((-y*5.5).toFixed(2))+'px');
+      canvas.style.setProperty('--map-road-x',((x*2.4).toFixed(2))+'px');
+      canvas.style.setProperty('--map-road-y',((y*2.4).toFixed(2))+'px');
+      canvas.style.setProperty('--map-stop-x',((x*7.5).toFixed(2))+'px');
+      canvas.style.setProperty('--map-stop-y',((y*7.5).toFixed(2))+'px');
     });
   };
   canvas.addEventListener('pointermove',move,{passive:true});
