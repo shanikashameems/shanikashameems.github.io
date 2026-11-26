@@ -10,15 +10,17 @@ title: A note
   <h1>A note from HQ. <span class="note-heart">♡</span></h1>
   <p class="note-welcome">Hey, you. Glad you found this little corner of the multiverse.</p>
 
-  <p>This is my little HQ on the internet: a place to log tiny wins, weird plot twists, big plans, unfinished ideas and the days that don't quite go to plan. Every entry is a snapshot from this side of the web.</p>
-
-  <p>Some pages are full-on missions; others are quick thoughts caught before they disappear. No perfect script and no fixed storyline. Just me, collecting the moments as they happen.</p>
-
-  <div class="note-quote" role="note"><span class="note-quote-kicker">FIELD NOTE // 001</span><br>Not every day needs a heroic origin story. Sometimes showing up is the whole mission. ♡</div>
-
-  <p>Take a look through the logs, open a book from the archive, and stay awhile. You don't need a badge to get in.</p>
-
-  <p class="note-signoff">Stay curious. Stay kind. Keep swinging,<br>Shasha ♡</p>
+  <div class="note-layout">
+    <div class="note-main-copy">
+      <p>This is my little HQ on the internet: a place for tiny wins, big plans, unfinished ideas and everyday plot twists. Every entry captures a moment from my side of the web.</p>
+      <p>Some pages are full missions; others are quick thoughts. No perfect script or fixed storyline, just life as it happens.</p>
+    </div>
+    <aside class="note-aside">
+      <div class="note-quote" role="note"><span class="note-quote-kicker">FIELD NOTE // 001</span><br>Not every day needs a heroic origin story. Sometimes showing up is the whole mission. ♡</div>
+      <p>Browse the logs, open an issue from the archive, and stay awhile. You don't need a badge to get in.</p>
+      <p class="note-signoff">Stay curious. Stay kind. Keep swinging,<br>Shasha ♡</p>
+    </aside>
+  </div>
 </article>
 
 <style>
