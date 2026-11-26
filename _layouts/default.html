@@ -3918,5 +3918,82 @@ body.city-map-open{overflow:hidden!important}
 }
 </style>
 
+
+<style id="spider-map-square-no-scroll-and-wider-hero">
+/* Keep the map compact, square, centred and fully visible without an internal scrollbar. */
+.city-map-widget.is-open .city-map-panel{
+  box-sizing:border-box!important;
+  width:min(760px,calc(100vw - 48px),calc(100dvh - 48px))!important;
+  height:min(760px,calc(100vw - 48px),calc(100dvh - 48px))!important;
+  max-width:none!important;max-height:none!important;
+  display:flex!important;flex-direction:column!important;justify-content:center!important;
+  gap:clamp(7px,1.2vmin,12px)!important;
+  padding:clamp(12px,2.2vmin,24px)!important;
+  overflow:hidden!important;
+}
+.city-map-widget.is-open .city-map-heading{flex:0 0 auto!important}
+.city-map-widget.is-open .city-map-heading strong{
+  font-size:clamp(1.8rem,3.2vw,2.7rem)!important;line-height:1!important;
+}
+.city-map-widget.is-open .city-map-heading button{
+  flex:0 0 42px!important;width:42px!important;height:42px!important;
+}
+.city-map-widget.is-open .city-map-hint{
+  flex:0 0 auto!important;margin:0!important;
+  font-size:clamp(.86rem,1.3vw,1rem)!important;
+}
+.city-map-widget.is-open .city-map-canvas{
+  flex:0 0 auto!important;align-self:center!important;
+  width:min(100%,calc(100% - 145px))!important;
+  height:auto!important;min-height:0!important;aspect-ratio:1/1!important;
+  border-radius:10px!important;
+}
+.city-map-widget.is-open .city-map-footer{
+  flex:0 0 auto!important;margin:0!important;
+  font-size:clamp(.52rem,.7vw,.65rem)!important;
+}
+@media(max-width:760px){
+  .city-map-widget.is-open .city-map-panel{
+    width:min(760px,calc(100vw - 20px),calc(100dvh - 20px))!important;
+    height:min(760px,calc(100vw - 20px),calc(100dvh - 20px))!important;
+    padding:12px!important;gap:7px!important;
+  }
+  .city-map-widget.is-open .city-map-heading strong{font-size:clamp(1.55rem,7vw,2rem)!important}
+  .city-map-widget.is-open .city-map-heading small{font-size:.58rem!important}
+  .city-map-widget.is-open .city-map-heading button{
+    width:36px!important;height:36px!important;flex-basis:36px!important;font-size:1.6rem!important;
+  }
+  .city-map-widget.is-open .city-map-hint{display:none!important}
+  .city-map-widget.is-open .city-map-canvas{width:min(100%,calc(100% - 92px))!important}
+  .city-map-widget.is-open .city-map-footer{
+    font-size:.48rem!important;letter-spacing:.055em!important;
+  }
+  .map-stop{font-size:.56rem!important}
+  .map-stop i{width:25px!important;height:25px!important}
+  .map-map-stamp{font-size:.56rem!important}
+}
+@media(max-height:600px){
+  .city-map-widget.is-open .city-map-panel{padding:10px!important;gap:5px!important}
+  .city-map-widget.is-open .city-map-hint{font-size:.78rem!important}
+  .city-map-widget.is-open .city-map-footer{font-size:.46rem!important}
+}
+
+/* Give the homepage headline more horizontal room without changing its wording. */
+@media(min-width:851px){
+  body:has(.journal-hero) main{max-width:1360px!important}
+  .journal-hero{
+    max-width:1320px!important;
+    grid-template-columns:minmax(0,1.16fr) minmax(0,.84fr)!important;
+    gap:clamp(14px,1.8vw,26px)!important;
+  }
+  .journal-hero .hero-copy{max-width:850px!important}
+  .journal-hero .hero-copy h1{width:100%!important;max-width:900px!important}
+}
+@media(max-width:850px){
+  .journal-hero .hero-copy{max-width:100%!important}
+  .journal-hero .hero-copy h1{width:100%!important;max-width:100%!important}
+}
+</style>
+
 </body>
 </html>
