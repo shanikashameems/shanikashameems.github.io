@@ -1032,21 +1032,26 @@ a,button,input,textarea,select,[role="button"],.web-shooter,.city-map-toggle{cur
     <b class="city-map-icon" aria-hidden="true">
       <svg viewBox="0 0 64 64" aria-hidden="true">
         <defs>
-          <linearGradient id="map-shield-metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dff8ff"/><stop offset=".42" stop-color="#62c9fa"/><stop offset="1" stop-color="#176ca7"/></linearGradient>
-          <linearGradient id="map-pin-core" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7890"/><stop offset=".48" stop-color="#ed2948"/><stop offset="1" stop-color="#8f1235"/></linearGradient>
-          <filter id="map-pin-glow"><feGaussianBlur stdDeviation="2" result="glow"/><feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <linearGradient id="folded-map-paper" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#173d59"/><stop offset="1" stop-color="#061526"/>
+          </linearGradient>
+          <linearGradient id="folded-map-red" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ff8a9d"/><stop offset=".55" stop-color="#f02d52"/><stop offset="1" stop-color="#9e1236"/>
+          </linearGradient>
         </defs>
-        <path d="M32 3.5 54 15.6v27L32 60.5 10 42.6v-27Z" fill="#04101f" stroke="url(#map-shield-metal)" stroke-width="2"/>
-        <path d="M32 8.5 49.5 18v22.2L32 54.8 14.5 40.2V18Z" fill="#0b2d49" stroke="#7edaff" stroke-width=".8" opacity=".95"/>
-        <path d="M17 20.5 32 29l15-8.5M17 41.5 32 50l15-8.5M32 29v21M17 20.5v21M47 20.5v21" fill="none" stroke="#83d9ff" stroke-width=".8" opacity=".46"/>
-        <path d="M32 11v9M11 32h8M45 32h8M32 44v9" stroke="#ff5270" stroke-width="1.2" stroke-linecap="round" opacity=".9"/>
-        <g filter="url(#map-pin-glow)">
-          <path d="M32 17.2c-7.1 0-12.1 5.2-12.1 11.8 0 8.3 12.1 20.2 12.1 20.2s12.1-11.9 12.1-20.2c0-6.6-5-11.8-12.1-11.8Z" fill="url(#map-pin-core)" stroke="#ffe4eb" stroke-width="1.3"/>
-          <circle cx="32" cy="28.8" r="7.4" fill="#0a2137" stroke="#ffb2c2" stroke-width="1"/>
-          <path d="M32 24.2v9.1m-2.7-7.1-3.8-2.8m3.7 5.3-5.1.5m5.8 2-3.5 3.3m8.3-8.3 3.8-2.8m-3.7 5.3 5.1.5m-5.8 2 3.5 3.3" fill="none" stroke="#f1fbff" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
-        </g>
-        <circle cx="32" cy="7.4" r="1.5" fill="#fff"/><circle cx="53.5" cy="43.5" r="1.7" fill="#ff6a82"/>
-        <path d="M7 17h5M7 17v5M57 17h-5M57 17v5M7 47h5M7 47v-5M57 47h-5M57 47v-5" fill="none" stroke="#b9eeff" stroke-width="1.2" stroke-linecap="round" opacity=".75"/>
+        <path d="M5.5 13.5 21.5 7l20.5 7 16.5-7v43L42 57l-20.5-7-16 6.5Z"
+          fill="url(#folded-map-paper)" stroke="#b9efff" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M21.5 7v43M42 14v43" fill="none" stroke="#8fdcff" stroke-width="1.5" stroke-dasharray="2.5 2.5" opacity=".8"/>
+        <path d="M10 22 18 18 27 22 36 18 51 22M9 43 17 39 27 43 37 39 52 43M12 31 18 28M47 31 53 28"
+          fill="none" stroke="#6eb4dc" stroke-width="1.6" stroke-linecap="round" opacity=".7"/>
+        <path d="M10 46C16 45 16 33 25 33S32 40 38 31 43 22 49 19"
+          fill="none" stroke="#ff4767" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M49 13.5c-4.8 0-8.2 3.5-8.2 8.1 0 5.7 8.2 13.8 8.2 13.8s8.2-8.1 8.2-13.8c0-4.6-3.4-8.1-8.2-8.1Z"
+          fill="url(#folded-map-red)" stroke="#ffe5eb" stroke-width="1.4"/>
+        <circle cx="49" cy="21.5" r="3.1" fill="#07182b" stroke="#ffd0da" stroke-width="1"/>
+        <path d="M8.5 15.5Q14 9 20 12M9 19Q13 14 18 16M10 23Q13 19 17 20"
+          fill="none" stroke="#ff6882" stroke-width=".8" stroke-linecap="round" opacity=".9"/>
+        <circle cx="10" cy="46" r="2.2" fill="#ff7c91" stroke="#fff" stroke-width=".8"/>
       </svg>
     </b>
   </button>
@@ -4240,5 +4245,163 @@ body.city-map-open{overflow:hidden!important}
 })();
 </script>
 
+
+<style id="spider-map-fast-red-webmap">
+/* Make the launcher read as a folded street map with a route and location pin. */
+.city-map-icon{
+  width:78px!important;height:78px!important;flex-basis:78px!important;
+  border-radius:17px!important;clip-path:none!important;
+  background:linear-gradient(145deg,#17415f 0%,#09243c 58%,#030d1b 100%)!important;
+  box-shadow:inset 0 3px 12px rgba(220,246,255,.24),inset 0 -8px 16px rgba(0,0,0,.62),
+    0 0 0 3px rgba(255,59,91,.16),0 0 27px rgba(239,46,81,.34),6px 7px 0 rgba(229,29,61,.6)!important;
+}
+.city-map-icon:before{
+  inset:-8px!important;border-radius:20px!important;clip-path:none!important;
+  border:1px dashed rgba(255,102,126,.75)!important;
+  box-shadow:0 0 17px rgba(255,50,88,.28)!important;
+}
+.city-map-icon:after{top:6px!important;right:7px!important}
+.city-map-icon svg{width:69px!important;height:69px!important;filter:drop-shadow(0 3px 5px rgba(0,0,0,.55))!important}
+
+/* Faster opening: remove long stagger, blur filters and heavy overshoot. */
+.city-map-widget.is-open .city-map-panel{
+  animation:spider-map-fast-open .38s cubic-bezier(.18,.82,.22,1) both!important;
+  filter:none!important;
+}
+@keyframes spider-map-fast-open{
+  from{opacity:0;translate:-50% calc(-50% + 22px);scale:.94;rotateX(3deg)}
+  to{opacity:1;translate:-50% -50%;scale:1;rotateX(0)}
+}
+.city-map-widget.is-open .city-map-heading{animation:spider-map-fast-hud .28s .04s ease-out both!important;filter:none!important}
+.city-map-widget.is-open .city-map-hint{animation:spider-map-fast-hud .25s .07s ease-out both!important;filter:none!important}
+@keyframes spider-map-fast-hud{from{opacity:0;translate:0 8px}to{opacity:1;translate:0 0}}
+.city-map-widget.is-open .city-map-canvas{
+  animation:spider-map-fast-canvas .42s .02s cubic-bezier(.18,.82,.22,1) both!important;
+  filter:none!important;
+}
+@keyframes spider-map-fast-canvas{
+  from{opacity:.35;translate:0 13px;scale:.965}
+  to{opacity:1;translate:0 0;scale:1}
+}
+.city-map-widget.is-open .map-city-silhouette{
+  animation:spider-map-fast-city .4s .04s cubic-bezier(.18,.82,.22,1) both!important;
+  filter:none!important;
+}
+@keyframes spider-map-fast-city{
+  from{opacity:.25;translate:0 10px 0;scale:.96}
+  to{opacity:.86;translate:0 0 0;scale:1}
+}
+.city-map-widget.is-open .map-city-silhouette i{
+  animation:spider-map-fast-buildings .32s var(--building-delay,.05s) ease-out both!important;
+  filter:none!important;
+}
+.city-map-widget.is-open .map-city-silhouette i:nth-child(1){--building-delay:.02s}
+.city-map-widget.is-open .map-city-silhouette i:nth-child(2){--building-delay:.04s}
+.city-map-widget.is-open .map-city-silhouette i:nth-child(3){--building-delay:.06s}
+.city-map-widget.is-open .map-city-silhouette i:nth-child(4){--building-delay:.08s}
+.city-map-widget.is-open .map-city-silhouette i:nth-child(5){--building-delay:.10s}
+.city-map-widget.is-open .map-city-silhouette i:nth-child(6){--building-delay:.12s}
+.city-map-widget.is-open .map-city-silhouette i:nth-child(7){--building-delay:.14s}
+@keyframes spider-map-fast-buildings{
+  from{opacity:.2;translate:0 12px 0;scale:1 .85}
+  to{opacity:1;translate:0 0 0;scale:1 1}
+}
+.city-map-widget.is-open .city-map-roads{
+  animation:spider-map-fast-roads .3s .08s ease-out both!important;filter:none!important;
+}
+@keyframes spider-map-fast-roads{from{opacity:0}to{opacity:1}}
+.city-map-widget.is-open .city-map-roads .map-route{
+  stroke-dasharray:6 7!important;stroke-dashoffset:100!important;
+  animation:spider-map-fast-route .48s .06s ease-out forwards!important;
+}
+@keyframes spider-map-fast-route{to{stroke-dashoffset:0}}
+.city-map-widget.is-open .map-stop{
+  animation:spider-map-fast-pin .3s var(--pin-delay,.08s) cubic-bezier(.18,.82,.22,1) both!important;
+  filter:none!important;
+}
+.city-map-widget.is-open .map-home{--pin-delay:.04s}
+.city-map-widget.is-open .map-missions{--pin-delay:.07s}
+.city-map-widget.is-open .map-archives{--pin-delay:.10s}
+.city-map-widget.is-open .map-profile{--pin-delay:.13s}
+.city-map-widget.is-open .map-comms{--pin-delay:.16s}
+@keyframes spider-map-fast-pin{
+  from{opacity:0;translate:0 9px 0;scale:.82}
+  70%{opacity:1;translate:0 -2px 0;scale:1.04}
+  to{opacity:1;translate:0 0 0;scale:1}
+}
+.city-map-widget.is-open .map-stop i{animation:spider-map-fast-pin-glow .36s var(--pin-delay,.08s) ease-out both!important}
+@keyframes spider-map-fast-pin-glow{
+  from{box-shadow:0 0 0 0 rgba(255,55,88,0),0 0 0 rgba(255,55,88,0)}
+  to{box-shadow:0 0 0 5px rgba(255,55,88,.25),0 0 17px rgba(255,55,88,.68)}
+}
+.city-map-widget.is-open .city-map-footer{animation:spider-map-fast-hud .24s .08s ease-out both!important}
+
+/* Red-forward Earth-616 palette: crimson districts, routes and holographic grid. */
+.city-map-widget.is-open .city-map-panel{
+  border-color:rgba(255,79,111,.82)!important;
+  background:radial-gradient(ellipse at 50% 0%,rgba(178,21,54,.24),transparent 65%),
+    linear-gradient(145deg,#230d1b 0%,#0c101d 64%,#180b18 100%)!important;
+  box-shadow:0 38px 105px rgba(0,0,0,.85),0 0 0 100vmax rgba(0,3,10,.78),
+    0 0 40px rgba(239,35,72,.2),inset 0 0 45px rgba(239,35,72,.12)!important;
+}
+.city-map-widget.is-open .city-map-heading small{color:#ff8b9e!important}
+.city-map-widget.is-open .city-map-hint{color:#e8b9c2!important}
+.city-map-widget.is-open .city-map-canvas{
+  background-color:#1b0b17!important;
+  background-image:
+    radial-gradient(ellipse at 50% 55%,rgba(189,22,57,.34),transparent 64%),
+    repeating-linear-gradient(0deg,transparent 0 27px,rgba(255,71,105,.15) 28px 29px,transparent 30px 46px),
+    repeating-linear-gradient(90deg,transparent 0 27px,rgba(255,71,105,.13) 28px 29px,transparent 30px 46px),
+    linear-gradient(135deg,rgba(76,14,34,.45),rgba(5,13,26,.65))!important;
+  border-color:rgba(255,102,130,.55)!important;
+  box-shadow:inset 0 0 65px rgba(0,0,0,.72),0 0 38px rgba(232,31,68,.18)!important;
+}
+.city-map-widget.is-open .city-map-roads path:first-child{
+  stroke:rgba(255,106,132,.4)!important;stroke-width:7!important;
+}
+.city-map-widget.is-open .city-map-roads .map-route{
+  stroke:#ff315e!important;stroke-width:4!important;
+  filter:drop-shadow(0 0 4px rgba(255,35,81,.9))!important;
+}
+.city-map-widget.is-open .map-city-silhouette i{
+  border-color:rgba(255,103,130,.52)!important;
+  background:linear-gradient(135deg,#6b1d36 0%,#321426 46%,#160c19 100%)!important;
+  box-shadow:inset 4px 0 9px rgba(255,173,188,.16),inset -8px -5px 12px rgba(0,0,0,.66),
+    9px 11px 0 rgba(0,0,0,.24),0 0 18px rgba(231,34,73,.2)!important;
+}
+.city-map-widget.is-open .map-city-silhouette i:before{
+  background:repeating-linear-gradient(90deg,rgba(255,100,128,.72) 0 2px,transparent 2px 8px),
+    repeating-linear-gradient(0deg,transparent 0 7px,rgba(255,144,158,.34) 8px 9px)!important;
+}
+.city-map-widget.is-open .map-depth-rings .depth-ring{
+  border-color:rgba(255,75,111,.62)!important;
+  box-shadow:0 0 13px rgba(255,45,82,.22),inset 0 0 13px rgba(255,45,82,.12)!important;
+}
+.city-map-widget.is-open .map-depth-rings .ring-b{border-color:rgba(255,211,220,.62)!important}
+.city-map-widget.is-open .map-energy-orbs i{
+  background:#ff9caf!important;box-shadow:0 0 7px #ff5b7b,0 0 18px rgba(255,43,82,.85)!important;
+}
+.city-map-widget.is-open .map-energy-orbs i:nth-child(4){
+  background:#fff0f2!important;box-shadow:0 0 8px #ff3658,0 0 24px rgba(255,35,77,.95)!important;
+}
+.city-map-widget.is-open .map-stop i{
+  background:radial-gradient(circle at 34% 25%,#fff3f5 0%,#ff718a 18%,#e51d45 46%,#670d27 100%)!important;
+  border-color:#ffdbe2!important;
+}
+.city-map-widget.is-open .map-stop span{
+  color:#fff0f3!important;background:rgba(35,7,18,.9)!important;
+  border-color:rgba(255,89,119,.5)!important;
+}
+.city-map-widget.is-open .city-map-footer{color:#ff9aac!important}
+.city-map-widget.is-open .city-map-footer span:first-child{color:#ff4469!important}
+@media(prefers-reduced-motion:reduce){
+  .city-map-widget.is-open .city-map-panel,.city-map-widget.is-open .city-map-heading,
+  .city-map-widget.is-open .city-map-hint,.city-map-widget.is-open .city-map-canvas,
+  .city-map-widget.is-open .map-city-silhouette,.city-map-widget.is-open .map-city-silhouette i,
+  .city-map-widget.is-open .city-map-roads,.city-map-widget.is-open .city-map-roads .map-route,
+  .city-map-widget.is-open .map-stop,.city-map-widget.is-open .map-stop i,
+  .city-map-widget.is-open .city-map-footer{animation:none!important;filter:none!important;transition:none!important}
+}
+</style>
 </body>
 </html>
