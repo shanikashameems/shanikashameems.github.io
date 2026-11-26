@@ -1,19 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
-<title>Spider-Man: The First Page</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800">
+<title>The First Thread · Spider-Journal field note</title>
 <defs>
- <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#153657"/><stop offset=".5" stop-color="#071426"/><stop offset="1" stop-color="#040913"/></linearGradient>
- <radialGradient id="halo"><stop stop-color="#267fc0" stop-opacity=".65"/><stop offset="1" stop-color="#267fc0" stop-opacity="0"/></radialGradient>
- <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#f4f0e8"/><stop offset="1" stop-color="#8ea9c2"/></linearGradient>
- <clipPath id="mask"><rect x="402" y="24" width="205" height="312" rx="9"/></clipPath>
- <pattern id="web" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M22 0Q22 22 44 22M0 22Q22 22 22 44M0 0L44 44M44 0L0 44" fill="none" stroke="#8dcfff" stroke-width=".65" opacity=".21"/></pattern>
- <filter id="shadow" x="-35%" y="-35%" width="180%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="8"/><feOffset dy="10"/><feComponentTransfer><feFuncA type="linear" slope=".6"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <linearGradient id="bg1" x2="0.9" y2="1"><stop stop-color="#153b5d"/><stop offset=".48" stop-color="#07192d"/><stop offset="1" stop-color="#030811"/></linearGradient>
+ <radialGradient id="glow1"><stop stop-color="#268fd0" stop-opacity=".58"/><stop offset="1" stop-color="#268fd0" stop-opacity="0"/></radialGradient>
+ <linearGradient id="paper1" x2="0" y2="1"><stop stop-color="#f2f7fb"/><stop offset="1" stop-color="#91abc2"/></linearGradient>
+ <pattern id="web1" width="58" height="58" patternUnits="userSpaceOnUse"><path d="M29 0Q29 29 58 29M0 29Q29 29 29 58M0 0L58 58M58 0L0 58" fill="none" stroke="#86d6ff" stroke-width="1" opacity=".18"/></pattern>
+ <filter id="shadow1" x="-30%" y="-30%" width="170%" height="170%"><feGaussianBlur in="SourceAlpha" stdDeviation="12"/><feOffset dy="12"/><feComponentTransfer><feFuncA type="linear" slope=".5"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <clipPath id="mask1"><rect x="390" y="122" width="180" height="264" rx="13"/></clipPath>
 </defs>
-<rect width="640" height="360" fill="url(#bg)"/><rect width="640" height="360" fill="url(#web)"/><ellipse cx="480" cy="175" rx="230" ry="220" fill="url(#halo)"/>
-<g fill="#102944" stroke="#396080" opacity=".9"><path d="M0 275h42v85H0zM48 249h38v111H48zM95 265h44v95H95zM148 229h48v131h-48zM208 261h40v99h-40zM267 243h39v117h-39zM325 267h30v93h-30zM570 270h30v90h-30zM607 242h33v118h-33z"/></g>
-<g fill="none" stroke="#7bcfff" opacity=".42"><path d="M0 185L202 64L402 24M202 64L402 336M20 35L402 190M20 325L402 190M402 190L640 52M402 190L640 332"/><path d="M202 64Q300 170 402 190Q300 260 202 316"/></g>
-<g filter="url(#shadow)" transform="rotate(-5 200 200)"><path d="M69 191Q138 151 253 178L287 263Q174 241 88 279Z" fill="#101d2b" stroke="#e94360" stroke-width="3"/><path d="M83 186Q150 153 254 181L272 250Q174 228 95 264Z" fill="url(#paper)" stroke="#f6e9d7" stroke-width="2"/><path d="M99 207Q166 181 240 199M104 222Q174 198 246 215M110 238Q173 215 250 230" stroke="#6a879f" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M264 157L232 282" stroke="#d9e9f3" stroke-width="8" stroke-linecap="round"/><path d="M232 282L219 300L241 288Z" fill="#ee3758"/></g>
-<g filter="url(#shadow)"><rect x="396" y="18" width="217" height="324" rx="13" fill="#06101d" stroke="#72cfff" stroke-width="2"/><rect x="402" y="24" width="205" height="312" rx="9" fill="#03070c"/><image href="/assets/spider-mask-direct.png" x="402" y="24" width="205" height="312" preserveAspectRatio="xMidYMid slice" clip-path="url(#mask)"/><rect x="402" y="24" width="205" height="312" rx="9" fill="none" stroke="#e52e50" stroke-width="2" opacity=".9"/></g>
-<g transform="translate(320 70)" stroke="#f3f9ff" stroke-width="2.8" stroke-linecap="round"><path d="M0 -17V-7M0 7V17M-17 0H-7M7 0H17M-12 -12L-6 -6M6 6L12 12M12 -12L6 -6M-6 6L-12 12"/><ellipse rx="5.5" ry="8" fill="#ee3153" stroke="none"/></g>
-<g font-family="Arial,sans-serif" fill="#eaf6ff"><text x="48" y="68" font-size="13" font-weight="bold" letter-spacing="4" fill="#78cfff">EARTH-616 · PERSONAL LOG</text><text x="48" y="119" font-size="34" font-weight="900" font-style="italic">THE FIRST</text><text x="48" y="157" font-size="34" font-weight="900" font-style="italic" fill="#ff4b68">PAGE.</text><text x="49" y="319" font-size="10" letter-spacing="2" fill="#a8c5dc">A NEW THREAD IN THE WEB</text></g>
-<rect x="10" y="10" width="620" height="340" rx="9" fill="none" stroke="#72cfff" stroke-opacity=".45"/><path d="M17 18h42M17 18v42M623 342h-42M623 342v-42" stroke="#ed3559" stroke-width="3"/>
+<rect width="640" height="800" fill="url(#bg1)"/><rect width="640" height="800" fill="url(#web1)"/>
+<ellipse cx="470" cy="275" rx="280" ry="290" fill="url(#glow1)"/>
+<g fill="#0b2037" stroke="#356080" stroke-width="2" opacity=".88">
+ <path d="M0 500h53v300H0zM62 452h47v348H62zM118 480h58v320h-58zM186 414h58v386h-58zM254 470h44v330h-44zM307 430h52v370h-52zM369 476h47v324h-47zM426 430h66v370h-66zM503 468h49v332h-49zM560 410h80v390h-80z"/>
+</g>
+<g fill="none" stroke="#8ad9ff" stroke-width="2" opacity=".34"><path d="M0 195L390 122L640 34M0 520L390 254L640 560M36 0L390 254L640 780M640 0L390 254L0 780M320 0L390 254L320 800"/><path d="M0 280Q320 30 640 280M0 390Q320 140 640 390M0 500Q320 250 640 500"/></g>
+<g filter="url(#shadow1)"><rect x="382" y="110" width="196" height="286" rx="18" fill="#06111d" stroke="#75cfff" stroke-width="3"/><rect x="390" y="122" width="180" height="264" rx="13" fill="#000"/><image href="/assets/spider-mask-direct.png" x="390" y="122" width="180" height="264" preserveAspectRatio="xMidYMid slice" clip-path="url(#mask1)"/><rect x="390" y="122" width="180" height="264" rx="13" fill="none" stroke="#f13b5c" stroke-width="3"/></g>
+<g filter="url(#shadow1)" transform="rotate(-7 262 553)">
+ <path d="M55 446Q171 407 315 448L365 704Q202 658 86 719Z" fill="#081421" stroke="#f03b5b" stroke-width="5"/>
+ <path d="M75 455Q185 424 310 460L343 683Q211 646 99 698Z" fill="url(#paper1)" stroke="#d8eafa" stroke-width="3"/>
+ <path d="M107 494Q211 465 303 496M112 530Q215 501 309 530M118 566Q222 539 315 567M124 603Q223 576 321 604" fill="none" stroke="#6b8aa7" stroke-width="4" stroke-linecap="round" opacity=".78"/>
+ <path d="M285 431L253 714" stroke="#e8f5ff" stroke-width="11" stroke-linecap="round"/>
+ <path d="M253 714L233 747L267 723Z" fill="#ed3153"/>
+</g>
+<g fill="none" stroke="#f04a68" stroke-width="3" opacity=".8"><path d="M80 357Q190 245 300 334T560 330M54 386Q192 275 313 364T585 358"/></g>
+<g font-family="Arial,sans-serif" font-weight="900" font-style="italic"><text x="48" y="82" fill="#8ed8ff" font-size="18" letter-spacing="5">EARTH-616 / PERSONAL LOG</text><text x="48" y="162" fill="#f6fbff" font-size="55">THE FIRST</text><text x="48" y="222" fill="#ff4968" font-size="59">THREAD.</text></g>
+<text x="49" y="760" fill="#b8d6eb" font-family="Arial,sans-serif" font-weight="bold" font-size="15" letter-spacing="4">ISSUE 001 · A NEW WEB BEGINS</text>
+<rect x="14" y="14" width="612" height="772" rx="16" fill="none" stroke="#77d1ff" stroke-opacity=".48" stroke-width="2"/>
 </svg>

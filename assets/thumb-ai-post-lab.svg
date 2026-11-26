@@ -1,12 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
-<title>Spider-Man: Web of Ideas</title>
-<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#133653"/><stop offset=".52" stop-color="#071427"/><stop offset="1" stop-color="#050914"/></linearGradient><radialGradient id="g"><stop stop-color="#298bc6" stop-opacity=".6"/><stop offset="1" stop-color="#298bc6" stop-opacity="0"/></radialGradient><clipPath id="mask"><rect x="415" y="25" width="190" height="292" rx="9"/></clipPath><linearGradient id="screen" x2="1" y2="1"><stop stop-color="#194364"/><stop offset="1" stop-color="#081423"/></linearGradient><filter id="shadow" x="-35%" y="-35%" width="180%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="8"/><feOffset dy="9"/><feComponentTransfer><feFuncA type="linear" slope=".6"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-<rect width="640" height="360" fill="url(#bg)"/><ellipse cx="490" cy="172" rx="240" ry="225" fill="url(#g)"/><g fill="#132b45" stroke="#385d7b" opacity=".85"><path d="M0 274h40v86H0zM48 241h43v119H48zM101 263h40v97h-40zM150 231h49v129h-49zM210 267h37v93h-37zM255 238h46v122h-46zM554 262h40v98h-40zM603 240h37v120h-37z"/></g>
-<g fill="none" stroke="#8bd7ff" stroke-width="1.4" opacity=".46"><path d="M10 35L415 180L625 40M25 325L415 180L620 326M415 25L415 317M320 0L415 180L560 360M415 180L640 180"/><path d="M35 180Q220 30 415 25Q525 110 625 180Q525 250 415 317Q220 325 35 180"/></g>
-<g filter="url(#shadow)" transform="rotate(-4 215 200)"><rect x="64" y="92" width="290" height="181" rx="12" fill="#07111f" stroke="#7bd4ff" stroke-width="2"/><rect x="77" y="105" width="264" height="152" rx="6" fill="url(#screen)" stroke="#477fa8"/><path d="M77 130H341" stroke="#6cb7df" opacity=".55"/><circle cx="91" cy="117" r="4" fill="#ff526f"/><circle cx="106" cy="117" r="4" fill="#f8ce71"/><circle cx="121" cy="117" r="4" fill="#69d3ff"/><rect x="96" y="145" width="105" height="91" rx="6" fill="#0c2138" stroke="#5bb1e2"/><path d="M109 162H185M109 178H177M109 194H189M109 214H167" stroke="#b5d9eb" stroke-width="3" stroke-linecap="round"/><rect x="216" y="145" width="110" height="42" rx="6" fill="#63213b" stroke="#ff617a"/><path d="M229 160H311M229 173H293" stroke="#ffe1e8" stroke-width="3" stroke-linecap="round"/><rect x="216" y="198" width="110" height="38" rx="6" fill="#133e5c" stroke="#70cdf8"/><path d="M229 212H310M229 225H287" stroke="#e1f5ff" stroke-width="3" stroke-linecap="round"/></g>
-<path d="M114 277H307L332 299H89Z" fill="#315774" stroke="#93d6f8" stroke-width="1.5"/><path d="M175 284H251L262 293H164Z" fill="#071525"/>
-<g filter="url(#shadow)"><rect x="409" y="19" width="202" height="304" rx="13" fill="#06101d" stroke="#73ceff" stroke-width="2"/><image href="/assets/spider-mask-direct.png" x="415" y="25" width="190" height="292" preserveAspectRatio="xMidYMid slice" clip-path="url(#mask)"/><rect x="415" y="25" width="190" height="292" rx="9" fill="none" stroke="#e52e50" stroke-width="2"/></g>
-<g stroke="#8ad9ff" stroke-width="3" fill="none" stroke-linecap="round"><path d="M332 54Q385 8 420 36M335 68Q383 26 415 53"/></g><g fill="#f8fbff"><circle cx="332" cy="54" r="4"/><circle cx="335" cy="68" r="4"/></g>
-<g font-family="Arial,sans-serif"><text x="51" y="53" fill="#80d4ff" font-size="12" letter-spacing="3" font-weight="bold">SPIDER-TECH · CREATOR LAB</text><text x="54" y="320" fill="#fff" font-size="14" font-weight="bold" letter-spacing="2">WEB OF IDEAS</text></g>
-<rect x="10" y="10" width="620" height="340" rx="9" fill="none" stroke="#72cfff" stroke-opacity=".45"/><path d="M17 18h42M17 18v42M623 342h-42M623 342v-42" stroke="#ed3559" stroke-width="3"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800">
+<title>Creator Lab · A new idea in the Spider-Verse</title>
+<defs>
+ <linearGradient id="bg3" x2="1" y2="1"><stop stop-color="#153956"/><stop offset=".52" stop-color="#071628"/><stop offset="1" stop-color="#030811"/></linearGradient>
+ <radialGradient id="glow3"><stop stop-color="#2795d1" stop-opacity=".56"/><stop offset="1" stop-color="#2795d1" stop-opacity="0"/></radialGradient>
+ <linearGradient id="screen3" x2="0" y2="1"><stop stop-color="#214c6d"/><stop offset="1" stop-color="#071426"/></linearGradient>
+ <filter id="shadow3" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur in="SourceAlpha" stdDeviation="14"/><feOffset dy="12"/><feComponentTransfer><feFuncA type="linear" slope=".55"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <clipPath id="mask3"><rect x="405" y="110" width="168" height="245" rx="12"/></clipPath>
+</defs>
+<rect width="640" height="800" fill="url(#bg3)"/><ellipse cx="450" cy="350" rx="310" ry="350" fill="url(#glow3)"/>
+<g fill="#0d263e" stroke="#386381" stroke-width="2" opacity=".82"><path d="M0 540h54v260H0zM62 490h57v310H62zM130 520h48v280h-48zM188 458h57v342h-57zM255 510h51v290h-51zM315 470h48v330h-48zM570 490h70v310h-70z"/></g>
+<g fill="none" stroke="#84d9ff" stroke-width="2" opacity=".32"><path d="M0 140L405 110L640 22M0 450L405 240L640 510M320 0L405 240L320 800M640 0L405 240L0 800"/></g>
+<g filter="url(#shadow3)" transform="rotate(-3 265 430)">
+ <rect x="55" y="248" width="354" height="290" rx="18" fill="#06111f" stroke="#7cd4ff" stroke-width="4"/>
+ <rect x="70" y="265" width="324" height="254" rx="10" fill="url(#screen3)" stroke="#4c8caf" stroke-width="2"/>
+ <path d="M70 304H394" stroke="#76c8ee" stroke-opacity=".5" stroke-width="2"/>
+ <circle cx="91" cy="284" r="6" fill="#ff536f"/><circle cx="111" cy="284" r="6" fill="#f5cd73"/><circle cx="131" cy="284" r="6" fill="#69d2ff"/>
+ <rect x="92" y="330" width="132" height="156" rx="9" fill="#0a2036" stroke="#5fb9e9" stroke-width="2"/>
+ <path d="M110 354H204M110 379H188M110 404H199M110 429H181M110 454H196" stroke="#d9f1ff" stroke-width="5" stroke-linecap="round" opacity=".77"/>
+ <rect x="245" y="330" width="126" height="66" rx="8" fill="#4b1b35" stroke="#f5607d" stroke-width="2"/>
+ <path d="M262 352H352M262 374H335" stroke="#ffe8ee" stroke-width="5" stroke-linecap="round"/>
+ <rect x="245" y="414" width="126" height="72" rx="8" fill="#103c5d" stroke="#63c9f7" stroke-width="2"/>
+ <path d="M262 438H352M262 460H328" stroke="#e2f5ff" stroke-width="5" stroke-linecap="round"/>
+</g>
+<path d="M103 552H384L422 598H65Z" fill="#284d69" stroke="#8bd8fa" stroke-width="3"/><path d="M190 562H300L315 587H175Z" fill="#071525"/>
+<g filter="url(#shadow3)"><rect x="395" y="99" width="188" height="269" rx="16" fill="#06111d" stroke="#7bd4ff" stroke-width="3"/><image href="/assets/spider-mask-direct.png" x="405" y="110" width="168" height="245" preserveAspectRatio="xMidYMid slice" clip-path="url(#mask3)"/><rect x="405" y="110" width="168" height="245" rx="12" fill="none" stroke="#f13b5c" stroke-width="3"/></g>
+<g fill="none" stroke="#8ddfff" stroke-width="3" stroke-linecap="round"><path d="M330 150Q380 72 429 114M340 174Q385 105 420 144M368 190Q395 160 411 166"/></g>
+<g fill="#f7fcff"><circle cx="330" cy="150" r="5"/><circle cx="340" cy="174" r="5"/><circle cx="368" cy="190" r="5"/></g>
+<g font-family="Arial,sans-serif" font-weight="900" font-style="italic"><text x="48" y="82" fill="#86d8ff" font-size="18" letter-spacing="5">SPIDER-TECH / CREATOR LAB</text><text x="48" y="690" fill="#f5faff" font-size="47">WEB OF</text><text x="48" y="746" fill="#ff4b69" font-size="51">IDEAS.</text></g>
+<rect x="14" y="14" width="612" height="772" rx="16" fill="none" stroke="#77d1ff" stroke-opacity=".48" stroke-width="2"/>
 </svg>

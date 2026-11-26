@@ -73,24 +73,59 @@ title: Journal
   </div>
 </section>
 
-<section class="home-recent-feed reveal">
+<section class="home-recent-feed reveal" id="missions-feed">
  <div class="section-head">
-  <div><div class="eyebrow">Notes from along the way</div><h2>Recently written</h2></div>
+  <div><div class="eyebrow">Transmission log · Earth-616</div><h2>Recently written</h2></div>
+  <span class="ig-feed-count">FIELD NOTES / 04</span>
  </div>
  <div class="home-post-grid">
  {% for post in site.posts limit:4 %}
- <a class="home-post-card" href="{{ post.url | relative_url }}">
-  <div class="home-post-media">
-   {% if post.image %}<img src="{{ post.image | relative_url }}" alt="{{ post.image_alt | default: post.title | escape }}" loading="lazy">{% else %}<div class="post-artwork" role="img" aria-label="A red-and-blue Spider-Verse inspired web over a rain-lit New York skyline"><span class="post-art-glow"></span><span class="post-art-web"></span><span class="post-art-silhouette"></span><span class="post-art-label">DAILY BUGLE · PERSONAL EDITION</span></div>{% endif %}
-   <span class="feed-date">{{ post.date | date: "%d %B %Y" }}</span>
-  </div>
+ {% assign social_id = post.url | slugify %}
+ <article class="home-post-card" data-social-post data-post-id="{{ social_id }}">
+  <header class="ig-post-header">
+   <div class="ig-author-block">
+    <span class="home-post-avatar" aria-hidden="true">S</span>
+    <span class="ig-author-copy"><strong>SHANIKA</strong><small>EARTH-616 · PERSONAL FEED</small></span>
+   </div>
+   <time class="ig-post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
+  </header>
+  <a class="ig-image-link" href="{{ post.url | relative_url }}" aria-label="Open {{ post.title | escape }}">
+   <div class="home-post-media">
+    {% if post.image %}<img src="{{ post.image | relative_url }}" alt="{{ post.image_alt | default: post.title | escape }}" loading="lazy" decoding="async">{% else %}<div class="post-artwork" role="img" aria-label="A midnight city skyline crossed by glowing web lines"><span class="post-art-glow"></span><span class="post-art-web"></span><span class="post-art-silhouette"></span><span class="post-art-label">DAILY BUGLE · PERSONAL EDITION</span></div>{% endif %}
+    <span class="feed-date">ISSUE / {{ forloop.index | prepend: "00" | slice: -2, 2 }}</span>
+    <span class="ig-image-corner" aria-hidden="true">↗</span>
+   </div>
+  </a>
   <div class="home-post-body">
-   <div class="home-post-author"><span class="home-post-avatar">S</span> SHANIKA · JOURNAL</div>
-   <h3>{{ post.title }}</h3>
-   <p>{{ post.excerpt | strip_html | strip | truncate: 135 }}</p>
-   <div class="home-post-actions"><span>♡</span><span>READ STORY ↗</span></div>
+   <div class="ig-post-toolbar">
+    <button class="ig-icon-button ig-like-button" type="button" data-like aria-pressed="false" aria-label="Like this post">
+     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.4 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
+     <span>LIKE</span>
+    </button>
+    <button class="ig-icon-button" type="button" data-comment-toggle aria-expanded="false" aria-controls="comments-{{ social_id }}">
+     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.8 8.8 0 0 1-3.5-.7L4 20l1.2-3.5A7.1 7.1 0 0 1 4 12c0-4.2 3.6-7.5 8-7.5s8 2.8 8 7Z"/></svg>
+     <span>COMMENT <small data-comment-count>0</small></span>
+    </button>
+    <a class="ig-read-link" href="{{ post.url | relative_url }}">READ POST <b>↗</b></a>
+   </div>
+   <p class="ig-likes-line" data-likes-line aria-live="polite">Be the first to send this post some love.</p>
+   <div class="ig-caption">
+    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+    <p>{{ post.excerpt | strip_html | strip | truncate: 190 }}</p>
+   </div>
+   <section class="ig-comments-panel" id="comments-{{ social_id }}" data-comments-panel hidden>
+    <div class="ig-comment-list" data-comment-list aria-live="polite">
+     <p class="ig-empty-comments">No comments yet. Start the conversation.</p>
+    </div>
+    <form class="ig-comment-form" data-comment-form>
+     <label class="visually-hidden" for="comment-{{ social_id }}">Write a comment</label>
+     <input id="comment-{{ social_id }}" name="comment" type="text" maxlength="280" autocomplete="off" placeholder="Add a comment to the web..." required>
+     <button type="submit">POST</button>
+    </form>
+    <p class="ig-local-note">Comments and likes are saved in this browser.</p>
+   </section>
   </div>
- </a>
+ </article>
  {% else %}
  <div class="empty-note">The next page is waiting to be written.</div>
  {% endfor %}

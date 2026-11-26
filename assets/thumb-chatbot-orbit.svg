@@ -1,14 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
-<title>Spider-Man: Signals in the Web</title>
-<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#153857"/><stop offset=".55" stop-color="#081427"/><stop offset="1" stop-color="#050a14"/></linearGradient><radialGradient id="glow"><stop stop-color="#318fc9" stop-opacity=".55"/><stop offset="1" stop-color="#318fc9" stop-opacity="0"/></radialGradient><linearGradient id="panel" x2="1" y2="1"><stop stop-color="#1b4669"/><stop offset="1" stop-color="#091526"/></linearGradient><clipPath id="mask"><rect x="35" y="47" width="168" height="258" rx="10"/></clipPath><filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="8"/><feOffset dy="8"/><feComponentTransfer><feFuncA type="linear" slope=".65"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-<rect width="640" height="360" fill="url(#bg)"/><ellipse cx="120" cy="170" rx="210" ry="225" fill="url(#glow)"/><g fill="none" stroke="#76cbff" opacity=".3"><path d="M0 180L320 30L640 180L320 330Z M0 65L320 180L640 65M0 295L320 180L640 295M320 0V360"/></g>
-<g filter="url(#shadow)"><rect x="27" y="37" width="184" height="278" rx="15" fill="#06101d" stroke="#7bcfff" stroke-width="2"/><image href="/assets/spider-mask-direct.png" x="35" y="47" width="168" height="258" preserveAspectRatio="xMidYMid slice" clip-path="url(#mask)"/><rect x="35" y="47" width="168" height="258" rx="10" fill="none" stroke="#e52e50" stroke-width="2"/></g>
-<g filter="url(#shadow)"><rect x="251" y="56" width="345" height="248" rx="18" fill="url(#panel)" stroke="#68c7fa" stroke-width="2"/><path d="M251 94H596" stroke="#79cfff" opacity=".45"/><circle cx="270" cy="75" r="4" fill="#ff526f"/><circle cx="285" cy="75" r="4" fill="#ffd166"/><circle cx="300" cy="75" r="4" fill="#6bd5ff"/>
-<path d="M278 117H474Q489 117 489 132V162Q489 177 474 177H311L290 193V177H278Q263 177 263 162V132Q263 117 278 117Z" fill="#1b577c" stroke="#7cd7ff" stroke-width="1.5"/><path d="M293 137H452M293 153H418" stroke="#e4f7ff" stroke-width="4" stroke-linecap="round" opacity=".8"/>
-<path d="M372 192H566Q581 192 581 207V234Q581 249 566 249H431L413 267V249H372Q357 249 357 234V207Q357 192 372 192Z" fill="#612039" stroke="#ff657d" stroke-width="1.7"/><path d="M388 212H548M388 228H519" stroke="#ffe1e8" stroke-width="4" stroke-linecap="round" opacity=".8"/></g>
-<g transform="translate(548 42)" fill="none" stroke="#eaf7ff" stroke-width="2.4" stroke-linecap="round"><path d="M0 -15V-7M0 7V15M-15 0H-7M7 0H15M-11 -11L-5 -5M5 5L11 11M11 -11L5 -5M-5 5L-11 11"/><ellipse rx="5" ry="7" fill="#ed3153" stroke="none"/></g>
-<g fill="none" stroke="#7ed6ff" stroke-width="2"><path d="M212 175Q235 145 251 143M210 206Q238 232 260 224M170 15Q300 4 386 56"/></g>
-<g fill="#0b1c30" stroke="#ef4767" stroke-width="2"><circle cx="230" cy="145" r="7"/><circle cx="239" cy="231" r="6"/></g>
-<g font-family="Arial,sans-serif"><text x="251" y="35" font-size="12" fill="#79cfff" letter-spacing="3" font-weight="bold">WEB-SIGNAL DETECTED</text><text x="253" y="335" font-size="12" fill="#eff8ff" letter-spacing="3" font-weight="bold">UNHEARD · ISSUE 002</text></g>
-<rect x="10" y="10" width="620" height="340" rx="9" fill="none" stroke="#72cfff" stroke-opacity=".45"/><path d="M17 18h42M17 18v42M623 342h-42M623 342v-42" stroke="#ed3559" stroke-width="3"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800">
+<title>Signal Lost · Conversations across the web</title>
+<defs>
+ <linearGradient id="bg2" x2="1" y2="1"><stop stop-color="#123956"/><stop offset=".46" stop-color="#071628"/><stop offset="1" stop-color="#080b16"/></linearGradient>
+ <radialGradient id="glow2"><stop stop-color="#2aa3dc" stop-opacity=".62"/><stop offset="1" stop-color="#2aa3dc" stop-opacity="0"/></radialGradient>
+ <linearGradient id="panel2" x2="1" y2="1"><stop stop-color="#1a5276"/><stop offset="1" stop-color="#07182d"/></linearGradient>
+ <filter id="shadow2" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur in="SourceAlpha" stdDeviation="13"/><feOffset dy="10"/><feComponentTransfer><feFuncA type="linear" slope=".54"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <clipPath id="mask2"><rect x="54" y="154" width="170" height="252" rx="14"/></clipPath>
+ <pattern id="grid2" width="52" height="52" patternUnits="userSpaceOnUse"><path d="M52 0H0V52" fill="none" stroke="#8bdcff" stroke-opacity=".14"/></pattern>
+</defs>
+<rect width="640" height="800" fill="url(#bg2)"/><rect width="640" height="800" fill="url(#grid2)"/><ellipse cx="290" cy="380" rx="360" ry="400" fill="url(#glow2)"/>
+<g fill="none" stroke="#7fd8ff" stroke-width="2" opacity=".35"><path d="M0 170L320 80L640 190M0 560L320 360L640 610M320 0V800M0 400H640"/><path d="M10 250Q320 40 630 250M10 650Q320 440 630 650"/></g>
+<g filter="url(#shadow2)"><rect x="45" y="143" width="188" height="278" rx="17" fill="#06111d" stroke="#79d1ff" stroke-width="3"/><image href="/assets/spider-mask-direct.png" x="54" y="154" width="170" height="252" preserveAspectRatio="xMidYMid slice" clip-path="url(#mask2)"/><rect x="54" y="154" width="170" height="252" rx="14" fill="none" stroke="#f13b5c" stroke-width="3"/></g>
+<g filter="url(#shadow2)">
+ <path d="M267 193H566Q589 193 589 216V310Q589 333 566 333H355L316 367V333H267Q244 333 244 310V216Q244 193 267 193Z" fill="url(#panel2)" stroke="#85ddff" stroke-width="3"/>
+ <circle cx="279" cy="226" r="6" fill="#ff506e"/><path d="M302 226H523" stroke="#87d9ff" stroke-width="3" opacity=".45"/>
+ <path d="M282 258H534M282 280H493M282 302H515" stroke="#d7f1ff" stroke-width="6" stroke-linecap="round" opacity=".78"/>
+ <path d="M93 492H381Q403 492 403 514V587Q403 609 381 609H218L180 642V609H93Q71 609 71 587V514Q71 492 93 492Z" fill="#491b34" stroke="#ff6680" stroke-width="3"/>
+ <path d="M120 532H354M120 558H323M120 584H280" stroke="#ffe8ee" stroke-width="6" stroke-linecap="round" opacity=".82"/>
+</g>
+<g fill="none" stroke="#9fe7ff" stroke-width="3"><path d="M228 315Q250 340 265 350M403 550Q451 510 483 478M210 420Q270 475 295 492"/></g>
+<g fill="#eaf8ff"><circle cx="257" cy="355" r="6"/><circle cx="474" cy="480" r="6"/><circle cx="298" cy="490" r="5"/></g>
+<g transform="translate(524 103)" stroke="#f4fbff" stroke-width="3" fill="none" stroke-linecap="round"><path d="M0 -24V-10M0 10V24M-24 0H-10M10 0H24M-17 -17L-7 -7M7 7L17 17M17 -17L7 -7M-7 7L-17 17"/><ellipse rx="8" ry="11" fill="#ed3153" stroke="none"/></g>
+<g font-family="Arial,sans-serif" font-weight="bold"><text x="47" y="72" fill="#8ad9ff" font-size="18" letter-spacing="5">WEB-SIGNAL DETECTED</text><text x="48" y="747" fill="#f4faff" font-size="24" letter-spacing="4">UNHEARD / ISSUE 002</text></g>
+<rect x="14" y="14" width="612" height="772" rx="16" fill="none" stroke="#77d1ff" stroke-opacity=".48" stroke-width="2"/>
 </svg>
