@@ -32,38 +32,18 @@ title: Journal
     <span class="spider-hero-particle particle-five" aria-hidden="true"></span>
     <span class="spider-hero-scan" aria-hidden="true"></span>
     <div class="spider-card-shell">
-      <button class="spider-mask-open" type="button" aria-haspopup="dialog" aria-controls="spider-mask-dialog" aria-label="Open the full Spider-Man mask artwork">
+      <div class="spider-mask-open" aria-label="Animated Spider-Verse mask artwork">
         <figure class="spider-photo-card">
-      <img class="spider-mask-art" src="{{ '/assets/spider-mask-direct.png' | relative_url }}" alt="Red Spider-Man webbed mask emblem with white eyes" width="368" height="528" fetchpriority="high" decoding="async">
-      <figcaption><span>EARTH-616 · NEW YORK</span><span>SPIDER-JOURNAL</span></figcaption>
-    </figure>
-      </button>
-      <span class="spider-mask-open-hint" aria-hidden="true">TAP TO INSPECT THE MASK <b>↗</b></span>
-    </div>
+          <img class="spider-mask-art" src="{{ '/assets/spider-mask-direct.png' | relative_url }}" alt="Red webbed mask emblem with white eyes" width="368" height="528" fetchpriority="high" decoding="async">
+          <figcaption><span>EARTH-616 · NEW YORK</span><span>SPIDER-JOURNAL</span></figcaption>
+        </figure>
+      </div>
+</div>
     <span class="spider-depth-shard shard-one" aria-hidden="true"></span>
     <span class="spider-depth-shard shard-two" aria-hidden="true"></span>
     <span class="spider-depth-shard shard-three" aria-hidden="true"></span>
     <span class="spider-stage-light" aria-hidden="true"></span>
-    <dialog class="spider-mask-dialog" id="spider-mask-dialog" aria-labelledby="spider-mask-dialog-title">
-      <button class="spider-mask-dialog-close" type="button" aria-label="Close mask preview">×</button>
-      <div class="spider-mask-dialog-panel">
-        <div class="spider-mask-dialog-copy">
-          <span class="spider-mask-dialog-kicker">EARTH-616 / SHANIKA'S SPIDER-VERSE</span>
-          <h2 id="spider-mask-dialog-title">THE MASK REVEAL</h2>
-          <p>A closer look at the emblem guarding this little corner of the web.</p>
-          <span class="spider-mask-dialog-stamp">SPIDER-JOURNAL · ISSUE 001</span>
-        </div>
-        <figure class="spider-mask-popup-card">
-          <span class="spider-mask-popup-label">CLASSIFIED · EARTH-616</span>
-          <img src="{{ '/assets/spider-mask-direct.png' | relative_url }}" alt="Full view of the red Spider-Man mask emblem with black web lines and white eyes" width="368" height="528" loading="lazy" decoding="async">
-          <figcaption><span>FRIENDLY NEIGHBOURHOOD FILE</span><span>NO. 001</span></figcaption>
-        </figure>
-      </div>
-      <span class="spider-mask-dialog-web" aria-hidden="true"></span>
-      <span class="spider-mask-dialog-orbit orbit-a" aria-hidden="true"></span>
-      <span class="spider-mask-dialog-orbit orbit-b" aria-hidden="true"></span>
-    </dialog>
-    <svg class="spider-photo-stamp" viewBox="0 0 48 48" aria-hidden="true">
+<svg class="spider-photo-stamp" viewBox="0 0 48 48" aria-hidden="true">
       <g fill="none" stroke="#eaf7ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
         <path d="M18 18L8 8M15 23L4 22M17 29L7 38M30 18L40 8M33 23L44 22M31 29L41 38M20 16L15 5M28 16L33 5M20 32L15 43M28 32L33 43"/>
       </g>
@@ -78,52 +58,76 @@ title: Journal
   <div><div class="eyebrow">Transmission log · Earth-616</div><h2>Recently written</h2></div>
   <span class="ig-feed-count">FIELD NOTES / 04</span>
  </div>
- <div class="home-post-grid">
- {% for post in site.posts limit:4 %}
- {% assign social_id = post.url | slugify %}
- <article class="home-post-card" data-social-post data-post-id="{{ social_id }}">
-  <header class="ig-post-header">
-   <div class="ig-author-block">
-    <span class="home-post-avatar" aria-hidden="true">S</span>
-    <span class="ig-author-copy"><strong>SHANIKA</strong><small>EARTH-616 · PERSONAL FEED</small></span>
-   </div>
-   <time class="ig-post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
-  </header>
-  <a class="ig-image-link" href="{{ post.url | relative_url }}" aria-label="Open {{ post.title | escape }}">
-   <div class="home-post-media">
-    {% if post.image %}<img src="{{ post.image | relative_url }}" alt="{{ post.image_alt | default: post.title | escape }}" loading="lazy" decoding="async">{% else %}<div class="post-artwork" role="img" aria-label="A midnight city skyline crossed by glowing web lines"><span class="post-art-glow"></span><span class="post-art-web"></span><span class="post-art-silhouette"></span><span class="post-art-label">DAILY BUGLE · PERSONAL EDITION</span></div>{% endif %}
-    <span class="feed-date">ISSUE / {{ forloop.index | prepend: "00" | slice: -2, 2 }}</span>
-    <span class="ig-image-corner" aria-hidden="true">↗</span>
-   </div>
-  </a>
-  <div class="home-post-body">
-   <div class="ig-post-toolbar">
-    <button class="ig-icon-button ig-like-button" type="button" data-like aria-pressed="false" aria-label="Like this post">
-     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.4 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
-     <span>LIKE</span>
-    </button>
-    <button class="ig-icon-button" type="button" data-comment-toggle aria-expanded="false" aria-controls="comments-{{ social_id }}">
-     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.8 8.8 0 0 1-3.5-.7L4 20l1.2-3.5A7.1 7.1 0 0 1 4 12c0-4.2 3.6-7.5 8-7.5s8 2.8 8 7Z"/></svg>
-     <span>COMMENT <small data-comment-count>0</small></span>
-    </button>
-    <a class="ig-read-link" href="{{ post.url | relative_url }}">READ POST <b>↗</b></a>
-   </div>
-   <p class="ig-likes-line" data-likes-line aria-live="polite">Be the first to send this post some love.</p>
-   <div class="ig-caption">
-    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-    <p>{{ post.excerpt | strip_html | strip | truncate: 190 }}</p>
-   </div>
-   <section class="ig-comments-panel" id="comments-{{ social_id }}" data-comments-panel hidden>
-    <div class="ig-comment-list" data-comment-list aria-live="polite">
-     <p class="ig-empty-comments">No comments yet. Start the conversation.</p>
+ <div class="ig-feed-layout">
+  <div class="home-post-grid">
+  {% for post in site.posts limit:4 %}
+  {% assign social_id = post.url | slugify %}
+  <article class="home-post-card" id="feed-{{ social_id }}" data-social-post data-post-id="{{ social_id }}">
+   <header class="ig-post-header">
+    <div class="ig-author-block">
+     <span class="home-post-avatar" aria-hidden="true">S</span>
+     <span class="ig-author-copy"><strong>SHANIKA</strong><small>EARTH-616 · PERSONAL FEED</small></span>
     </div>
-    <form class="ig-comment-form" data-comment-form>
-     <label class="visually-hidden" for="comment-{{ social_id }}">Write a comment</label>
-     <input id="comment-{{ social_id }}" name="comment" type="text" maxlength="280" autocomplete="off" placeholder="Add a comment to the web..." required>
-     <button type="submit">POST</button>
-    </form>
-    <p class="ig-local-note">Comments and likes are saved in this browser.</p>
-   </section>
+    <time class="ig-post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
+   </header>
+   <a class="ig-image-link" href="{{ post.url | relative_url }}" aria-label="Open {{ post.title | escape }}">
+    <div class="home-post-media">
+     {% if post.image %}<img src="{{ post.image | relative_url }}" alt="{{ post.image_alt | default: post.title | escape }}" loading="lazy" decoding="async">{% else %}<div class="post-artwork" role="img" aria-label="A midnight city skyline crossed by glowing web lines"><span class="post-art-glow"></span><span class="post-art-web"></span><span class="post-art-silhouette"></span><span class="post-art-label">DAILY BUGLE · PERSONAL EDITION</span></div>{% endif %}
+     <span class="feed-date">ISSUE / {{ forloop.index | prepend: "00" | slice: -2, 2 }}</span>
+     <span class="ig-image-corner" aria-hidden="true">↗</span>
+    </div>
+   </a>
+   <div class="home-post-body">
+    <div class="ig-post-toolbar">
+     <button class="ig-icon-button ig-like-button" type="button" data-like aria-pressed="false" aria-label="Like this post">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.4 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
+      <span>LIKE</span>
+     </button>
+     <button class="ig-icon-button" type="button" data-comment-toggle aria-expanded="false" aria-controls="comments-{{ social_id }}">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.8 8.8 0 0 1-3.5-.7L4 20l1.2-3.5A7.1 7.1 0 0 1 4 12c0-4.2 3.6-7.5 8-7.5s8 2.8 8 7Z"/></svg>
+      <span>COMMENT <small data-comment-count>0</small></span>
+     </button>
+     <a class="ig-read-link" href="{{ post.url | relative_url }}">READ POST <b>↗</b></a>
+    </div>
+    <p class="ig-likes-line" data-likes-line aria-live="polite">Be the first to send this post some love.</p>
+    <div class="ig-caption">
+     <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+     <p>{{ post.excerpt | strip_html | strip | truncate: 190 }}</p>
+    </div>
+    <section class="ig-comments-panel" id="comments-{{ social_id }}" data-comments-panel hidden>
+     <div class="ig-comment-list" data-comment-list aria-live="polite">
+      <p class="ig-empty-comments">No comments yet. Start the conversation.</p>
+     </div>
+     <form class="ig-comment-form" data-comment-form>
+      <label class="visually-hidden" for="comment-{{ social_id }}">Write a comment</label>
+      <input id="comment-{{ social_id }}" name="comment" type="text" maxlength="280" autocomplete="off" placeholder="Add a comment to the web..." required>
+      <button type="submit">POST</button>
+     </form>
+     <p class="ig-local-note">Comments and likes are saved in this browser.</p>
+    </section>
+   </div>
+  </article>
+  {% else %}
+  <div class="empty-note">The next page is waiting to be written.</div>
+  {% endfor %}
+  </div>
+  <aside class="ig-post-index" aria-label="Post index">
+   <div class="ig-index-heading"><small>YOUR FIELD ARCHIVE</small><strong>JUMP TO A POST</strong></div>
+   <ol>
+    {% for post in site.posts limit:4 %}
+    <li>
+     <a href="{{ post.url | relative_url }}" data-post-index-link="{{ post.url | slugify }}">
+      <span class="ig-index-number">{{ forloop.index | prepend: "00" | slice: -2, 2 }}</span>
+      <span class="ig-index-copy"><strong>{{ post.title }}</strong><small>{{ post.date | date: "%d %b %Y" }}</small></span>
+      <b aria-hidden="true">↗</b>
+     </a>
+    </li>
+    {% endfor %}
+   </ol>
+   <p class="ig-index-footnote">SELECT AN ISSUE TO OPEN ITS FULL STORY.</p>
+  </aside>
+ </div>
+</section>
   </div>
  </article>
  {% else %}
