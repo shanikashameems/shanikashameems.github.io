@@ -200,19 +200,29 @@ title: Books
     const description=document.getElementById('note-description');
     const takeaway=document.getElementById('note-takeaway');
 
-    // Arrange the books in separate rows, each resting on its own wooden plank.
+    // Arrange the books into proper shelves: five books per row on desktop,
+    // three on smaller screens. Rebuild only when the layout breakpoint changes.
     const books=[...shelf.querySelectorAll('.library-book')];
     shelf.innerHTML='';
-    for(let i=0;i<books.length;i+=7){
-      const row=document.createElement('div');
-      row.className='shelf-row';
-      books.slice(i,i+7).forEach(book=>row.appendChild(book));
-      shelf.appendChild(row);
-      const plank=document.createElement('div');
-      plank.className='shelf-plank';
-      plank.setAttribute('aria-hidden','true');
-      shelf.appendChild(plank);
-    }
+    let shelfColumns=0;
+    const buildShelves=()=>{
+      const columns=window.matchMedia('(max-width:760px)').matches?3:5;
+      if(columns===shelfColumns && shelf.children.length)return;
+      shelfColumns=columns;
+      shelf.innerHTML='';
+      for(let i=0;i<books.length;i+=columns){
+        const row=document.createElement('div');
+        row.className='shelf-row';
+        books.slice(i,i+columns).forEach(book=>row.appendChild(book));
+        shelf.appendChild(row);
+        const plank=document.createElement('div');
+        plank.className='shelf-plank';
+        plank.setAttribute('aria-hidden','true');
+        shelf.appendChild(plank);
+      }
+    };
+    buildShelves();
+    window.addEventListener('resize',buildShelves,{passive:true});
 
     shelf.addEventListener('click',event=>{
       const book=event.target.closest('.library-book');
