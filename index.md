@@ -128,10 +128,3 @@ title: Journal
   </aside>
  </div>
 </section>
-  </div>
- </article>
- {% else %}
- <div class="empty-note">The next page is waiting to be written.</div>
- {% endfor %}
- </div>
-</section>
