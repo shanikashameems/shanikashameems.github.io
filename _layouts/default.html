@@ -2703,5 +2703,54 @@ body:has(.journal-hero) main{
   }
 }
 </style>
+
+<style id="spider-home-typography-readable-fit">
+/* Raise the supporting type without letting the homepage spill below the first viewport. */
+@media(min-width:851px){
+  .topbar .nav:after{font-size:.75rem!important;letter-spacing:.19em!important}
+  .brand{font-size:1.98rem!important}
+  .navlinks a{font-size:1.32rem!important}
+  .journal-hero{grid-template-columns:1.06fr .94fr!important;gap:2%!important}
+  .journal-hero .hero-copy{max-width:680px!important}
+  .journal-hero .eyebrow{
+    font-size:1.03rem!important;line-height:1.2!important;letter-spacing:.17em!important;
+  }
+  .journal-hero .hero-copy h1{
+    font-size:clamp(64px,5.2vw,92px)!important;
+    line-height:.9!important;max-width:760px!important;margin:8px 0 13px!important;
+  }
+  .journal-hero .hero-lede{
+    font-size:clamp(1.16rem,1.18vw,1.24rem)!important;
+    line-height:1.4!important;max-width:530px!important;
+  }
+  .journal-hero .hero-meta{
+    font-size:.8rem!important;line-height:1.32!important;
+    letter-spacing:.13em!important;margin-top:12px!important;
+  }
+  .journal-hero .hero-copy .handwritten{
+    font-size:clamp(2.08rem,2.22vw,2.25rem)!important;
+    line-height:1!important;margin-top:8px!important;letter-spacing:.025em!important;
+  }
+  .spider-photo-stage .spider-photo-card figcaption{
+    font-size:.68rem!important;letter-spacing:.11em!important;
+  }
+  .spider-mask-open-hint{
+    font-size:.73rem!important;letter-spacing:.16em!important;padding:8px 14px!important;
+  }
+  .city-map-toggle{
+    font-size:.9rem!important;letter-spacing:.14em!important;padding:13px 17px!important;
+  }
+}
+@media(max-height:790px) and (min-width:851px){
+  .journal-hero .hero-copy h1{font-size:clamp(58px,4.9vw,82px)!important}
+  .journal-hero .eyebrow{font-size:.98rem!important}
+  .journal-hero .hero-lede{font-size:1.12rem!important;line-height:1.36!important}
+  .journal-hero .hero-meta{font-size:.76rem!important;margin-top:9px!important}
+  .journal-hero .hero-copy .handwritten{font-size:2.02rem!important}
+  .journal-hero .book-stage,.journal-hero .book-stage.spider-photo-stage{
+    height:clamp(350px,52svh,435px)!important;min-height:clamp(350px,52svh,435px)!important;
+  }
+}
+</style>
 </body>
 </html>
