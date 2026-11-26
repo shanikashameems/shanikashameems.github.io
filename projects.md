@@ -5,11 +5,12 @@ title: Books
 ---
 
 <article class="content-page reveal library-page">
-  <div class="eyebrow">THE ISSUE LIBRARY // ON MY SHELF</div>
-  <h1>Books I’ve read.</h1>
-  <p class="library-intro">Some stories stay in your head longer than expected. These are a few that made it onto my shelf. Tap one if you feel like snooping through my notes. ♡</p>
-  <div class="library-decor" aria-hidden="true"><span>✳</span><span>✿</span><span>“</span></div>
-  <section class="library-room" aria-label="My reading shelf">
+  <div class="eyebrow">EARTH-616 // THE ISSUE LIBRARY</div>
+  <h1>Stories worth keeping.</h1>
+  <p class="library-intro">Every story opens up another universe. These are the books that left a mark on mine. Pick a spine to open its field notes. ♡</p>
+  <div class="library-status" aria-label="Archive status"><span>20 BOOKS INDEXED</span><span>ARCHIVE STATUS: OPEN</span></div>
+  <div class="library-decor" aria-hidden="true"><span>✦</span><span>⌁</span><span>616</span></div>
+  <section class="library-room" aria-label="Earth-616 reading archive">
     <div class="library-shelf">
       <div class="shelf-row"><button class="library-book book-coral" type="button" data-title="Shoe Dog" data-author="Phil Knight" data-description="This one follows the messy, slightly chaotic beginnings of Nike. Lots of risks, setbacks and figuring-it-out-as-you-go energy." data-takeaway="A reminder that big things can start pretty small. I want to keep showing up even when the plan gets messy." aria-expanded="false"><span class="book-number">01</span><strong>Shoe Dog</strong><small>Phil Knight</small></button>
 <button class="library-book book-blue" type="button" data-title="Build, Don’t Talk" data-author="Raj Shamani" data-description="A practical read about the skills nobody really teaches you in class: communication, networking, selling and getting things done." data-takeaway="Less talking about what I might do, more actually doing it. Noted." aria-expanded="false"><span class="book-number">02</span><strong>Build, Don’t Talk</strong><small>Raj Shamani</small></button>
@@ -37,15 +38,15 @@ title: Books
   <dialog class="book-dialog" id="book-dialog" aria-labelledby="note-title">
     <button class="book-dialog-close" type="button" aria-label="Close book details">×</button>
     <div class="book-note" aria-live="polite" aria-atomic="true">
-      <div class="book-note-label">A little note from the pages</div>
+      <div class="book-note-label">FIELD NOTES // FROM THE PAGES</div>
       <h2 id="note-title">Book title</h2>
       <p class="note-author" id="note-author"></p>
       <p id="note-description"></p>
-      <div class="takeaway-wrap"><span>What I’m taking with me</span><p id="note-takeaway"></p></div>
+      <div class="takeaway-wrap"><span>THE TAKEAWAY // WHAT STICKS</span><p id="note-takeaway"></p></div>
       <span class="note-heart" aria-hidden="true">♡</span>
     </div>
   </dialog>
-  <p class="library-footnote">My shelf is still growing. There’s always room for one more story. <span>♡</span></p>
+  <p class="library-footnote">Archive still expanding. Every story earns its own place. <span>✦</span></p>
 </article>
 
 <style>
