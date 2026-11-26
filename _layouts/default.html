@@ -3604,5 +3604,23 @@ body.city-map-open{overflow:hidden!important}
 })();
 </script>
 
+
+<style id="spider-viewport-final-balance">
+@media(min-width:851px){
+  main:has(.journal-hero){padding:0 36px!important}
+  .journal-hero{min-height:calc(100svh - 70px)!important}
+  .home-post-card{
+    height:clamp(430px,58svh,560px)!important;
+    max-height:calc(100svh - 178px)!important;
+    grid-template-rows:62px minmax(0,1fr)!important;
+  }
+}
+@media(max-height:790px) and (min-width:851px){
+  main:has(.journal-hero){padding:0 36px 8px!important}
+  .journal-hero{min-height:calc(100svh - 78px)!important}
+  .home-post-card{height:clamp(400px,55svh,500px)!important}
+}
+</style>
+
 </body>
 </html>
