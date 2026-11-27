@@ -4,7 +4,7 @@ layout: default
 title: Contact
 ---
 
-<section class="content-page reveal">
+<section class="content-page reveal contact-page">
   <div class="eyebrow">WEB LINE // OPEN TRANSMISSION</div>
   <h1>Send a signal.</h1>
   <p>Have a project in mind, want to exchange ideas, or just want to say hello? Leave a little message below, or find me around the internet.</p>
@@ -24,7 +24,7 @@ title: Contact
       <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
 
       <label for="message">Your message</label>
-      <textarea id="message" name="message" rows="6" placeholder="Write a little note..." required></textarea>
+      <textarea id="message" name="message" rows="4" placeholder="Write a little note..." required></textarea>
 
       <button type="submit">Send message <span aria-hidden="true">↗</span></button>
     </form>
